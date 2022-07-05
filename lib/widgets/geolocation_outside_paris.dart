@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:proximitystore/constant/ConstantWidgets/BackgroundImage.dart';
+
+import 'package:proximitystore/constant/ConstantWidgets/background_image.dart';
+
 import 'package:proximitystore/constant/ProxColors.dart';
 
 class GeolocationOutsideParis extends StatelessWidget {
@@ -10,7 +12,7 @@ class GeolocationOutsideParis extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: <Widget>[
-          backgroundImg(),
+          backround_image(),
           Column(
             children: [
               Padding(

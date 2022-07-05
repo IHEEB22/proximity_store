@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:proximitystore/constant/ConstantWidgets/BackgroundImage.dart';
+import 'package:proximitystore/constant/ConstantWidgets/background_image.dart';
 import 'package:proximitystore/constant/ProxColors.dart';
 
 import 'package:proximitystore/proxstoretest.dart';

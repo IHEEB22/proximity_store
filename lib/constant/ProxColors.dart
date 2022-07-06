@@ -5,9 +5,9 @@ class ProxColors {
   static const pink = Color.fromRGBO(255, 0, 117, 1);
   // 0F1643
   static const pinkkk = Color(0xFFFF0075);
-  static const black2 = Color.fromRGBO(15, 22, 67, 1);
-  static const black1 = Color.fromRGBO(0, 15, 22, 0.26);
-
+  static const darkblue = Color.fromRGBO(15, 22, 67, 1);
+  static const grey = Color.fromRGBO(0, 15, 22, 0.26);
+  static const whiteColor = Color(0xFFFFFFFF);
   static const transparentColor = Colors.transparent;
   static const statusbarColor = Brightness.dark;
   static const deepblue = Color.fromRGBO(25, 37, 112, 1);

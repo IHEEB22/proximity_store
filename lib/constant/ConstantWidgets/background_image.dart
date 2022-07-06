@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:proximitystore/constant/AppDimension.dart';
 import 'package:proximitystore/services/principal_functions.dart';
 
-class backround_image extends StatelessWidget {
-  const backround_image({Key? key}) : super(key: key);
+class BackgroundImage extends StatelessWidget {
+  const BackgroundImage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

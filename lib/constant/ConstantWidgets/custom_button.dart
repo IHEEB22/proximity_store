@@ -3,7 +3,13 @@ import 'package:proximitystore/constant/ProxColors.dart';
 
 class CustomButton extends StatefulWidget {
   final String textInput;
-  const CustomButton({Key? key, required this.textInput}) : super(key: key);
+  final Function() onPressed;
+
+  const CustomButton({
+    Key? key,
+    required this.textInput,
+    required this.onPressed,
+  }) : super(key: key);
 
   @override
   State<CustomButton> createState() => _CustomButtonState();
@@ -33,7 +39,7 @@ class _CustomButtonState extends State<CustomButton> {
             ),
           ),
         ),
-        onPressed: () {},
+        onPressed: widget.onPressed,
       ),
     );
   }

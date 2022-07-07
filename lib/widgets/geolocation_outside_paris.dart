@@ -4,6 +4,7 @@ import 'package:proximitystore/constant/ConstantWidgets/background_image.dart';
 import 'package:proximitystore/constant/ConstantWidgets/custom_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:proximitystore/constant/ProxColors.dart';
+import 'package:proximitystore/widgets/sheet_Geolocalisation_outside_paris.dart';
 
 class GeolocationOutsideParis extends StatelessWidget {
   const GeolocationOutsideParis({Key? key}) : super(key: key);
@@ -51,10 +52,9 @@ class GeolocationOutsideParis extends StatelessWidget {
                                 ),
                               ),
                               TextSpan(
-                                text:
-                                    ' n’est pas (encore) disponible dans votre secteur ',
+                                text: ' n’est pas (encore) disponible dans votre secteur ',
                                 style: TextStyle(
-                                  color: ProxColors.black2,
+                                  color: ProxColors.darkblue,
                                   fontFamily: 'Popins',
                                   fontWeight: FontWeight.w600,
                                   fontSize: 22,
@@ -111,7 +111,19 @@ class GeolocationOutsideParis extends StatelessWidget {
                           padding: EdgeInsets.symmetric(
                             horizontal: 0.066.sw,
                           ),
-                          child: CustomButton(textInput: 'Prévenez-moi'),
+                          child: CustomButton(
+                            onPressed: () => showModalBottomSheet(
+                              isScrollControlled: true,
+                              context: context,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.vertical(
+                                  top: Radius.circular(20),
+                                ),
+                              ),
+                              builder: ((context) => SheetGeolocalisationOutsideParis()),
+                            ),
+                            textInput: 'Prévenez-moi',
+                          ),
                         ),
                       ),
                       0.07.sh.verticalSpace,

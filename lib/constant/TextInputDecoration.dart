@@ -28,4 +28,10 @@ const textInputDecoration = InputDecoration(
       width: 2.0,
     ),
   ),
+  focusedErrorBorder: OutlineInputBorder(
+    borderSide: BorderSide(
+      color: ProxColors.pink,
+      width: 2.0,
+    ),
+  ),
 );

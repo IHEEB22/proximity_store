@@ -4,7 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:proximitystore/constant/AppDimension.dart';
 import 'package:proximitystore/constant/ProxColors.dart';
-import 'package:proximitystore/services/providers.dart';
+import 'package:proximitystore/providers/sheet_provider.dart';
+
 import 'package:proximitystore/widgets/geolocation_outside_paris.dart';
 
 void main() {
@@ -15,7 +16,7 @@ void main() {
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => SheetValidation()),
+        ChangeNotifierProvider(create: (_) => SheetProvider()),
       ],
       child: proximitystore(),
     ),
@@ -28,6 +29,7 @@ class proximitystore extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
+      minTextAdapt: true,
       designSize: Size(AppDimensions.screenHeight, AppDimensions.screenwidht),
       builder: (_, child) => MaterialApp(
         debugShowCheckedModeBanner: false,

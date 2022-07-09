@@ -108,20 +108,15 @@ class _SheetGeolocalisationOutsideParisState extends State<SheetGeolocalisationO
                   child: CustomButton(
                       textInput: 'Prévenez-moi',
                       onPressed: () {
-                        // Navigator.pop(context),
-
-                        () {
-                          if (_formKey.currentState!.validate()) {
-                            context.read<SheetProvider>().addSheetInputs(
-                                  email: _emailController.text,
-                                  town: _townController.text,
-                                );
-                            Navigator.pop(context);
-                            print('${context.watch<SheetProvider>().sheetInputsList}');
-                          } else
-                            print('${context.watch<SheetProvider>().sheetInputsList}');
+                        if (_formKey.currentState?.validate() ?? false) {
+                          context.read<SheetProvider>().addsheetInputs(
+                                email: _emailController.text,
+                                town: _townController.text,
+                              );
                           Navigator.pop(context);
-                        };
+                        } else {
+                          Navigator.pop(context);
+                        }
                       }),
                 ),
               ),

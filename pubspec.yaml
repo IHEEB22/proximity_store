@@ -84,16 +84,30 @@ flutter:
   fonts:
     - family: Poppins
       fonts:
-       - asset: assets\fonts\Poppins-SemiBold.ttf
+       - asset: assets/fonts/poppins/Poppins-Italic.ttf
+         style: italic
 
+       - asset: assets/fonts/Poppins/Poppins-Black.ttf
+         weight: 400
+       - asset: assets/fonts/Poppins/Poppins-Medium.ttf
+         weight: 500
+       - asset: assets/fonts/Poppins/Poppins-SemiBold.ttf
+         weight: 600
+       - asset: assets/fonts/Poppins/Poppins-Bold.ttf
+         weight: 700  
     - family: Montserrat
       fonts:
-       - asset: assets\fonts\Roboto-Regular.ttf
-  
-    - family: Roboto
-      fonts:
-       - asset: assets\fonts\Roboto-Regular.ttf
-  
+       - asset: assets/fonts/Montserrat/Montserrat-Italic.ttf
+         style: italic
+
+       - asset: assets/fonts/Montserrat/Montserrat-Black.ttf
+         weight: 400
+       - asset: assets/fonts/Montserrat/Montserrat-Medium.ttf
+         weight: 500
+       - asset: assets/fonts/Montserrat/Montserrat-SemiBold.ttf
+         weight: 600
+       - asset: assets/fonts/Montserrat/Montserrat-Bold.ttf
+         weight: 700  
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

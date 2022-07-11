@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:proximitystore/constant/ConstantWidgets/custom_button.dart';
+import 'package:proximitystore/constant/ConstantWidgets/custom_blue_button.dart';
 import 'package:proximitystore/constant/ProxColors.dart';
 import 'package:proximitystore/constant/TextInputDecoration.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -15,22 +15,24 @@ class SheetGeolocalisationOutsideParis extends StatefulWidget {
 }
 
 class _SheetGeolocalisationOutsideParisState extends State<SheetGeolocalisationOutsideParis> {
-  final _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _townController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     final MediaQueryData mediaQueryData = MediaQuery.of(context);
     return Wrap(children: <Widget>[
+      0.055.sh.verticalSpace,
       Padding(
         padding: EdgeInsets.only(
           bottom: mediaQueryData.viewInsets.bottom,
         ),
         child: Form(
+          key: _formKey,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              0.005.sh.verticalSpace,
               SizedBox(
                 // width: double.infinity,
                 child: Padding(
@@ -44,7 +46,7 @@ class _SheetGeolocalisationOutsideParisState extends State<SheetGeolocalisationO
                   ),
                 ),
               ),
-              // sheet_heigh :324
+
               0.02.sh.verticalSpace,
               Padding(
                 padding: EdgeInsets.only(left: 0.042.sw),
@@ -52,9 +54,10 @@ class _SheetGeolocalisationOutsideParisState extends State<SheetGeolocalisationO
                   'Renseignez votre e-mail',
                   style: TextStyle(
                     color: ProxColors.darkblue,
-                    fontSize: 12,
-                    fontWeight: FontWeight.w800,
+                    fontSize: 12.sp,
+                    fontWeight: FontWeight.w700,
                     fontFamily: 'Montserrat',
+                    letterSpacing: 0.4,
                   ),
                 ),
               ),
@@ -63,11 +66,11 @@ class _SheetGeolocalisationOutsideParisState extends State<SheetGeolocalisationO
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 0.042.sw),
                 child: TextFormField(
+                  keyboardType: TextInputType.emailAddress,
                   controller: _emailController,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   decoration: textInputDecoration.copyWith(
                     hintText: 'e-mail',
-                    // errorText: ,
                   ),
                   validator: (email) => ValidationItem(val: email).validateEmail(),
                 ),
@@ -78,9 +81,10 @@ class _SheetGeolocalisationOutsideParisState extends State<SheetGeolocalisationO
                 child: Text(
                   'Renseignez votre ville',
                   style: TextStyle(
-                    color: ProxColors.darkblue,
-                    fontSize: 12,
-                    fontWeight: FontWeight.w800,
+                    color: ProxColors.blue,
+                    fontSize: 12.sp,
+                    fontWeight: FontWeight.w700,
+                    letterSpacing: 0.4,
                     fontFamily: 'Montserrat',
                   ),
                 ),
@@ -105,22 +109,21 @@ class _SheetGeolocalisationOutsideParisState extends State<SheetGeolocalisationO
                   padding: EdgeInsets.symmetric(
                     horizontal: 0.066.sw,
                   ),
-                  child: CustomButton(
+                  child: CustomBlueButton(
                       textInput: 'Prévenez-moi',
                       onPressed: () {
+                        print(_formKey.currentState?.validate() ?? false);
                         if (_formKey.currentState?.validate() ?? false) {
                           context.read<SheetProvider>().addsheetInputs(
                                 email: _emailController.text,
                                 town: _townController.text,
                               );
                           Navigator.pop(context);
-                        } else {
-                          Navigator.pop(context);
                         }
                       }),
                 ),
               ),
-              0.0046.sh.verticalSpace,
+              0.015.sh.verticalSpace,
             ],
           ),
         ),
@@ -132,7 +135,6 @@ class _SheetGeolocalisationOutsideParisState extends State<SheetGeolocalisationO
   void dispose() {
     _emailController.dispose();
     _townController.dispose();
-    // ignore: avoid_print
 
     super.dispose();
   }

@@ -4,9 +4,13 @@ class ValidationItem {
 
   String? validateEmail() {
     int len = val?.length ?? 0;
+    bool emailValid =
+        RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(val ?? "Not email");
 
-    if ((val == null) || (len <= 3)) {
-      return 'Must be at least 3 characters';
+    if ((val != null && val!.isEmpty)) {
+      return 'ce champ est obligatoire !';
+    } else if (!emailValid) {
+      return 'email invalide';
     } else
       return null;
   }
@@ -14,13 +18,15 @@ class ValidationItem {
   String? validateTown() {
     int len = val?.length ?? 0;
 
-    if ((val == null) || (len <= 3)) {
-      return 'Must be at least 3 characters';
-    } else
-      return null;
+    if (val == null) {
+      return 'ce champ est obligatoire !';
+    } else if (len <= 3) {
+      return 'ville invalide';
+    }
+    return null;
   }
 
-  bool isValid(val) {
+  bool isValid() {
     if (val != null) {
       return true;
     } else {

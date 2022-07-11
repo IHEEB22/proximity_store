@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:proximitystore/constant/ConstantWidgets/background_image.dart';
-import 'package:proximitystore/constant/ConstantWidgets/custom_button.dart';
+import 'package:proximitystore/constant/ConstantWidgets/custom_blue_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:proximitystore/constant/ProxColors.dart';
 import 'package:proximitystore/widgets/sheet_Geolocalisation_outside_paris.dart';
@@ -21,13 +21,14 @@ class GeolocationOutsideParis extends StatelessWidget {
               child: Wrap(
                 children: [
                   Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Padding(
                         padding: EdgeInsets.fromLTRB(
                           0.07.sw,
-                          0.08.sh,
-                          0.28.sw,
+                          0.sh,
+                          0.18.sw,
                           0.079.sh,
                         ),
                         child: Text.rich(
@@ -42,6 +43,9 @@ class GeolocationOutsideParis extends StatelessWidget {
                                   fontSize: 22,
                                 ),
                               ),
+                              WidgetSpan(
+                                child: 0.1.sh.verticalSpace,
+                              ),
                               TextSpan(
                                 text: 'Store',
                                 style: TextStyle(
@@ -51,13 +55,17 @@ class GeolocationOutsideParis extends StatelessWidget {
                                   fontSize: 22,
                                 ),
                               ),
+                              WidgetSpan(
+                                child: 0.1.sh.verticalSpace,
+                              ),
                               TextSpan(
-                                text: ' n’est pas (encore) disponible dans votre secteur ',
+                                text: ' n’est pas (encore) disponible\ndans votre secteur',
                                 style: TextStyle(
                                   color: ProxColors.darkblue,
                                   fontFamily: 'Popins',
                                   fontWeight: FontWeight.w600,
                                   fontSize: 22,
+                                  letterSpacing: 0.4,
                                 ),
                               ),
                               WidgetSpan(
@@ -83,25 +91,25 @@ class GeolocationOutsideParis extends StatelessWidget {
                           style: TextStyle(
                             color: ProxColors.darkblue,
                             fontFamily: 'Montserrat',
-                            fontWeight: FontWeight.w300,
-                            fontSize: 16,
+                            fontWeight: FontWeight.w400,
+                            fontSize: 15,
                           ),
                         ),
                       ),
                       Padding(
                         padding: EdgeInsets.fromLTRB(
-                          0.085.sw,
-                          0.02.sh,
-                          0.18.sw,
-                          0.27.sh,
+                          0.0853.sw,
+                          0.025.sh,
+                          0.17.sw,
+                          0.271.sh,
                         ),
                         child: Text(
                           'Gardons contact, pour être prévenu et être parmi les premiers au courant : ',
                           style: TextStyle(
                             color: ProxColors.darkblue,
                             fontFamily: 'Montserrat',
-                            fontWeight: FontWeight.w500,
-                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 15,
                           ),
                         ),
                       ),
@@ -109,9 +117,10 @@ class GeolocationOutsideParis extends StatelessWidget {
                         width: double.infinity,
                         child: Padding(
                           padding: EdgeInsets.symmetric(
-                            horizontal: 0.066.sw,
+                            horizontal: 0.067.sw,
                           ),
-                          child: CustomButton(
+                          child: CustomBlueButton(
+                            textInput: 'Prévenez-moi',
                             onPressed: () => showModalBottomSheet(
                               isScrollControlled: true,
                               context: context,
@@ -122,11 +131,10 @@ class GeolocationOutsideParis extends StatelessWidget {
                               ),
                               builder: ((context) => SheetGeolocalisationOutsideParis()),
                             ),
-                            textInput: 'Prévenez-moi',
                           ),
                         ),
                       ),
-                      0.07.sh.verticalSpace,
+                      0.15.sh.verticalSpace,
                       Padding(
                         padding: EdgeInsets.symmetric(
                           horizontal: 0.13.sw,

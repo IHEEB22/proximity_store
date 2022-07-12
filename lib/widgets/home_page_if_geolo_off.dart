@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 
-import 'package:proximitystore/constant/ConstantWidgets/background_image.dart';
-import 'package:proximitystore/constant/ConstantWidgets/custom_blue_button.dart';
+import 'package:proximitystore/constant/constant_widgets/background_image.dart';
+import 'package:proximitystore/constant/constant_widgets/custom_blue_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:proximitystore/constant/ProxColors.dart';
-import 'package:proximitystore/widgets/sheet_Geolocalisation_outside_paris.dart';
+import 'package:proximitystore/constant/constant_proprities/prox_colors.dart';
 
-import '../constant/ConstantWidgets/custom_white_button.dart';
+import '../constant/constant_widgets/custom_white_button.dart';
 
 class HomePageIfGeoloOff extends StatelessWidget {
   const HomePageIfGeoloOff({Key? key}) : super(key: key);

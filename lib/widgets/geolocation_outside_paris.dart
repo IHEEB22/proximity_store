@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:proximitystore/constant/ConstantWidgets/background_image.dart';
-import 'package:proximitystore/constant/ConstantWidgets/custom_blue_button.dart';
+import 'package:proximitystore/constant/constant_widgets/background_image.dart';
+import 'package:proximitystore/constant/constant_widgets/custom_blue_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:proximitystore/constant/ProxColors.dart';
+import 'package:proximitystore/constant/constant_proprities/prox_colors.dart';
 import 'package:proximitystore/widgets/sheet_Geolocalisation_outside_paris.dart';
 
 class GeolocationOutsideParis extends StatelessWidget {
@@ -40,7 +40,7 @@ class GeolocationOutsideParis extends StatelessWidget {
                                   color: ProxColors.blue,
                                   fontFamily: 'Popins',
                                   fontWeight: FontWeight.w600,
-                                  fontSize: 22,
+                                  fontSize: 22.sp,
                                 ),
                               ),
                               WidgetSpan(
@@ -52,7 +52,7 @@ class GeolocationOutsideParis extends StatelessWidget {
                                   color: ProxColors.pink,
                                   fontFamily: 'Popins',
                                   fontWeight: FontWeight.w600,
-                                  fontSize: 22,
+                                  fontSize: 22.sp,
                                 ),
                               ),
                               WidgetSpan(
@@ -64,7 +64,7 @@ class GeolocationOutsideParis extends StatelessWidget {
                                   color: ProxColors.darkblue,
                                   fontFamily: 'Popins',
                                   fontWeight: FontWeight.w600,
-                                  fontSize: 22,
+                                  fontSize: 22.sp,
                                   letterSpacing: 0.4,
                                 ),
                               ),
@@ -92,7 +92,7 @@ class GeolocationOutsideParis extends StatelessWidget {
                             color: ProxColors.darkblue,
                             fontFamily: 'Montserrat',
                             fontWeight: FontWeight.w400,
-                            fontSize: 15,
+                            fontSize: 15.sp,
                           ),
                         ),
                       ),
@@ -109,7 +109,7 @@ class GeolocationOutsideParis extends StatelessWidget {
                             color: ProxColors.darkblue,
                             fontFamily: 'Montserrat',
                             fontWeight: FontWeight.w600,
-                            fontSize: 15,
+                            fontSize: 15.sp,
                           ),
                         ),
                       ),
@@ -144,7 +144,7 @@ class GeolocationOutsideParis extends StatelessWidget {
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontFamily: 'Montserrat',
-                            fontSize: 16,
+                            fontSize: 16.sp,
                             fontWeight: FontWeight.w400,
                             decoration: TextDecoration.underline,
                           ),

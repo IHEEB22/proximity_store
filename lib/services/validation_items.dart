@@ -3,7 +3,6 @@ class ValidationItem {
   ValidationItem({this.val});
 
   String? validateEmail() {
-    int len = val?.length ?? 0;
     bool emailValid =
         RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(val ?? "Not email");
 

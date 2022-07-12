@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:proximitystore/constant/ProxColors.dart';
+import 'package:proximitystore/constant/constant_proprities/prox_colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 var textInputDecoration = InputDecoration(

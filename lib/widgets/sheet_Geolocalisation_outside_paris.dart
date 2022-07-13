@@ -110,7 +110,20 @@ class _SheetGeolocalisationOutsideParisState extends State<SheetGeolocalisationO
                         child: CustomBlueButton(
                             textInput: 'Prévenez-moi',
                             onPressed: () {
-                              Navigator.pop(context);
+                              () {
+                                if (_formKey.currentState!.validate()) {
+                                  Navigator.pop(context);
+                                } else if (_formKey.currentState?.validate() ?? false) {
+                                  context.read<SheetProvider>().addsheetInputs(
+                                        email: _emailController.text,
+                                        town: _townController.text,
+                                      );
+                                  Navigator.pop(context);
+                                } else {
+                                  Navigator.pop(context);
+                                }
+                                ;
+                              };
                             }),
                       ),
                     ),

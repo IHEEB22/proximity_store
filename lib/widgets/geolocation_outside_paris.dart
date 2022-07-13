@@ -27,8 +27,8 @@ class GeolocationOutsideParis extends StatelessWidget {
                       Padding(
                         padding: EdgeInsets.fromLTRB(
                           0.07.sw,
-                          0.sh,
-                          0.18.sw,
+                          0.123.sh,
+                          0.09.sw,
                           0.079.sh,
                         ),
                         child: Text.rich(
@@ -59,7 +59,7 @@ class GeolocationOutsideParis extends StatelessWidget {
                                 child: 0.1.sh.verticalSpace,
                               ),
                               TextSpan(
-                                text: ' n’est pas (encore) disponible\ndans votre secteur',
+                                text: ' n’est pas\n(encore) disponible\ndans votre secteur',
                                 style: TextStyle(
                                   color: ProxColors.darkblue,
                                   fontFamily: 'Popins',
@@ -92,7 +92,7 @@ class GeolocationOutsideParis extends StatelessWidget {
                             color: ProxColors.darkblue,
                             fontFamily: 'Montserrat',
                             fontWeight: FontWeight.w400,
-                            fontSize: 15.sp,
+                            fontSize: 16.sp,
                           ),
                         ),
                       ),
@@ -109,7 +109,7 @@ class GeolocationOutsideParis extends StatelessWidget {
                             color: ProxColors.darkblue,
                             fontFamily: 'Montserrat',
                             fontWeight: FontWeight.w600,
-                            fontSize: 15.sp,
+                            fontSize: 16.sp,
                           ),
                         ),
                       ),
@@ -126,7 +126,7 @@ class GeolocationOutsideParis extends StatelessWidget {
                               context: context,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.vertical(
-                                  top: Radius.circular(20),
+                                  top: Radius.circular(20.r),
                                 ),
                               ),
                               builder: ((context) => SheetGeolocalisationOutsideParis()),

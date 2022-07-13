@@ -7,6 +7,8 @@ import 'package:proximitystore/constant/constant_proprities/prox_colors.dart';
 import 'package:proximitystore/providers/localistaion_controller_provider.dart';
 import 'package:proximitystore/providers/sheet_provider.dart';
 import 'package:proximitystore/widgets/geolocation_outside_paris.dart';
+import 'package:proximitystore/widgets/home_page_geoloc_off.dart';
+import 'package:proximitystore/widgets/home_page_if_geolo_off.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
@@ -34,7 +36,7 @@ class proximitystore extends StatelessWidget {
       designSize: Size(AppDimensions.screenwidht, AppDimensions.screenHeight),
       builder: (_, child) => MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: GeolocationOutsideParis(),
+        home: HomePageGeolocOff(),
       ),
     );
   }

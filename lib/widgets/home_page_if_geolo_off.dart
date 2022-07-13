@@ -29,8 +29,8 @@ class HomePageIfGeoloOff extends StatelessWidget {
                         padding: EdgeInsets.fromLTRB(
                           0.085.sw,
                           0.148.sh,
-                          0.256.sw,
-                          0.079.sh,
+                          0.0256.sw,
+                          0.067.sh,
                         ),
                         child: Text.rich(
                           TextSpan(
@@ -41,7 +41,7 @@ class HomePageIfGeoloOff extends StatelessWidget {
                                   color: ProxColors.blue,
                                   fontFamily: 'Popins',
                                   fontWeight: FontWeight.w600,
-                                  fontSize: 22,
+                                  fontSize: 22.sp,
                                 ),
                               ),
                               TextSpan(
@@ -50,7 +50,7 @@ class HomePageIfGeoloOff extends StatelessWidget {
                                   color: ProxColors.pink,
                                   fontFamily: 'Popins',
                                   fontWeight: FontWeight.w600,
-                                  fontSize: 22,
+                                  fontSize: 22.sp,
                                 ),
                               ),
                               TextSpan(
@@ -59,18 +59,18 @@ class HomePageIfGeoloOff extends StatelessWidget {
                                   color: ProxColors.darkblue,
                                   fontFamily: 'Popins',
                                   fontWeight: FontWeight.w600,
-                                  fontSize: 22,
+                                  fontSize: 22.sp,
                                 ),
                               ),
                             ],
                           ),
                         ),
                       ),
-                      0.041.sh.verticalSpace,
+                      // 0.041.sh.verticalSpace,
                       Padding(
                           padding: EdgeInsets.only(
-                            left: 0.07.sw,
-                            right: 0.5.sw,
+                            left: 0.085.sw,
+                            right: 0.186.sw,
                           ),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -104,7 +104,7 @@ class HomePageIfGeoloOff extends StatelessWidget {
                               ),
                             ],
                           )),
-                      0.336.sh.verticalSpace,
+                      0.314.sh.verticalSpace,
                       SizedBox(
                         width: double.infinity,
                         child: Padding(
@@ -130,6 +130,7 @@ class HomePageIfGeoloOff extends StatelessWidget {
                           ),
                         ),
                       ),
+                      0.152.sh.horizontalSpace,
                     ],
                   ),
                 ],

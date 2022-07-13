@@ -32,8 +32,8 @@ class _LocationSearchDialogState extends State<LocationSearchDialog> {
       child: SizedBox(
         child: Form(
           key: _formKey,
-          child: TypeAheadFormField<Prediction?>(
-              // autovalidateMode: AutovalidateMode.always,
+          child: TypeAheadFormField<Prediction>(
+              // autovalidateMode: AutovalidateMode.onUserInteraction,
               hideOnError: true,
               textFieldConfiguration: TextFieldConfiguration(
                 controller: _controller,

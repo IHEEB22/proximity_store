@@ -23,6 +23,7 @@ class LocalistaionControllerprovider with ChangeNotifier {
         data['predictions'].forEach((prediction) => _predictionList.add(Prediction.fromJson(prediction)));
       }
     }
+    notifyListeners();
     return _predictionList;
   }
 }

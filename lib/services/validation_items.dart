@@ -19,7 +19,7 @@ class ValidationItem {
       return null;
   }
 
-  String? validateTown(context) {
+  String? validateTown(BuildContext context) {
     List<Prediction> predictionList = context.read<LocalistaionControllerprovider>().predictionList;
 
     bool exist = predictionList.contains(Prediction(description: val));

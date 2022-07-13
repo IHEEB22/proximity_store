@@ -33,12 +33,10 @@ class _LocationSearchDialogState extends State<LocationSearchDialog> {
         child: Form(
           key: _formKey,
           child: TypeAheadFormField<Prediction>(
-              // autovalidateMode: AutovalidateMode.onUserInteraction,
               hideOnError: true,
               textFieldConfiguration: TextFieldConfiguration(
                 controller: _controller,
                 textInputAction: TextInputAction.search,
-
                 textCapitalization: TextCapitalization.words,
                 keyboardType: TextInputType.streetAddress,
                 // noItemsFoundBuilder: Spiner(),
@@ -47,9 +45,10 @@ class _LocationSearchDialogState extends State<LocationSearchDialog> {
                   hintText: 'ville',
                 ),
               ),
-              suggestionsCallback: (pattern) async {
-                return await context.read<LocalistaionControllerprovider>().searchLocation(context, pattern);
-              },
+              autovalidateMode: AutovalidateMode.onUserInteraction,
+              suggestionsCallback: (pattern) => pattern.isNotEmpty
+                  ? context.read<LocalistaionControllerprovider>().searchLocation(context, pattern)
+                  : Future.value([]),
               itemBuilder: (context, Prediction? suggestion) {
                 return Padding(
                   padding: EdgeInsets.zero,

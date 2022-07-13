@@ -1,3 +1,8 @@
+import 'package:google_maps_webservice/places.dart';
+import 'package:provider/provider.dart';
+import '../providers/localistaion_controller_provider.dart';
+import 'package:flutter/material.dart';
+
 class ValidationItem {
   String? val;
   ValidationItem({this.val});
@@ -14,15 +19,16 @@ class ValidationItem {
       return null;
   }
 
-  String? validateTown() {
-    int len = val?.length ?? 0;
+  String? validateTown(context) {
+    List<Prediction> predictionList = context.read<LocalistaionControllerprovider>().predictionList;
 
-    if (val == null) {
+    bool exist = predictionList.contains(Prediction(description: val));
+    if ((val != null && val!.isEmpty)) {
       return 'ce champ est obligatoire !';
-    } else if (len <= 3) {
-      return 'ville invalide';
-    }
-    return null;
+    } else if (!exist) {
+      return "ville n'existe pas";
+    } else
+      return null;
   }
 
   bool isValid() {

@@ -6,9 +6,9 @@ import 'package:proximitystore/constant/constant_proprities/app_dimension.dart';
 import 'package:proximitystore/constant/constant_proprities/prox_colors.dart';
 import 'package:proximitystore/providers/localistaion_controller_provider.dart';
 import 'package:proximitystore/providers/sheet_provider.dart';
-import 'package:proximitystore/widgets/geolocation_outside_paris.dart';
-import 'package:proximitystore/widgets/home_page_geoloc_off.dart';
-import 'package:proximitystore/widgets/home_page_if_geolo_off.dart';
+import 'package:proximitystore/pages/geolocation_outside_paris.dart';
+import 'package:proximitystore/pages/home_page_geoloc_off.dart';
+import 'package:proximitystore/pages/home_page_if_geolo_off.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
@@ -32,11 +32,17 @@ class proximitystore extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      minTextAdapt: true,
       designSize: Size(AppDimensions.screenwidht, AppDimensions.screenHeight),
-      builder: (_, child) => MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: HomePageGeolocOff(),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (BuildContext context, child) => MaterialApp(
+        home: GeolocationOutsideParis(),
+        builder: (context, widget) {
+          return MediaQuery(
+            data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+            child: widget!,
+          );
+        },
       ),
     );
   }

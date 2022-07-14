@@ -5,8 +5,8 @@ import 'package:proximitystore/constant/constant_widgets/background_image.dart';
 import 'package:proximitystore/constant/constant_widgets/custom_blue_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:proximitystore/constant/constant_proprities/prox_colors.dart';
-import 'package:proximitystore/widgets/localisation_search_dialogue.dart';
-import 'package:proximitystore/widgets/sheet_Geolocalisation_outside_paris.dart';
+import 'package:proximitystore/pages/localisation_search_dialogue.dart';
+import 'package:proximitystore/pages/sheet_geolocalisation_outside_paris.dart';
 
 class HomePageGeolocOff extends StatelessWidget {
   GoogleMapController? _mapController;

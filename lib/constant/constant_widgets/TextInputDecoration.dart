@@ -14,11 +14,15 @@ var textInputDecoration = InputDecoration(
   errorStyle: TextStyle(
     color: ProxColors.pink,
     fontFamily: 'Montserrat',
-    fontSize: 14.sp,
+    fontSize: 12.sp,
     fontWeight: FontWeight.w400,
     letterSpacing: 0.2,
   ),
-  contentPadding: EdgeInsets.all(12.0),
+  contentPadding: EdgeInsets.only(
+    top: 15.h,
+    bottom: 15.h,
+    left: 17.w,
+  ),
   enabledBorder: OutlineInputBorder(
     borderSide: BorderSide(
       color: ProxColors.bluegrey,

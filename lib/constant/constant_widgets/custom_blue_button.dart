@@ -20,13 +20,13 @@ class _CustomBlueButtonState extends State<CustomBlueButton> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 48.0,
+      height: 0.059.sh,
       child: OutlinedButton(
         child: Text(
           widget.textInput,
           style: TextStyle(
             color: ProxColors.whiteColor,
-            fontFamily: 'Poppins-Medium.ttf',
+            fontFamily: 'Poppins',
             fontWeight: FontWeight.w500,
             fontSize: 14.sp,
           ),
@@ -34,12 +34,12 @@ class _CustomBlueButtonState extends State<CustomBlueButton> {
         style: OutlinedButton.styleFrom(
           side: BorderSide(
             width: 2.w,
-            color: ProxColors.whiteColor,
+            color: ProxColors.transparentColor,
           ),
           backgroundColor: ProxColors.deepblue,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(
-              Radius.circular(4),
+              Radius.circular(4.r),
             ),
           ),
         ),

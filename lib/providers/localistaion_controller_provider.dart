@@ -10,9 +10,9 @@ import '../services/localisation_services.dart';
 class LocalistaionControllerprovider with ChangeNotifier {
   bool _isTownEmpty = false;
   Placemark _pickPlaceMark = Placemark();
-  String _newPattern = "";
+  TextEditingController townTextFormFieldController = TextEditingController();
 
-  String get newPattern => _newPattern;
+  // String get townTextFormFieldController => _townTextFormFieldController;
   Placemark get pickPlaceMark => _pickPlaceMark;
   bool get isTownEmpty => _isTownEmpty;
   List<Prediction> _predictionList = [];
@@ -37,11 +37,6 @@ class LocalistaionControllerprovider with ChangeNotifier {
       _isTownEmpty = true;
     else
       _isTownEmpty = false;
-    notifyListeners();
-  }
-
-  void setNewPattern(String pattren) {
-    _newPattern = pattren;
     notifyListeners();
   }
 }

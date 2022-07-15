@@ -4,9 +4,6 @@ import 'package:provider/provider.dart';
 import 'package:proximitystore/providers/localistaion_controller_provider.dart';
 
 class AutoCompleteSuggestions extends StatefulWidget {
-  String pattern;
-  AutoCompleteSuggestions({required this.pattern});
-
   @override
   State<AutoCompleteSuggestions> createState() => _AutoCompleteSuggestionsState();
 }
@@ -16,7 +13,9 @@ class _AutoCompleteSuggestionsState extends State<AutoCompleteSuggestions> {
   Widget build(BuildContext context) {
     return Consumer<LocalistaionControllerprovider>(
       builder: (context, newPattern, child) => FutureBuilder<List<Prediction>?>(
-          future: context.read<LocalistaionControllerprovider>().searchLocation(context, widget.pattern),
+          future: context
+              .read<LocalistaionControllerprovider>()
+              .searchLocation(context, context.read<LocalistaionControllerprovider>().townTextFormFieldController.text),
           builder: (context, AsyncSnapshot<List<Prediction>?> snapshot) {
             if (snapshot.hasData) {
               return ListView.builder(

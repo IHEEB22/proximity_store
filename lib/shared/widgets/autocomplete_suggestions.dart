@@ -12,7 +12,7 @@ class AutoCompleteSuggestions extends StatelessWidget {
       builder: (context, predictionList, child) => FutureBuilder<List<Prediction>?>(
           future: context.read<LocalistaionControllerprovider>().searchLocation(context, "tun"),
           builder: (context, AsyncSnapshot<List<Prediction>?> snapshot) {
-            if (snapshot.connectionState == ConnectionState.done) {
+            if (snapshot.hasData) {
               return ListView.builder(
                 shrinkWrap: true,
                 itemCount: snapshot.data?.length,
@@ -21,12 +21,8 @@ class AutoCompleteSuggestions extends StatelessWidget {
                       child: Text(snapshot.data?[index].description ?? ''),
                     )),
               );
-            } else if (snapshot.connectionState == ConnectionState.waiting) {
-              CircularProgressIndicator();
-            } else {
-              return Text("error");
-            }
-            return SizedBox.shrink();
+            } else
+              return SizedBox.shrink();
           }),
     );
   }

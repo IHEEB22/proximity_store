@@ -93,17 +93,17 @@ class _SheetGeolocalisationOutsideParisState extends State<SheetGeolocalisationO
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 0.042.sw),
               child: TextFormField(
-                  keyboardType: TextInputType.emailAddress,
-                  controller: context.read<LocalistaionControllerprovider>().townTextFormFieldController,
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  decoration: textInputDecoration.copyWith(
-                    hintText: 'ville',
-                  ),
-                  // validator: (email) => ValidationItem(val: email).validateEmail(),
-                  onChanged: ((value) {
-                    context.read<LocalistaionControllerprovider>().setIsTownEmpty(value);
-                    // context.read<LocalistaionControllerprovider>().setNewPattern(value);
-                  })),
+                keyboardType: TextInputType.emailAddress,
+                controller: context.read<LocalistaionControllerprovider>().townTextFormFieldController,
+                autovalidateMode: AutovalidateMode.onUserInteraction,
+                decoration: textInputDecoration.copyWith(
+                  hintText: 'ville',
+                ),
+                // validator: (email) => ValidationItem(val: email).validateEmail(),
+                onChanged: ((value) {
+                  context.read<LocalistaionControllerprovider>().setIsTownEmpty(value);
+                }),
+              ),
             ),
             Consumer<LocalistaionControllerprovider>(
               builder: (context, value, child) => Visibility(

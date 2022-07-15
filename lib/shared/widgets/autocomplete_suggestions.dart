@@ -15,7 +15,7 @@ class _AutoCompleteSuggestionsState extends State<AutoCompleteSuggestions> {
       builder: (context, newPattern, child) => FutureBuilder<List<Prediction>?>(
           future: context
               .read<LocalistaionControllerprovider>()
-              .searchLocation(context, context.read<LocalistaionControllerprovider>().townTextFormFieldController.text),
+              .searchLocation(text: context.read<LocalistaionControllerprovider>().townTextFormFieldController.text),
           builder: (context, AsyncSnapshot<List<Prediction>?> snapshot) {
             if (snapshot.hasData) {
               return ListView.builder(

@@ -21,7 +21,7 @@ class _SheetGeolocalisationOutsideParisState extends State<SheetGeolocalisationO
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _townController = TextEditingController();
-  final TextEditingController _townTextFormFieldController = TextEditingController();
+  final TextEditingController? _townTextFormFieldController = TextEditingController();
 
   GoogleMapController? _mapController;
   @override
@@ -100,7 +100,7 @@ class _SheetGeolocalisationOutsideParisState extends State<SheetGeolocalisationO
                   hintText: 'ville',
                 ),
                 validator: (email) => ValidationItem(val: email).validateEmail(),
-                onChanged: ((value) => context.read<LocalistaionControllerprovider>().setisTownEmpty(value)),
+                onChanged: ((value) => context.read<LocalistaionControllerprovider>().setIsTownEmpty(value)),
               ),
             ),
             Consumer<LocalistaionControllerprovider>(

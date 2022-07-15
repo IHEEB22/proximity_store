@@ -7,8 +7,6 @@ import 'package:proximitystore/constant/constant_proprities/prox_colors.dart';
 import 'package:proximitystore/providers/localistaion_controller_provider.dart';
 import 'package:proximitystore/providers/sheet_provider.dart';
 import 'package:proximitystore/pages/geolocation_outside_paris.dart';
-import 'package:proximitystore/pages/home_page_geoloc_off.dart';
-import 'package:proximitystore/pages/home_page_if_geolo_off.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(

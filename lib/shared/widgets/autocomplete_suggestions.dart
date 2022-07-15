@@ -8,24 +8,26 @@ class AutoCompleteSuggestions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<Prediction>?>(
-        future: context.read<LocalistaionControllerprovider>().searchLocation(context, "tun"),
-        builder: (context, AsyncSnapshot<List<Prediction>?> snapshot) {
-          if (snapshot.connectionState == ConnectionState.done) {
-            return ListView.builder(
-              shrinkWrap: true,
-              itemCount: snapshot.data?.length,
-              itemBuilder: ((context, index) => Card(
-                    elevation: 0,
-                    child: Text(snapshot.data?[index].description ?? ''),
-                  )),
-            );
-          } else if (snapshot.connectionState == ConnectionState.waiting) {
-            CircularProgressIndicator();
-          } else {
-            return Text("error");
-          }
-          return SizedBox.shrink();
-        });
+    return Consumer<LocalistaionControllerprovider>(
+      builder: (context, predictionList, child) => FutureBuilder<List<Prediction>?>(
+          future: context.read<LocalistaionControllerprovider>().searchLocation(context, "tun"),
+          builder: (context, AsyncSnapshot<List<Prediction>?> snapshot) {
+            if (snapshot.connectionState == ConnectionState.done) {
+              return ListView.builder(
+                shrinkWrap: true,
+                itemCount: snapshot.data?.length,
+                itemBuilder: ((context, index) => Card(
+                      elevation: 0,
+                      child: Text(snapshot.data?[index].description ?? ''),
+                    )),
+              );
+            } else if (snapshot.connectionState == ConnectionState.waiting) {
+              CircularProgressIndicator();
+            } else {
+              return Text("error");
+            }
+            return SizedBox.shrink();
+          }),
+    );
   }
 }

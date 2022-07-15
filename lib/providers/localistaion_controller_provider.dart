@@ -28,7 +28,7 @@ class LocalistaionControllerprovider with ChangeNotifier {
     return _predictionList;
   }
 
-  void setisTownEmpty(String val) {
+  void setIsTownEmpty(String val) {
     if (val.isNotEmpty)
       _isTownEmpty = true;
     else

@@ -10,10 +10,14 @@ import '../services/localisation_services.dart';
 class LocalistaionControllerprovider with ChangeNotifier {
   bool _isTownEmpty = false;
   Placemark _pickPlaceMark = Placemark();
+  String _newPattern = "";
+
+  String get newPattern => _newPattern;
   Placemark get pickPlaceMark => _pickPlaceMark;
   bool get isTownEmpty => _isTownEmpty;
   List<Prediction> _predictionList = [];
   List<Prediction> get predictionList => _predictionList;
+
   Future<List<Prediction>> searchLocation(BuildContext context, String text) async {
     if (text.isNotEmpty) {
       http.Response response = await getLocationData(text);
@@ -33,6 +37,11 @@ class LocalistaionControllerprovider with ChangeNotifier {
       _isTownEmpty = true;
     else
       _isTownEmpty = false;
+    notifyListeners();
+  }
+
+  void setNewPattern(String pattren) {
+    _newPattern = pattren;
     notifyListeners();
   }
 }

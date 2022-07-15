@@ -3,14 +3,20 @@ import 'package:google_maps_webservice/places.dart';
 import 'package:provider/provider.dart';
 import 'package:proximitystore/providers/localistaion_controller_provider.dart';
 
-class AutoCompleteSuggestions extends StatelessWidget {
-  const AutoCompleteSuggestions({Key? key}) : super(key: key);
+class AutoCompleteSuggestions extends StatefulWidget {
+  String pattern;
+  AutoCompleteSuggestions({required this.pattern});
 
+  @override
+  State<AutoCompleteSuggestions> createState() => _AutoCompleteSuggestionsState();
+}
+
+class _AutoCompleteSuggestionsState extends State<AutoCompleteSuggestions> {
   @override
   Widget build(BuildContext context) {
     return Consumer<LocalistaionControllerprovider>(
-      builder: (context, predictionList, child) => FutureBuilder<List<Prediction>?>(
-          future: context.read<LocalistaionControllerprovider>().searchLocation(context, "tun"),
+      builder: (context, newPattern, child) => FutureBuilder<List<Prediction>?>(
+          future: context.read<LocalistaionControllerprovider>().searchLocation(context, widget.pattern),
           builder: (context, AsyncSnapshot<List<Prediction>?> snapshot) {
             if (snapshot.hasData) {
               return ListView.builder(

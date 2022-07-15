@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:proximitystore/constant/constant_proprities/app_dimension.dart';
 import 'package:proximitystore/constant/constant_proprities/prox_colors.dart';
+import 'package:proximitystore/pages/home_page_geoloc_on.dart';
 import 'package:proximitystore/pages/home_page_if_geolo_off.dart';
 import 'package:proximitystore/providers/localistaion_controller_provider.dart';
 import 'package:proximitystore/providers/sheet_provider.dart';

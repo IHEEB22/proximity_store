@@ -11,6 +11,7 @@ class ProxColors {
   static const transparentColor = Colors.transparent;
   static const statusbarColor = Brightness.dark;
   static const deepblue = Color.fromRGBO(25, 37, 112, 1);
+  static const lightpblue = Color.fromARGB(87, 20, 77, 138);
   static const bluegrey = Color(0xFFC6C9DB);
   static const purpelgrey = Color.fromRGBO(99, 108, 156, 1);
   static const lightgreen = Color.fromRGBO(76, 217, 100, 1);

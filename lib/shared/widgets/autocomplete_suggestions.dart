@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_maps_webservice/places.dart';
 import 'package:provider/provider.dart';
+import 'package:proximitystore/constant/constant_proprities/prox_colors.dart';
 import 'package:proximitystore/providers/localistaion_controller_provider.dart';
 
 class AutoCompleteSuggestions extends StatefulWidget {
@@ -26,8 +28,15 @@ class _AutoCompleteSuggestionsState extends State<AutoCompleteSuggestions> {
                       child: Text(snapshot.data?[index].description ?? ''),
                     )),
               );
-            } else
-              return SizedBox.shrink();
+            } else if (snapshot.connectionState == ConnectionState.waiting)
+              return Padding(
+                padding: EdgeInsets.symmetric(vertical: 0.03.sh),
+                child: Center(widthFactor: 2.sw, child: CircularProgressIndicator(color: ProxColors.lightpblue)),
+              );
+            else if (snapshot.hasError) {
+              return Text("Somthing want wrong");
+            }
+            return SizedBox.shrink();
           }),
     );
   }

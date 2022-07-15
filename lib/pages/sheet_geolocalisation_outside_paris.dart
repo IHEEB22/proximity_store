@@ -52,7 +52,7 @@ class _SheetGeolocalisationOutsideParisState extends State<SheetGeolocalisationO
               child: Text(
                 'Renseignez votre e-mail',
                 style: TextStyle(
-                  color: ProxColors.darkblue,
+                  color: ProxColors.deepblue,
                   fontSize: 12.sp,
                   fontWeight: FontWeight.w700,
                   fontFamily: 'Montserrat',
@@ -93,13 +93,14 @@ class _SheetGeolocalisationOutsideParisState extends State<SheetGeolocalisationO
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 0.042.sw),
               child: TextFormField(
+                focusNode: LocalistaionControllerprovider().townFocusNode,
                 keyboardType: TextInputType.emailAddress,
                 controller: context.read<LocalistaionControllerprovider>().townTextFormFieldController,
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 decoration: textInputDecoration.copyWith(
                   hintText: 'ville',
                 ),
-                // validator: (email) => ValidationItem(val: email).validateEmail(),
+                validator: (ville) => ValidationItem(val: ville).validateTown(context),
                 onChanged: ((value) {
                   context.read<LocalistaionControllerprovider>().setIsTownEmpty(value);
                 }),
@@ -108,7 +109,8 @@ class _SheetGeolocalisationOutsideParisState extends State<SheetGeolocalisationO
             Consumer<LocalistaionControllerprovider>(
               builder: (context, value, child) => Visibility(
                 child: AutoCompleteSuggestions(),
-                visible: context.read<LocalistaionControllerprovider>().isTownEmpty,
+                visible: context.read<LocalistaionControllerprovider>().isTownEmpty &&
+                    context.read<LocalistaionControllerprovider>().townFieldHasFocus,
               ),
             ),
             0.04.sh.verticalSpace,

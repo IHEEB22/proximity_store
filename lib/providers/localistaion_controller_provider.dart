@@ -6,6 +6,9 @@ import 'package:google_maps_webservice/places.dart';
 import 'package:http/http.dart' as http;
 
 class LocalistaionControllerprovider with ChangeNotifier {
+  static FocusNode _townFocusNode = FocusNode();
+  FocusNode get townFocusNode => _townFocusNode;
+  bool townFieldHasFocus = LocalistaionControllerprovider().townFocusNode.hasFocus;
   bool _isTownEmpty = false;
   Placemark _pickPlaceMark = Placemark();
   TextEditingController townTextFormFieldController = TextEditingController();

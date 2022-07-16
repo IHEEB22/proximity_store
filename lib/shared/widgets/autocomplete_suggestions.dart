@@ -20,13 +20,45 @@ class _AutoCompleteSuggestionsState extends State<AutoCompleteSuggestions> {
               .searchLocation(text: context.read<LocalistaionControllerprovider>().townTextFormFieldController.text),
           builder: (context, AsyncSnapshot<List<Prediction>?> snapshot) {
             if (snapshot.hasData) {
-              return ListView.builder(
-                shrinkWrap: true,
-                itemCount: snapshot.data?.length,
-                itemBuilder: ((context, index) => Card(
-                      elevation: 0,
-                      child: Text(snapshot.data?[index].description ?? ''),
-                    )),
+              return Padding(
+                padding: EdgeInsets.symmetric(horizontal: 0.042.sh, vertical: 0.001.sh),
+                child: SingleChildScrollView(
+                  physics: ScrollPhysics(),
+                  child: Column(
+                    children: <Widget>[
+                      Container(
+                        height: 0.2.sh,
+                        child: ListView.builder(
+                          itemCount: snapshot.data?.length,
+                          itemBuilder: ((context, index) => Card(
+                                elevation: 0.2.sm,
+                                margin: EdgeInsets.all(3.sm),
+                                child: ListTile(
+                                  iconColor: ProxColors.deepblue,
+                                  minVerticalPadding: 0,
+                                  contentPadding: EdgeInsets.zero,
+                                  visualDensity: VisualDensity(horizontal: 2, vertical: -3.2),
+                                  leading: Padding(
+                                    padding: EdgeInsets.only(
+                                      left: 16,
+                                    ),
+                                    child: Icon(
+                                      size: 18.sm,
+                                      Icons.location_on,
+                                    ),
+                                  ),
+                                  title: Text(
+                                    snapshot.data?[index].description ?? '',
+                                    maxLines: 1,
+                                  ),
+                                ),
+                              )),
+                        ),
+                      ),
+                      // 0.027.sh.verticalSpace,
+                    ],
+                  ),
+                ),
               );
             } else if (snapshot.connectionState == ConnectionState.waiting)
               return Padding(

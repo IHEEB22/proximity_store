@@ -6,8 +6,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:proximitystore/constant/constant_proprities/app_colors.dart';
 import 'package:proximitystore/pages/localisation_search_dialogue.dart';
 
+GoogleMapController? _mapController;
+
 class HomePageGeolocOff extends StatelessWidget {
-  GoogleMapController? _mapController;
+  const HomePageGeolocOff({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,21 +27,20 @@ class HomePageGeolocOff extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Padding(
-                          padding: EdgeInsets.fromLTRB(
-                            0.07.sw,
-                            0.123.sh,
-                            0.09.sw,
-                            0.079.sh,
-                          ),
-                          child: Text(
-                            'Renseigner une adresse',
-                            style: TextStyle(
-                              color: AppColors.darkBlueColor,
-                              fontFamily: 'Popins',
-                              fontWeight: FontWeight.w600,
-                              fontSize: 22.sp,
-                            ),
-                          )),
+                        padding: EdgeInsets.fromLTRB(
+                          0.07.sw,
+                          0.123.sh,
+                          0.09.sw,
+                          0.079.sh,
+                        ),
+                        child: Text(
+                          'Renseigner une adresse',
+                          style: Theme.of(context).textTheme.bodyText1?.copyWith(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 22.sp,
+                              ),
+                        ),
+                      ),
                       Padding(
                         padding: EdgeInsets.only(
                           left: 0.085.sw,
@@ -46,12 +48,10 @@ class HomePageGeolocOff extends StatelessWidget {
                         ),
                         child: Text(
                           'Nous afficherons les produits des\ncommerçants à proximité ',
-                          style: TextStyle(
-                            color: AppColors.darkBlueColor,
-                            fontFamily: 'Montserrat',
-                            fontWeight: FontWeight.w400,
-                            fontSize: 16.sp,
-                          ),
+                          style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                                fontFamily: 'Montserrat',
+                                fontWeight: FontWeight.w400,
+                              ),
                         ),
                       ),
                       0.10.sh.verticalSpace,

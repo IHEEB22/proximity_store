@@ -50,13 +50,12 @@ class _SheetGeolocalisationOutsideParisState extends State<SheetGeolocalisationO
                 ),
                 child: Text(
                   'Renseignez votre e-mail',
-                  style: TextStyle(
-                    color: AppColors.deepBlueColor,
-                    fontSize: 12.sp,
-                    fontWeight: FontWeight.w700,
-                    fontFamily: 'Montserrat',
-                    letterSpacing: 0.4,
-                  ),
+                  style: Theme.of(context).textTheme.headline3?.copyWith(
+                        fontFamily: 'Montserrat',
+                        fontSize: 12.sp,
+                        fontWeight: FontWeight.w700,
+                        letterSpacing: 0.4,
+                      ),
                 ),
               ),
               Padding(
@@ -79,13 +78,12 @@ class _SheetGeolocalisationOutsideParisState extends State<SheetGeolocalisationO
                 ),
                 child: Text(
                   'Renseignez votre ville',
-                  style: TextStyle(
-                    color: AppColors.blueColor,
-                    fontSize: 12.sp,
-                    fontWeight: FontWeight.w700,
-                    letterSpacing: 0.4,
-                    fontFamily: 'Montserrat',
-                  ),
+                  style: Theme.of(context).textTheme.headline2?.copyWith(
+                        fontFamily: 'Montserrat',
+                        color: AppColors.blueColor,
+                        fontSize: 12.sp,
+                        fontWeight: FontWeight.w700,
+                      ),
                 ),
               ),
               0.0012.sh.verticalSpace,
@@ -95,10 +93,8 @@ class _SheetGeolocalisationOutsideParisState extends State<SheetGeolocalisationO
                   onFocusChange: (hasFocus) {
                     if (hasFocus) {
                       context.read<LocalistaionControllerprovider>().setIsTownHasFocus(hasFocus);
-                      print("has focused:$hasFocus");
                     } else {
                       context.read<LocalistaionControllerprovider>().setIsTownHasFocus(hasFocus);
-                      print("has focused:$hasFocus");
                     }
                   },
                   child: TextFormField(

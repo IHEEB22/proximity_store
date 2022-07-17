@@ -118,7 +118,7 @@ class _SheetGeolocalisationOutsideParisState extends State<SheetGeolocalisationO
                   Visibility(
                     child: AutoCompleteSuggestions(),
                     visible: context.watch<LocalistaionControllerprovider>().isTownNotEmpty &&
-                        (context.watch<LocalistaionControllerprovider>().isTownHasFocus),
+                        context.watch<LocalistaionControllerprovider>().isTownHasFocus,
                   ),
                 ],
               ),

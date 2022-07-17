@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:proximitystore/config/colors/app_colors.dart';
 
-import 'package:proximitystore/pages/sheet_geolocalisation_outside_paris.dart';
+import 'package:proximitystore/widgets/sheet_geolocalisation_outside_paris.dart';
 import 'package:proximitystore/widgets/background_image.dart';
 import 'package:proximitystore/widgets/custom_blue_button.dart';
 

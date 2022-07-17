@@ -3,21 +3,25 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:proximitystore/constant/constant_proprities/app_dimension.dart';
-import 'package:proximitystore/constant/constant_proprities/prox_colors.dart';
+import 'package:proximitystore/constant/constant_proprities/app_colors.dart';
 import 'package:proximitystore/providers/localistaion_controller_provider.dart';
 import 'package:proximitystore/providers/sheet_provider.dart';
 import 'package:proximitystore/pages/geolocation_outside_paris.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-    statusBarColor: ProxColors.transparentColor,
-    statusBarIconBrightness: ProxColors.statusbarColor,
+    statusBarColor: AppColors.transparentColor,
+    statusBarIconBrightness: AppColors.statusbarColor,
   ));
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => SheetProvider()),
-        ChangeNotifierProvider(create: (_) => LocalistaionControllerprovider()),
+        ChangeNotifierProvider(
+          create: (_) => SheetProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => LocalistaionControllerprovider(),
+        ),
       ],
       child: proximitystore(),
     ),

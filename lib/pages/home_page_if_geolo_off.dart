@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:proximitystore/constant/constant_widgets/background_image.dart';
 import 'package:proximitystore/constant/constant_widgets/custom_blue_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:proximitystore/constant/constant_proprities/prox_colors.dart';
+import 'package:proximitystore/constant/constant_proprities/app_colors.dart';
 
 import '../constant/constant_widgets/custom_white_button.dart';
 
@@ -38,7 +38,7 @@ class HomePageIfGeoloOff extends StatelessWidget {
                               TextSpan(
                                 text: 'Proximity',
                                 style: TextStyle(
-                                  color: ProxColors.blue,
+                                  color: AppColors.blueColor,
                                   fontFamily: 'Popins',
                                   fontWeight: FontWeight.w600,
                                   fontSize: 22.sp,
@@ -47,7 +47,7 @@ class HomePageIfGeoloOff extends StatelessWidget {
                               TextSpan(
                                 text: 'Store',
                                 style: TextStyle(
-                                  color: ProxColors.pink,
+                                  color: AppColors.pinkColor,
                                   fontFamily: 'Popins',
                                   fontWeight: FontWeight.w600,
                                   fontSize: 22.sp,
@@ -56,7 +56,7 @@ class HomePageIfGeoloOff extends StatelessWidget {
                               TextSpan(
                                 text: ' n’a pas accès à votre position ',
                                 style: TextStyle(
-                                  color: ProxColors.darkblue,
+                                  color: AppColors.darkBlueColor,
                                   fontFamily: 'Popins',
                                   fontWeight: FontWeight.w600,
                                   fontSize: 22.sp,
@@ -78,7 +78,7 @@ class HomePageIfGeoloOff extends StatelessWidget {
                               Text(
                                 'ProximityStore a besoin d’accéder à ',
                                 style: TextStyle(
-                                  color: ProxColors.darkblue,
+                                  color: AppColors.darkBlueColor,
                                   fontFamily: 'Montserrat',
                                   fontWeight: FontWeight.w300,
                                   fontSize: 16.sp,
@@ -87,7 +87,7 @@ class HomePageIfGeoloOff extends StatelessWidget {
                               Text(
                                 'votre position pour trouver les',
                                 style: TextStyle(
-                                  color: ProxColors.darkblue,
+                                  color: AppColors.darkBlueColor,
                                   fontFamily: 'Montserrat',
                                   fontWeight: FontWeight.w300,
                                   fontSize: 16.sp,
@@ -96,7 +96,7 @@ class HomePageIfGeoloOff extends StatelessWidget {
                               Text(
                                 'produits autour de vous',
                                 style: TextStyle(
-                                  color: ProxColors.darkblue,
+                                  color: AppColors.darkBlueColor,
                                   fontFamily: 'Montserrat',
                                   fontWeight: FontWeight.w300,
                                   fontSize: 16.sp,

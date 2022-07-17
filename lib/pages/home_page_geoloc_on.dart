@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:proximitystore/constant/constant_widgets/background_image.dart';
-import 'package:proximitystore/constant/constant_widgets/custom_blue_button.dart';
-import 'package:proximitystore/shared/widgets/autocomplete_suggestions.dart';
 
-import '../constant/constant_proprities/prox_colors.dart';
+import '../constant/constant_proprities/app_colors.dart';
 
 class HomePageGeolocON extends StatelessWidget {
   const HomePageGeolocON({Key? key}) : super(key: key);
@@ -38,7 +36,7 @@ class HomePageGeolocON extends StatelessWidget {
                         Text(
                           "Location holder",
                           style: TextStyle(
-                            color: ProxColors.darkblue,
+                            color: AppColors.darkBlueColor,
                             fontFamily: 'Poppins',
                             fontWeight: FontWeight.w500,
                             fontSize: 14.sp,
@@ -56,7 +54,7 @@ class HomePageGeolocON extends StatelessWidget {
                           TextSpan(
                             text: 'Proximity',
                             style: TextStyle(
-                              color: ProxColors.blue,
+                              color: AppColors.blueColor,
                               fontFamily: 'Poppins',
                               fontWeight: FontWeight.w600,
                               fontSize: 40.sp,
@@ -65,7 +63,7 @@ class HomePageGeolocON extends StatelessWidget {
                           TextSpan(
                             text: 'Store',
                             style: TextStyle(
-                              color: ProxColors.pink,
+                              color: AppColors.pinkColor,
                               fontFamily: 'Poppins',
                               fontWeight: FontWeight.w600,
                               fontSize: 40.sp,
@@ -89,7 +87,7 @@ class HomePageGeolocON extends StatelessWidget {
                         child: Text(
                           "ESPACE COMMERÇANT",
                           style: TextStyle(
-                            color: ProxColors.deepblue,
+                            color: AppColors.deepBlueColor,
                             fontFamily: 'Montserrat',
                             fontWeight: FontWeight.w700,
                             fontSize: 14.sp,

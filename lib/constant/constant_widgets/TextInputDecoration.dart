@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:proximitystore/constant/constant_proprities/prox_colors.dart';
+import 'package:proximitystore/constant/constant_proprities/app_colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 var textInputDecoration = InputDecoration(
   hintStyle: TextStyle(
-    color: ProxColors.bluegrey,
+    color: AppColors.blueGreyColor,
     fontFamily: 'Montserrat',
     fontSize: 16.sp,
     fontWeight: FontWeight.w300,
@@ -12,7 +12,7 @@ var textInputDecoration = InputDecoration(
   fillColor: Colors.transparent,
   filled: true,
   errorStyle: TextStyle(
-    color: ProxColors.pink,
+    color: AppColors.pinkColor,
     fontFamily: 'Montserrat',
     fontSize: 12.sp,
     fontWeight: FontWeight.w400,
@@ -25,25 +25,25 @@ var textInputDecoration = InputDecoration(
   ),
   enabledBorder: OutlineInputBorder(
     borderSide: BorderSide(
-      color: ProxColors.bluegrey,
+      color: AppColors.blueGreyColor,
       width: 1,
     ),
   ),
   focusedBorder: OutlineInputBorder(
     borderSide: BorderSide(
-      color: ProxColors.deepblue,
+      color: AppColors.deepBlueColor,
       width: 1,
     ),
   ),
   errorBorder: OutlineInputBorder(
     borderSide: BorderSide(
-      color: ProxColors.pink,
+      color: AppColors.pinkColor,
       width: 1,
     ),
   ),
   focusedErrorBorder: OutlineInputBorder(
     borderSide: BorderSide(
-      color: ProxColors.pink,
+      color: AppColors.pinkColor,
       width: 1,
     ),
   ),

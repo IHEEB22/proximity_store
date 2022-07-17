@@ -1,14 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:google_maps_webservice/places.dart';
-import 'package:proximitystore/constant/constant_proprities/prox_colors.dart';
 
-import 'package:provider/provider.dart';
-import '../constant/constant widgets/TextInputDecoration.dart';
-import '../providers/localistaion_controller_provider.dart';
+import '../constant/constant widgets/text_input_decoration.dart';
 import '../services/validation_items.dart';
 
 class LocationSearchDialog extends StatefulWidget {

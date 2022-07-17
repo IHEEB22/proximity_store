@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:proximitystore/constant/constant_widgets/background_image.dart';
 import 'package:proximitystore/constant/constant_widgets/custom_blue_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:proximitystore/constant/constant_proprities/prox_colors.dart';
+import 'package:proximitystore/constant/constant_proprities/app_colors.dart';
 import 'package:proximitystore/pages/sheet_geolocalisation_outside_paris.dart';
 
 class GeolocationOutsideParis extends StatelessWidget {
@@ -35,7 +35,7 @@ class GeolocationOutsideParis extends StatelessWidget {
                           TextSpan(
                             text: 'Proximity',
                             style: TextStyle(
-                              color: ProxColors.blue,
+                              color: AppColors.blueColor,
                               fontFamily: 'Poppins',
                               fontWeight: FontWeight.w600,
                               fontSize: 23.sp,
@@ -44,7 +44,7 @@ class GeolocationOutsideParis extends StatelessWidget {
                           TextSpan(
                             text: 'Store',
                             style: TextStyle(
-                              color: ProxColors.pink,
+                              color: AppColors.pinkColor,
                               fontFamily: 'Poppins',
                               fontWeight: FontWeight.w600,
                               fontSize: 23.sp,
@@ -53,7 +53,7 @@ class GeolocationOutsideParis extends StatelessWidget {
                           TextSpan(
                             text: ' n’est pas (encore) disponible dans votre secteur',
                             style: TextStyle(
-                              color: ProxColors.darkblue,
+                              color: AppColors.darkBlueColor,
                               fontFamily: 'Poppins',
                               fontWeight: FontWeight.w600,
                               fontSize: 23.sp,
@@ -84,7 +84,7 @@ class GeolocationOutsideParis extends StatelessWidget {
                     child: Text(
                       'Mais nous travaillons d’arrache-pied pour vous proposer nos services au plus vite !',
                       style: TextStyle(
-                        color: ProxColors.darkblue,
+                        color: AppColors.darkBlueColor,
                         fontFamily: 'Montserrat',
                         fontWeight: FontWeight.w300,
                         fontSize: 14.sp,
@@ -101,7 +101,7 @@ class GeolocationOutsideParis extends StatelessWidget {
                     child: Text(
                       'Gardons contact, pour être prévenu et être parmi les premiers au courant :',
                       style: TextStyle(
-                        color: ProxColors.darkblue,
+                        color: AppColors.darkBlueColor,
                         fontFamily: 'Montserrat',
                         fontWeight: FontWeight.w600,
                         fontSize: 14.sp,
@@ -138,12 +138,11 @@ class GeolocationOutsideParis extends StatelessWidget {
                       "Faites grandir la communauté ProximityStore, partagez l’application",
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        fontFamily: 'Montserrat',
-                        fontSize: 14.sp,
-                        fontWeight: FontWeight.w500,
-                        decoration: TextDecoration.underline,
-                        color: ProxColors.deepblue,
-                      ),
+                          fontFamily: 'Montserrat',
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w500,
+                          decoration: TextDecoration.underline,
+                          color: AppColors.deepBlueColor),
                     ),
                   ),
                   0.04.sh.verticalSpace

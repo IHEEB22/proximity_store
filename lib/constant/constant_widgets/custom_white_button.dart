@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:proximitystore/constant/constant_proprities/prox_colors.dart';
+import 'package:proximitystore/constant/constant_proprities/app_colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomWhiteButton extends StatefulWidget {
@@ -25,7 +25,7 @@ class _CustomButtonState extends State<CustomWhiteButton> {
         child: Text(
           widget.textInput,
           style: TextStyle(
-            color: ProxColors.deepblue,
+            color: AppColors.deepBlueColor,
             fontFamily: 'Poppins',
             fontWeight: FontWeight.w500,
             fontSize: 14.sp,
@@ -34,9 +34,9 @@ class _CustomButtonState extends State<CustomWhiteButton> {
         style: OutlinedButton.styleFrom(
           side: BorderSide(
             width: 2,
-            color: ProxColors.darkblue,
+            color: AppColors.darkBlueColor,
           ),
-          backgroundColor: ProxColors.whiteColor,
+          backgroundColor: AppColors.whiteColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(
               Radius.circular(4),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:proximitystore/constant/constant_widgets/custom_blue_button.dart';
-import 'package:proximitystore/constant/constant_proprities/prox_colors.dart';
+import 'package:proximitystore/constant/constant_proprities/app_colors.dart';
 import 'package:proximitystore/constant/constant_widgets/TextInputDecoration.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:proximitystore/providers/localistaion_controller_provider.dart';
@@ -21,8 +20,7 @@ class _SheetGeolocalisationOutsideParisState extends State<SheetGeolocalisationO
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _townController = TextEditingController();
-  final TextEditingController? _townTextFormFieldController = TextEditingController();
-  GoogleMapController? _mapController;
+
   @override
   Widget build(BuildContext context) {
     // Provider.of<LocalistaionControllerprovider>(context, listen: false);
@@ -53,7 +51,7 @@ class _SheetGeolocalisationOutsideParisState extends State<SheetGeolocalisationO
                 child: Text(
                   'Renseignez votre e-mail',
                   style: TextStyle(
-                    color: ProxColors.deepblue,
+                    color: AppColors.deepBlueColor,
                     fontSize: 12.sp,
                     fontWeight: FontWeight.w700,
                     fontFamily: 'Montserrat',
@@ -82,7 +80,7 @@ class _SheetGeolocalisationOutsideParisState extends State<SheetGeolocalisationO
                 child: Text(
                   'Renseignez votre ville',
                   style: TextStyle(
-                    color: ProxColors.blue,
+                    color: AppColors.blueColor,
                     fontSize: 12.sp,
                     fontWeight: FontWeight.w700,
                     letterSpacing: 0.4,

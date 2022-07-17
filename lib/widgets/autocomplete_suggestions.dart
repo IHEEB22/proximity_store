@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_maps_webservice/places.dart';
 import 'package:provider/provider.dart';
-import 'package:proximitystore/constant/constant_proprities/app_colors.dart';
+import 'package:proximitystore/config/colors/app_colors.dart';
 import 'package:proximitystore/providers/localistaion_controller_provider.dart';
 
 class AutoCompleteSuggestions extends StatefulWidget {

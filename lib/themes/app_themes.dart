@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:proximitystore/constant/constant_proprities/app_colors.dart';
+import 'package:proximitystore/config/colors/app_colors.dart';
 import 'package:proximitystore/themes/app_text_theme.dart';
 
 class AppThemes {

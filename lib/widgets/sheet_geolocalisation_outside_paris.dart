@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:proximitystore/constant/constant_widgets/custom_blue_button.dart';
-import 'package:proximitystore/constant/constant_proprities/app_colors.dart';
-import 'package:proximitystore/constant/constant_widgets/TextInputDecoration.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:proximitystore/config/colors/app_colors.dart';
+
 import 'package:proximitystore/providers/localistaion_controller_provider.dart';
 
 import 'package:proximitystore/providers/sheet_provider.dart';
 import 'package:proximitystore/services/validation_items.dart';
 
 import 'package:provider/provider.dart';
-import 'package:proximitystore/shared/widgets/autocomplete_suggestions.dart';
+import 'package:proximitystore/widgets/autocomplete_suggestions.dart';
+import 'package:proximitystore/widgets/custom_blue_button.dart';
+import 'package:proximitystore/widgets/text_input_decoration.dart';
 
 class SheetGeolocalisationOutsideParis extends StatefulWidget {
   @override

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:proximitystore/constant/constant_widgets/background_image.dart';
+import 'package:proximitystore/config/colors/app_colors.dart';
+import 'package:proximitystore/widgets/background_image.dart';
 
-import '../constant/constant_proprities/app_colors.dart';
-
-class HomePageGeolocON extends StatelessWidget {
-  const HomePageGeolocON({Key? key}) : super(key: key);
+class SearchProductPage extends StatelessWidget {
+  const SearchProductPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

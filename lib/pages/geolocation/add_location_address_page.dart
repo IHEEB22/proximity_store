@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-import 'package:proximitystore/constant/constant_widgets/background_image.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:proximitystore/constant/constant_proprities/app_colors.dart';
+
 import 'package:proximitystore/pages/localisation_search_dialogue.dart';
+import 'package:proximitystore/widgets/background_image.dart';
 
 GoogleMapController? _mapController;
 
-class HomePageGeolocOff extends StatelessWidget {
-  const HomePageGeolocOff({Key? key}) : super(key: key);
+class AddLocationAddressPage extends StatelessWidget {
+  const AddLocationAddressPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

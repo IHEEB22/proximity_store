@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
-import 'package:proximitystore/constant/constant_widgets/background_image.dart';
-import 'package:proximitystore/constant/constant_widgets/custom_blue_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:proximitystore/constant/constant_proprities/app_colors.dart';
-import 'package:proximitystore/pages/sheet_geolocalisation_outside_paris.dart';
+import 'package:proximitystore/config/colors/app_colors.dart';
 
-class GeolocationOutsideParis extends StatelessWidget {
-  const GeolocationOutsideParis({Key? key}) : super(key: key);
+import 'package:proximitystore/pages/sheet_geolocalisation_outside_paris.dart';
+import 'package:proximitystore/widgets/background_image.dart';
+import 'package:proximitystore/widgets/custom_blue_button.dart';
+
+class GeolocationOutsideParisPage extends StatelessWidget {
+  const GeolocationOutsideParisPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -77,11 +78,14 @@ class GeolocationOutsideParis extends StatelessWidget {
                       left: 0.0853333.sw,
                       right: 0.13.sw,
                     ),
-                    child: Text('Mais nous travaillons d’arrache-pied pour vous proposer nos services au plus vite !',
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyText2
-                            ?.copyWith(fontFamily: 'Montserrat', fontSize: 14.sp, fontWeight: FontWeight.w300)),
+                    child: Text(
+                      'Mais nous travaillons d’arrache-pied pour vous proposer nos services au plus vite !',
+                      style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                            fontFamily: 'Montserrat',
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.w300,
+                          ),
+                    ),
                   ),
                   Padding(
                     padding: EdgeInsets.fromLTRB(

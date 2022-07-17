@@ -1,31 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:proximitystore/constant/constant_proprities/app_colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:proximitystore/config/colors/app_colors.dart';
 
-class CustomWhiteButton extends StatefulWidget {
+class CustomBlueButton extends StatefulWidget {
   final String textInput;
   final Function() onPressed;
 
-  const CustomWhiteButton({
+  const CustomBlueButton({
     Key? key,
     required this.textInput,
     required this.onPressed,
   }) : super(key: key);
 
   @override
-  State<CustomWhiteButton> createState() => _CustomButtonState();
+  State<CustomBlueButton> createState() => _CustomBlueButtonState();
 }
 
-class _CustomButtonState extends State<CustomWhiteButton> {
+class _CustomBlueButtonState extends State<CustomBlueButton> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 48.0,
+      height: 0.059.sh,
       child: OutlinedButton(
         child: Text(
           widget.textInput,
           style: TextStyle(
-            color: AppColors.deepBlueColor,
+            color: AppColors.whiteColor,
             fontFamily: 'Poppins',
             fontWeight: FontWeight.w500,
             fontSize: 14.sp,
@@ -33,13 +33,13 @@ class _CustomButtonState extends State<CustomWhiteButton> {
         ),
         style: OutlinedButton.styleFrom(
           side: BorderSide(
-            width: 2,
-            color: AppColors.darkBlueColor,
+            width: 2.w,
+            color: AppColors.transparentColor,
           ),
-          backgroundColor: AppColors.whiteColor,
+          backgroundColor: AppColors.deepBlueColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(
-              Radius.circular(4),
+              Radius.circular(4.r),
             ),
           ),
         ),

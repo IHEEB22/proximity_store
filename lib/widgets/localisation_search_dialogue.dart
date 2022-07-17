@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-
-import '../constant/constant widgets/text_input_decoration.dart';
+import 'package:proximitystore/config/constant/constant%20widgets/text_input_decoration.dart';
 import '../services/validation_items.dart';
 
 class LocationSearchDialog extends StatefulWidget {

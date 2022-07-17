@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-import 'package:proximitystore/constant/constant_widgets/background_image.dart';
-import 'package:proximitystore/constant/constant_widgets/custom_blue_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:proximitystore/constant/constant_proprities/app_colors.dart';
+import 'package:proximitystore/config/colors/app_colors.dart';
 
-import '../constant/constant_widgets/custom_white_button.dart';
+import 'package:proximitystore/widgets/background_image.dart';
+import 'package:proximitystore/widgets/custom_blue_button.dart';
+import 'package:proximitystore/widgets/custom_white_button.dart';
 
-class HomePageIfGeoloOff extends StatelessWidget {
-  const HomePageIfGeoloOff({Key? key}) : super(key: key);
+class GeoLocationOffPage extends StatelessWidget {
+  const GeoLocationOffPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

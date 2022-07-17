@@ -37,30 +37,21 @@ class HomePageIfGeoloOff extends StatelessWidget {
                             children: <InlineSpan>[
                               TextSpan(
                                 text: 'Proximity',
-                                style: TextStyle(
-                                  color: AppColors.blueColor,
-                                  fontFamily: 'Popins',
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 22.sp,
-                                ),
+                                style: Theme.of(context).textTheme.subtitle1?.copyWith(
+                                      color: AppColors.blueColor,
+                                    ),
                               ),
                               TextSpan(
                                 text: 'Store',
-                                style: TextStyle(
-                                  color: AppColors.pinkColor,
-                                  fontFamily: 'Popins',
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 22.sp,
-                                ),
+                                style: Theme.of(context).textTheme.subtitle1?.copyWith(
+                                      color: AppColors.pinkColor,
+                                    ),
                               ),
                               TextSpan(
                                 text: ' n’a pas accès à votre position ',
-                                style: TextStyle(
-                                  color: AppColors.darkBlueColor,
-                                  fontFamily: 'Popins',
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 22.sp,
-                                ),
+                                style: Theme.of(context).textTheme.subtitle1?.copyWith(
+                                      color: AppColors.darkBlueColor,
+                                    ),
                               ),
                             ],
                           ),
@@ -77,30 +68,21 @@ class HomePageIfGeoloOff extends StatelessWidget {
                             children: [
                               Text(
                                 'ProximityStore a besoin d’accéder à ',
-                                style: TextStyle(
-                                  color: AppColors.darkBlueColor,
-                                  fontFamily: 'Montserrat',
-                                  fontWeight: FontWeight.w300,
-                                  fontSize: 16.sp,
-                                ),
+                                style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                                      fontFamily: 'Montserrat',
+                                    ),
                               ),
                               Text(
                                 'votre position pour trouver les',
-                                style: TextStyle(
-                                  color: AppColors.darkBlueColor,
-                                  fontFamily: 'Montserrat',
-                                  fontWeight: FontWeight.w300,
-                                  fontSize: 16.sp,
-                                ),
+                                style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                                      fontFamily: 'Montserrat',
+                                    ),
                               ),
                               Text(
                                 'produits autour de vous',
-                                style: TextStyle(
-                                  color: AppColors.darkBlueColor,
-                                  fontFamily: 'Montserrat',
-                                  fontWeight: FontWeight.w300,
-                                  fontSize: 16.sp,
-                                ),
+                                style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                                      fontFamily: 'Montserrat',
+                                    ),
                               ),
                             ],
                           )),

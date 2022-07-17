@@ -35,13 +35,10 @@ class HomePageGeolocON extends StatelessWidget {
                         0.0233.sw.horizontalSpace,
                         Text(
                           "Location holder",
-                          style: TextStyle(
-                            color: AppColors.darkBlueColor,
-                            fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w500,
-                            fontSize: 14.sp,
-                            decoration: TextDecoration.underline,
-                          ),
+                          style: Theme.of(context).textTheme.bodyText1?.copyWith(
+                                decoration: TextDecoration.underline,
+                                fontSize: 14.sp,
+                              ),
                         )
                       ],
                     ),
@@ -53,21 +50,17 @@ class HomePageGeolocON extends StatelessWidget {
                         children: <InlineSpan>[
                           TextSpan(
                             text: 'Proximity',
-                            style: TextStyle(
-                              color: AppColors.blueColor,
-                              fontFamily: 'Poppins',
-                              fontWeight: FontWeight.w600,
-                              fontSize: 40.sp,
-                            ),
+                            style: Theme.of(context).textTheme.headline3?.copyWith(
+                                  color: AppColors.blueColor,
+                                  fontSize: 40.sp,
+                                ),
                           ),
                           TextSpan(
                             text: 'Store',
-                            style: TextStyle(
-                              color: AppColors.pinkColor,
-                              fontFamily: 'Poppins',
-                              fontWeight: FontWeight.w600,
-                              fontSize: 40.sp,
-                            ),
+                            style: Theme.of(context).textTheme.headline3?.copyWith(
+                                  color: AppColors.pinkColor,
+                                  fontSize: 40.sp,
+                                ),
                           ),
                         ],
                       ),
@@ -86,13 +79,12 @@ class HomePageGeolocON extends StatelessWidget {
                         onPressed: () {},
                         child: Text(
                           "ESPACE COMMERÇANT",
-                          style: TextStyle(
-                            color: AppColors.deepBlueColor,
-                            fontFamily: 'Montserrat',
-                            fontWeight: FontWeight.w700,
-                            fontSize: 14.sp,
-                            decoration: TextDecoration.underline,
-                          ),
+                          style: Theme.of(context).textTheme.headline4?.copyWith(
+                                fontFamily: 'Montserrat',
+                                fontWeight: FontWeight.w700,
+                                decoration: TextDecoration.underline,
+                                fontSize: 14.sp,
+                              ),
                         ),
                       ),
                     ],

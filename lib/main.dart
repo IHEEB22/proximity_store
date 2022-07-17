@@ -7,6 +7,7 @@ import 'package:proximitystore/constant/constant_proprities/app_colors.dart';
 import 'package:proximitystore/providers/localistaion_controller_provider.dart';
 import 'package:proximitystore/providers/sheet_provider.dart';
 import 'package:proximitystore/pages/geolocation_outside_paris.dart';
+import 'package:proximitystore/themes/app_themes.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
@@ -38,6 +39,10 @@ class proximitystore extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (BuildContext context, child) => MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: AppThemes.defaultAppTheme,
+        darkTheme: AppThemes.defaultAppTheme,
+        themeMode: ThemeMode.light,
         home: GeolocationOutsideParis(),
         builder: (context, widget) {
           return MediaQuery(

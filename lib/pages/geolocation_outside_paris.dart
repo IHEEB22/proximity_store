@@ -34,31 +34,27 @@ class GeolocationOutsideParis extends StatelessWidget {
                         children: <InlineSpan>[
                           TextSpan(
                             text: 'Proximity',
-                            style: TextStyle(
-                              color: AppColors.blueColor,
-                              fontFamily: 'Poppins',
-                              fontWeight: FontWeight.w600,
-                              fontSize: 23.sp,
-                            ),
+                            style: Theme.of(context).textTheme.headline3?.copyWith(
+                                  fontSize: 23.sp,
+                                  color: AppColors.blueColor,
+                                  fontWeight: FontWeight.w600,
+                                ),
                           ),
                           TextSpan(
                             text: 'Store',
-                            style: TextStyle(
-                              color: AppColors.pinkColor,
-                              fontFamily: 'Poppins',
-                              fontWeight: FontWeight.w600,
-                              fontSize: 23.sp,
-                            ),
+                            style: Theme.of(context).textTheme.headline3?.copyWith(
+                                  fontSize: 23.sp,
+                                  color: AppColors.pinkColor,
+                                  fontWeight: FontWeight.w600,
+                                ),
                           ),
                           TextSpan(
                             text: ' n’est pas (encore) disponible dans votre secteur',
-                            style: TextStyle(
-                              color: AppColors.darkBlueColor,
-                              fontFamily: 'Poppins',
-                              fontWeight: FontWeight.w600,
-                              fontSize: 23.sp,
-                              letterSpacing: 0.4,
-                            ),
+                            style: Theme.of(context).textTheme.headline2?.copyWith(
+                                  fontWeight: FontWeight.w600,
+                                  letterSpacing: 0.4,
+                                  height: 1.2,
+                                ),
                           ),
                           WidgetSpan(
                             child: 0.01.sw.horizontalSpace,
@@ -81,15 +77,11 @@ class GeolocationOutsideParis extends StatelessWidget {
                       left: 0.0853333.sw,
                       right: 0.13.sw,
                     ),
-                    child: Text(
-                      'Mais nous travaillons d’arrache-pied pour vous proposer nos services au plus vite !',
-                      style: TextStyle(
-                        color: AppColors.darkBlueColor,
-                        fontFamily: 'Montserrat',
-                        fontWeight: FontWeight.w300,
-                        fontSize: 14.sp,
-                      ),
-                    ),
+                    child: Text('Mais nous travaillons d’arrache-pied pour vous proposer nos services au plus vite !',
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyText2
+                            ?.copyWith(fontFamily: 'Montserrat', fontSize: 14.sp, fontWeight: FontWeight.w300)),
                   ),
                   Padding(
                     padding: EdgeInsets.fromLTRB(
@@ -100,12 +92,11 @@ class GeolocationOutsideParis extends StatelessWidget {
                     ),
                     child: Text(
                       'Gardons contact, pour être prévenu et être parmi les premiers au courant :',
-                      style: TextStyle(
-                        color: AppColors.darkBlueColor,
-                        fontFamily: 'Montserrat',
-                        fontWeight: FontWeight.w600,
-                        fontSize: 14.sp,
-                      ),
+                      style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                            fontFamily: 'Montserrat',
+                            fontWeight: FontWeight.w600,
+                            fontSize: 14.sp,
+                          ),
                     ),
                   ),
                   SizedBox(
@@ -137,12 +128,11 @@ class GeolocationOutsideParis extends StatelessWidget {
                     child: Text(
                       "Faites grandir la communauté ProximityStore, partagez l’application",
                       textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontFamily: 'Montserrat',
-                          fontSize: 14.sp,
-                          fontWeight: FontWeight.w500,
-                          decoration: TextDecoration.underline,
-                          color: AppColors.deepBlueColor),
+                      style: Theme.of(context).textTheme.subtitle2?.copyWith(
+                            fontFamily: 'Montserrat',
+                            fontSize: 14.sp,
+                            decoration: TextDecoration.underline,
+                          ),
                     ),
                   ),
                   0.04.sh.verticalSpace

@@ -14,17 +14,18 @@ class AppTextTheme {
   static const FontWeight _light = FontWeight.w300;
 
   static const TextTheme textThemeLight = TextTheme(
-      headline1: _headline1Light,
-      headline2: _headline2Light,
-      headline3: _headline3Light,
-      headline4: _headline4Light,
-      headline5: _headline5Light,
-      headline6: _headline6Light,
-      subtitle1: _subTitle1Light,
-      subtitle2: _subTitle2Light,
-      bodyText1: _bodyText1Light,
-      bodyText2: _bodyText2Light,
-      button: _buttonLight);
+    headline1: _headline1Light,
+    headline2: _headline2Light,
+    headline3: _headline3Light,
+    headline4: _headline4Light,
+    headline5: _headline5Light,
+    headline6: _headline6Light,
+    subtitle1: _subTitle1Light,
+    subtitle2: _subTitle2Light,
+    bodyText1: _bodyText1Light,
+    bodyText2: _bodyText2Light,
+    button: _buttonLight,
+  );
 
   static const TextStyle _headline1Light = TextStyle(
     fontWeight: _bold,

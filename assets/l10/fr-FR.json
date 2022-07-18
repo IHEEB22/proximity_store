@@ -16,5 +16,17 @@
     "addEmailAddress": "Renseignez votre e-mail",
     "email": "e-mail",
     "addTown": "Renseignez votre ville",
-    "town": "ville"
+    "town": "ville",
+    "allowAppToAccessYourLocation": "Autoriser l'application à accéder à la position ?",
+    "youNeedToAllowLocationAccessFromAppSettings": "Vous devez autoriser l'accès aux contacts dans les paramètres",
+    "cancel": "Annuler",
+    "openAppSettings": "Ouvrir paramètres",
+    "findProduct": "Recherchez un produit ",
+    "gladToMeetYou!": "Heureux de vous retrouver !",
+    "e-mailAddress":"Adresse e-mail",
+    "password":"Mot de passe",
+    "forgotYourPassword?": "Mot de passe oublié ?",
+    "continue": "Continuer",
+    "youDoNotHaveAnAccount?":"Vous n’avez pas de compte ?",
+"signUp":"Inscrivez-vous"
 }

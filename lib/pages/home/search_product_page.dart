@@ -1,9 +1,15 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 import 'package:proximitystore/config/colors/app_colors.dart';
 import 'package:proximitystore/config/images/app_images.dart';
+import 'package:proximitystore/widgets/autocomplete_suggestions.dart';
 import 'package:proximitystore/widgets/background_image.dart';
+
+import '../../providers/localistaion_controller_provider.dart';
+import '../../services/validation_items.dart';
+import '../../widgets/text_input_decoration.dart';
 
 class SearchProductPage extends StatelessWidget {
   const SearchProductPage({Key? key}) : super(key: key);
@@ -24,16 +30,15 @@ class SearchProductPage extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 0.258.sw),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Image(
                           width: 0.064.sw,
-                          height: 0.029.sh,
+                          height: 0.032.sh,
                           image: AssetImage(
                             AppImages.pinIcon,
                           ),
                         ),
-                        0.0233.sw.horizontalSpace,
+                        0.02.sw.horizontalSpace,
                         Text(
                           "Location holder",
                           style: Theme.of(context).textTheme.bodyText1?.copyWith(
@@ -54,6 +59,7 @@ class SearchProductPage extends StatelessWidget {
                             style: Theme.of(context).textTheme.headline3?.copyWith(
                                   color: AppColors.blueColor,
                                   fontSize: 40.sp,
+                                  letterSpacing: 0.6,
                                 ),
                           ),
                           TextSpan(
@@ -61,16 +67,43 @@ class SearchProductPage extends StatelessWidget {
                             style: Theme.of(context).textTheme.headline3?.copyWith(
                                   color: AppColors.pinkColor,
                                   fontSize: 40.sp,
+                                  letterSpacing: 0.6,
                                 ),
                           ),
                         ],
                       ),
                     ),
                   ),
-                  0.03.sh.verticalSpace,
+                  0.065.sh.verticalSpace,
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 0.082.sw),
-                    child: Text("autocompletesuggestion"),
+                    padding: EdgeInsets.symmetric(horizontal: 0.085.sw),
+                    child: Focus(
+                      onFocusChange: (hasFocus) =>
+                          context.read<LocalistaionControllerprovider>().setIsTownHasFocus(hasFocus),
+                      child: TextField(
+                        style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                              height: 1.2,
+                              fontSize: 16.sp,
+                              fontWeight: FontWeight.w500,
+                              fontFamily: 'Montserrat',
+                            ),
+                        keyboardType: TextInputType.emailAddress,
+                        controller: context.read<LocalistaionControllerprovider>().townTextFormFieldController,
+                        decoration: textInputDecoration.copyWith(
+                          contentPadding: EdgeInsets.zero,
+                          prefixIconConstraints: BoxConstraints(
+                            maxWidth: 0.12.sw,
+                          ),
+                          prefixIcon: Padding(
+                            padding: EdgeInsets.only(left: 0.025.sw, right: 0.02.sh),
+                            child: Image.asset(
+                              AppImages.searchIcon,
+                            ),
+                          ),
+                          hintText: 'findProduct'.tr(),
+                        ),
+                      ),
+                    ),
                   ),
                   0.496.sh.verticalSpace,
                   Row(
@@ -80,14 +113,29 @@ class SearchProductPage extends StatelessWidget {
                         onPressed: () {
                           //TODO navigate to login page
                         },
-                        child: Text(
-                          "storeSpace".tr(),
-                          style: Theme.of(context).textTheme.headline4?.copyWith(
-                                fontFamily: 'Montserrat',
-                                fontWeight: FontWeight.w700,
-                                decoration: TextDecoration.underline,
-                                fontSize: 14.sp,
+                        child: Text.rich(
+                          TextSpan(
+                            children: <InlineSpan>[
+                              TextSpan(
+                                text: 'storeSpace'.tr(),
+                                style: Theme.of(context).textTheme.headline4?.copyWith(
+                                      fontFamily: 'Montserrat',
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 14.sp,
+                                      height: 1.5,
+                                    ),
                               ),
+                              WidgetSpan(
+                                child: 0.02.sw.horizontalSpace,
+                              ),
+                              WidgetSpan(
+                                  child: Image(
+                                height: 0.025.sh,
+                                width: 0.015.sh,
+                                image: AssetImage(AppImages.vector),
+                              )),
+                            ],
+                          ),
                         ),
                       ),
                     ],

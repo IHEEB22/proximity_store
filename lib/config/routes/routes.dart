@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:proximitystore/pages/authentification/login_page.dart';
 import 'package:proximitystore/pages/pages.dart';
 
 class AppRoutes {
@@ -17,6 +18,8 @@ class AppRoutes {
         return MaterialPageRoute(builder: (BuildContext context) => GeolocationOutsideParisPage());
       case searchProductPage:
         return MaterialPageRoute(builder: (BuildContext context) => SearchProductPage());
+      case loginPage:
+        return MaterialPageRoute(builder: (BuildContext context) => LoginPage());
       default:
         throw ('this route name does not exist');
     }

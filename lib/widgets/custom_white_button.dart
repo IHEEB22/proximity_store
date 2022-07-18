@@ -20,7 +20,7 @@ class _CustomButtonState extends State<CustomWhiteButton> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 48.0,
+      height: 0.06.sh,
       child: OutlinedButton(
         child: Text(
           widget.textInput,

@@ -5,3 +5,5 @@ export 'custom_white_button.dart';
 export 'localisation_search_dialogue.dart';
 export 'sheet_geolocalisation_outside_paris.dart';
 export 'text_input_decoration.dart';
+export 'custom_back_button_icon.dart';
+export 'custom_grey_button.dart';

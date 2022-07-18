@@ -14,4 +14,6 @@ class AppImages {
   static const String appIcon = '$iconsFolder/app_icon.png';
   static const String sadEmoji = '$iconsFolder/sad_emoji.png';
   static const String searchIcon = '$iconsFolder/search_icon.png';
+  static const String vector = '$iconsFolder/Vector.png';
+  static const String backIcon = '$iconsFolder/back_icon.png';
 }

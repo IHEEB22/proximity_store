@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:proximitystore/config/colors/app_colors.dart';
 import 'package:proximitystore/config/routes/routes.dart';
 
@@ -79,6 +80,7 @@ class GeoLocationOffPage extends StatelessWidget {
                                     fontFamily: 'Montserrat',
                                     fontWeight: FontWeight.w400,
                                     height: 1.2,
+                                    fontSize: 16.sp,
                                   ),
                             ),
                           ],
@@ -92,8 +94,46 @@ class GeoLocationOffPage extends StatelessWidget {
                             horizontal: 0.066.sw,
                           ),
                           child: CustomBlueButton(
-                            onPressed: () {
-                              //TODO Request location permission goes here
+                            onPressed: () async {
+                              PermissionStatus locationStatus = await Permission.location.request();
+                              print(locationStatus);
+
+                              if (locationStatus.isGranted) {
+                                Navigator.pushNamed(context, AppRoutes.searchProductPage);
+                              } else if (locationStatus.isDenied) {
+                                return;
+                              } else if (locationStatus.isPermanentlyDenied) {
+                                showDialog<String>(
+                                  context: context,
+                                  builder: (BuildContext context) => AlertDialog(
+                                    title: Text(
+                                      'allowAppToAccessYourLocation'.tr(),
+                                      style: Theme.of(context).textTheme.subtitle2,
+                                    ),
+                                    content: Text(
+                                      'youNeedToAllowLocationAccessFromAppSettings'.tr(),
+                                      style: Theme.of(context).textTheme.headline4,
+                                    ),
+                                    actions: <Widget>[
+                                      // if user deny again, we do nothing
+                                      TextButton(
+                                        onPressed: () => Navigator.pop(context),
+                                        child: Text('cancel'.tr()),
+                                      ),
+
+                                      // if user is agree, you can redirect him to the app parameters :)
+                                      TextButton(
+                                        onPressed: () {
+                                          openAppSettings();
+                                          Navigator.pop(context);
+                                        },
+                                        child: Text('openAppSettings'.tr()),
+                                      ),
+                                    ],
+                                  ),
+                                );
+                                return;
+                              }
                             },
                             textInput: 'allowAccessToMyPosition'.tr(),
                           ),

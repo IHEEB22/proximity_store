@@ -2,21 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:proximitystore/config/colors/app_colors.dart';
 
-class CustomBlueButton extends StatefulWidget {
+class CustomGreyButton extends StatefulWidget {
   final String textInput;
   final Function() onPressed;
 
-  const CustomBlueButton({
+  const CustomGreyButton({
     Key? key,
     required this.textInput,
     required this.onPressed,
   }) : super(key: key);
 
   @override
-  State<CustomBlueButton> createState() => _CustomBlueButtonState();
+  State<CustomGreyButton> createState() => _CustomButtonState();
 }
 
-class _CustomBlueButtonState extends State<CustomBlueButton> {
+class _CustomButtonState extends State<CustomGreyButton> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -25,21 +25,21 @@ class _CustomBlueButtonState extends State<CustomBlueButton> {
         child: Text(
           widget.textInput,
           style: TextStyle(
-            color: AppColors.whiteColor,
+            color: AppColors.blueGreyColor,
             fontFamily: 'Poppins',
             fontWeight: FontWeight.w500,
-            fontSize: 14.sp,
+            fontSize: 16.sp,
           ),
         ),
         style: OutlinedButton.styleFrom(
           side: BorderSide(
-            width: 2.w,
-            color: AppColors.transparentColor,
+            width: 2,
+            color: AppColors.inactiveGreyColorLight,
           ),
-          backgroundColor: AppColors.deepBlueColor,
+          backgroundColor: AppColors.inactiveGreyColorLight,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(
-              Radius.circular(4.r),
+              Radius.circular(4),
             ),
           ),
         ),

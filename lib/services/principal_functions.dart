@@ -1,4 +1,4 @@
-import 'package:proximitystore/config/constant/constant_proprities/app_dimension.dart';
+import 'package:proximitystore/config/constants/app_dimensions.dart';
 
 class PrincipalFunctions {
   double calculateDimensionPercentage({double? widgetHeight, double? widgetWidth}) {

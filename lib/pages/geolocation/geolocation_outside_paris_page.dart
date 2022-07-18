@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:proximitystore/config/colors/app_colors.dart';
+import 'package:proximitystore/config/images/app_images.dart';
 
 import 'package:proximitystore/widgets/sheet_geolocalisation_outside_paris.dart';
 import 'package:proximitystore/widgets/background_image.dart';
@@ -34,7 +36,7 @@ class GeolocationOutsideParisPage extends StatelessWidget {
                       TextSpan(
                         children: <InlineSpan>[
                           TextSpan(
-                            text: 'Proximity',
+                            text: 'proximity'.tr(),
                             style: Theme.of(context).textTheme.headline3?.copyWith(
                                   fontSize: 23.sp,
                                   color: AppColors.blueColor,
@@ -42,7 +44,7 @@ class GeolocationOutsideParisPage extends StatelessWidget {
                                 ),
                           ),
                           TextSpan(
-                            text: 'Store',
+                            text: 'store'.tr() + ' ',
                             style: Theme.of(context).textTheme.headline3?.copyWith(
                                   fontSize: 23.sp,
                                   color: AppColors.pinkColor,
@@ -50,7 +52,7 @@ class GeolocationOutsideParisPage extends StatelessWidget {
                                 ),
                           ),
                           TextSpan(
-                            text: ' n’est pas (encore) disponible dans votre secteur',
+                            text: 'appIsNotYetAvailableInYourSector'.tr(),
                             style: Theme.of(context).textTheme.headline2?.copyWith(
                                   fontWeight: FontWeight.w600,
                                   letterSpacing: 0.4,
@@ -65,7 +67,7 @@ class GeolocationOutsideParisPage extends StatelessWidget {
                               width: 0.064.sw,
                               height: 0.029.sh,
                               image: AssetImage(
-                                'assets/icons/sad_emoji.png',
+                                AppImages.sadEmoji,
                               ),
                             ),
                           ),
@@ -79,7 +81,7 @@ class GeolocationOutsideParisPage extends StatelessWidget {
                       right: 0.13.sw,
                     ),
                     child: Text(
-                      'Mais nous travaillons d’arrache-pied pour vous proposer nos services au plus vite !',
+                      'weAreWorkingToProvideYouWithOurServicesInYourSector'.tr(),
                       style: Theme.of(context).textTheme.bodyText2?.copyWith(
                             fontFamily: 'Montserrat',
                             fontSize: 14.sp,
@@ -95,7 +97,7 @@ class GeolocationOutsideParisPage extends StatelessWidget {
                       0.271.sh,
                     ),
                     child: Text(
-                      'Gardons contact, pour être prévenu et être parmi les premiers au courant :',
+                      'keepInTouch'.tr(),
                       style: Theme.of(context).textTheme.bodyText2?.copyWith(
                             fontFamily: 'Montserrat',
                             fontWeight: FontWeight.w600,
@@ -110,7 +112,7 @@ class GeolocationOutsideParisPage extends StatelessWidget {
                         horizontal: 0.067.sw,
                       ),
                       child: CustomBlueButton(
-                        textInput: 'Prévenez-moi',
+                        textInput: 'informMe'.tr(),
                         onPressed: () => showModalBottomSheet(
                           isScrollControlled: true,
                           context: context,
@@ -130,7 +132,7 @@ class GeolocationOutsideParisPage extends StatelessWidget {
                       horizontal: 0.13.sw,
                     ),
                     child: Text(
-                      "Faites grandir la communauté ProximityStore, partagez l’application",
+                      'growUpTheCommuinityBySharingTheApplication'.tr(),
                       textAlign: TextAlign.center,
                       style: Theme.of(context).textTheme.subtitle2?.copyWith(
                             fontFamily: 'Montserrat',

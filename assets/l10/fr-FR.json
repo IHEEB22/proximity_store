@@ -1,0 +1,15 @@
+{
+    "proximity": "Proximity",
+    "store": "Store",
+    "appIsNotYetAvailableInYourSector": "n’est pas (encore) disponible dans votre secteur",
+    "weAreWorkingToProvideYouWithOurServicesInYourSector": "Mais nous travaillons d’arrache-pied pour vous proposer nos services au plus vite !",
+    "keepInTouch": "Gardons contact, pour être prévenu et être parmi les premiers au courant :",
+    "informMe": "Prévenez-moi",
+    "growUpTheCommuinityBySharingTheApplication": "Faites grandir la communauté ProximityStore, partagez l’application",
+    "hasNoAccressToYourLocation": "n’a pas accès à votre position",
+    "proximityStoreNeedsToAccessYourLocation": "ProximityStore a besoin d’accéder à votre position pour trouver les produits autour de vous",
+    "addAddress": "Renseigner une adresse",
+    "weWillDisplayTheNearsetProductsForYou": "Nous afficherons les produits des commerçants à proximité",
+    "storeSpace": "ESPACE COMMERÇANT",
+    "allowAccessToMyPosition": "Autoriser l’accès à ma position"
+}

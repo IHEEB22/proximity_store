@@ -114,19 +114,4 @@ class AppTextTheme {
     color: AppColors.darkBlueColor,
     fontFamily: _fontFamily,
   );
-
-  // static final TextTheme textThemeDark = TextTheme(
-  //     headline1: _headline1Dark,
-  //     headline2: _headline2Dark,
-  //     headline3: _headline3Dark,
-  //     headline4: _headline4Dark,
-  //     headline5: _headline5Dark,
-  //     headline6: _headline6Dark,
-  //     subtitle1: _subTitle1Dark,
-  //     subtitle2: _subTitle2Dark,
-  //     bodyText1: _bodyText1Dark,
-  //     bodyText2: _bodyText2Dark,
-  //     button: _buttonDark);
-  // static final TextStyle _headline3Dark = _headline6Light.copyWith(color: AppColors.primayColorDark);
-
 }

@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:proximitystore/config/colors/app_colors.dart';
+import 'package:proximitystore/config/images/app_images.dart';
 import 'package:proximitystore/widgets/background_image.dart';
 
 class SearchProductPage extends StatelessWidget {
@@ -28,7 +30,7 @@ class SearchProductPage extends StatelessWidget {
                           width: 0.064.sw,
                           height: 0.029.sh,
                           image: AssetImage(
-                            'assets/icons/pin.png',
+                            AppImages.pinIcon,
                           ),
                         ),
                         0.0233.sw.horizontalSpace,
@@ -48,14 +50,14 @@ class SearchProductPage extends StatelessWidget {
                       TextSpan(
                         children: <InlineSpan>[
                           TextSpan(
-                            text: 'Proximity',
+                            text: 'proximity'.tr(),
                             style: Theme.of(context).textTheme.headline3?.copyWith(
                                   color: AppColors.blueColor,
                                   fontSize: 40.sp,
                                 ),
                           ),
                           TextSpan(
-                            text: 'Store',
+                            text: 'store'.tr(),
                             style: Theme.of(context).textTheme.headline3?.copyWith(
                                   color: AppColors.pinkColor,
                                   fontSize: 40.sp,
@@ -75,9 +77,11 @@ class SearchProductPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          //TODO navigate to login page
+                        },
                         child: Text(
-                          "ESPACE COMMERÇANT",
+                          "storeSpace".tr(),
                           style: Theme.of(context).textTheme.headline4?.copyWith(
                                 fontFamily: 'Montserrat',
                                 fontWeight: FontWeight.w700,

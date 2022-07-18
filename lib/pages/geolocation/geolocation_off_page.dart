@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:proximitystore/config/colors/app_colors.dart';
+import 'package:proximitystore/config/routes/routes.dart';
 
 import 'package:proximitystore/widgets/background_image.dart';
 import 'package:proximitystore/widgets/custom_blue_button.dart';
@@ -36,19 +38,19 @@ class GeoLocationOffPage extends StatelessWidget {
                           TextSpan(
                             children: <InlineSpan>[
                               TextSpan(
-                                text: 'Proximity',
+                                text: 'proximity'.tr(),
                                 style: Theme.of(context).textTheme.subtitle1?.copyWith(
                                       color: AppColors.blueColor,
                                     ),
                               ),
                               TextSpan(
-                                text: 'Store',
+                                text: 'store'.tr() + ' ',
                                 style: Theme.of(context).textTheme.subtitle1?.copyWith(
                                       color: AppColors.pinkColor,
                                     ),
                               ),
                               TextSpan(
-                                text: ' n’a pas accès à votre position ',
+                                text: 'hasNoAccressToYourLocation'.tr(),
                                 style: Theme.of(context).textTheme.subtitle1?.copyWith(
                                       color: AppColors.darkBlueColor,
                                     ),
@@ -57,35 +59,23 @@ class GeoLocationOffPage extends StatelessWidget {
                           ),
                         ),
                       ),
-                      // 0.041.sh.verticalSpace,
                       Padding(
-                          padding: EdgeInsets.only(
-                            left: 0.085.sw,
-                            right: 0.186.sw,
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'ProximityStore a besoin d’accéder à ',
-                                style: Theme.of(context).textTheme.bodyText2?.copyWith(
-                                      fontFamily: 'Montserrat',
-                                    ),
-                              ),
-                              Text(
-                                'votre position pour trouver les',
-                                style: Theme.of(context).textTheme.bodyText2?.copyWith(
-                                      fontFamily: 'Montserrat',
-                                    ),
-                              ),
-                              Text(
-                                'produits autour de vous',
-                                style: Theme.of(context).textTheme.bodyText2?.copyWith(
-                                      fontFamily: 'Montserrat',
-                                    ),
-                              ),
-                            ],
-                          )),
+                        padding: EdgeInsets.only(
+                          left: 0.085.sw,
+                          right: 0.186.sw,
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'proximityStoreNeedsToAccessYourLocation'.tr(),
+                              style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                                    fontFamily: 'Montserrat',
+                                  ),
+                            ),
+                          ],
+                        ),
+                      ),
                       0.314.sh.verticalSpace,
                       SizedBox(
                         width: double.infinity,
@@ -94,8 +84,10 @@ class GeoLocationOffPage extends StatelessWidget {
                             horizontal: 0.066.sw,
                           ),
                           child: CustomBlueButton(
-                            onPressed: () {},
-                            textInput: 'Autoriser l’accès à ma position',
+                            onPressed: () {
+                              //TODO Request location permission goes here
+                            },
+                            textInput: 'allowAccessToMyPosition'.tr(),
                           ),
                         ),
                       ),
@@ -107,8 +99,8 @@ class GeoLocationOffPage extends StatelessWidget {
                             horizontal: 0.066.sw,
                           ),
                           child: CustomWhiteButton(
-                            onPressed: () {},
-                            textInput: 'Renseigner une adresse',
+                            onPressed: () => Navigator.pushNamed(context, AppRoutes.addLocalisationAddressPage),
+                            textInput: 'addAddress'.tr(),
                           ),
                         ),
                       ),

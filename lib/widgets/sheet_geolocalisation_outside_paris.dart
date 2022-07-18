@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:proximitystore/config/colors/app_colors.dart';
+import 'package:proximitystore/config/images/app_images.dart';
 
 import 'package:proximitystore/providers/localistaion_controller_provider.dart';
 
@@ -39,7 +40,7 @@ class _SheetGeolocalisationOutsideParisState extends State<SheetGeolocalisationO
                 child: Image(
                   width: 0.105.sw,
                   image: AssetImage(
-                    'assets/icons/LineSheet.png',
+                    AppImages.lineSheet,
                   ),
                 ),
               ),

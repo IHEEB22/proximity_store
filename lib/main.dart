@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -5,33 +6,40 @@ import 'package:provider/provider.dart';
 import 'package:proximitystore/config/colors/app_colors.dart';
 
 import 'package:proximitystore/config/constants/app_dimensions.dart';
+import 'package:proximitystore/config/routes/routes.dart';
 import 'package:proximitystore/providers/localistaion_controller_provider.dart';
 import 'package:proximitystore/providers/sheet_provider.dart';
 import 'package:proximitystore/pages/geolocation/geolocation_outside_paris_page.dart';
 import 'package:proximitystore/themes/app_themes.dart';
 
-void main() {
+void main() async {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: AppColors.transparentColor,
     statusBarIconBrightness: AppColors.statusbarColor,
   ));
+  WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
   runApp(
-    MultiProvider(
-      providers: [
-        ChangeNotifierProvider(
-          create: (_) => SheetProvider(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => LocalistaionControllerprovider(),
-        ),
-      ],
-      child: proximitystore(),
+    EasyLocalization(
+      path: 'assets/l10',
+      supportedLocales: [Locale('en', 'EN'), Locale('fr', 'FR')],
+      child: MultiProvider(
+        providers: [
+          ChangeNotifierProvider(
+            create: (_) => SheetProvider(),
+          ),
+          ChangeNotifierProvider(
+            create: (_) => LocalistaionControllerprovider(),
+          ),
+        ],
+        child: App(),
+      ),
     ),
   );
 }
 
-class proximitystore extends StatelessWidget {
-  const proximitystore({Key? key}) : super(key: key);
+class App extends StatelessWidget {
+  const App({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +48,11 @@ class proximitystore extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (BuildContext context, child) => MaterialApp(
+        onGenerateRoute: AppRoutes.routeController,
+        initialRoute: AppRoutes.geoLocationOffPage,
+        localizationsDelegates: context.localizationDelegates,
+        supportedLocales: context.supportedLocales,
+        locale: context.locale,
         debugShowCheckedModeBanner: false,
         theme: AppThemes.defaultAppTheme,
         darkTheme: AppThemes.defaultAppTheme,

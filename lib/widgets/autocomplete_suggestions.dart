@@ -20,7 +20,7 @@ class _AutoCompleteSuggestionsState extends State<AutoCompleteSuggestions> {
               .read<LocalistaionControllerprovider>()
               .searchLocation(text: context.read<LocalistaionControllerprovider>().townTextFormFieldController.text),
           builder: (context, AsyncSnapshot<List<Prediction>?> snapshot) {
-            if (snapshot.hasData) {
+            if (snapshot.hasData && snapshot.data?.length != 0) {
               return Padding(
                 padding: EdgeInsets.symmetric(horizontal: 0.016.sh, vertical: 0.001.sh),
                 child: SingleChildScrollView(
@@ -28,7 +28,7 @@ class _AutoCompleteSuggestionsState extends State<AutoCompleteSuggestions> {
                   child: Column(
                     children: <Widget>[
                       Container(
-                        height: 0.2.sh,
+                        height: 0.16.sh,
                         child: ListView.builder(
                           physics: BouncingScrollPhysics(),
                           itemCount: snapshot.data?.length,
@@ -78,10 +78,12 @@ class _AutoCompleteSuggestionsState extends State<AutoCompleteSuggestions> {
                   ),
                 ),
               );
-            else
+            else if (snapshot.hasError) {
               return Text(
                 'somethingWentWrong'.tr(),
               );
+            } else
+              return SizedBox.shrink();
           }),
     );
   }
@@ -89,5 +91,6 @@ class _AutoCompleteSuggestionsState extends State<AutoCompleteSuggestions> {
 
 void onItemClick({required String selectedCountry, required BuildContext context}) {
   context.read<LocalistaionControllerprovider>().townTextFormFieldController.text = selectedCountry;
+  FocusScope.of(context).unfocus();
   context.read<LocalistaionControllerprovider>().setIsTownHasFocus(false);
 }

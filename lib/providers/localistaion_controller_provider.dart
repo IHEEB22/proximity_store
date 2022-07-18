@@ -6,20 +6,17 @@ import 'package:google_maps_webservice/places.dart';
 import 'package:http/http.dart' as http;
 
 class LocalistaionControllerprovider with ChangeNotifier {
-  TextEditingController townTextFormFieldController = TextEditingController();
-  TextEditingController emailTextEditingController = TextEditingController();
-  bool _isTownNotEmpty = false;
+  final TextEditingController townTextFormFieldController = TextEditingController();
+  final TextEditingController emailTextEditingController = TextEditingController();
   bool _isTownHasFocus = false;
 
   bool get isTownHasFocus => _isTownHasFocus;
-  bool get isTownNotEmpty => _isTownNotEmpty;
   Placemark _pickPlaceMark = Placemark();
   Placemark get pickPlaceMark => _pickPlaceMark;
   List<Prediction> _predictionList = [];
   List<Prediction> get predictionList => _predictionList;
 
   Future<List<Prediction>> searchLocation({required String text}) async {
-    _predictionList = [];
     if (text.isNotEmpty) {
       http.Response response = await http.get(
         headers: {"Content-Type": "application/json"},
@@ -31,14 +28,6 @@ class LocalistaionControllerprovider with ChangeNotifier {
       }
     }
     return _predictionList;
-  }
-
-  void setIsTownEmpty(String val) {
-    if (val.isNotEmpty)
-      _isTownNotEmpty = true;
-    else
-      _isTownNotEmpty = false;
-    notifyListeners();
   }
 
   void setIsTownHasFocus(bool hasFocus) {

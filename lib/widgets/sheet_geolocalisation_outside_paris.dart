@@ -23,13 +23,6 @@ class _SheetGeolocalisationOutsideParisState extends State<SheetGeolocalisationO
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
-  void dispose() {
-    LocalistaionControllerprovider().emailTextEditingController.dispose();
-    LocalistaionControllerprovider().townTextFormFieldController.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Consumer<LocalistaionControllerprovider>(
       builder: (context, value, child) => Padding(
@@ -75,7 +68,7 @@ class _SheetGeolocalisationOutsideParisState extends State<SheetGeolocalisationO
                         fontFamily: 'Montserrat',
                       ),
                   keyboardType: TextInputType.emailAddress,
-                  controller: LocalistaionControllerprovider().emailTextEditingController,
+                  controller: context.read<LocalistaionControllerprovider>().emailTextEditingController,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   decoration: textInputDecoration.copyWith(
                     hintText: 'e-mail',
@@ -103,13 +96,8 @@ class _SheetGeolocalisationOutsideParisState extends State<SheetGeolocalisationO
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 0.042.sw),
                 child: Focus(
-                  onFocusChange: (hasFocus) {
-                    if (hasFocus) {
-                      context.read<LocalistaionControllerprovider>().setIsTownHasFocus(hasFocus);
-                    } else {
-                      context.read<LocalistaionControllerprovider>().setIsTownHasFocus(hasFocus);
-                    }
-                  },
+                  onFocusChange: (hasFocus) =>
+                      context.read<LocalistaionControllerprovider>().setIsTownHasFocus(hasFocus),
                   child: TextFormField(
                     style: Theme.of(context).textTheme.bodyText2?.copyWith(
                           height: 1.2,
@@ -124,9 +112,10 @@ class _SheetGeolocalisationOutsideParisState extends State<SheetGeolocalisationO
                       hintText: 'town'.tr(),
                     ),
                     validator: (ville) => ValidationItem(val: ville).validateTown(
-                        context: context,
-                        town: context.read<LocalistaionControllerprovider>().townTextFormFieldController.text),
-                    onChanged: (value) => context.read<LocalistaionControllerprovider>().setIsTownEmpty(value),
+                      context: context,
+                      town: context.read<LocalistaionControllerprovider>().townTextFormFieldController.text,
+                    ),
+                    onChanged: (value) => context.read<LocalistaionControllerprovider>().setIsTownHasFocus(true),
                   ),
                 ),
               ),
@@ -134,8 +123,7 @@ class _SheetGeolocalisationOutsideParisState extends State<SheetGeolocalisationO
                 children: <Widget>[
                   Visibility(
                     child: AutoCompleteSuggestions(),
-                    visible: context.watch<LocalistaionControllerprovider>().isTownNotEmpty &&
-                        context.watch<LocalistaionControllerprovider>().isTownHasFocus,
+                    visible: context.watch<LocalistaionControllerprovider>().isTownHasFocus,
                   ),
                 ],
               ),

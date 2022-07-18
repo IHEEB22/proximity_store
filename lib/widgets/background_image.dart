@@ -10,7 +10,6 @@ class BackgroundImage extends StatelessWidget {
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
-          // color: Colors.blue,
           image: DecorationImage(
             image: AssetImage(
               AppImages.backgroundImage,

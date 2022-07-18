@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_maps_webservice/places.dart';
@@ -21,7 +22,7 @@ class _AutoCompleteSuggestionsState extends State<AutoCompleteSuggestions> {
           builder: (context, AsyncSnapshot<List<Prediction>?> snapshot) {
             if (snapshot.hasData) {
               return Padding(
-                padding: EdgeInsets.symmetric(horizontal: 0.042.sh, vertical: 0.001.sh),
+                padding: EdgeInsets.symmetric(horizontal: 0.016.sh, vertical: 0.001.sh),
                 child: SingleChildScrollView(
                   physics: ScrollPhysics(),
                   child: Column(
@@ -29,6 +30,7 @@ class _AutoCompleteSuggestionsState extends State<AutoCompleteSuggestions> {
                       Container(
                         height: 0.2.sh,
                         child: ListView.builder(
+                          physics: BouncingScrollPhysics(),
                           itemCount: snapshot.data?.length,
                           itemBuilder: ((context, index) => Card(
                                 elevation: 0.2.sm,
@@ -37,7 +39,7 @@ class _AutoCompleteSuggestionsState extends State<AutoCompleteSuggestions> {
                                   iconColor: AppColors.deepBlueColor,
                                   minVerticalPadding: 0,
                                   contentPadding: EdgeInsets.zero,
-                                  visualDensity: VisualDensity(horizontal: 2, vertical: -3.2),
+                                  visualDensity: VisualDensity(vertical: -3.2),
                                   leading: Padding(
                                     padding: EdgeInsets.only(
                                       left: 16,
@@ -50,12 +52,12 @@ class _AutoCompleteSuggestionsState extends State<AutoCompleteSuggestions> {
                                   title: Text(
                                     snapshot.data?[index].description ?? '',
                                     maxLines: 1,
+                                    style: Theme.of(context).textTheme.bodyText2,
                                   ),
                                 ),
                               )),
                         ),
                       ),
-                      // 0.027.sh.verticalSpace,
                     ],
                   ),
                 ),
@@ -64,16 +66,16 @@ class _AutoCompleteSuggestionsState extends State<AutoCompleteSuggestions> {
               return Padding(
                 padding: EdgeInsets.symmetric(vertical: 0.03.sh),
                 child: Center(
-                  widthFactor: 2.sw,
+                  widthFactor: 0.1.sw,
                   child: CircularProgressIndicator(
                     color: AppColors.lightBlueColor,
                   ),
                 ),
               );
-            else if (snapshot.hasError) {
-              return Text("Somthing want wrong");
-            }
-            return SizedBox.shrink();
+            else
+              return Text(
+                'somethingWentWrong'.tr(),
+              );
           }),
     );
   }

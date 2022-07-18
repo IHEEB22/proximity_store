@@ -11,5 +11,6 @@
 "addAddress": "Renseigner une adresse",
 "weWillDisplayTheNearsetProductsForYou": "Nous afficherons les produits des commerçants à proximité",
 "storeSpace": "ESPACE COMMERÇANT",
-"allowAccessToMyPosition": "Autoriser l’accès à ma position"
+"allowAccessToMyPosition": "Autoriser l’accès à ma position",
+"somethingWentWrong": "Quelque chose s'est mal passé"
 }

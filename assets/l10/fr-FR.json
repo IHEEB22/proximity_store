@@ -12,5 +12,9 @@
     "weWillDisplayTheNearsetProductsForYou": "Nous afficherons les produits des commerçants à proximité",
     "storeSpace": "ESPACE COMMERÇANT",
     "allowAccessToMyPosition": "Autoriser l’accès à ma position",
-    "somethingWentWrong": "Quelque chose s'est mal passé"
+    "somethingWentWrong": "Quelque chose s'est mal passé",
+    "addEmailAddress": "Renseignez votre e-mail",
+    "email": "e-mail",
+    "addTown": "Renseignez votre ville",
+    "town": "ville"
 }

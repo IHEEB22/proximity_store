@@ -56,7 +56,7 @@ class _SheetGeolocalisationOutsideParisState extends State<SheetGeolocalisationO
                   bottom: 0.0053.sh,
                 ),
                 child: Text(
-                  'Renseignez votre e-mail',
+                  'addEmailAddress'.tr(),
                   style: Theme.of(context).textTheme.headline3?.copyWith(
                         fontFamily: 'Montserrat',
                         fontSize: 12.sp,
@@ -90,7 +90,7 @@ class _SheetGeolocalisationOutsideParisState extends State<SheetGeolocalisationO
                   bottom: 0.0053.sh,
                 ),
                 child: Text(
-                  'Renseignez votre ville',
+                  'addTown'.tr(),
                   style: Theme.of(context).textTheme.headline2?.copyWith(
                         fontFamily: 'Montserrat',
                         color: AppColors.blueColor,
@@ -121,7 +121,7 @@ class _SheetGeolocalisationOutsideParisState extends State<SheetGeolocalisationO
                     controller: context.read<LocalistaionControllerprovider>().townTextFormFieldController,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     decoration: textInputDecoration.copyWith(
-                      hintText: 'ville',
+                      hintText: 'town'.tr(),
                     ),
                     validator: (ville) => ValidationItem(val: ville).validateTown(
                         context: context,

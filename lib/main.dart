@@ -7,6 +7,7 @@ import 'package:proximitystore/config/colors/app_colors.dart';
 
 import 'package:proximitystore/config/constants/app_dimensions.dart';
 import 'package:proximitystore/config/routes/routes.dart';
+import 'package:proximitystore/pages/geolocation/geolocation_off_page.dart';
 import 'package:proximitystore/pages/geolocation/geolocation_outside_paris_page.dart';
 import 'package:proximitystore/providers/localistaion_controller_provider.dart';
 import 'package:proximitystore/providers/sheet_provider.dart';
@@ -49,7 +50,7 @@ class App extends StatelessWidget {
       splitScreenMode: true,
       builder: (BuildContext context, child) => MaterialApp(
         onGenerateRoute: AppRoutes.routeController,
-        initialRoute: AppRoutes.geoLocationOutsideParisPage,
+        initialRoute: AppRoutes.geoLocationOffPage,
         localizationsDelegates: context.localizationDelegates,
         supportedLocales: context.supportedLocales,
         locale: context.locale,
@@ -57,7 +58,7 @@ class App extends StatelessWidget {
         theme: AppThemes.defaultAppTheme,
         darkTheme: AppThemes.defaultAppTheme,
         themeMode: ThemeMode.light,
-        home: GeolocationOutsideParisPage(),
+        home: GeoLocationOffPage(),
         builder: (context, widget) {
           return MediaQuery(
             data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),

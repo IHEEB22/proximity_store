@@ -30,9 +30,9 @@ class GeoLocationOffPage extends StatelessWidget {
                       Padding(
                         padding: EdgeInsets.fromLTRB(
                           0.085.sw,
-                          0.148.sh,
-                          0.0256.sw,
-                          0.067.sh,
+                          0.1048.sh,
+                          0.226.sw,
+                          0.087.sh,
                         ),
                         child: Text.rich(
                           TextSpan(
@@ -41,18 +41,24 @@ class GeoLocationOffPage extends StatelessWidget {
                                 text: 'proximity'.tr(),
                                 style: Theme.of(context).textTheme.subtitle1?.copyWith(
                                       color: AppColors.blueColor,
+                                      fontSize: 24.sp,
+                                      height: 1.2,
                                     ),
                               ),
                               TextSpan(
                                 text: 'store'.tr() + ' ',
                                 style: Theme.of(context).textTheme.subtitle1?.copyWith(
                                       color: AppColors.pinkColor,
+                                      fontSize: 24.sp,
+                                      height: 1.2,
                                     ),
                               ),
                               TextSpan(
                                 text: 'hasNoAccressToYourLocation'.tr(),
                                 style: Theme.of(context).textTheme.subtitle1?.copyWith(
                                       color: AppColors.darkBlueColor,
+                                      fontSize: 24.sp,
+                                      height: 1.2,
                                     ),
                               ),
                             ],
@@ -62,7 +68,7 @@ class GeoLocationOffPage extends StatelessWidget {
                       Padding(
                         padding: EdgeInsets.only(
                           left: 0.085.sw,
-                          right: 0.186.sw,
+                          right: 0.15.sw,
                         ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -71,6 +77,8 @@ class GeoLocationOffPage extends StatelessWidget {
                               'proximityStoreNeedsToAccessYourLocation'.tr(),
                               style: Theme.of(context).textTheme.bodyText2?.copyWith(
                                     fontFamily: 'Montserrat',
+                                    fontWeight: FontWeight.w400,
+                                    height: 1.2,
                                   ),
                             ),
                           ],

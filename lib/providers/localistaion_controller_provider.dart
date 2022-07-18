@@ -7,6 +7,7 @@ import 'package:http/http.dart' as http;
 
 class LocalistaionControllerprovider with ChangeNotifier {
   TextEditingController townTextFormFieldController = TextEditingController();
+  TextEditingController emailTextEditingController = TextEditingController();
   bool _isTownNotEmpty = false;
   bool _isTownHasFocus = false;
 

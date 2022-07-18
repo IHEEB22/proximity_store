@@ -19,23 +19,17 @@ class ValidationItem {
       return null;
   }
 
-  String? validateTown(BuildContext context) {
+  String? validateTown({required BuildContext context, required String town}) {
     List<Prediction> predictionList = context.read<LocalistaionControllerprovider>().predictionList;
-
-    bool exist = predictionList.contains(Prediction(description: val));
-    if ((val != null && val!.isEmpty)) {
+    bool exist = false;
+    predictionList.forEach((Prediction element) {
+      if (element.description == town) exist = true;
+    });
+    if (town.isEmpty) {
       return 'ce champ est obligatoire !';
     } else if (!exist) {
       return "ville n'existe pas";
     } else
       return null;
-  }
-
-  bool isValid() {
-    if (val != null) {
-      return true;
-    } else {
-      return false;
-    }
   }
 }

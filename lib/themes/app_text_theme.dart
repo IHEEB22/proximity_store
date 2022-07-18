@@ -7,11 +7,11 @@ class AppTextTheme {
   static const _fontFamily = 'Poppins';
 
   //Font weights
+  static const FontWeight _light = FontWeight.w300;
   static const FontWeight _regular = FontWeight.w400;
   static const FontWeight _medium = FontWeight.w500;
   static const FontWeight _semiBold = FontWeight.w600;
   static const FontWeight _bold = FontWeight.w700;
-  static const FontWeight _light = FontWeight.w300;
 
   static const TextTheme textThemeLight = TextTheme(
     headline1: _headline1Light,

@@ -32,27 +32,33 @@ class _AutoCompleteSuggestionsState extends State<AutoCompleteSuggestions> {
                         child: ListView.builder(
                           physics: BouncingScrollPhysics(),
                           itemCount: snapshot.data?.length,
-                          itemBuilder: ((context, index) => Card(
-                                elevation: 0.2.sm,
-                                margin: EdgeInsets.all(3.sm),
-                                child: ListTile(
-                                  iconColor: AppColors.deepBlueColor,
-                                  minVerticalPadding: 0,
-                                  contentPadding: EdgeInsets.zero,
-                                  visualDensity: VisualDensity(vertical: -3.2),
-                                  leading: Padding(
-                                    padding: EdgeInsets.only(
-                                      left: 16,
+                          itemBuilder: ((context, index) => GestureDetector(
+                                onTap: () => onItemClick(
+                                  context: context,
+                                  selectedCountry: snapshot.data?[index].description ?? '',
+                                ),
+                                child: Card(
+                                  elevation: 0.2.sm,
+                                  margin: EdgeInsets.all(3.sm),
+                                  child: ListTile(
+                                    iconColor: AppColors.deepBlueColor,
+                                    minVerticalPadding: 0,
+                                    contentPadding: EdgeInsets.zero,
+                                    visualDensity: VisualDensity(vertical: -3.2),
+                                    leading: Padding(
+                                      padding: EdgeInsets.only(
+                                        left: 16,
+                                      ),
+                                      child: Icon(
+                                        size: 18.sm,
+                                        Icons.location_on,
+                                      ),
                                     ),
-                                    child: Icon(
-                                      size: 18.sm,
-                                      Icons.location_on,
+                                    title: Text(
+                                      snapshot.data?[index].description ?? '',
+                                      maxLines: 1,
+                                      style: Theme.of(context).textTheme.bodyText2,
                                     ),
-                                  ),
-                                  title: Text(
-                                    snapshot.data?[index].description ?? '',
-                                    maxLines: 1,
-                                    style: Theme.of(context).textTheme.bodyText2,
                                   ),
                                 ),
                               )),
@@ -79,4 +85,9 @@ class _AutoCompleteSuggestionsState extends State<AutoCompleteSuggestions> {
           }),
     );
   }
+}
+
+void onItemClick({required String selectedCountry, required BuildContext context}) {
+  context.read<LocalistaionControllerprovider>().townTextFormFieldController.text = selectedCountry;
+  context.read<LocalistaionControllerprovider>().setIsTownHasFocus(false);
 }

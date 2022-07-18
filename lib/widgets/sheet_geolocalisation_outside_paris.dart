@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:proximitystore/config/colors/app_colors.dart';
@@ -20,12 +21,16 @@ class SheetGeolocalisationOutsideParis extends StatefulWidget {
 
 class _SheetGeolocalisationOutsideParisState extends State<SheetGeolocalisationOutsideParis> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final _emailController = TextEditingController();
-  final _townController = TextEditingController();
+
+  @override
+  void dispose() {
+    LocalistaionControllerprovider().emailTextEditingController.dispose();
+    LocalistaionControllerprovider().townTextFormFieldController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    // Provider.of<LocalistaionControllerprovider>(context, listen: false);
     return Consumer<LocalistaionControllerprovider>(
       builder: (context, value, child) => Padding(
         padding: MediaQuery.of(context).viewInsets,
@@ -38,10 +43,10 @@ class _SheetGeolocalisationOutsideParisState extends State<SheetGeolocalisationO
               0.02.sh.verticalSpace,
               Center(
                 child: Image(
-                  width: 0.105.sw,
                   image: AssetImage(
                     AppImages.lineSheet,
                   ),
+                  width: 0.105.sw,
                 ),
               ),
               0.054.sh.verticalSpace,
@@ -63,8 +68,14 @@ class _SheetGeolocalisationOutsideParisState extends State<SheetGeolocalisationO
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 0.042.sw),
                 child: TextFormField(
+                  style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                        height: 1.2,
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.w500,
+                        fontFamily: 'Montserrat',
+                      ),
                   keyboardType: TextInputType.emailAddress,
-                  controller: _emailController,
+                  controller: LocalistaionControllerprovider().emailTextEditingController,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   decoration: textInputDecoration.copyWith(
                     hintText: 'e-mail',
@@ -100,17 +111,22 @@ class _SheetGeolocalisationOutsideParisState extends State<SheetGeolocalisationO
                     }
                   },
                   child: TextFormField(
-                    // focusNode: context.read<LocalistaionControllerprovider>().townFocusNode,
+                    style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                          height: 1.2,
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.w500,
+                          fontFamily: 'Montserrat',
+                        ),
                     keyboardType: TextInputType.emailAddress,
                     controller: context.read<LocalistaionControllerprovider>().townTextFormFieldController,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     decoration: textInputDecoration.copyWith(
                       hintText: 'ville',
                     ),
-                    validator: (ville) => ValidationItem(val: ville).validateTown(context),
-                    onChanged: ((value) {
-                      context.read<LocalistaionControllerprovider>().setIsTownEmpty(value);
-                    }),
+                    validator: (ville) => ValidationItem(val: ville).validateTown(
+                        context: context,
+                        town: context.read<LocalistaionControllerprovider>().townTextFormFieldController.text),
+                    onChanged: (value) => context.read<LocalistaionControllerprovider>().setIsTownEmpty(value),
                   ),
                 ),
               ),
@@ -131,14 +147,14 @@ class _SheetGeolocalisationOutsideParisState extends State<SheetGeolocalisationO
                     horizontal: 0.066.sw,
                   ),
                   child: CustomBlueButton(
-                    textInput: 'Prévenez-moi',
+                    textInput: 'informMe'.tr(),
                     onPressed: () {
                       if (_formKey.currentState?.validate() ?? false) {
                         Navigator.pop(context);
                       } else {
                         context.read<SheetProvider>().addsheetInputs(
-                              email: _emailController.text,
-                              town: _townController.text,
+                              email: context.read<LocalistaionControllerprovider>().emailTextEditingController.text,
+                              town: context.read<LocalistaionControllerprovider>().townTextFormFieldController.text,
                             );
                       }
                     },
@@ -151,13 +167,5 @@ class _SheetGeolocalisationOutsideParisState extends State<SheetGeolocalisationO
         ),
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    _emailController.dispose();
-    _townController.dispose();
-
-    super.dispose();
   }
 }

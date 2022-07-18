@@ -18,11 +18,7 @@ var textInputDecoration = InputDecoration(
     fontWeight: FontWeight.w400,
     letterSpacing: 0.2,
   ),
-  contentPadding: EdgeInsets.only(
-    top: 15.h,
-    bottom: 15.h,
-    left: 17.w,
-  ),
+  contentPadding: EdgeInsets.all(12.0),
   enabledBorder: OutlineInputBorder(
     borderSide: BorderSide(
       color: AppColors.blueGreyColor,

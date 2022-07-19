@@ -28,10 +28,10 @@
     "forgotYourPassword?": "Mot de passe oublié ?",
     "continue": "Continuer",
     "youDoNotHaveAnAccount?": "Vous n’avez pas de compte ?",
-"signUp": "Inscrivez-vous",
-"registerWithEmail": "S’inscrire avec un email",
-"toLogIn": "Se connecter",
-"byCreatingAnAccountYouAgreeTo": "En créant un compte vous acceptez de vous conformer aux Conditions Générales de ProximityStore.",
-"ComplyWithTheGeneralConditionsOfProximityStore.": "aux Conditions Générales de ProximityStore.",
-"or":"Ou"
+    "signUp": "Inscrivez-vous",
+    "registerWithEmail": "S’inscrire avec un email",
+    "toLogIn": "Se connecter",
+    "byCreatingAnAccountYouAgreeTo": "En créant un compte vous acceptez de vous conformer aux Conditions Générales de ProximityStore.",
+    "ComplyWithTheGeneralConditionsOfProximityStore": "aux Conditions Générales de ProximityStore.",
+    "or":"Ou"
 }

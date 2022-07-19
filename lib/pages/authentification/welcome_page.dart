@@ -49,7 +49,7 @@ class WelcomePage extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.only(left: 0.0453.sw, right: 0.149.sw),
                     child: Text(
-                      'byCreatingAnAccountYouAgree'.tr(),
+                      'byCreatingAnAccountYouAgreeTo'.tr(),
                       style: Theme.of(context)
                           .textTheme
                           .bodyText2
@@ -59,7 +59,7 @@ class WelcomePage extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.only(left: 0.0453.sw),
                     child: Text(
-                      'ToComplyWithTheGeneralConditionsOfProximityStore'.tr(),
+                      'ComplyWithTheGeneralConditionsOfProximityStore'.tr(),
                       style: Theme.of(context).textTheme.bodyText2?.copyWith(
                             fontFamily: 'Montserrat',
                             fontSize: 12.sp,

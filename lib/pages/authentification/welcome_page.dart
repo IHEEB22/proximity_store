@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:proximitystore/config/routes/routes.dart';
 import 'package:proximitystore/widgets/background_image.dart';
 import 'package:proximitystore/widgets/custom_blue_button.dart';
 
@@ -42,7 +43,10 @@ class WelcomePage extends StatelessWidget {
                     padding: EdgeInsets.symmetric(horizontal: 0.042.sw),
                     child: SizedBox(
                       width: double.infinity,
-                      child: CustomBlueButton(textInput: 'toLogIn'.tr(), onPressed: () {}),
+                      child: CustomBlueButton(
+                        textInput: 'toLogIn'.tr(),
+                        onPressed: () => Navigator.pushNamed(context, AppRoutes.loginPage),
+                      ),
                     ),
                   ),
                   0.116.sh.verticalSpace,

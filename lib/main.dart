@@ -7,16 +7,12 @@ import 'package:proximitystore/config/colors/app_colors.dart';
 
 import 'package:proximitystore/config/constants/app_dimensions.dart';
 import 'package:proximitystore/config/routes/routes.dart';
-import 'package:proximitystore/pages/authentification/login_page.dart';
-import 'package:proximitystore/pages/geolocation/geolocation_off_page.dart';
-import 'package:proximitystore/pages/geolocation/geolocation_outside_paris_page.dart';
 import 'package:proximitystore/providers/authentification_provider.dart';
 import 'package:proximitystore/providers/localistaion_controller_provider.dart';
 import 'package:proximitystore/providers/sheet_provider.dart';
 import 'package:proximitystore/themes/app_themes.dart';
 
 import 'pages/authentification/welcome_page.dart';
-import 'pages/pages.dart';
 
 void main() async {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(

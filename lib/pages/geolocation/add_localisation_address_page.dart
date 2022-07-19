@@ -1,12 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:proximitystore/widgets/background_image.dart';
 
 import '../../widgets/custom_back_button_icon.dart';
-
-GoogleMapController? _mapController;
 
 class AddLocalisationAddressPage extends StatelessWidget {
   const AddLocalisationAddressPage({Key? key}) : super(key: key);

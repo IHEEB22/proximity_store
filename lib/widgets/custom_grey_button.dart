@@ -4,7 +4,7 @@ import 'package:proximitystore/config/colors/app_colors.dart';
 
 class CustomGreyButton extends StatefulWidget {
   final String textInput;
-  final Function() onPressed;
+  final Function()? onPressed;
 
   const CustomGreyButton({
     Key? key,
@@ -32,6 +32,8 @@ class _CustomButtonState extends State<CustomGreyButton> {
           ),
         ),
         style: OutlinedButton.styleFrom(
+          foregroundColor: AppColors.inactiveGreyColorLight,
+          disabledForegroundColor: AppColors.inactiveGreyColorLight,
           side: BorderSide(
             width: 2,
             color: AppColors.inactiveGreyColorLight,

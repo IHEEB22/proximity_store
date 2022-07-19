@@ -24,12 +24,13 @@
 "findProduct": "Recherchez un produit ",
 "gladToMeetYou!": "Heureux de vous retrouver !",
 
-"e-mailAddress":"Adresse e-mail",
-"password":"Mot de passe",
+"e-mailAddress": "Adresse e-mail",
+"password": "Mot de passe",
 "forgotYourPassword?": "Mot de passe oublié ?",
 "continue": "Continuer",
-
-"youDoNotHaveAnAccount?":"Vous n’avez pas de compte ?",
-"signUp":"Inscrivez-vous"
+"byCreatingAnAccountYouAgreeTo": "En créant un compte vous acceptez de vous conformer aux Conditions Générales de ProximityStore.",
+"ComplyWithTheGeneralConditionsOfProximityStore.": "aux Conditions Générales de ProximityStore.",
+"youDoNotHaveAnAccount?": "Vous n’avez pas de compte ?",
+"or":"Ou"
 
 }

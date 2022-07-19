@@ -34,7 +34,7 @@ class _CustomBlueButtonState extends State<CustomBlueButton> {
         style: OutlinedButton.styleFrom(
           side: BorderSide(
             width: 2.w,
-            color: AppColors.transparentColor,
+            color: AppColors.deepBlueColor,
           ),
           backgroundColor: AppColors.deepBlueColor,
           shape: RoundedRectangleBorder(

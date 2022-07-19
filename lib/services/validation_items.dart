@@ -19,6 +19,17 @@ class ValidationItem {
       return null;
   }
 
+  String? validatePassword() {
+    int len = (val ?? '').length;
+
+    if ((val != null && val!.isEmpty)) {
+      return 'ce champ est obligatoire !';
+    } else if (len < 8) {
+      return 'mot de passe court';
+    } else
+      return null;
+  }
+
   String? validateTown({required BuildContext context, required String town}) {
     List<Prediction> predictionList = context.read<LocalistaionControllerprovider>().predictionList;
     bool exist = false;

@@ -4,11 +4,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:proximitystore/config/colors/app_colors.dart';
 import 'package:proximitystore/config/images/app_images.dart';
-import 'package:proximitystore/widgets/autocomplete_suggestions.dart';
 import 'package:proximitystore/widgets/background_image.dart';
 
+import '../../config/routes/routes.dart';
 import '../../providers/localistaion_controller_provider.dart';
-import '../../services/validation_items.dart';
 import '../../widgets/text_input_decoration.dart';
 
 class SearchProductPage extends StatelessWidget {
@@ -111,7 +110,7 @@ class SearchProductPage extends StatelessWidget {
                     children: <Widget>[
                       TextButton(
                         onPressed: () {
-                          //TODO navigate to login page
+                          Navigator.pushNamed(context, AppRoutes.loginPage);
                         },
                         child: Text.rich(
                           TextSpan(

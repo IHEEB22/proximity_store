@@ -8,8 +8,8 @@ import 'package:http/http.dart' as http;
 class LocalistaionControllerprovider with ChangeNotifier {
   final TextEditingController townTextFormFieldController = TextEditingController();
   final TextEditingController emailTextEditingController = TextEditingController();
-  bool _isTownHasFocus = false;
 
+  bool _isTownHasFocus = false;
   bool get isTownHasFocus => _isTownHasFocus;
   Placemark _pickPlaceMark = Placemark();
   Placemark get pickPlaceMark => _pickPlaceMark;
@@ -22,11 +22,13 @@ class LocalistaionControllerprovider with ChangeNotifier {
         headers: {"Content-Type": "application/json"},
         Uri.parse("http://mvs.bslmeiyu.com/api/v1/config/place-api-autocomplete?search_text=$text"),
       );
+
       Map<String, dynamic> data = jsonDecode(response.body);
       if (data['status'] == 'OK') {
         data['predictions'].forEach((prediction) => _predictionList.add(Prediction.fromJson(prediction)));
       }
     }
+    notifyListeners();
     return _predictionList;
   }
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:proximitystore/pages/authentification/login_page.dart';
+import 'package:proximitystore/pages/authentification/welcome_page.dart';
 import 'package:proximitystore/pages/pages.dart';
 
 class AppRoutes {
@@ -8,6 +9,8 @@ class AppRoutes {
   static const String geoLocationOutsideParisPage = '/geoLocationOutsideParisPage';
   static const String searchProductPage = '/searchProductPage';
   static const String loginPage = '/loginPage';
+  static const String welcomePage = '/welcomePage';
+
   static Route<dynamic> routeController(RouteSettings settings) {
     switch (settings.name) {
       case geoLocationOffPage:
@@ -20,6 +23,8 @@ class AppRoutes {
         return MaterialPageRoute(builder: (BuildContext context) => SearchProductPage());
       case loginPage:
         return MaterialPageRoute(builder: (BuildContext context) => LoginPage());
+      case welcomePage:
+        return MaterialPageRoute(builder: (BuildContext context) => WelcomePage());
       default:
         throw ('this route name does not exist');
     }

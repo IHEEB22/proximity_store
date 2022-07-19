@@ -28,7 +28,7 @@ class _AutoCompleteSuggestionsState extends State<AutoCompleteSuggestions> {
                   child: Column(
                     children: <Widget>[
                       Container(
-                        height: 0.16.sh,
+                        height: 0.1.sh,
                         child: ListView.builder(
                           physics: BouncingScrollPhysics(),
                           itemCount: snapshot.data?.length,

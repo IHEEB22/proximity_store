@@ -10,10 +10,12 @@ import 'package:proximitystore/config/routes/routes.dart';
 import 'package:proximitystore/pages/authentification/login_page.dart';
 import 'package:proximitystore/pages/geolocation/geolocation_off_page.dart';
 import 'package:proximitystore/pages/geolocation/geolocation_outside_paris_page.dart';
+import 'package:proximitystore/providers/authentification_provider.dart';
 import 'package:proximitystore/providers/localistaion_controller_provider.dart';
 import 'package:proximitystore/providers/sheet_provider.dart';
 import 'package:proximitystore/themes/app_themes.dart';
 
+import 'pages/authentification/welcome_page.dart';
 import 'pages/pages.dart';
 
 void main() async {
@@ -35,6 +37,9 @@ void main() async {
           ChangeNotifierProvider(
             create: (_) => LocalistaionControllerprovider(),
           ),
+          ChangeNotifierProvider(
+            create: (_) => AuthentificationProvider(),
+          ),
         ],
         child: App(),
       ),
@@ -52,7 +57,7 @@ class App extends StatelessWidget {
       splitScreenMode: true,
       builder: (BuildContext context, child) => MaterialApp(
         onGenerateRoute: AppRoutes.routeController,
-        initialRoute: AppRoutes.loginPage,
+        initialRoute: AppRoutes.welcomePage,
         localizationsDelegates: context.localizationDelegates,
         supportedLocales: context.supportedLocales,
         locale: context.locale,
@@ -60,7 +65,7 @@ class App extends StatelessWidget {
         theme: AppThemes.defaultAppTheme,
         darkTheme: AppThemes.defaultAppTheme,
         themeMode: ThemeMode.light,
-        home: LoginPage(),
+        home: WelcomePage(),
         builder: (context, widget) {
           return MediaQuery(
             data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),

@@ -15,7 +15,8 @@ class AuthentificationProvider with ChangeNotifier {
   TextEditingController get passwordTextEditingController => _passwordTextEditingController;
   bool get isButtonDisabled => _isButtonDisabled;
   bool get isPasswordVisible => _isPasswordVisible;
-
+  bool get isEmailValide => _isEmailValide;
+  bool get isPasswordValide => _isPasswordValide;
   void setEmailValide(String email) {
     String aux = ValidationItem(val: email).validateEmail() ?? "";
     if (aux == "") {

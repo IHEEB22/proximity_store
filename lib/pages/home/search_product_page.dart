@@ -110,7 +110,7 @@ class SearchProductPage extends StatelessWidget {
                     children: <Widget>[
                       TextButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, AppRoutes.loginPage);
+                          Navigator.pushNamed(context, AppRoutes.welcomePage);
                         },
                         child: Text.rich(
                           TextSpan(

@@ -8,6 +8,7 @@ import 'package:proximitystore/config/colors/app_colors.dart';
 import 'package:proximitystore/config/constants/app_dimensions.dart';
 import 'package:proximitystore/config/routes/routes.dart';
 import 'package:proximitystore/pages/authentification/login_page.dart';
+import 'package:proximitystore/pages/authentification/reset_password.dart';
 import 'package:proximitystore/pages/geolocation/geolocation_off_page.dart';
 import 'package:proximitystore/pages/geolocation/geolocation_outside_paris_page.dart';
 import 'package:proximitystore/providers/authentification_provider.dart';
@@ -57,15 +58,20 @@ class App extends StatelessWidget {
       splitScreenMode: true,
       builder: (BuildContext context, child) => MaterialApp(
         onGenerateRoute: AppRoutes.routeController,
-        initialRoute: AppRoutes.welcomePage,
+        initialRoute: AppRoutes.resetPassword,
         localizationsDelegates: context.localizationDelegates,
         supportedLocales: context.supportedLocales,
         locale: context.locale,
         debugShowCheckedModeBanner: false,
+        // theme: new ThemeData(
+        //   pageTransitionsTheme: PageTransitionsTheme(builders: {
+        //     TargetPlatform.android: CupertinoPageTransitionsBuilder(),
+        //   }),),
         theme: AppThemes.defaultAppTheme,
+
         darkTheme: AppThemes.defaultAppTheme,
         themeMode: ThemeMode.light,
-        home: WelcomePage(),
+        home: ResetPassword(),
         builder: (context, widget) {
           return MediaQuery(
             data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),

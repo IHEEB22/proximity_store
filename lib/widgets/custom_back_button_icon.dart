@@ -12,7 +12,7 @@ class CustomBackButtonIcon extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.only(
           top: 0.028.sh,
-          left: 0.042.sw,
+          left: 0.025.sw,
         ),
         child: Image.asset(
           AppImages.backIcon,

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:proximitystore/config/colors/app_colors.dart';
+import 'package:proximitystore/config/routes/routes.dart';
 import 'package:proximitystore/providers/authentification_provider.dart';
 import 'package:proximitystore/widgets/widgets.dart';
 
@@ -41,7 +42,8 @@ class _LoginPageState extends State<LoginPage> {
                             child: Text(
                               'gladToMeetYou!'.tr(),
                               style: Theme.of(context).textTheme.headline2?.copyWith(
-                                    height: 1.4,
+                                    fontWeight: FontWeight.w800,
+                                    fontSize: 28.sp,
                                   ),
                             ),
                           ),
@@ -140,7 +142,10 @@ class _LoginPageState extends State<LoginPage> {
                           Padding(
                             padding: EdgeInsets.only(left: 0.658.sw, right: 0.082),
                             child: TextButton(
-                              onPressed: () {},
+                              onPressed: () => Navigator.popAndPushNamed(
+                                context,
+                                AppRoutes.forgetPassword,
+                              ),
                               child: Text(
                                 'forgotYourPassword?'.tr(),
                                 style: Theme.of(context).textTheme.bodyText2?.copyWith(
@@ -154,7 +159,7 @@ class _LoginPageState extends State<LoginPage> {
 
                           0.198.sh.verticalSpace,
 
-                          (context.watch<AuthentificationProvider>().isButtonDisabled)
+                          context.watch<AuthentificationProvider>().isButtonDisabled
                               ? Padding(
                                   padding: EdgeInsets.symmetric(horizontal: 0.043.sw),
                                   child: SizedBox(
@@ -189,7 +194,8 @@ class _LoginPageState extends State<LoginPage> {
                                 child: Text(
                                   'signUp'.tr(),
                                   style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                                        fontSize: 16.sp,
+                                        fontSize: 15.sp,
+                                        color: AppColors.deepBlueColor,
                                         decoration: TextDecoration.underline,
                                         letterSpacing: 0.2,
                                       ),

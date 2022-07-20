@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+import 'package:proximitystore/config/colors/app_colors.dart';
 import 'package:proximitystore/widgets/background_image.dart';
 
 import '../../providers/authentification_provider.dart';
@@ -37,10 +38,10 @@ class ResetPassword extends StatelessWidget {
                             0.07.sw,
                             0.068.sh,
                             0.38.sw,
-                            0.079.sh,
+                            0.027.sh,
                           ),
                           child: Text(
-                            'doYouForgotYourPassword?'.tr(),
+                            'resetYourPassword'.tr(),
                             style: Theme.of(context).textTheme.bodyText1?.copyWith(
                                   fontWeight: FontWeight.w800,
                                   fontSize: 28.sp,
@@ -50,7 +51,7 @@ class ResetPassword extends StatelessWidget {
                         Padding(
                           padding: EdgeInsets.only(left: 0.07.sw, right: 0.19.sw),
                           child: Text(
-                            'enterYourEmailAddressToReceiveACodeToResetYourPassword.'.tr(),
+                            'enterYourNewPassword'.tr(),
                             style: Theme.of(context).textTheme.bodyText2?.copyWith(
                                   fontFamily: 'Montserrat',
                                   fontSize: 16.sp,
@@ -58,14 +59,14 @@ class ResetPassword extends StatelessWidget {
                                 ),
                           ),
                         ),
-                        0.093.sh.verticalSpace,
+                        0.137.sh.verticalSpace,
                         Padding(
                           padding: EdgeInsets.only(
                             left: 0.082.sw,
                             bottom: 0.0055.sh,
                           ),
                           child: Text(
-                            'e-mailAddress'.tr(),
+                            'password'.tr(),
                             style: Theme.of(context).textTheme.headline3?.copyWith(
                                   fontFamily: 'Montserrat',
                                   fontSize: 12.sp,
@@ -85,20 +86,75 @@ class ResetPassword extends StatelessWidget {
                                   fontWeight: FontWeight.w500,
                                   fontFamily: 'Montserrat',
                                 ),
+                            obscureText: !context.watch<AuthentificationProvider>().isPasswordVisible,
                             keyboardType: TextInputType.emailAddress,
-                            controller: context.read<AuthentificationProvider>().emailTextEditingController,
+                            controller: context.read<AuthentificationProvider>().passwordTextEditingController,
                             autovalidateMode: AutovalidateMode.onUserInteraction,
                             decoration: textInputDecoration.copyWith(
-                              hintText: 'e-mail',
+                              hintText: 'Mot de passe',
                             ),
-                            validator: (email) => ValidationItem(val: email).validateEmail(),
-                            onChanged: (email) {
-                              context.read<AuthentificationProvider>().setEmailValide(email);
+                            validator: (email) => ValidationItem(val: email).validatePassword(),
+                            onChanged: (password) {
+                              context.read<AuthentificationProvider>().setPasswordValide(password);
                             },
                           ),
                         ),
-                        0.323.sh.verticalSpace,
-                        context.watch<AuthentificationProvider>().isEmailValide
+                        0.0098.sh.verticalSpace,
+                        Padding(
+                          padding: EdgeInsets.only(
+                            left: 0.64.sw,
+                          ),
+                          child: Text(
+                            '8CharactersMinimum'.tr(),
+                            style: Theme.of(context).textTheme.headline6?.copyWith(
+                                  fontFamily: 'Montserrat',
+                                  fontSize: 12.sp,
+                                ),
+                          ),
+                        ),
+                        0.027.sh.verticalSpace,
+                        Padding(
+                          padding: EdgeInsets.only(
+                            left: 0.082.sw,
+                            bottom: 0.0055.sh,
+                          ),
+                          child: Text(
+                            'repeatPassword'.tr(),
+                            style: Theme.of(context).textTheme.headline3?.copyWith(
+                                  fontFamily: 'Montserrat',
+                                  fontSize: 12.sp,
+                                  fontWeight: FontWeight.w700,
+                                  letterSpacing: 0.4,
+                                ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 0.082.sw,
+                          ),
+                          child: TextFormField(
+                            style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                                  height: 1.2,
+                                  fontSize: 16.sp,
+                                  fontWeight: FontWeight.w500,
+                                  fontFamily: 'Montserrat',
+                                ),
+                            obscureText: !context.watch<AuthentificationProvider>().isPasswordVisible,
+                            keyboardType: TextInputType.emailAddress,
+                            controller: context.read<AuthentificationProvider>().passwordTextEditingController,
+                            autovalidateMode: AutovalidateMode.onUserInteraction,
+                            decoration: textInputDecoration.copyWith(
+                              hintText: 'passwordRepetition',
+                            ),
+                            validator: (email) => ValidationItem(val: email).validatePassword(),
+                            onChanged: (password) {
+                              context.read<AuthentificationProvider>().setPasswordValide(password);
+                              context.read<AuthentificationProvider>().setIsButtonDisabled();
+                            },
+                          ),
+                        ),
+                        0.1884.sh.verticalSpace,
+                        context.watch<AuthentificationProvider>().isPasswordValide
                             ? Column(
                                 children: [
                                   0.032.sh.verticalSpace,

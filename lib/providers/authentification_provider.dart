@@ -8,11 +8,11 @@ class AuthentificationProvider with ChangeNotifier {
   bool _isPasswordValide = false;
   bool _isPasswordVisible = false;
 
-  TextEditingController _emailTextEditingController = TextEditingController();
-  TextEditingController _passwordTextEditingController = TextEditingController();
+  TextEditingController? _emailTextEditingController = TextEditingController();
+  TextEditingController? _passwordTextEditingController = TextEditingController();
 
-  TextEditingController get emailTextEditingController => _emailTextEditingController;
-  TextEditingController get passwordTextEditingController => _passwordTextEditingController;
+  TextEditingController? get emailTextEditingController => _emailTextEditingController;
+  TextEditingController? get passwordTextEditingController => _passwordTextEditingController;
   bool get isButtonDisabled => _isButtonDisabled;
   bool get isPasswordVisible => _isPasswordVisible;
   bool get isEmailValide => _isEmailValide;
@@ -45,5 +45,10 @@ class AuthentificationProvider with ChangeNotifier {
   void setIsPasswordVisible() {
     _isPasswordVisible = !_isPasswordVisible;
     notifyListeners();
+  }
+
+  void disposeControllers() {
+    _emailTextEditingController = null;
+    _passwordTextEditingController = null;
   }
 }

@@ -18,8 +18,11 @@ var textInputDecoration = InputDecoration(
     fontWeight: FontWeight.w400,
     letterSpacing: 0.2,
   ),
-  contentPadding: EdgeInsets.all(12.0),
+  contentPadding: EdgeInsets.all(13.5.sm),
   enabledBorder: OutlineInputBorder(
+    borderRadius: BorderRadius.all(
+      Radius.circular(8.sm),
+    ),
     borderSide: BorderSide(
       color: AppColors.blueGreyColor,
       width: 1,

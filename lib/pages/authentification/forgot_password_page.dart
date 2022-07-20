@@ -35,7 +35,7 @@ class ForgetPassword extends StatelessWidget {
                         0.07.sw,
                         0.068.sh,
                         0.38.sw,
-                        0.079.sh,
+                        0.027.sh,
                       ),
                       child: Text(
                         'doYouForgotYourPassword?'.tr(),
@@ -87,7 +87,7 @@ class ForgetPassword extends StatelessWidget {
                         controller: context.read<AuthentificationProvider>().emailTextEditingController,
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         decoration: textInputDecoration.copyWith(
-                          hintText: 'e-mail',
+                          hintText: 'e-mailAddress',
                         ),
                         validator: (email) => ValidationItem(val: email).validateEmail(),
                         onChanged: (email) {

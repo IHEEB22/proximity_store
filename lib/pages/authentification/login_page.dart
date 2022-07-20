@@ -16,9 +16,9 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
   @override
   Widget build(BuildContext context) {
+    context.read<AuthentificationProvider>().disposeControllers();
     return Consumer<AuthentificationProvider>(
       builder: (context, value, child) => Scaffold(
         body: SafeArea(
@@ -75,10 +75,10 @@ class _LoginPageState extends State<LoginPage> {
                                     fontFamily: 'Montserrat',
                                   ),
                               keyboardType: TextInputType.emailAddress,
-                              controller: context.read<AuthentificationProvider>().emailTextEditingController,
+                              controller: context.watch<AuthentificationProvider>().emailTextEditingController,
                               autovalidateMode: AutovalidateMode.onUserInteraction,
                               decoration: textInputDecoration.copyWith(
-                                hintText: 'e-mail',
+                                hintText: 'e-mailAddress'.tr(),
                               ),
                               validator: (email) => ValidationItem(val: email).validateEmail(),
                               onChanged: (email) {
@@ -119,15 +119,20 @@ class _LoginPageState extends State<LoginPage> {
                                   ),
                               obscureText: !context.watch<AuthentificationProvider>().isPasswordVisible,
                               keyboardType: TextInputType.emailAddress,
-                              controller: context.read<AuthentificationProvider>().passwordTextEditingController,
+                              controller: context.watch<AuthentificationProvider>().passwordTextEditingController,
                               autovalidateMode: AutovalidateMode.onUserInteraction,
                               decoration: textInputDecoration.copyWith(
                                 suffixIcon: GestureDetector(
                                   onTap: () => context.read<AuthentificationProvider>().setIsPasswordVisible(),
-                                  child: Icon(
-                                    Icons.visibility,
-                                    color: AppColors.deepBlueColor,
-                                  ),
+                                  child: !(context.watch<AuthentificationProvider>().isPasswordVisible)
+                                      ? Icon(
+                                          Icons.visibility,
+                                          color: AppColors.deepBlueColor,
+                                        )
+                                      : Icon(
+                                          Icons.visibility_off,
+                                          color: AppColors.deepBlueColor,
+                                        ),
                                 ),
                                 hintText: 'Mot de passe',
                               ),
@@ -138,9 +143,11 @@ class _LoginPageState extends State<LoginPage> {
                               },
                             ),
                           ),
-                          0.001.sh.verticalSpace,
+                          // 0.0098.sh.verticalSpace,
                           Padding(
-                            padding: EdgeInsets.only(left: 0.658.sw, right: 0.082),
+                            padding: EdgeInsets.only(
+                              left: 0.658.sw,
+                            ),
                             child: TextButton(
                               onPressed: () => Navigator.popAndPushNamed(
                                 context,
@@ -178,7 +185,7 @@ class _LoginPageState extends State<LoginPage> {
                                         textInput: 'continue'.tr(),
                                       )),
                                 ),
-                          0.022.sh.verticalSpace,
+                          0.0022.sh.verticalSpace,
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -189,8 +196,9 @@ class _LoginPageState extends State<LoginPage> {
                                     .bodySmall
                                     ?.copyWith(fontSize: 14.sp, color: AppColors.deepBlueColor),
                               ),
-                              TextButton(
-                                onPressed: () {},
+                              0.01.sw.horizontalSpace,
+                              GestureDetector(
+                                onTap: () {},
                                 child: Text(
                                   'signUp'.tr(),
                                   style: Theme.of(context).textTheme.bodyLarge?.copyWith(

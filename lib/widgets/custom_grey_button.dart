@@ -32,8 +32,8 @@ class _CustomButtonState extends State<CustomGreyButton> {
           ),
         ),
         style: OutlinedButton.styleFrom(
-          foregroundColor: AppColors.inactiveGreyColorLight,
-          disabledForegroundColor: AppColors.inactiveGreyColorLight,
+          // foregroundColor: AppColors.inactiveGreyColorLight,
+          // disabledForegroundColor: AppColors.inactiveGreyColorLight,
           side: BorderSide(
             width: 2,
             color: AppColors.inactiveGreyColorLight,

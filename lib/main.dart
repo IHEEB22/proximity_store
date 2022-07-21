@@ -7,8 +7,6 @@ import 'package:proximitystore/config/colors/app_colors.dart';
 
 import 'package:proximitystore/config/constants/app_dimensions.dart';
 import 'package:proximitystore/config/routes/routes.dart';
-import 'package:proximitystore/pages/authentification/forgot_password_page.dart';
-import 'package:proximitystore/pages/authentification/login_page.dart';
 import 'package:proximitystore/pages/authentification/welcome_page.dart';
 import 'package:proximitystore/providers/authentification_provider.dart';
 import 'package:proximitystore/providers/localistaion_controller_provider.dart';
@@ -59,12 +57,7 @@ class App extends StatelessWidget {
         supportedLocales: context.supportedLocales,
         locale: context.locale,
         debugShowCheckedModeBanner: false,
-        // theme: new ThemeData(
-        //   pageTransitionsTheme: PageTransitionsTheme(builders: {
-        //     TargetPlatform.android: CupertinoPageTransitionsBuilder(),
-        //   }),),
         theme: AppThemes.defaultAppTheme,
-
         darkTheme: AppThemes.defaultAppTheme,
         themeMode: ThemeMode.light,
         home: WelcomePage(),

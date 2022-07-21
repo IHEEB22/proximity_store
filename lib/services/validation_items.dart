@@ -11,7 +11,7 @@ class ValidationItem {
     bool emailValid =
         RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(val ?? "Not email");
 
-    if ((val != null && val!.isEmpty)) {
+    if ((val == null || (val ?? "").isEmpty)) {
       return 'ce champ est obligatoire !';
     } else if (!emailValid) {
       return 'email invalide';
@@ -22,7 +22,7 @@ class ValidationItem {
   String? validatePassword() {
     int len = (val ?? '').length;
 
-    if ((val != null && val!.isEmpty)) {
+    if ((val == null || (val ?? "").isEmpty)) {
       return 'ce champ est obligatoire !';
     } else if (len < 8) {
       return 'mot de passe court';

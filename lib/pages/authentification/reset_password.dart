@@ -1,10 +1,14 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:proximitystore/config/colors/app_colors.dart';
+import 'package:proximitystore/utils/input_formatter.dart';
 import 'package:proximitystore/widgets/background_image.dart';
 
+import '../../config/images/app_images.dart';
+import '../../config/routes/routes.dart';
 import '../../providers/authentification_provider.dart';
 import '../../services/validation_items.dart';
 import '../../widgets/custom_back_button_icon.dart';
@@ -28,7 +32,23 @@ class ResetPassword extends StatelessWidget {
                 child: Wrap(
                   crossAxisAlignment: WrapCrossAlignment.start,
                   children: <Widget>[
-                    CustomBackButtonIcon(),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.popAndPushNamed(context, AppRoutes.forgetPassword);
+                        context.read<AuthentificationProvider>().disposeControllersResetpasswordppage();
+                      },
+                      child: Padding(
+                        padding: EdgeInsets.only(
+                          top: 0.028.sh,
+                          left: 0.025.sw,
+                        ),
+                        child: Image.asset(
+                          AppImages.backIcon,
+                          width: 0.064.sw,
+                          height: 0.029.sh,
+                        ),
+                      ),
+                    ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -37,25 +57,26 @@ class ResetPassword extends StatelessWidget {
                           padding: EdgeInsets.fromLTRB(
                             0.07.sw,
                             0.068.sh,
-                            0.38.sw,
-                            0.027.sh,
+                            0.349.sw,
+                            0.04125.sh,
                           ),
                           child: Text(
+                            maxLines: 2,
                             'resetYourPassword'.tr(),
-                            style: Theme.of(context).textTheme.bodyText1?.copyWith(
+                            style: Theme.of(context).textTheme.headline2?.copyWith(
                                   fontWeight: FontWeight.w800,
                                   fontSize: 28.sp,
+                                  height: 1.2,
                                 ),
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.only(left: 0.07.sw, right: 0.19.sw),
+                          padding: EdgeInsets.only(left: 0.07.sw, right: 0.15.sw),
                           child: Text(
                             'enterYourNewPassword'.tr(),
                             style: Theme.of(context).textTheme.bodyText2?.copyWith(
                                   fontFamily: 'Montserrat',
                                   fontSize: 16.sp,
-                                  height: 1.4.sp,
                                 ),
                           ),
                         ),
@@ -80,6 +101,7 @@ class ResetPassword extends StatelessWidget {
                             horizontal: 0.082.sw,
                           ),
                           child: TextFormField(
+                            inputFormatters: InputFormatter.textFieldFormatter,
                             style: Theme.of(context).textTheme.bodyText2?.copyWith(
                                   height: 1.2,
                                   fontSize: 16.sp,
@@ -88,23 +110,38 @@ class ResetPassword extends StatelessWidget {
                                 ),
                             obscureText: !context.watch<AuthentificationProvider>().isPasswordVisible,
                             keyboardType: TextInputType.emailAddress,
-                            controller: context.read<AuthentificationProvider>().passwordTextEditingController,
+                            controller: context.watch<AuthentificationProvider>().passwordTextEditingController,
                             autovalidateMode: AutovalidateMode.onUserInteraction,
                             decoration: textInputDecoration.copyWith(
                               hintText: 'Mot de passe',
+                              suffixIcon: GestureDetector(
+                                onTap: () => context.read<AuthentificationProvider>().setIsPasswordVisible(),
+                                child: !(context.watch<AuthentificationProvider>().isPasswordVisible)
+                                    ? Icon(
+                                        Icons.visibility,
+                                        color: AppColors.deepBlueColor,
+                                      )
+                                    : Icon(
+                                        Icons.visibility_off,
+                                        color: AppColors.deepBlueColor,
+                                      ),
+                              ),
                             ),
                             validator: (email) => ValidationItem(val: email).validatePassword(),
                             onChanged: (password) {
                               context.read<AuthentificationProvider>().setPasswordValide(password);
+                              context.read<AuthentificationProvider>().setIsReapetPasswordEqualpassword();
                             },
                           ),
                         ),
-                        0.0098.sh.verticalSpace,
+                        0.012.sh.verticalSpace,
                         Padding(
                           padding: EdgeInsets.only(
-                            left: 0.64.sw,
+                            left: 0.636.sw,
+                            right: 0.082.sw,
                           ),
                           child: Text(
+                            maxLines: 1,
                             '8CharactersMinimum'.tr(),
                             style: Theme.of(context).textTheme.headline6?.copyWith(
                                   fontFamily: 'Montserrat',
@@ -112,7 +149,7 @@ class ResetPassword extends StatelessWidget {
                                 ),
                           ),
                         ),
-                        0.027.sh.verticalSpace,
+                        0.02894.sh.verticalSpace,
                         Padding(
                           padding: EdgeInsets.only(
                             left: 0.082.sw,
@@ -139,22 +176,36 @@ class ResetPassword extends StatelessWidget {
                                   fontWeight: FontWeight.w500,
                                   fontFamily: 'Montserrat',
                                 ),
-                            obscureText: !context.watch<AuthentificationProvider>().isPasswordVisible,
+                            inputFormatters: InputFormatter.textFieldFormatter,
+                            obscureText: !context.watch<AuthentificationProvider>().isRepeatPasswordVisible,
                             keyboardType: TextInputType.emailAddress,
-                            controller: context.read<AuthentificationProvider>().passwordTextEditingController,
+                            controller: context.watch<AuthentificationProvider>().repeatPasswordTextEditingController,
                             autovalidateMode: AutovalidateMode.onUserInteraction,
                             decoration: textInputDecoration.copyWith(
-                              hintText: 'passwordRepetition',
+                              suffixIcon: GestureDetector(
+                                onTap: () => context.read<AuthentificationProvider>().setIsRepeatPasswordVisible(),
+                                child: !(context.watch<AuthentificationProvider>().isRepeatPasswordVisible)
+                                    ? Icon(
+                                        Icons.visibility,
+                                        color: AppColors.deepBlueColor,
+                                      )
+                                    : Icon(
+                                        Icons.visibility_off,
+                                        color: AppColors.deepBlueColor,
+                                      ),
+                              ),
+                              hintText: 'passwordRepetition'.tr(),
                             ),
                             validator: (email) => ValidationItem(val: email).validatePassword(),
                             onChanged: (password) {
                               context.read<AuthentificationProvider>().setPasswordValide(password);
-                              context.read<AuthentificationProvider>().setIsButtonDisabled();
+                              context.read<AuthentificationProvider>().setIsReapetPasswordEqualpassword();
                             },
                           ),
                         ),
                         0.1884.sh.verticalSpace,
-                        context.watch<AuthentificationProvider>().isPasswordValide
+                        context.watch<AuthentificationProvider>().isPasswordValide &&
+                                context.watch<AuthentificationProvider>().isReapetPasswordEqualpassword
                             ? Column(
                                 children: [
                                   0.032.sh.verticalSpace,

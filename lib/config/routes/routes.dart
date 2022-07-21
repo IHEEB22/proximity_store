@@ -4,6 +4,7 @@ import 'package:proximitystore/pages/authentification/login_page.dart';
 import 'package:proximitystore/pages/authentification/reset_password.dart';
 import 'package:proximitystore/pages/authentification/welcome_page.dart';
 import 'package:proximitystore/pages/pages.dart';
+import 'package:proximitystore/widgets/custom_page_route.dart';
 
 class AppRoutes {
   static const String geoLocationOffPage = '/geoLocationOffPage';
@@ -18,21 +19,21 @@ class AppRoutes {
   static Route<dynamic> routeController(RouteSettings settings) {
     switch (settings.name) {
       case geoLocationOffPage:
-        return MaterialPageRoute(builder: (BuildContext context) => GeoLocationOffPage());
+        return CustomPageRoute(Route: GeoLocationOffPage(), settings: settings);
       case addLocalisationAddressPage:
-        return MaterialPageRoute(builder: (BuildContext context) => AddLocalisationAddressPage());
+        return CustomPageRoute(Route: AddLocalisationAddressPage(), settings: settings);
       case geoLocationOutsideParisPage:
-        return MaterialPageRoute(builder: (BuildContext context) => GeolocationOutsideParisPage());
+        return CustomPageRoute(Route: GeolocationOutsideParisPage(), settings: settings);
       case searchProductPage:
-        return MaterialPageRoute(builder: (BuildContext context) => SearchProductPage());
+        return CustomPageRoute(Route: SearchProductPage(), settings: settings);
       case loginPage:
-        return MaterialPageRoute(builder: (BuildContext context) => LoginPage());
+        return CustomPageRoute(Route: LoginPage(), settings: settings);
       case welcomePage:
-        return MaterialPageRoute(builder: (BuildContext context) => WelcomePage());
+        return CustomPageRoute(Route: WelcomePage(), settings: settings);
       case forgetPassword:
-        return MaterialPageRoute(builder: (BuildContext context) => ForgetPassword());
+        return CustomPageRoute(Route: ForgetPassword(), settings: settings);
       case resetPassword:
-        return MaterialPageRoute(builder: (BuildContext context) => ResetPassword());
+        return CustomPageRoute(Route: ResetPassword(), settings: settings);
       default:
         throw ('this route name does not exist');
     }

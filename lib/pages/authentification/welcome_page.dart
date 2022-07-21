@@ -64,16 +64,23 @@ class WelcomePage extends StatelessWidget {
                             ),
                       ),
                     ),
-                    0.01.sh.verticalSpace,
+                    0.004.sh.verticalSpace,
                     Padding(
                       padding: EdgeInsets.only(left: 0.0453.sw),
-                      child: Text(
-                        'toComplyWithTheGeneralConditionsOfProximityStore.'.tr(),
-                        style: Theme.of(context).textTheme.headline6?.copyWith(
-                              fontFamily: 'Montserrat',
-                              fontSize: 12.sp,
-                              decoration: TextDecoration.underline,
-                            ),
+                      child: TextButton(
+                        onPressed: () {},
+                        style: TextButton.styleFrom(
+                            padding: EdgeInsets.zero,
+                            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                            alignment: Alignment.topCenter),
+                        child: Text(
+                          'toComplyWithTheGeneralConditionsOfProximityStore.'.tr(),
+                          style: Theme.of(context).textTheme.headline6?.copyWith(
+                                fontFamily: 'Montserrat',
+                                decoration: TextDecoration.underline,
+                                fontSize: 12.sp,
+                              ),
+                        ),
                       ),
                     ),
                     0.21.sh.verticalSpace,

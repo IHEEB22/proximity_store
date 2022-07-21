@@ -14,6 +14,8 @@ import 'package:proximitystore/widgets/autocomplete_suggestions.dart';
 import 'package:proximitystore/widgets/custom_blue_button.dart';
 import 'package:proximitystore/widgets/text_input_decoration.dart';
 
+import '../utils/input_formatter.dart';
+
 class SheetGeolocalisationOutsideParis extends StatefulWidget {
   @override
   State<SheetGeolocalisationOutsideParis> createState() => _SheetGeolocalisationOutsideParisState();
@@ -67,8 +69,9 @@ class _SheetGeolocalisationOutsideParisState extends State<SheetGeolocalisationO
                         fontWeight: FontWeight.w500,
                         fontFamily: 'Montserrat',
                       ),
+                  inputFormatters: InputFormatter.textFieldFormatter,
                   keyboardType: TextInputType.emailAddress,
-                  controller: context.read<LocalistaionControllerprovider>().emailTextEditingController,
+                  controller: context.watch<LocalistaionControllerprovider>().emailTextEditingController,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   decoration: textInputDecoration.copyWith(
                     hintText: 'e-mail',
@@ -105,8 +108,9 @@ class _SheetGeolocalisationOutsideParisState extends State<SheetGeolocalisationO
                           fontWeight: FontWeight.w500,
                           fontFamily: 'Montserrat',
                         ),
+                    inputFormatters: InputFormatter.textFieldFormatter,
                     keyboardType: TextInputType.emailAddress,
-                    controller: context.read<LocalistaionControllerprovider>().townTextFormFieldController,
+                    controller: context.watch<LocalistaionControllerprovider>().townTextFormFieldController,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     decoration: textInputDecoration.copyWith(
                       hintText: 'town'.tr(),

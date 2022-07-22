@@ -1,17 +1,14 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:proximitystore/config/colors/app_colors.dart';
-import 'package:proximitystore/utils/input_formatter.dart';
 import 'package:proximitystore/widgets/background_image.dart';
 
 import '../../config/images/app_images.dart';
 import '../../config/routes/routes.dart';
 import '../../providers/authentification_provider.dart';
 import '../../services/validation_items.dart';
-import '../../widgets/custom_back_button_icon.dart';
 import '../../widgets/custom_blue_button.dart';
 import '../../widgets/custom_grey_button.dart';
 import '../../widgets/text_input_decoration.dart';
@@ -55,28 +52,28 @@ class ResetPassword extends StatelessWidget {
                       children: <Widget>[
                         Padding(
                           padding: EdgeInsets.fromLTRB(
-                            0.07.sw,
+                            0.0853333.sw,
                             0.068.sh,
-                            0.349.sw,
+                            0.31.sw,
                             0.04125.sh,
                           ),
                           child: Text(
-                            maxLines: 2,
                             'resetYourPassword'.tr(),
                             style: Theme.of(context).textTheme.headline2?.copyWith(
-                                  fontWeight: FontWeight.w800,
-                                  fontSize: 28.sp,
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 26.sp,
                                   height: 1.2,
                                 ),
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.only(left: 0.07.sw, right: 0.15.sw),
+                          padding: EdgeInsets.only(left: 0.0853333.sw, right: 0.099.sw),
                           child: Text(
                             'enterYourNewPassword'.tr(),
                             style: Theme.of(context).textTheme.bodyText2?.copyWith(
                                   fontFamily: 'Montserrat',
-                                  fontSize: 16.sp,
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 14.sp,
                                 ),
                           ),
                         ),
@@ -101,7 +98,7 @@ class ResetPassword extends StatelessWidget {
                             horizontal: 0.082.sw,
                           ),
                           child: TextFormField(
-                            inputFormatters: InputFormatter.textFieldFormatter,
+                            // inputFormatters: InputFormatter.textFieldFormatter,
                             style: Theme.of(context).textTheme.bodyText2?.copyWith(
                                   height: 1.2,
                                   fontSize: 16.sp,
@@ -137,16 +134,17 @@ class ResetPassword extends StatelessWidget {
                         0.012.sh.verticalSpace,
                         Padding(
                           padding: EdgeInsets.only(
-                            left: 0.636.sw,
                             right: 0.082.sw,
                           ),
-                          child: Text(
-                            maxLines: 1,
-                            '8CharactersMinimum'.tr(),
-                            style: Theme.of(context).textTheme.headline6?.copyWith(
-                                  fontFamily: 'Montserrat',
-                                  fontSize: 12.sp,
-                                ),
+                          child: Align(
+                            alignment: Alignment.topRight,
+                            child: Text(
+                              '8CharactersMinimum'.tr(),
+                              style: Theme.of(context).textTheme.headline6?.copyWith(
+                                    fontFamily: 'Montserrat',
+                                    fontSize: 12.sp,
+                                  ),
+                            ),
                           ),
                         ),
                         0.02894.sh.verticalSpace,
@@ -176,7 +174,7 @@ class ResetPassword extends StatelessWidget {
                                   fontWeight: FontWeight.w500,
                                   fontFamily: 'Montserrat',
                                 ),
-                            inputFormatters: InputFormatter.textFieldFormatter,
+                            // inputFormatters: InputFormatter.textFieldFormatter,
                             obscureText: !context.watch<AuthentificationProvider>().isRepeatPasswordVisible,
                             keyboardType: TextInputType.emailAddress,
                             controller: context.watch<AuthentificationProvider>().repeatPasswordTextEditingController,

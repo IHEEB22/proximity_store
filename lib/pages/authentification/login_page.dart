@@ -76,7 +76,7 @@ class _LoginPageState extends State<LoginPage> {
                                     fontWeight: FontWeight.w500,
                                     fontFamily: 'Montserrat',
                                   ),
-                              inputFormatters: InputFormatter.textFieldFormatter,
+                              // inputFormatters: InputFormatter.textFieldFormatter,
                               keyboardType: TextInputType.emailAddress,
                               controller: context.watch<AuthentificationProvider>().emailTextEditingController,
                               autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -117,7 +117,9 @@ class _LoginPageState extends State<LoginPage> {
                                     fontWeight: FontWeight.w500,
                                     fontFamily: 'Montserrat',
                                   ),
-                              inputFormatters: InputFormatter.textFieldFormatter,
+                              inputFormatters: [
+                                InputFormatter().textFieldFormatter,
+                              ],
                               obscureText: !context.watch<AuthentificationProvider>().isPasswordVisible,
                               keyboardType: TextInputType.emailAddress,
                               controller: context.watch<AuthentificationProvider>().passwordTextEditingController,
@@ -145,7 +147,7 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsets.only(right: 0.065.sw, left: 0.655.sw),
+                            padding: EdgeInsets.only(right: 0.065.sw),
                             child: TextButton(
                               onPressed: () => Navigator.popAndPushNamed(
                                 context,

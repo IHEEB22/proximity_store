@@ -48,24 +48,23 @@ class ForgetPassword extends StatelessWidget {
                       children: <Widget>[
                         Padding(
                           padding: EdgeInsets.fromLTRB(
-                            0.07.sw,
+                            0.0826.sw,
                             0.056.sh,
-                            0.384.sw,
+                            0.28.sw,
                             0.038.sh,
                           ),
                           child: Text(
-                            maxLines: 2,
                             'doYouForgotYourPassword?'.tr(),
                             style: Theme.of(context).textTheme.headline2?.copyWith(
                                   fontWeight: FontWeight.w800,
-                                  fontSize: 28.sp,
+                                  fontSize: 25.sp,
+                                  height: 1.4,
                                 ),
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.only(left: 0.07.sw, right: 0.2.sw),
+                          padding: EdgeInsets.only(left: 0.0826.sw, right: 0.099.sw),
                           child: Text(
-                            maxLines: 3,
                             'enterYourEmailAddressToReceiveACodeToResetYourPassword.'.tr(),
                             style: Theme.of(context).textTheme.bodyText2?.copyWith(
                                   fontFamily: 'Montserrat',
@@ -102,7 +101,7 @@ class ForgetPassword extends StatelessWidget {
                                   fontWeight: FontWeight.w500,
                                   fontFamily: 'Montserrat',
                                 ),
-                            inputFormatters: InputFormatter.textFieldFormatter,
+                            // inputFormatters: InputFormatter.textFieldFormatter,
                             keyboardType: TextInputType.emailAddress,
                             controller: context.watch<AuthentificationProvider>().emailTextEditingController,
                             autovalidateMode: AutovalidateMode.onUserInteraction,

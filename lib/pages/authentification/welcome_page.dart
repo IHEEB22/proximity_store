@@ -1,6 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:proximitystore/config/colors/app_colors.dart';
 import 'package:proximitystore/config/routes/routes.dart';
 import 'package:proximitystore/widgets/background_image.dart';
 import 'package:proximitystore/widgets/custom_blue_button.dart';
@@ -55,31 +57,30 @@ class WelcomePage extends StatelessWidget {
                     ),
                     0.116.sh.verticalSpace,
                     Padding(
-                      padding: EdgeInsets.only(left: 0.0453.sw, right: 0.149.sw),
-                      child: Text(
-                        'byCreatingAnAccountYouAgree'.tr(),
-                        style: Theme.of(context).textTheme.headline6?.copyWith(
-                              fontFamily: 'Montserrat',
-                              fontSize: 12.sp,
-                            ),
-                      ),
-                    ),
-                    0.004.sh.verticalSpace,
-                    Padding(
                       padding: EdgeInsets.only(left: 0.0453.sw),
-                      child: TextButton(
-                        onPressed: () {},
-                        style: TextButton.styleFrom(
-                            padding: EdgeInsets.zero,
-                            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                            alignment: Alignment.topCenter),
-                        child: Text(
-                          'toComplyWithTheGeneralConditionsOfProximityStore.'.tr(),
-                          style: Theme.of(context).textTheme.headline6?.copyWith(
-                                fontFamily: 'Montserrat',
-                                decoration: TextDecoration.underline,
-                                fontSize: 12.sp,
-                              ),
+                      child: Text.rich(
+                        TextSpan(
+                          children: <InlineSpan>[
+                            TextSpan(
+                              text: 'byCreatingAnAccountYouAgree'.tr() + ' ',
+                              style: Theme.of(context).textTheme.headline6?.copyWith(
+                                    fontFamily: 'Montserrat',
+                                    fontSize: 12.sp,
+                                  ),
+                            ),
+                            TextSpan(
+                                text: 'toComplyWithTheGeneralConditionsOfProximityStore.'.tr(),
+                                style: Theme.of(context).textTheme.headline6?.copyWith(
+                                      fontFamily: 'Montserrat',
+                                      decoration: TextDecoration.underline,
+                                      fontSize: 12.sp,
+                                    ),
+                                recognizer: TapGestureRecognizer()
+                                  ..onTap = () {
+                                    ///Change this to naviagate to cgu app
+                                    print('Login Text Clicked');
+                                  }),
+                          ],
                         ),
                       ),
                     ),

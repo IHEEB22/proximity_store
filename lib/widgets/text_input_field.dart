@@ -24,7 +24,7 @@ class TextInputField extends StatelessWidget {
     required this.keyboardType,
     required this.controller,
     required this.autovalidateMode,
-    required this.validator,
+    this.validator,
     this.onChanged,
     this.suffixIcon,
     this.prefixIcon,

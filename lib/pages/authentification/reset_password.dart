@@ -18,6 +18,7 @@ class ResetPassword extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    context.read<AuthentificationProvider>().disposeControllersResetPasswordPage();
     return Consumer<AuthentificationProvider>(
       builder: (context, value, child) => Scaffold(
         body: SafeArea(
@@ -32,7 +33,6 @@ class ResetPassword extends StatelessWidget {
                     GestureDetector(
                       onTap: () {
                         Navigator.popAndPushNamed(context, AppRoutes.forgetPassword);
-                        context.read<AuthentificationProvider>().disposeControllersResetpasswordppage();
                       },
                       child: Padding(
                         padding: EdgeInsets.only(

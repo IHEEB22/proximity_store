@@ -9,17 +9,11 @@ import 'package:proximitystore/widgets/widgets.dart';
 
 import '../../services/validation_items.dart';
 
-class LoginPage extends StatefulWidget {
-  @override
-  State<LoginPage> createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State<LoginPage> {
+class RegisterPage extends StatelessWidget {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
-    context.read<AuthentificationProvider>().disposeControllersLoginPage();
-    context.read<AuthentificationProvider>().disposeIsButtonDisabled();
     return Consumer<AuthentificationProvider>(
       builder: (context, value, child) => Scaffold(
         body: SafeArea(
@@ -41,7 +35,7 @@ class _LoginPageState extends State<LoginPage> {
                           Padding(
                             padding: EdgeInsets.only(left: 0.0853.sw, right: 0.38.sw),
                             child: Text(
-                              'gladToMeetYou!'.tr(),
+                              'register'.tr(),
                               style: Theme.of(context).textTheme.headline2?.copyWith(
                                     fontWeight: FontWeight.w800,
                                     fontSize: 28.sp,
@@ -58,7 +52,6 @@ class _LoginPageState extends State<LoginPage> {
                             keyboardType: TextInputType.emailAddress,
                             onChanged: (email) {
                               context.read<AuthentificationProvider>().setEmailValide(email);
-                              context.read<AuthentificationProvider>().setIsButtonDisabled();
                             },
                           ),
                           0.03.sh.verticalSpace,
@@ -87,32 +80,87 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                             hintText: 'password'.tr(),
                           ),
+                          0.012.sh.verticalSpace,
                           Padding(
-                            padding: EdgeInsets.only(right: 0.065.sw),
-                            child: TextButton(
-                              onPressed: () => Navigator.popAndPushNamed(
-                                context,
-                                AppRoutes.forgetPassword,
-                              ),
-                              style: TextButton.styleFrom(
-                                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                              ),
-                              child: Align(
-                                alignment: Alignment.topRight,
-                                child: Text(
-                                  'forgotYourPassword?'.tr(),
-                                  style: Theme.of(context).textTheme.bodyText1?.copyWith(
-                                        fontSize: 10.sp,
-                                        fontFamily: 'Montserrat',
-                                        decoration: TextDecoration.underline,
-                                        color: AppColors.deepBlueColor,
-                                      ),
-                                ),
+                            padding: EdgeInsets.only(
+                              right: 0.082.sw,
+                            ),
+                            child: Align(
+                              alignment: Alignment.topRight,
+                              child: Text(
+                                '8CharactersMinimum'.tr(),
+                                style: Theme.of(context).textTheme.headline6?.copyWith(
+                                      fontFamily: 'Montserrat',
+                                      fontSize: 12.sp,
+                                    ),
                               ),
                             ),
                           ),
-                          0.198.sh.verticalSpace,
-                          context.watch<AuthentificationProvider>().isButtonDisabled
+                          0.03.sh.verticalSpace,
+                          TextInputField(
+                            autovalidateMode: AutovalidateMode.onUserInteraction,
+                            validator: (repeatPassword) => ValidationItem(val: repeatPassword).validatePassword(),
+                            controller: context.watch<AuthentificationProvider>().repeatPasswordTextEditingController,
+                            inputLabel: 'repeatPassword'.tr(),
+                            hintText: 'repeatPassword'.tr(),
+                            keyboardType: TextInputType.emailAddress,
+                            onChanged: (password) {
+                              context.read<AuthentificationProvider>().setPasswordValide(password);
+                              context.read<AuthentificationProvider>().setIsReapetPasswordEqualpassword();
+                            },
+                            obscureText: !context.watch<AuthentificationProvider>().isRepeatPasswordVisible,
+                            suffixIcon: GestureDetector(
+                              onTap: () => context.read<AuthentificationProvider>().setIsRepeatPasswordVisible(),
+                              child: !(context.watch<AuthentificationProvider>().isRepeatPasswordVisible)
+                                  ? Icon(
+                                      Icons.visibility,
+                                      color: AppColors.deepBlueColor,
+                                    )
+                                  : Icon(
+                                      Icons.visibility_off,
+                                      color: AppColors.deepBlueColor,
+                                    ),
+                            ),
+                          ),
+                          0.0197.sh.verticalSpace,
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 0.068.sw,
+                            ),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                SizedBox(
+                                  height: 0.0345.sh,
+                                  width: 0.0747.sw,
+                                  child: Checkbox(
+                                    fillColor: MaterialStateProperty.all(AppColors.lightPurpleColor),
+                                    value: context.watch<AuthentificationProvider>().checkoxValue,
+                                    onChanged: (val) {
+                                      context.read<AuthentificationProvider>().setCheckoxValue();
+                                    },
+                                  ),
+                                ),
+                                0.03.sw.horizontalSpace,
+                                Expanded(
+                                  child: Padding(
+                                    padding: EdgeInsets.only(right: 0.12.sw),
+                                    child: Text(
+                                      'receiveAppUpdateInformationAndNewFeatures'.tr(),
+                                      style: Theme.of(context).textTheme.subtitle2?.copyWith(
+                                            fontSize: 10.sp,
+                                            height: 1.4,
+                                            fontFamily: "Montserrat",
+                                          ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          0.122.sh.verticalSpace,
+                          !(context.watch<AuthentificationProvider>().isEmailValide &&
+                                  context.watch<AuthentificationProvider>().isReapetPasswordEqualpassword)
                               ? Padding(
                                   padding: EdgeInsets.symmetric(horizontal: 0.043.sw),
                                   child: SizedBox(
@@ -137,7 +185,7 @@ class _LoginPageState extends State<LoginPage> {
                               TextSpan(
                                 children: <InlineSpan>[
                                   TextSpan(
-                                    text: 'youDoNotHaveAnAccount?'.tr(),
+                                    text: 'alreadyHaveAnAccount?'.tr() + ' ',
                                     style: Theme.of(context).textTheme.bodySmall?.copyWith(
                                           fontSize: 14.sp,
                                           color: AppColors.deepBlueColor,
@@ -152,7 +200,7 @@ class _LoginPageState extends State<LoginPage> {
                                         child: TextButton(
                                           onPressed: () {},
                                           child: Text(
-                                            'signUp'.tr(),
+                                            'login'.tr(),
                                             style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                                                   fontSize: 15.sp,
                                                   color: AppColors.deepBlueColor,
@@ -171,6 +219,7 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                             ),
                           ),
+                          0.08.sh.verticalSpace,
                         ],
                       ),
                     )

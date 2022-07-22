@@ -9,6 +9,7 @@ class AuthentificationProvider with ChangeNotifier {
   bool _isPasswordVisible = false;
   bool _isRepeatPasswordVisible = false;
   bool _isReapetPasswordEqualpassword = false;
+  bool _checkoxValue = false;
 
   TextEditingController _repeatPasswordTextEditingController = TextEditingController();
   TextEditingController _emailTextEditingController = TextEditingController();
@@ -24,6 +25,7 @@ class AuthentificationProvider with ChangeNotifier {
   bool get isEmailValide => _isEmailValide;
   bool get isPasswordValide => _isPasswordValide;
   bool get isReapetPasswordEqualpassword => _isReapetPasswordEqualpassword;
+  bool get checkoxValue => _checkoxValue;
 
   void setEmailValide(String email) {
     String aux = ValidationItem(val: email).validateEmail() ?? "";
@@ -65,15 +67,38 @@ class AuthentificationProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  void setCheckoxValue() {
+    _checkoxValue = !_checkoxValue;
+    notifyListeners();
+  }
+
   void disposeControllersLoginPage() {
     _emailTextEditingController.clear();
     _passwordTextEditingController.clear();
   }
 
-  void disposeControllersResetpasswordppage() {
+  void disposeControllersResetPasswordPage() {
+    // clear controllers
     _repeatPasswordTextEditingController.clear();
     _passwordTextEditingController.clear();
+
+// disable form button
     _isReapetPasswordEqualpassword = false;
+
+// set visiblity passwords to false
+    _isPasswordVisible = false;
+    _isRepeatPasswordVisible = false;
+  }
+
+  void disposeControllersRegisterPage() {
+    _repeatPasswordTextEditingController.clear();
+    _passwordTextEditingController.clear();
+    _emailTextEditingController.clear();
+
+    _isEmailValide = false;
+    _isReapetPasswordEqualpassword = false;
+    _checkoxValue = false;
+
     _isPasswordVisible = false;
     _isRepeatPasswordVisible = false;
   }

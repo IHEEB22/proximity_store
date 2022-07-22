@@ -46,6 +46,15 @@
 
 "repeatPassword": "Répétez le mot de passe",
 
-"8CharactersMinimum": "8 caractères minimun"
+"8CharactersMinimum": "8 caractères minimun",
+"register": "S’inscrire",
+"receiveAppUpdateInformationAndNewFeatures": "Recevoir les informations de mise à jour de l’application et ses nouvelles fonctionnalités",
+"alreadyHaveAnAccount?": "Vous avez déjà un compte ?",
+"login": "Connectez-vous",
+
+"verification": "Vérification",
+"toVerifyYourAccountEnterThe6DigitCodeReceivedByEmail": "Pour vérifier votre compte, renseignez le code à 6 chiffres reçu par email.",
+"verificationCode": "Code de vérification",
+"resendTheCode": "Renvoyer le code"
 
 }

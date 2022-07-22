@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:proximitystore/pages/authentification/forgot_password_page.dart';
-import 'package:proximitystore/pages/authentification/login_page.dart';
-import 'package:proximitystore/pages/authentification/reset_password.dart';
-import 'package:proximitystore/pages/authentification/welcome_page.dart';
+
 import 'package:proximitystore/pages/pages.dart';
 import 'package:proximitystore/widgets/custom_page_route.dart';
 
@@ -15,6 +12,8 @@ class AppRoutes {
   static const String welcomePage = '/welcomePage';
   static const String forgetPassword = '/forgetPassword';
   static const String resetPassword = '/resetPassword';
+  static const String registerPage = '/registerPage';
+  static const String emailVerificationPage = '/emailVerificationPage';
 
   static Route<dynamic> routeController(RouteSettings settings) {
     switch (settings.name) {
@@ -32,8 +31,11 @@ class AppRoutes {
         return CustomPageRoute(Route: WelcomePage(), settings: settings);
       case forgetPassword:
         return CustomPageRoute(Route: ForgetPassword(), settings: settings);
-      case resetPassword:
-        return CustomPageRoute(Route: ResetPassword(), settings: settings);
+      case emailVerificationPage:
+        return CustomPageRoute(Route: EmailVerificationPage(), settings: settings);
+      case registerPage:
+        return CustomPageRoute(Route: RegisterPage(), settings: settings);
+
       default:
         throw ('this route name does not exist');
     }

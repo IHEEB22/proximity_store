@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../config/colors/app_colors.dart';
 
+// ignore: must_be_immutable
 class TextInputField extends StatelessWidget {
   final String inputLabel;
   bool? obscureText;

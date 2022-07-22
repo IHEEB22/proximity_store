@@ -1,14 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:provider/provider.dart';
 import 'package:proximitystore/config/colors/app_colors.dart';
 import 'package:proximitystore/config/images/app_images.dart';
 import 'package:proximitystore/widgets/background_image.dart';
 
 import '../../config/routes/routes.dart';
-import '../../providers/localistaion_controller_provider.dart';
-import '../../widgets/text_input_field.dart';
 
 class SearchProductPage extends StatelessWidget {
   const SearchProductPage({Key? key}) : super(key: key);

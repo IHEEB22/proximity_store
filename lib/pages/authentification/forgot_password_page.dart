@@ -8,8 +8,6 @@ import 'package:proximitystore/widgets/background_image.dart';
 import '../../config/images/app_images.dart';
 import '../../providers/authentification_provider.dart';
 import '../../services/validation_items.dart';
-import '../../utils/input_formatter.dart';
-import '../../widgets/custom_back_button_icon.dart';
 import '../../widgets/custom_blue_button.dart';
 import '../../widgets/custom_grey_button.dart';
 import '../../widgets/text_input_field.dart';

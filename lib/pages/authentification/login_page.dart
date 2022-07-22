@@ -8,7 +8,6 @@ import 'package:proximitystore/providers/authentification_provider.dart';
 import 'package:proximitystore/widgets/widgets.dart';
 
 import '../../services/validation_items.dart';
-import '../../utils/input_formatter.dart';
 
 class LoginPage extends StatefulWidget {
   @override

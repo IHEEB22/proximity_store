@@ -10,7 +10,6 @@ class CustomPageRoute extends PageRouteBuilder {
           pageBuilder: (context, animation, secondaryAnimation) => Route,
           settings: settings,
         );
-  @override
   Widget buidTransitions(
           BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation, Widget route) =>
       SlideTransition(

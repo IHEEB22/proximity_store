@@ -74,6 +74,8 @@ class AuthentificationProvider with ChangeNotifier {
     _repeatPasswordTextEditingController.clear();
     _passwordTextEditingController.clear();
     _isReapetPasswordEqualpassword = false;
+    _isPasswordVisible = false;
+    _isRepeatPasswordVisible = false;
   }
 
   void disposeIsButtonDisabled() => _isButtonDisabled = true;

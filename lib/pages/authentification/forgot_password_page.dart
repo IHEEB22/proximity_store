@@ -12,7 +12,7 @@ import '../../utils/input_formatter.dart';
 import '../../widgets/custom_back_button_icon.dart';
 import '../../widgets/custom_blue_button.dart';
 import '../../widgets/custom_grey_button.dart';
-import '../../widgets/text_input_decoration.dart';
+import '../../widgets/text_input_field.dart';
 
 class ForgetPassword extends StatelessWidget {
   const ForgetPassword({Key? key}) : super(key: key);
@@ -75,44 +75,17 @@ class ForgetPassword extends StatelessWidget {
                           ),
                         ),
                         0.095.sh.verticalSpace,
-                        Padding(
-                          padding: EdgeInsets.only(
-                            left: 0.082.sw,
-                            bottom: 0.0055.sh,
-                          ),
-                          child: Text(
-                            'e-mailAddress'.tr(),
-                            style: Theme.of(context).textTheme.headline3?.copyWith(
-                                  fontFamily: 'Montserrat',
-                                  fontSize: 12.sp,
-                                  fontWeight: FontWeight.w700,
-                                  letterSpacing: 0.4,
-                                ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 0.082.sw,
-                          ),
-                          child: TextFormField(
-                            style: Theme.of(context).textTheme.bodyText2?.copyWith(
-                                  height: 1.2,
-                                  fontSize: 16.sp,
-                                  fontWeight: FontWeight.w500,
-                                  fontFamily: 'Montserrat',
-                                ),
-                            // inputFormatters: InputFormatter.textFieldFormatter,
-                            keyboardType: TextInputType.emailAddress,
-                            controller: context.watch<AuthentificationProvider>().emailTextEditingController,
-                            autovalidateMode: AutovalidateMode.onUserInteraction,
-                            decoration: textInputDecoration.copyWith(
-                              hintText: 'e-mailAddress'.tr(),
-                            ),
-                            validator: (email) => ValidationItem(val: email).validateEmail(),
-                            onChanged: (email) {
-                              context.read<AuthentificationProvider>().setEmailValide(email);
-                            },
-                          ),
+                        TextInputField(
+                          autovalidateMode: AutovalidateMode.onUserInteraction,
+                          validator: (email) => ValidationItem(val: email).validateEmail(),
+                          controller: context.watch<AuthentificationProvider>().emailTextEditingController,
+                          hintText: 'e-mailAddress'.tr(),
+                          inputLabel: 'e-mailAddress'.tr(),
+                          keyboardType: TextInputType.emailAddress,
+                          onChanged: (email) {
+                            context.read<AuthentificationProvider>().setEmailValide(email);
+                            context.read<AuthentificationProvider>().setIsButtonDisabled();
+                          },
                         ),
                         0.324.sh.verticalSpace,
                         context.watch<AuthentificationProvider>().isEmailValide

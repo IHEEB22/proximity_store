@@ -8,7 +8,7 @@ import 'package:proximitystore/widgets/background_image.dart';
 
 import '../../config/routes/routes.dart';
 import '../../providers/localistaion_controller_provider.dart';
-import '../../widgets/text_input_decoration.dart';
+import '../../widgets/text_input_field.dart';
 
 class SearchProductPage extends StatelessWidget {
   const SearchProductPage({Key? key}) : super(key: key);
@@ -76,33 +76,34 @@ class SearchProductPage extends StatelessWidget {
                   0.065.sh.verticalSpace,
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 0.085.sw),
-                    child: Focus(
-                      onFocusChange: (hasFocus) =>
-                          context.read<LocalistaionControllerprovider>().setIsTownHasFocus(hasFocus),
-                      child: TextField(
-                        style: Theme.of(context).textTheme.bodyText2?.copyWith(
-                              height: 1.2,
-                              fontSize: 16.sp,
-                              fontWeight: FontWeight.w500,
-                              fontFamily: 'Montserrat',
-                            ),
-                        keyboardType: TextInputType.emailAddress,
-                        controller: context.read<LocalistaionControllerprovider>().townTextFormFieldController,
-                        decoration: textInputDecoration.copyWith(
-                          contentPadding: EdgeInsets.zero,
-                          prefixIconConstraints: BoxConstraints(
-                            maxWidth: 0.12.sw,
-                          ),
-                          prefixIcon: Padding(
-                            padding: EdgeInsets.only(left: 0.025.sw, right: 0.02.sh),
-                            child: Image.asset(
-                              AppImages.searchIcon,
-                            ),
-                          ),
-                          hintText: 'findProduct'.tr(),
-                        ),
-                      ),
-                    ),
+                    // child: Focus(
+                    //   onFocusChange: (hasFocus) =>
+                    //       context.read<LocalistaionControllerprovider>().setIsTownHasFocus(hasFocus),
+                    //   child: TextField(
+                    //     style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                    //           height: 1.2,
+                    //           fontSize: 16.sp,
+                    //           fontWeight: FontWeight.w500,
+                    //           fontFamily: 'Montserrat',
+                    //         ),
+                    //     keyboardType: TextInputType.emailAddress,
+                    //     controller: context.read<LocalistaionControllerprovider>().townTextFormFieldController,
+                    //     decoration: textInputDecoration.copyWith(
+                    //       contentPadding: EdgeInsets.zero,
+                    //       prefixIconConstraints: BoxConstraints(
+                    //         maxWidth: 0.12.sw,
+                    //       ),
+                    //       prefixIcon: Padding(
+                    //         padding: EdgeInsets.only(left: 0.025.sw, right: 0.02.sh),
+                    //         child: Image.asset(
+                    //           AppImages.searchIcon,
+                    //         ),
+                    //       ),
+                    //       hintText: 'findProduct'.tr(),
+                    //     ),
+                    //   ),
+
+                    // ),
                   ),
                   0.496.sh.verticalSpace,
                   Row(

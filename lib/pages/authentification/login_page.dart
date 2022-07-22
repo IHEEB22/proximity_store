@@ -50,101 +50,43 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                           ),
                           0.192.sh.verticalSpace,
-                          Padding(
-                            padding: EdgeInsets.only(
-                              left: 0.082.sw,
-                              bottom: 0.0055.sh,
-                            ),
-                            child: Text(
-                              'e-mailAddress'.tr(),
-                              style: Theme.of(context).textTheme.headline3?.copyWith(
-                                    fontFamily: 'Montserrat',
-                                    fontSize: 12.sp,
-                                    fontWeight: FontWeight.w700,
-                                    letterSpacing: 0.4,
-                                  ),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(
-                              horizontal: 0.082.sw,
-                            ),
-                            child: TextFormField(
-                              style: Theme.of(context).textTheme.bodyText2?.copyWith(
-                                    height: 1.2,
-                                    fontSize: 16.sp,
-                                    fontWeight: FontWeight.w500,
-                                    fontFamily: 'Montserrat',
-                                  ),
-                              // inputFormatters: InputFormatter.textFieldFormatter,
-                              keyboardType: TextInputType.emailAddress,
-                              controller: context.watch<AuthentificationProvider>().emailTextEditingController,
-                              autovalidateMode: AutovalidateMode.onUserInteraction,
-                              decoration: textInputDecoration.copyWith(
-                                hintText: 'e-mailAddress'.tr(),
-                              ),
-                              validator: (email) => ValidationItem(val: email).validateEmail(),
-                              onChanged: (email) {
-                                context.read<AuthentificationProvider>().setEmailValide(email);
-                                context.read<AuthentificationProvider>().setIsButtonDisabled();
-                              },
-                            ),
+                          TextInputField(
+                            autovalidateMode: AutovalidateMode.onUserInteraction,
+                            validator: (email) => ValidationItem(val: email).validateEmail(),
+                            controller: context.watch<AuthentificationProvider>().emailTextEditingController,
+                            hintText: 'e-mailAddress'.tr(),
+                            inputLabel: 'e-mailAddress'.tr(),
+                            keyboardType: TextInputType.emailAddress,
+                            onChanged: (email) {
+                              context.read<AuthentificationProvider>().setEmailValide(email);
+                              context.read<AuthentificationProvider>().setIsButtonDisabled();
+                            },
                           ),
                           0.03.sh.verticalSpace,
-                          Padding(
-                            padding: EdgeInsets.only(
-                              left: 0.082.sw,
-                              bottom: 0.0055.sh,
+                          TextInputField(
+                            inputLabel: 'password'.tr(),
+                            controller: context.watch<AuthentificationProvider>().passwordTextEditingController,
+                            keyboardType: TextInputType.emailAddress,
+                            autovalidateMode: AutovalidateMode.onUserInteraction,
+                            obscureText: !context.watch<AuthentificationProvider>().isPasswordVisible,
+                            validator: (email) => ValidationItem(val: email).validatePassword(),
+                            onChanged: (password) {
+                              context.read<AuthentificationProvider>().setPasswordValide(password);
+                              context.read<AuthentificationProvider>().setIsButtonDisabled();
+                            },
+                            suffixIcon: GestureDetector(
+                              onTap: () => context.read<AuthentificationProvider>().setIsPasswordVisible(),
+                              child: !(context.watch<AuthentificationProvider>().isPasswordVisible)
+                                  ? Icon(
+                                      Icons.visibility,
+                                      color: AppColors.deepBlueColor,
+                                    )
+                                  : Icon(
+                                      Icons.visibility_off,
+                                      color: AppColors.deepBlueColor,
+                                    ),
                             ),
-                            child: Text(
-                              'password'.tr(),
-                              style: Theme.of(context).textTheme.headline3?.copyWith(
-                                    fontFamily: 'Montserrat',
-                                    fontSize: 12.sp,
-                                    fontWeight: FontWeight.w700,
-                                    letterSpacing: 0.4,
-                                  ),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(
-                              horizontal: 0.082.sw,
-                            ),
-                            child: TextFormField(
-                              style: Theme.of(context).textTheme.bodyText2?.copyWith(
-                                    height: 1.2,
-                                    fontSize: 16.sp,
-                                    fontWeight: FontWeight.w500,
-                                    fontFamily: 'Montserrat',
-                                  ),
-                              inputFormatters: [
-                                InputFormatter().textFieldFormatter,
-                              ],
-                              obscureText: !context.watch<AuthentificationProvider>().isPasswordVisible,
-                              keyboardType: TextInputType.emailAddress,
-                              controller: context.watch<AuthentificationProvider>().passwordTextEditingController,
-                              autovalidateMode: AutovalidateMode.onUserInteraction,
-                              decoration: textInputDecoration.copyWith(
-                                suffixIcon: GestureDetector(
-                                  onTap: () => context.read<AuthentificationProvider>().setIsPasswordVisible(),
-                                  child: !(context.watch<AuthentificationProvider>().isPasswordVisible)
-                                      ? Icon(
-                                          Icons.visibility,
-                                          color: AppColors.deepBlueColor,
-                                        )
-                                      : Icon(
-                                          Icons.visibility_off,
-                                          color: AppColors.deepBlueColor,
-                                        ),
-                                ),
-                                hintText: 'password'.tr(),
-                              ),
-                              validator: (email) => ValidationItem(val: email).validatePassword(),
-                              onChanged: (password) {
-                                context.read<AuthentificationProvider>().setPasswordValide(password);
-                                context.read<AuthentificationProvider>().setIsButtonDisabled();
-                              },
-                            ),
+                            hintText: 'password'.tr(),
                           ),
                           Padding(
                             padding: EdgeInsets.only(right: 0.065.sw),

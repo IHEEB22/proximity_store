@@ -12,7 +12,7 @@ import 'package:proximitystore/services/validation_items.dart';
 import 'package:provider/provider.dart';
 import 'package:proximitystore/widgets/autocomplete_suggestions.dart';
 import 'package:proximitystore/widgets/custom_blue_button.dart';
-import 'package:proximitystore/widgets/text_input_decoration.dart';
+import 'package:proximitystore/widgets/text_input_field.dart';
 
 import '../utils/input_formatter.dart';
 
@@ -45,84 +45,35 @@ class _SheetGeolocalisationOutsideParisState extends State<SheetGeolocalisationO
                 ),
               ),
               0.054.sh.verticalSpace,
-              Padding(
-                padding: EdgeInsets.only(
-                  left: 0.042.sw,
-                  bottom: 0.0053.sh,
-                ),
-                child: Text(
-                  'addEmailAddress'.tr(),
-                  style: Theme.of(context).textTheme.headline3?.copyWith(
-                        fontFamily: 'Montserrat',
-                        fontSize: 12.sp,
-                        fontWeight: FontWeight.w700,
-                        letterSpacing: 0.4,
-                      ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 0.042.sw),
-                child: TextFormField(
-                  style: Theme.of(context).textTheme.bodyText2?.copyWith(
-                        height: 1.2,
-                        fontSize: 16.sp,
-                        fontWeight: FontWeight.w500,
-                        fontFamily: 'Montserrat',
-                      ),
-                  // inputFormatters: InputFormatter.textFieldFormatter,
-                  keyboardType: TextInputType.emailAddress,
-                  controller: context.watch<LocalistaionControllerprovider>().emailTextEditingController,
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  decoration: textInputDecoration.copyWith(
-                    hintText: 'e-mail',
-                  ),
-                  validator: (email) => ValidationItem(val: email).validateEmail(),
-                ),
+              // Padding(
+              //   padding: EdgeInsets.only(
+
+              TextInputField(
+                autovalidateMode: AutovalidateMode.onUserInteraction,
+                validator: (email) => ValidationItem(val: email).validateEmail(),
+                controller: context.watch<LocalistaionControllerprovider>().emailTextEditingController,
+                hintText: 'e-mail'.tr(),
+                inputLabel: 'e-mail'.tr(),
+                keyboardType: TextInputType.emailAddress,
               ),
               0.02.sh.verticalSpace,
-              Padding(
-                padding: EdgeInsets.only(
-                  left: 0.042.sw,
-                  bottom: 0.0053.sh,
-                ),
-                child: Text(
-                  'addTown'.tr(),
-                  style: Theme.of(context).textTheme.headline2?.copyWith(
-                        fontFamily: 'Montserrat',
-                        color: AppColors.blueColor,
-                        fontSize: 12.sp,
-                        fontWeight: FontWeight.w700,
-                      ),
-                ),
-              ),
-              0.0012.sh.verticalSpace,
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 0.042.sw),
-                child: Focus(
-                  onFocusChange: (hasFocus) =>
-                      context.read<LocalistaionControllerprovider>().setIsTownHasFocus(hasFocus),
-                  child: TextFormField(
-                    style: Theme.of(context).textTheme.bodyText2?.copyWith(
-                          height: 1.2,
-                          fontSize: 16.sp,
-                          fontWeight: FontWeight.w500,
-                          fontFamily: 'Montserrat',
-                        ),
-                    // inputFormatters: InputFormatter.textFieldFormatter,
-                    keyboardType: TextInputType.emailAddress,
-                    controller: context.watch<LocalistaionControllerprovider>().townTextFormFieldController,
-                    autovalidateMode: AutovalidateMode.onUserInteraction,
-                    decoration: textInputDecoration.copyWith(
-                      hintText: 'town'.tr(),
-                    ),
-                    validator: (ville) => ValidationItem(val: ville).validateTown(
-                      context: context,
-                      town: context.read<LocalistaionControllerprovider>().townTextFormFieldController.text,
-                    ),
-                    onChanged: (value) => context.read<LocalistaionControllerprovider>().setIsTownHasFocus(true),
+
+              Focus(
+                onFocusChange: (hasFocus) => context.read<LocalistaionControllerprovider>().setIsTownHasFocus(hasFocus),
+                child: TextInputField(
+                  inputLabel: 'addTown'.tr(),
+                  controller: context.watch<LocalistaionControllerprovider>().townTextFormFieldController,
+                  keyboardType: TextInputType.emailAddress,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  validator: (ville) => ValidationItem(val: ville).validateTown(
+                    context: context,
+                    town: context.read<LocalistaionControllerprovider>().townTextFormFieldController.text,
                   ),
+                  onChanged: (value) => context.read<LocalistaionControllerprovider>().setIsTownHasFocus(true),
+                  hintText: 'addTown'.tr(),
                 ),
               ),
+
               Wrap(
                 children: <Widget>[
                   Visibility(

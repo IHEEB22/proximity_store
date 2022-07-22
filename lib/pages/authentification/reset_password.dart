@@ -11,7 +11,7 @@ import '../../providers/authentification_provider.dart';
 import '../../services/validation_items.dart';
 import '../../widgets/custom_blue_button.dart';
 import '../../widgets/custom_grey_button.dart';
-import '../../widgets/text_input_decoration.dart';
+import '../../widgets/text_input_field.dart';
 
 class ResetPassword extends StatelessWidget {
   const ResetPassword({Key? key}) : super(key: key);
@@ -78,57 +78,29 @@ class ResetPassword extends StatelessWidget {
                           ),
                         ),
                         0.137.sh.verticalSpace,
-                        Padding(
-                          padding: EdgeInsets.only(
-                            left: 0.082.sw,
-                            bottom: 0.0055.sh,
-                          ),
-                          child: Text(
-                            'password'.tr(),
-                            style: Theme.of(context).textTheme.headline3?.copyWith(
-                                  fontFamily: 'Montserrat',
-                                  fontSize: 12.sp,
-                                  fontWeight: FontWeight.w700,
-                                  letterSpacing: 0.4,
-                                ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 0.082.sw,
-                          ),
-                          child: TextFormField(
-                            // inputFormatters: InputFormatter.textFieldFormatter,
-                            style: Theme.of(context).textTheme.bodyText2?.copyWith(
-                                  height: 1.2,
-                                  fontSize: 16.sp,
-                                  fontWeight: FontWeight.w500,
-                                  fontFamily: 'Montserrat',
-                                ),
-                            obscureText: !context.watch<AuthentificationProvider>().isPasswordVisible,
-                            keyboardType: TextInputType.emailAddress,
-                            controller: context.watch<AuthentificationProvider>().passwordTextEditingController,
-                            autovalidateMode: AutovalidateMode.onUserInteraction,
-                            decoration: textInputDecoration.copyWith(
-                              hintText: 'Mot de passe',
-                              suffixIcon: GestureDetector(
-                                onTap: () => context.read<AuthentificationProvider>().setIsPasswordVisible(),
-                                child: !(context.watch<AuthentificationProvider>().isPasswordVisible)
-                                    ? Icon(
-                                        Icons.visibility,
-                                        color: AppColors.deepBlueColor,
-                                      )
-                                    : Icon(
-                                        Icons.visibility_off,
-                                        color: AppColors.deepBlueColor,
-                                      ),
-                              ),
-                            ),
-                            validator: (email) => ValidationItem(val: email).validatePassword(),
-                            onChanged: (password) {
-                              context.read<AuthentificationProvider>().setPasswordValide(password);
-                              context.read<AuthentificationProvider>().setIsReapetPasswordEqualpassword();
-                            },
+                        TextInputField(
+                          autovalidateMode: AutovalidateMode.onUserInteraction,
+                          validator: (password) => ValidationItem(val: password).validatePassword(),
+                          controller: context.watch<AuthentificationProvider>().passwordTextEditingController,
+                          hintText: 'password'.tr(),
+                          inputLabel: 'password'.tr(),
+                          keyboardType: TextInputType.emailAddress,
+                          onChanged: (password) {
+                            context.read<AuthentificationProvider>().setPasswordValide(password);
+                            context.read<AuthentificationProvider>().setIsReapetPasswordEqualpassword();
+                          },
+                          obscureText: !context.watch<AuthentificationProvider>().isPasswordVisible,
+                          suffixIcon: GestureDetector(
+                            onTap: () => context.read<AuthentificationProvider>().setIsPasswordVisible(),
+                            child: !(context.watch<AuthentificationProvider>().isPasswordVisible)
+                                ? Icon(
+                                    Icons.visibility,
+                                    color: AppColors.deepBlueColor,
+                                  )
+                                : Icon(
+                                    Icons.visibility_off,
+                                    color: AppColors.deepBlueColor,
+                                  ),
                           ),
                         ),
                         0.012.sh.verticalSpace,
@@ -148,57 +120,34 @@ class ResetPassword extends StatelessWidget {
                           ),
                         ),
                         0.02894.sh.verticalSpace,
-                        Padding(
-                          padding: EdgeInsets.only(
-                            left: 0.082.sw,
-                            bottom: 0.0055.sh,
-                          ),
-                          child: Text(
-                            'repeatPassword'.tr(),
-                            style: Theme.of(context).textTheme.headline3?.copyWith(
-                                  fontFamily: 'Montserrat',
-                                  fontSize: 12.sp,
-                                  fontWeight: FontWeight.w700,
-                                  letterSpacing: 0.4,
-                                ),
+                        TextInputField(
+                          autovalidateMode: AutovalidateMode.onUserInteraction,
+                          validator: (repeatPassword) => ValidationItem(val: repeatPassword).validatePassword(),
+                          controller: context.watch<AuthentificationProvider>().repeatPasswordTextEditingController,
+                          inputLabel: 'repeatPassword'.tr(),
+                          hintText: 'repeatPassword'.tr(),
+                          keyboardType: TextInputType.emailAddress,
+                          onChanged: (password) {
+                            context.read<AuthentificationProvider>().setPasswordValide(password);
+                            context.read<AuthentificationProvider>().setIsReapetPasswordEqualpassword();
+                          },
+                          obscureText: !context.watch<AuthentificationProvider>().isRepeatPasswordVisible,
+                          suffixIcon: GestureDetector(
+                            onTap: () => context.read<AuthentificationProvider>().setIsRepeatPasswordVisible(),
+                            child: !(context.watch<AuthentificationProvider>().isRepeatPasswordVisible)
+                                ? Icon(
+                                    Icons.visibility,
+                                    color: AppColors.deepBlueColor,
+                                  )
+                                : Icon(
+                                    Icons.visibility_off,
+                                    color: AppColors.deepBlueColor,
+                                  ),
                           ),
                         ),
                         Padding(
                           padding: EdgeInsets.symmetric(
                             horizontal: 0.082.sw,
-                          ),
-                          child: TextFormField(
-                            style: Theme.of(context).textTheme.bodyText2?.copyWith(
-                                  height: 1.2,
-                                  fontSize: 16.sp,
-                                  fontWeight: FontWeight.w500,
-                                  fontFamily: 'Montserrat',
-                                ),
-                            // inputFormatters: InputFormatter.textFieldFormatter,
-                            obscureText: !context.watch<AuthentificationProvider>().isRepeatPasswordVisible,
-                            keyboardType: TextInputType.emailAddress,
-                            controller: context.watch<AuthentificationProvider>().repeatPasswordTextEditingController,
-                            autovalidateMode: AutovalidateMode.onUserInteraction,
-                            decoration: textInputDecoration.copyWith(
-                              suffixIcon: GestureDetector(
-                                onTap: () => context.read<AuthentificationProvider>().setIsRepeatPasswordVisible(),
-                                child: !(context.watch<AuthentificationProvider>().isRepeatPasswordVisible)
-                                    ? Icon(
-                                        Icons.visibility,
-                                        color: AppColors.deepBlueColor,
-                                      )
-                                    : Icon(
-                                        Icons.visibility_off,
-                                        color: AppColors.deepBlueColor,
-                                      ),
-                              ),
-                              hintText: 'passwordRepetition'.tr(),
-                            ),
-                            validator: (email) => ValidationItem(val: email).validatePassword(),
-                            onChanged: (password) {
-                              context.read<AuthentificationProvider>().setPasswordValide(password);
-                              context.read<AuthentificationProvider>().setIsReapetPasswordEqualpassword();
-                            },
                           ),
                         ),
                         0.1884.sh.verticalSpace,

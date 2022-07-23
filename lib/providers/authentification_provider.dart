@@ -6,26 +6,36 @@ import '../services/validation_items.dart';
 class AuthentificationProvider with ChangeNotifier {
   bool _isButtonDisabled = true;
   bool _isEmailValide = false;
+  bool _isEmailResetvalide = false;
   bool _isPasswordValide = false;
   bool _isPasswordVisible = false;
   bool _isRepeatPasswordVisible = false;
+
   bool _isReapetPasswordEqualpassword = false;
   bool _checkoxValue = false;
 
-  TextEditingController _repeatPasswordTextEditingController = TextEditingController();
+  TextEditingController _repeatPasswordTextEditingController =
+      TextEditingController();
   TextEditingController _emailTextEditingController = TextEditingController();
-  TextEditingController _emailResetTextEditingController = TextEditingController();
-  TextEditingController _passwordTextEditingController = TextEditingController();
+  TextEditingController _emailResetTextEditingController =
+      TextEditingController();
+  TextEditingController _passwordTextEditingController =
+      TextEditingController();
 
-  TextEditingController get emailTextEditingController => _emailTextEditingController;
-  TextEditingController get emailResetTextEditingController => _emailResetTextEditingController;
-  TextEditingController get passwordTextEditingController => _passwordTextEditingController;
-  TextEditingController get repeatPasswordTextEditingController => _repeatPasswordTextEditingController;
+  TextEditingController get emailTextEditingController =>
+      _emailTextEditingController;
+  TextEditingController get emailResetTextEditingController =>
+      _emailResetTextEditingController;
+  TextEditingController get passwordTextEditingController =>
+      _passwordTextEditingController;
+  TextEditingController get repeatPasswordTextEditingController =>
+      _repeatPasswordTextEditingController;
 
   bool get isButtonDisabled => _isButtonDisabled;
   bool get isPasswordVisible => _isPasswordVisible;
   bool get isRepeatPasswordVisible => _isRepeatPasswordVisible;
   bool get isEmailValide => _isEmailValide;
+  bool get isEmailResetvalide => _isEmailResetvalide;
   bool get isPasswordValide => _isPasswordValide;
   bool get isReapetPasswordEqualpassword => _isReapetPasswordEqualpassword;
   bool get checkoxValue => _checkoxValue;
@@ -36,6 +46,16 @@ class AuthentificationProvider with ChangeNotifier {
       _isEmailValide = true;
     } else {
       _isEmailValide = false;
+    }
+    notifyListeners();
+  }
+
+  void setEmailResetvalide(String email) {
+    String aux = ValidationItem(val: email).validateEmail() ?? "";
+    if (aux == "") {
+      _isEmailResetvalide = true;
+    } else {
+      _isEmailResetvalide = false;
     }
     notifyListeners();
   }
@@ -66,7 +86,9 @@ class AuthentificationProvider with ChangeNotifier {
   }
 
   void setIsReapetPasswordEqualpassword() {
-    _isReapetPasswordEqualpassword = _repeatPasswordTextEditingController.text == passwordTextEditingController.text;
+    _isReapetPasswordEqualpassword =
+        _repeatPasswordTextEditingController.text ==
+            passwordTextEditingController.text;
     notifyListeners();
   }
 
@@ -86,7 +108,9 @@ class AuthentificationProvider with ChangeNotifier {
     _isRepeatPasswordVisible = false;
     _checkoxValue = false;
     _isPasswordVisible = false;
+    _isEmailResetvalide = false;
     _isButtonDisabled = true;
     _checkoxValue = !_checkoxValue;
+    notifyListeners();
   }
 }

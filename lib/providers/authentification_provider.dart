@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import '../services/validation_items.dart';
 
@@ -8,6 +7,8 @@ class AuthentificationProvider with ChangeNotifier {
   bool _isEmailValide = false;
   bool _isEmailResetvalide = false;
   bool _isPasswordValide = false;
+  bool _isRepeatPasswordValide = false;
+
   bool _isPasswordVisible = false;
   bool _isRepeatPasswordVisible = false;
 
@@ -37,6 +38,7 @@ class AuthentificationProvider with ChangeNotifier {
   bool get isEmailValide => _isEmailValide;
   bool get isEmailResetvalide => _isEmailResetvalide;
   bool get isPasswordValide => _isPasswordValide;
+  bool get isRepeatPasswordValide => _isRepeatPasswordValide;
   bool get isReapetPasswordEqualpassword => _isReapetPasswordEqualpassword;
   bool get checkoxValue => _checkoxValue;
 
@@ -70,6 +72,16 @@ class AuthentificationProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  void setRepeatPasswordValide(String password) {
+    String aux = ValidationItem(val: password).validatePassword() ?? "";
+    if (aux == "") {
+      _isRepeatPasswordValide = true;
+    } else {
+      _isRepeatPasswordValide = false;
+    }
+    notifyListeners();
+  }
+
   void setIsButtonDisabled() {
     _isButtonDisabled = !(_isEmailValide && _isPasswordValide);
     notifyListeners();
@@ -99,13 +111,13 @@ class AuthentificationProvider with ChangeNotifier {
 
   void disposeControllers() {
     _repeatPasswordTextEditingController.clear();
-
     _passwordTextEditingController.clear();
     _emailTextEditingController.clear();
     _emailResetTextEditingController.clear();
     _isReapetPasswordEqualpassword = false;
     _isEmailValide = false;
     _isPasswordValide = false;
+    _isRepeatPasswordValide = false;
     _isRepeatPasswordVisible = false;
     _checkoxValue = false;
     _isPasswordVisible = false;

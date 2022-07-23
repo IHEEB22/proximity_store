@@ -186,6 +186,10 @@ class ResetPassword extends StatelessWidget {
                                           onPressed: () {
                                             Navigator.pushNamed(
                                                 context, AppRoutes.loginPage);
+                                            context
+                                                .read<
+                                                    AuthentificationProvider>()
+                                                .disposeControllers();
                                           },
                                           textInput: 'continue'.tr(),
                                         )),

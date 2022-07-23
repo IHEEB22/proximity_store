@@ -116,10 +116,15 @@ class _LoginPageState extends State<LoginPage> {
                             padding:
                                 EdgeInsets.only(right: 0.065.sw, left: 0.6.sw),
                             child: TextButton(
-                              onPressed: () => Navigator.pushNamed(
-                                context,
-                                AppRoutes.forgetPassword,
-                              ),
+                              onPressed: () {
+                                Navigator.pushNamed(
+                                  context,
+                                  AppRoutes.forgetPassword,
+                                );
+                                context
+                                    .read<AuthentificationProvider>()
+                                    .disposeControllers();
+                              },
                               style: TextButton.styleFrom(
                                 tapTargetSize: MaterialTapTargetSize.padded,
                               ),
@@ -189,6 +194,10 @@ class _LoginPageState extends State<LoginPage> {
                                           onPressed: () {
                                             Navigator.pushNamed(context,
                                                 AppRoutes.registerPage);
+                                            context
+                                                .read<
+                                                    AuthentificationProvider>()
+                                                .disposeControllers();
                                           },
                                           child: Text(
                                             'signUp'.tr(),

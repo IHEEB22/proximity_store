@@ -33,10 +33,14 @@ class RegisterPage extends StatelessWidget {
                           CustomBackButtonIcon(),
                           0.05.sh.verticalSpace,
                           Padding(
-                            padding: EdgeInsets.only(left: 0.0853.sw, right: 0.38.sw),
+                            padding: EdgeInsets.only(
+                                left: 0.0853.sw, right: 0.38.sw),
                             child: Text(
                               'register'.tr(),
-                              style: Theme.of(context).textTheme.headline2?.copyWith(
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headline2
+                                  ?.copyWith(
                                     fontWeight: FontWeight.w800,
                                     fontSize: 28.sp,
                                   ),
@@ -44,31 +48,51 @@ class RegisterPage extends StatelessWidget {
                           ),
                           0.192.sh.verticalSpace,
                           TextInputField(
-                            autovalidateMode: AutovalidateMode.onUserInteraction,
-                            validator: (email) => ValidationItem(val: email).validateEmail(),
-                            controller: context.watch<AuthentificationProvider>().emailTextEditingController,
+                            autovalidateMode:
+                                AutovalidateMode.onUserInteraction,
+                            validator: (email) =>
+                                ValidationItem(val: email).validateEmail(),
+                            controller: context
+                                .watch<AuthentificationProvider>()
+                                .emailTextEditingController,
                             hintText: 'e-mailAddress'.tr(),
                             inputLabel: 'e-mailAddress'.tr(),
                             keyboardType: TextInputType.emailAddress,
                             onChanged: (email) {
-                              context.read<AuthentificationProvider>().setEmailValide(email);
+                              context
+                                  .read<AuthentificationProvider>()
+                                  .setEmailValide(email);
                             },
                           ),
                           0.03.sh.verticalSpace,
                           TextInputField(
                             inputLabel: 'password'.tr(),
-                            controller: context.watch<AuthentificationProvider>().passwordTextEditingController,
+                            controller: context
+                                .watch<AuthentificationProvider>()
+                                .passwordTextEditingController,
                             keyboardType: TextInputType.emailAddress,
-                            autovalidateMode: AutovalidateMode.onUserInteraction,
-                            obscureText: !context.watch<AuthentificationProvider>().isPasswordVisible,
-                            validator: (email) => ValidationItem(val: email).validatePassword(),
+                            autovalidateMode:
+                                AutovalidateMode.onUserInteraction,
+                            obscureText: !context
+                                .watch<AuthentificationProvider>()
+                                .isPasswordVisible,
+                            validator: (email) =>
+                                ValidationItem(val: email).validatePassword(),
                             onChanged: (password) {
-                              context.read<AuthentificationProvider>().setPasswordValide(password);
-                              context.read<AuthentificationProvider>().setIsButtonDisabled();
+                              context
+                                  .read<AuthentificationProvider>()
+                                  .setPasswordValide(password);
+                              context
+                                  .read<AuthentificationProvider>()
+                                  .setIsButtonDisabled();
                             },
                             suffixIcon: GestureDetector(
-                              onTap: () => context.read<AuthentificationProvider>().setIsPasswordVisible(),
-                              child: !(context.watch<AuthentificationProvider>().isPasswordVisible)
+                              onTap: () => context
+                                  .read<AuthentificationProvider>()
+                                  .setIsPasswordVisible(),
+                              child: !(context
+                                      .watch<AuthentificationProvider>()
+                                      .isPasswordVisible)
                                   ? Icon(
                                       Icons.visibility,
                                       color: AppColors.deepBlueColor,
@@ -89,7 +113,10 @@ class RegisterPage extends StatelessWidget {
                               alignment: Alignment.topRight,
                               child: Text(
                                 '8CharactersMinimum'.tr(),
-                                style: Theme.of(context).textTheme.headline6?.copyWith(
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headline6
+                                    ?.copyWith(
                                       fontFamily: 'Montserrat',
                                       fontSize: 12.sp,
                                     ),
@@ -98,20 +125,35 @@ class RegisterPage extends StatelessWidget {
                           ),
                           0.03.sh.verticalSpace,
                           TextInputField(
-                            autovalidateMode: AutovalidateMode.onUserInteraction,
-                            validator: (repeatPassword) => ValidationItem(val: repeatPassword).validatePassword(),
-                            controller: context.watch<AuthentificationProvider>().repeatPasswordTextEditingController,
+                            autovalidateMode:
+                                AutovalidateMode.onUserInteraction,
+                            validator: (repeatPassword) =>
+                                ValidationItem(val: repeatPassword)
+                                    .validatePassword(),
+                            controller: context
+                                .watch<AuthentificationProvider>()
+                                .repeatPasswordTextEditingController,
                             inputLabel: 'repeatPassword'.tr(),
                             hintText: 'repeatPassword'.tr(),
                             keyboardType: TextInputType.emailAddress,
                             onChanged: (password) {
-                              context.read<AuthentificationProvider>().setPasswordValide(password);
-                              context.read<AuthentificationProvider>().setIsReapetPasswordEqualpassword();
+                              context
+                                  .read<AuthentificationProvider>()
+                                  .setPasswordValide(password);
+                              context
+                                  .read<AuthentificationProvider>()
+                                  .setIsReapetPasswordEqualpassword();
                             },
-                            obscureText: !context.watch<AuthentificationProvider>().isRepeatPasswordVisible,
+                            obscureText: !context
+                                .watch<AuthentificationProvider>()
+                                .isRepeatPasswordVisible,
                             suffixIcon: GestureDetector(
-                              onTap: () => context.read<AuthentificationProvider>().setIsRepeatPasswordVisible(),
-                              child: !(context.watch<AuthentificationProvider>().isRepeatPasswordVisible)
+                              onTap: () => context
+                                  .read<AuthentificationProvider>()
+                                  .setIsRepeatPasswordVisible(),
+                              child: !(context
+                                      .watch<AuthentificationProvider>()
+                                      .isRepeatPasswordVisible)
                                   ? Icon(
                                       Icons.visibility,
                                       color: AppColors.deepBlueColor,
@@ -134,10 +176,15 @@ class RegisterPage extends StatelessWidget {
                                   height: 0.0345.sh,
                                   width: 0.0747.sw,
                                   child: Checkbox(
-                                    fillColor: MaterialStateProperty.all(AppColors.lightPurpleColor),
-                                    value: context.watch<AuthentificationProvider>().checkoxValue,
+                                    fillColor: MaterialStateProperty.all(
+                                        AppColors.lightPurpleColor),
+                                    value: context
+                                        .watch<AuthentificationProvider>()
+                                        .checkoxValue,
                                     onChanged: (val) {
-                                      context.read<AuthentificationProvider>().setCheckoxValue();
+                                      context
+                                          .read<AuthentificationProvider>()
+                                          .setCheckoxValue();
                                     },
                                   ),
                                 ),
@@ -146,8 +193,12 @@ class RegisterPage extends StatelessWidget {
                                   child: Padding(
                                     padding: EdgeInsets.only(right: 0.12.sw),
                                     child: Text(
-                                      'receiveAppUpdateInformationAndNewFeatures'.tr(),
-                                      style: Theme.of(context).textTheme.subtitle2?.copyWith(
+                                      'receiveAppUpdateInformationAndNewFeatures'
+                                          .tr(),
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .subtitle2
+                                          ?.copyWith(
                                             fontSize: 10.sp,
                                             height: 1.4,
                                             fontFamily: "Montserrat",
@@ -159,10 +210,15 @@ class RegisterPage extends StatelessWidget {
                             ),
                           ),
                           0.122.sh.verticalSpace,
-                          !(context.watch<AuthentificationProvider>().isEmailValide &&
-                                  context.watch<AuthentificationProvider>().isReapetPasswordEqualpassword)
+                          !(context
+                                      .watch<AuthentificationProvider>()
+                                      .isEmailValide &&
+                                  context
+                                      .watch<AuthentificationProvider>()
+                                      .isReapetPasswordEqualpassword)
                               ? Padding(
-                                  padding: EdgeInsets.symmetric(horizontal: 0.043.sw),
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 0.043.sw),
                                   child: SizedBox(
                                       width: double.infinity,
                                       child: CustomGreyButton(
@@ -171,7 +227,8 @@ class RegisterPage extends StatelessWidget {
                                       )),
                                 )
                               : Padding(
-                                  padding: EdgeInsets.symmetric(horizontal: 0.043.sw),
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 0.043.sw),
                                   child: SizedBox(
                                       width: double.infinity,
                                       child: CustomBlueButton(
@@ -186,7 +243,10 @@ class RegisterPage extends StatelessWidget {
                                 children: <InlineSpan>[
                                   TextSpan(
                                     text: 'alreadyHaveAnAccount?'.tr() + ' ',
-                                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodySmall
+                                        ?.copyWith(
                                           fontSize: 14.sp,
                                           color: AppColors.deepBlueColor,
                                         ),
@@ -199,18 +259,29 @@ class RegisterPage extends StatelessWidget {
                                         width: 120,
                                         child: TextButton(
                                           onPressed: () {
-                                            Navigator.pushNamed(context, AppRoutes.loginPage);
+                                            Navigator.pushNamed(
+                                                context, AppRoutes.loginPage);
+                                            context
+                                                .read<
+                                                    AuthentificationProvider>()
+                                                .disposeControllers();
                                           },
                                           child: Text(
                                             'login'.tr(),
-                                            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .bodyLarge
+                                                ?.copyWith(
                                                   fontSize: 15.sp,
-                                                  color: AppColors.deepBlueColor,
-                                                  decoration: TextDecoration.underline,
+                                                  color:
+                                                      AppColors.deepBlueColor,
+                                                  decoration:
+                                                      TextDecoration.underline,
                                                 ),
                                           ),
                                           style: TextButton.styleFrom(
-                                            padding: EdgeInsets.only(bottom: 0.003.sh),
+                                            padding: EdgeInsets.only(
+                                                bottom: 0.003.sh),
                                             alignment: Alignment.bottomLeft,
                                           ),
                                         ),

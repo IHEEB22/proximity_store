@@ -13,7 +13,6 @@ class CustomBackButtonIcon extends StatelessWidget {
     return GestureDetector(
       onTap: (() {
         context.read<AuthentificationProvider>().disposeControllers();
-
         Navigator.pop(context);
       }),
       child: Padding(

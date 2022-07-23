@@ -102,9 +102,10 @@ class AuthentificationProvider with ChangeNotifier {
 
     _passwordTextEditingController.clear();
     _emailTextEditingController.clear();
-    emailResetTextEditingController.clear();
+    _emailResetTextEditingController.clear();
     _isReapetPasswordEqualpassword = false;
     _isEmailValide = false;
+    _isPasswordValide = false;
     _isRepeatPasswordVisible = false;
     _checkoxValue = false;
     _isPasswordVisible = false;

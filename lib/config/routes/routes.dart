@@ -35,6 +35,8 @@ class AppRoutes {
         return CustomPageRoute(Route: EmailVerificationPage(), settings: settings);
       case registerPage:
         return CustomPageRoute(Route: RegisterPage(), settings: settings);
+      case resetPassword:
+        return CustomPageRoute(Route: ResetPassword(), settings: settings);
 
       default:
         throw ('this route name does not exist');

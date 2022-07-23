@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:provider/provider.dart';
 import 'package:proximitystore/config/colors/app_colors.dart';
 import 'package:proximitystore/config/routes/routes.dart';
@@ -18,8 +19,6 @@ class _LoginPageState extends State<LoginPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    context.read<AuthentificationProvider>().disposeControllersLoginPage();
-    context.read<AuthentificationProvider>().disposeIsButtonDisabled();
     return Consumer<AuthentificationProvider>(
       builder: (context, value, child) => Scaffold(
         body: SafeArea(
@@ -88,14 +87,14 @@ class _LoginPageState extends State<LoginPage> {
                             hintText: 'password'.tr(),
                           ),
                           Padding(
-                            padding: EdgeInsets.only(right: 0.065.sw),
+                            padding: EdgeInsets.only(right: 0.065.sw, left: 0.6.sw),
                             child: TextButton(
-                              onPressed: () => Navigator.popAndPushNamed(
+                              onPressed: () => Navigator.pushNamed(
                                 context,
                                 AppRoutes.forgetPassword,
                               ),
                               style: TextButton.styleFrom(
-                                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                                tapTargetSize: MaterialTapTargetSize.padded,
                               ),
                               child: Align(
                                 alignment: Alignment.topRight,
@@ -150,7 +149,9 @@ class _LoginPageState extends State<LoginPage> {
                                         height: 30,
                                         width: 120,
                                         child: TextButton(
-                                          onPressed: () {},
+                                          onPressed: () {
+                                            Navigator.pushNamed(context, AppRoutes.registerPage);
+                                          },
                                           child: Text(
                                             'signUp'.tr(),
                                             style: Theme.of(context).textTheme.bodyLarge?.copyWith(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../services/validation_items.dart';
 
@@ -13,9 +14,11 @@ class AuthentificationProvider with ChangeNotifier {
 
   TextEditingController _repeatPasswordTextEditingController = TextEditingController();
   TextEditingController _emailTextEditingController = TextEditingController();
+  TextEditingController _emailResetTextEditingController = TextEditingController();
   TextEditingController _passwordTextEditingController = TextEditingController();
 
   TextEditingController get emailTextEditingController => _emailTextEditingController;
+  TextEditingController get emailResetTextEditingController => _emailResetTextEditingController;
   TextEditingController get passwordTextEditingController => _passwordTextEditingController;
   TextEditingController get repeatPasswordTextEditingController => _repeatPasswordTextEditingController;
 
@@ -72,36 +75,18 @@ class AuthentificationProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void disposeControllersLoginPage() {
-    _emailTextEditingController.clear();
-    _passwordTextEditingController.clear();
-  }
-
-  void disposeControllersResetPasswordPage() {
-    // clear controllers
+  void disposeControllers() {
     _repeatPasswordTextEditingController.clear();
-    _passwordTextEditingController.clear();
 
-// disable form button
+    _passwordTextEditingController.clear();
+    _emailTextEditingController.clear();
+    emailResetTextEditingController.clear();
     _isReapetPasswordEqualpassword = false;
-
-// set visiblity passwords to false
-    _isPasswordVisible = false;
-    _isRepeatPasswordVisible = false;
-  }
-
-  void disposeControllersRegisterPage() {
-    _repeatPasswordTextEditingController.clear();
-    _passwordTextEditingController.clear();
-    _emailTextEditingController.clear();
-
     _isEmailValide = false;
-    _isReapetPasswordEqualpassword = false;
-    _checkoxValue = false;
-
-    _isPasswordVisible = false;
     _isRepeatPasswordVisible = false;
+    _checkoxValue = false;
+    _isPasswordVisible = false;
+    _isButtonDisabled = true;
+    _checkoxValue = !_checkoxValue;
   }
-
-  void disposeIsButtonDisabled() => _isButtonDisabled = true;
 }

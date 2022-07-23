@@ -198,7 +198,9 @@ class RegisterPage extends StatelessWidget {
                                         height: 30,
                                         width: 120,
                                         child: TextButton(
-                                          onPressed: () {},
+                                          onPressed: () {
+                                            Navigator.pushNamed(context, AppRoutes.loginPage);
+                                          },
                                           child: Text(
                                             'login'.tr(),
                                             style: Theme.of(context).textTheme.bodyLarge?.copyWith(

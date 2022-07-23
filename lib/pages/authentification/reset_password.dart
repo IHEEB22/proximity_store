@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:proximitystore/config/colors/app_colors.dart';
+import 'package:proximitystore/config/routes/routes.dart';
 import 'package:proximitystore/widgets/background_image.dart';
+import 'package:proximitystore/widgets/custom_back_button_icon.dart';
 
-import '../../config/images/app_images.dart';
-import '../../config/routes/routes.dart';
 import '../../providers/authentification_provider.dart';
 import '../../services/validation_items.dart';
 import '../../widgets/custom_blue_button.dart';
@@ -18,7 +18,6 @@ class ResetPassword extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    context.read<AuthentificationProvider>().disposeControllersResetPasswordPage();
     return Consumer<AuthentificationProvider>(
       builder: (context, value, child) => Scaffold(
         body: SafeArea(
@@ -30,22 +29,7 @@ class ResetPassword extends StatelessWidget {
                 child: Wrap(
                   crossAxisAlignment: WrapCrossAlignment.start,
                   children: <Widget>[
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.popAndPushNamed(context, AppRoutes.forgetPassword);
-                      },
-                      child: Padding(
-                        padding: EdgeInsets.only(
-                          top: 0.028.sh,
-                          left: 0.025.sw,
-                        ),
-                        child: Image.asset(
-                          AppImages.backIcon,
-                          width: 0.064.sw,
-                          height: 0.029.sh,
-                        ),
-                      ),
-                    ),
+                    CustomBackButtonIcon(),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -161,7 +145,9 @@ class ResetPassword extends StatelessWidget {
                                     child: SizedBox(
                                         width: double.infinity,
                                         child: CustomBlueButton(
-                                          onPressed: () {},
+                                          onPressed: () {
+                                            Navigator.pushNamed(context, AppRoutes.loginPage);
+                                          },
                                           textInput: 'continue'.tr(),
                                         )),
                                   ),

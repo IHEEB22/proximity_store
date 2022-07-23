@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 import 'package:proximitystore/config/images/app_images.dart';
+
+import '../providers/authentification_provider.dart';
 
 class CustomBackButtonIcon extends StatelessWidget {
   const CustomBackButtonIcon({Key? key}) : super(key: key);
@@ -8,7 +11,10 @@ class CustomBackButtonIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Navigator.pop(context),
+      onTap: (() {
+        Navigator.pop(context);
+        context.read<AuthentificationProvider>().disposeControllers();
+      }),
       child: Padding(
         padding: EdgeInsets.only(
           top: 0.028.sh,

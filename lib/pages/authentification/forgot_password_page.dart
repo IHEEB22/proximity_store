@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:proximitystore/config/routes/routes.dart';
 import 'package:proximitystore/widgets/background_image.dart';
+import 'package:proximitystore/widgets/custom_back_button_icon.dart';
 
 import '../../config/images/app_images.dart';
 import '../../providers/authentification_provider.dart';
@@ -27,20 +28,7 @@ class ForgetPassword extends StatelessWidget {
                 physics: BouncingScrollPhysics(),
                 child: Wrap(
                   children: <Widget>[
-                    GestureDetector(
-                      onTap: () => Navigator.popAndPushNamed(context, AppRoutes.loginPage),
-                      child: Padding(
-                        padding: EdgeInsets.only(
-                          top: 0.028.sh,
-                          left: 0.025.sw,
-                        ),
-                        child: Image.asset(
-                          AppImages.backIcon,
-                          width: 0.064.sw,
-                          height: 0.029.sh,
-                        ),
-                      ),
-                    ),
+                    CustomBackButtonIcon(),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
@@ -76,7 +64,7 @@ class ForgetPassword extends StatelessWidget {
                         TextInputField(
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                           validator: (email) => ValidationItem(val: email).validateEmail(),
-                          controller: context.watch<AuthentificationProvider>().emailTextEditingController,
+                          controller: context.watch<AuthentificationProvider>().emailResetTextEditingController,
                           hintText: 'e-mailAddress'.tr(),
                           inputLabel: 'e-mailAddress'.tr(),
                           keyboardType: TextInputType.emailAddress,
@@ -95,7 +83,7 @@ class ForgetPassword extends StatelessWidget {
                                     child: SizedBox(
                                         width: double.infinity,
                                         child: CustomBlueButton(
-                                          onPressed: () => Navigator.popAndPushNamed(context, AppRoutes.resetPassword),
+                                          onPressed: () => Navigator.pushNamed(context, AppRoutes.resetPassword),
                                           textInput: 'continue'.tr(),
                                         )),
                                   ),

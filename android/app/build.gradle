@@ -47,7 +47,8 @@ android {
         applicationId "com.example.proximitystore"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-build-configuration.
-        minSdkVersion 28
+        // minSdkVersion before 28
+        minSdkVersion 25
         targetSdkVersion 28
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName

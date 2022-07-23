@@ -30,7 +30,12 @@ class WelcomePage extends StatelessWidget {
                       padding: EdgeInsets.symmetric(horizontal: 0.042.sw),
                       child: SizedBox(
                         width: double.infinity,
-                        child: CustomBlueButton(textInput: 'registerWithEmail'.tr(), onPressed: () {}),
+                        child: CustomBlueButton(
+                          textInput: 'registerWithEmail'.tr(),
+                          onPressed: () {
+                            Navigator.pushNamed(context, AppRoutes.registerPage);
+                          },
+                        ),
                       ),
                     ),
                     0.036.sh.verticalSpace,
@@ -51,7 +56,7 @@ class WelcomePage extends StatelessWidget {
                         width: double.infinity,
                         child: CustomBlueButton(
                             textInput: 'toLogIn'.tr(),
-                            onPressed: () => Navigator.popAndPushNamed(context, AppRoutes.loginPage)),
+                            onPressed: () => Navigator.pushNamed(context, AppRoutes.loginPage)),
                       ),
                     ),
                     0.116.sh.verticalSpace,

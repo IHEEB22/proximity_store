@@ -4,14 +4,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:proximitystore/config/routes/routes.dart';
 import 'package:proximitystore/widgets/background_image.dart';
+import 'package:proximitystore/widgets/custom_back_button_icon.dart';
 
-import '../../config/colors/app_colors.dart';
-import '../../config/constants/app_dimensions.dart';
 import '../../config/images/app_images.dart';
 import '../../providers/authentification_provider.dart';
-import '../../services/validation_items.dart';
-import '../../widgets/custom_blue_button.dart';
-import '../../widgets/custom_grey_button.dart';
 import '../../widgets/text_input_field.dart';
 
 class EmailVerificationPage extends StatelessWidget {
@@ -49,20 +45,7 @@ class EmailVerificationPage extends StatelessWidget {
                 physics: BouncingScrollPhysics(),
                 child: Wrap(
                   children: <Widget>[
-                    GestureDetector(
-                      onTap: () => Navigator.popAndPushNamed(context, AppRoutes.loginPage),
-                      child: Padding(
-                        padding: EdgeInsets.only(
-                          top: 0.028.sh,
-                          left: 0.025.sw,
-                        ),
-                        child: Image.asset(
-                          AppImages.backIcon,
-                          width: 0.064.sw,
-                          height: 0.029.sh,
-                        ),
-                      ),
-                    ),
+                    CustomBackButtonIcon(),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
@@ -103,7 +86,7 @@ class EmailVerificationPage extends StatelessWidget {
                           keyboardType: TextInputType.number,
                           onChanged: (verificationCode) {
                             if (verificationCode.length == 6) {
-                              Navigator.popAndPushNamed(context, AppRoutes.loginPage);
+                              Navigator.pushNamed(context, AppRoutes.loginPage);
                             }
                           },
                         ),

@@ -33,8 +33,7 @@ class WelcomePage extends StatelessWidget {
                         child: CustomBlueButton(
                           textInput: 'registerWithEmail'.tr(),
                           onPressed: () {
-                            Navigator.pushNamed(
-                                context, AppRoutes.registerPage);
+                            Navigator.pushNamed(context, AppRoutes.registerPage);
                           },
                         ),
                       ),
@@ -57,8 +56,7 @@ class WelcomePage extends StatelessWidget {
                         width: double.infinity,
                         child: CustomBlueButton(
                             textInput: 'toLogIn'.tr(),
-                            onPressed: () => Navigator.pushNamed(
-                                context, AppRoutes.loginPage)),
+                            onPressed: () => Navigator.pushNamed(context, AppRoutes.loginPage)),
                       ),
                     ),
                     0.116.sh.verticalSpace,
@@ -69,22 +67,14 @@ class WelcomePage extends StatelessWidget {
                           children: <InlineSpan>[
                             TextSpan(
                               text: 'byCreatingAnAccountYouAgree'.tr() + ' ',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .headline6
-                                  ?.copyWith(
+                              style: Theme.of(context).textTheme.headline6?.copyWith(
                                     fontFamily: 'Montserrat',
                                     fontSize: 12.sp,
                                   ),
                             ),
                             TextSpan(
-                                text:
-                                    'toComplyWithTheGeneralConditionsOfProximityStore.'
-                                        .tr(),
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .headline6
-                                    ?.copyWith(
+                                text: 'toComplyWithTheGeneralConditionsOfProximityStore.'.tr(),
+                                style: Theme.of(context).textTheme.headline6?.copyWith(
                                       fontFamily: 'Montserrat',
                                       decoration: TextDecoration.underline,
                                       fontSize: 12.sp,

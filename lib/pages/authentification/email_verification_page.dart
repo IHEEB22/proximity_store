@@ -6,7 +6,6 @@ import 'package:proximitystore/config/routes/routes.dart';
 import 'package:proximitystore/widgets/background_image.dart';
 import 'package:proximitystore/widgets/custom_back_button_icon.dart';
 
-import '../../config/images/app_images.dart';
 import '../../providers/authentification_provider.dart';
 import '../../widgets/text_input_field.dart';
 
@@ -31,9 +30,7 @@ class EmailVerificationPage extends StatelessWidget {
                     child: Text(
                       'resendTheCode'.tr(),
                       style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                          fontSize: 15.sp,
-                          decoration: TextDecoration.underline,
-                          fontWeight: FontWeight.w600),
+                          fontSize: 15.sp, decoration: TextDecoration.underline, fontWeight: FontWeight.w600),
                     ),
                     style: TextButton.styleFrom(
                       padding: EdgeInsets.only(bottom: 0.003.sh),
@@ -60,44 +57,36 @@ class EmailVerificationPage extends StatelessWidget {
                           ),
                           child: Text(
                             'verification'.tr(),
-                            style:
-                                Theme.of(context).textTheme.headline2?.copyWith(
-                                      fontWeight: FontWeight.w800,
-                                      fontSize: 28.sp,
-                                      height: 1.4,
-                                    ),
+                            style: Theme.of(context).textTheme.headline2?.copyWith(
+                                  fontWeight: FontWeight.w800,
+                                  fontSize: 28.sp,
+                                  height: 1.4,
+                                ),
                           ),
                         ),
                         Padding(
-                          padding:
-                              EdgeInsets.only(left: 0.0826.sw, right: 0.15.sw),
+                          padding: EdgeInsets.only(left: 0.0826.sw, right: 0.15.sw),
                           child: Text(
-                            'toVerifyYourAccountEnterThe6DigitCodeReceivedByEmail'
-                                .tr(),
-                            style:
-                                Theme.of(context).textTheme.bodyText2?.copyWith(
-                                      fontFamily: 'Montserrat',
-                                      fontSize: 16.sp,
-                                      fontWeight: FontWeight.w400,
-                                      height: 1.4.sp,
-                                    ),
+                            'toVerifyYourAccountEnterThe6DigitCodeReceivedByEmail'.tr(),
+                            style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                                  fontFamily: 'Montserrat',
+                                  fontSize: 16.sp,
+                                  fontWeight: FontWeight.w400,
+                                  height: 1.4.sp,
+                                ),
                           ),
                         ),
                         0.0923.sh.verticalSpace,
                         TextInputField(
                           autovalidateMode: AutovalidateMode.onUserInteraction,
-                          controller: context
-                              .watch<AuthentificationProvider>()
-                              .emailTextEditingController,
+                          controller: context.watch<AuthentificationProvider>().emailTextEditingController,
                           hintText: 'verificationCode'.tr(),
                           inputLabel: 'verificationCode'.tr(),
                           keyboardType: TextInputType.number,
                           onChanged: (verificationCode) {
                             if (verificationCode.length == 6) {
                               Navigator.pushNamed(context, AppRoutes.loginPage);
-                              context
-                                  .read()<AuthentificationProvider>()
-                                  .disposeControllers();
+                              context.read()<AuthentificationProvider>().disposeControllers();
                             }
                           },
                         ),

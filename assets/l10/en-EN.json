@@ -55,6 +55,26 @@
 "verification": "Vérification",
 "toVerifyYourAccountEnterThe6DigitCodeReceivedByEmail": "Pour vérifier votre compte, renseignez le code à 6 chiffres reçu par email.",
 "verificationCode": "Code de vérification",
-"resendTheCode": "Renvoyer le code"
+"resendTheCode": "Renvoyer le code",
+
+"myBusiness": "Mon commerce",
+"vacationModeOff": "Mode vacance désactivé",
+"nameOfYourBusiness": "Nom de votre commerce",
+"fillInAName": "Renseignez un nom",
+"sector": "Secteur(s)",
+"selectOneOrMoreSectors": "Séléctionnez un ou plusieurs secteurs",
+"address": "Addresse",
+"enterAnAddress": "Renseignez une adresse",
+"telephone":"Téléphone",
+"fillInAPhoneNumber" : "Renseignez un numéro de téléphone",
+"openingTime" : "Horaires d’ouverture",
+"changeSchedules": "Modifier les horaires",
+"photoOfMyBusiness": "Photo de mon commerce",
+"addPhoto": "Ajouter une photo",
+"description": "Description",
+"aboutOptional": "à propos (optionnel)",
+"describeYourStoreHereWhatYouWantYourCustomersToKnow.": "Décrivez ici votre magasin, ce que vous voulez faire savoir à vos clients.",
+"CharactersLeft": "caractères restants",
+"validate": "valide"
 
 }

@@ -15,22 +15,15 @@ class AuthentificationProvider with ChangeNotifier {
   bool _isReapetPasswordEqualpassword = false;
   bool _checkoxValue = false;
 
-  TextEditingController _repeatPasswordTextEditingController =
-      TextEditingController();
+  TextEditingController _repeatPasswordTextEditingController = TextEditingController();
   TextEditingController _emailTextEditingController = TextEditingController();
-  TextEditingController _emailResetTextEditingController =
-      TextEditingController();
-  TextEditingController _passwordTextEditingController =
-      TextEditingController();
+  TextEditingController _emailResetTextEditingController = TextEditingController();
+  TextEditingController _passwordTextEditingController = TextEditingController();
 
-  TextEditingController get emailTextEditingController =>
-      _emailTextEditingController;
-  TextEditingController get emailResetTextEditingController =>
-      _emailResetTextEditingController;
-  TextEditingController get passwordTextEditingController =>
-      _passwordTextEditingController;
-  TextEditingController get repeatPasswordTextEditingController =>
-      _repeatPasswordTextEditingController;
+  TextEditingController get emailTextEditingController => _emailTextEditingController;
+  TextEditingController get emailResetTextEditingController => _emailResetTextEditingController;
+  TextEditingController get passwordTextEditingController => _passwordTextEditingController;
+  TextEditingController get repeatPasswordTextEditingController => _repeatPasswordTextEditingController;
 
   bool get isButtonDisabled => _isButtonDisabled;
   bool get isPasswordVisible => _isPasswordVisible;
@@ -98,9 +91,7 @@ class AuthentificationProvider with ChangeNotifier {
   }
 
   void setIsReapetPasswordEqualpassword() {
-    _isReapetPasswordEqualpassword =
-        _repeatPasswordTextEditingController.text ==
-            passwordTextEditingController.text;
+    _isReapetPasswordEqualpassword = _repeatPasswordTextEditingController.text == passwordTextEditingController.text;
     notifyListeners();
   }
 
@@ -123,7 +114,7 @@ class AuthentificationProvider with ChangeNotifier {
     _isPasswordVisible = false;
     _isEmailResetvalide = false;
     _isButtonDisabled = true;
-    _checkoxValue = !_checkoxValue;
+    _checkoxValue = false;
     notifyListeners();
   }
 }

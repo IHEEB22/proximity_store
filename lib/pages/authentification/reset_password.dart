@@ -43,56 +43,40 @@ class ResetPassword extends StatelessWidget {
                           ),
                           child: Text(
                             'resetYourPassword'.tr(),
-                            style:
-                                Theme.of(context).textTheme.headline2?.copyWith(
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 26.sp,
-                                      height: 1.2,
-                                    ),
+                            style: Theme.of(context).textTheme.headline2?.copyWith(
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 26.sp,
+                                  height: 1.2,
+                                ),
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.only(
-                              left: 0.0853333.sw, right: 0.099.sw),
+                          padding: EdgeInsets.only(left: 0.0853333.sw, right: 0.099.sw),
                           child: Text(
                             'enterYourNewPassword'.tr(),
-                            style:
-                                Theme.of(context).textTheme.bodyText2?.copyWith(
-                                      fontFamily: 'Montserrat',
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 14.sp,
-                                    ),
+                            style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                                  fontFamily: 'Montserrat',
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 14.sp,
+                                ),
                           ),
                         ),
                         0.137.sh.verticalSpace,
                         TextInputField(
                           autovalidateMode: AutovalidateMode.onUserInteraction,
-                          validator: (password) =>
-                              ValidationItem(val: password).validatePassword(),
-                          controller: context
-                              .watch<AuthentificationProvider>()
-                              .passwordTextEditingController,
+                          validator: (password) => ValidationItem(val: password).validatePassword(),
+                          controller: context.watch<AuthentificationProvider>().passwordTextEditingController,
                           hintText: 'password'.tr(),
                           inputLabel: 'password'.tr(),
                           keyboardType: TextInputType.emailAddress,
                           onChanged: (password) {
-                            context
-                                .read<AuthentificationProvider>()
-                                .setPasswordValide(password);
-                            context
-                                .read<AuthentificationProvider>()
-                                .setIsReapetPasswordEqualpassword();
+                            context.read<AuthentificationProvider>().setPasswordValide(password);
+                            context.read<AuthentificationProvider>().setIsReapetPasswordEqualpassword();
                           },
-                          obscureText: !context
-                              .watch<AuthentificationProvider>()
-                              .isPasswordVisible,
+                          obscureText: !context.watch<AuthentificationProvider>().isPasswordVisible,
                           suffixIcon: GestureDetector(
-                            onTap: () => context
-                                .read<AuthentificationProvider>()
-                                .setIsPasswordVisible(),
-                            child: !(context
-                                    .watch<AuthentificationProvider>()
-                                    .isPasswordVisible)
+                            onTap: () => context.read<AuthentificationProvider>().setIsPasswordVisible(),
+                            child: !(context.watch<AuthentificationProvider>().isPasswordVisible)
                                 ? Icon(
                                     Icons.visibility,
                                     color: AppColors.deepBlueColor,
@@ -112,10 +96,7 @@ class ResetPassword extends StatelessWidget {
                             alignment: Alignment.topRight,
                             child: Text(
                               '8CharactersMinimum'.tr(),
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .headline6
-                                  ?.copyWith(
+                              style: Theme.of(context).textTheme.headline6?.copyWith(
                                     fontFamily: 'Montserrat',
                                     fontSize: 12.sp,
                                   ),
@@ -125,33 +106,19 @@ class ResetPassword extends StatelessWidget {
                         0.02894.sh.verticalSpace,
                         TextInputField(
                           autovalidateMode: AutovalidateMode.onUserInteraction,
-                          validator: (repeatPassword) =>
-                              ValidationItem(val: repeatPassword)
-                                  .validatePassword(),
-                          controller: context
-                              .watch<AuthentificationProvider>()
-                              .repeatPasswordTextEditingController,
+                          validator: (repeatPassword) => ValidationItem(val: repeatPassword).validatePassword(),
+                          controller: context.watch<AuthentificationProvider>().repeatPasswordTextEditingController,
                           inputLabel: 'repeatPassword'.tr(),
                           hintText: 'repeatPassword'.tr(),
                           keyboardType: TextInputType.emailAddress,
                           onChanged: (password) {
-                            context
-                                .read<AuthentificationProvider>()
-                                .setPasswordValide(password);
-                            context
-                                .read<AuthentificationProvider>()
-                                .setIsReapetPasswordEqualpassword();
+                            context.read<AuthentificationProvider>().setPasswordValide(password);
+                            context.read<AuthentificationProvider>().setIsReapetPasswordEqualpassword();
                           },
-                          obscureText: !context
-                              .watch<AuthentificationProvider>()
-                              .isRepeatPasswordVisible,
+                          obscureText: !context.watch<AuthentificationProvider>().isRepeatPasswordVisible,
                           suffixIcon: GestureDetector(
-                            onTap: () => context
-                                .read<AuthentificationProvider>()
-                                .setIsRepeatPasswordVisible(),
-                            child: !(context
-                                    .watch<AuthentificationProvider>()
-                                    .isRepeatPasswordVisible)
+                            onTap: () => context.read<AuthentificationProvider>().setIsRepeatPasswordVisible(),
+                            child: !(context.watch<AuthentificationProvider>().isRepeatPasswordVisible)
                                 ? Icon(
                                     Icons.visibility,
                                     color: AppColors.deepBlueColor,
@@ -168,28 +135,19 @@ class ResetPassword extends StatelessWidget {
                           ),
                         ),
                         0.1884.sh.verticalSpace,
-                        context
-                                    .watch<AuthentificationProvider>()
-                                    .isPasswordValide &&
-                                context
-                                    .watch<AuthentificationProvider>()
-                                    .isReapetPasswordEqualpassword
+                        context.watch<AuthentificationProvider>().isPasswordValide &&
+                                context.watch<AuthentificationProvider>().isReapetPasswordEqualpassword
                             ? Column(
                                 children: [
                                   0.032.sh.verticalSpace,
                                   Padding(
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: 0.043.sw),
+                                    padding: EdgeInsets.symmetric(horizontal: 0.043.sw),
                                     child: SizedBox(
                                         width: double.infinity,
                                         child: CustomBlueButton(
                                           onPressed: () {
-                                            Navigator.pushNamed(
-                                                context, AppRoutes.loginPage);
-                                            context
-                                                .read<
-                                                    AuthentificationProvider>()
-                                                .disposeControllers();
+                                            Navigator.pushNamed(context, AppRoutes.loginPage);
+                                            context.read<AuthentificationProvider>().disposeControllers();
                                           },
                                           textInput: 'continue'.tr(),
                                         )),
@@ -197,8 +155,7 @@ class ResetPassword extends StatelessWidget {
                                 ],
                               )
                             : Padding(
-                                padding:
-                                    EdgeInsets.symmetric(horizontal: 0.043.sw),
+                                padding: EdgeInsets.symmetric(horizontal: 0.043.sw),
                                 child: SizedBox(
                                     width: double.infinity,
                                     child: CustomGreyButton(

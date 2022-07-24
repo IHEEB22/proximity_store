@@ -41,66 +41,50 @@ class ForgetPassword extends StatelessWidget {
                           ),
                           child: Text(
                             'doYouForgotYourPassword?'.tr(),
-                            style:
-                                Theme.of(context).textTheme.headline2?.copyWith(
-                                      fontWeight: FontWeight.w800,
-                                      fontSize: 25.sp,
-                                      height: 1.4,
-                                    ),
+                            style: Theme.of(context).textTheme.headline2?.copyWith(
+                                  fontWeight: FontWeight.w800,
+                                  fontSize: 25.sp,
+                                  height: 1.4,
+                                ),
                           ),
                         ),
                         Padding(
-                          padding:
-                              EdgeInsets.only(left: 0.0826.sw, right: 0.099.sw),
+                          padding: EdgeInsets.only(left: 0.0826.sw, right: 0.099.sw),
                           child: Text(
-                            'enterYourEmailAddressToReceiveACodeToResetYourPassword.'
-                                .tr(),
-                            style:
-                                Theme.of(context).textTheme.bodyText2?.copyWith(
-                                      fontFamily: 'Montserrat',
-                                      fontSize: 16.sp,
-                                      fontWeight: FontWeight.w400,
-                                      height: 1.4.sp,
-                                    ),
+                            'enterYourEmailAddressToReceiveACodeToResetYourPassword.'.tr(),
+                            style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                                  fontFamily: 'Montserrat',
+                                  fontSize: 16.sp,
+                                  fontWeight: FontWeight.w400,
+                                  height: 1.4.sp,
+                                ),
                           ),
                         ),
                         0.095.sh.verticalSpace,
                         TextInputField(
                           autovalidateMode: AutovalidateMode.onUserInteraction,
-                          validator: (email) =>
-                              ValidationItem(val: email).validateEmail(),
-                          controller: context
-                              .watch<AuthentificationProvider>()
-                              .emailResetTextEditingController,
+                          validator: (email) => ValidationItem(val: email).validateEmail(),
+                          controller: context.watch<AuthentificationProvider>().emailResetTextEditingController,
                           hintText: 'e-mailAddress'.tr(),
                           inputLabel: 'e-mailAddress'.tr(),
                           keyboardType: TextInputType.emailAddress,
                           onChanged: (email) {
-                            context
-                                .read<AuthentificationProvider>()
-                                .setEmailResetvalide(email);
+                            context.read<AuthentificationProvider>().setEmailResetvalide(email);
                           },
                         ),
                         0.324.sh.verticalSpace,
-                        context
-                                .watch<AuthentificationProvider>()
-                                .isEmailResetvalide
+                        context.watch<AuthentificationProvider>().isEmailResetvalide
                             ? Column(
                                 children: [
                                   0.032.sh.verticalSpace,
                                   Padding(
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: 0.043.sw),
+                                    padding: EdgeInsets.symmetric(horizontal: 0.043.sw),
                                     child: SizedBox(
                                         width: double.infinity,
                                         child: CustomBlueButton(
                                           onPressed: () {
-                                            Navigator.pushNamed(context,
-                                                AppRoutes.resetPassword);
-                                            context
-                                                .read<
-                                                    AuthentificationProvider>()
-                                                .disposeControllers();
+                                            Navigator.pushNamed(context, AppRoutes.resetPassword);
+                                            context.read<AuthentificationProvider>().disposeControllers();
                                           },
                                           textInput: 'continue'.tr(),
                                         )),
@@ -108,8 +92,7 @@ class ForgetPassword extends StatelessWidget {
                                 ],
                               )
                             : Padding(
-                                padding:
-                                    EdgeInsets.symmetric(horizontal: 0.043.sw),
+                                padding: EdgeInsets.symmetric(horizontal: 0.043.sw),
                                 child: SizedBox(
                                     width: double.infinity,
                                     child: CustomGreyButton(

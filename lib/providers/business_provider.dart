@@ -76,8 +76,8 @@ class BusinessProvider with ChangeNotifier {
   }
 
   void addChekedSector(String sectorName) {
-    if (!_chekedsectorsList.contains(sectorName))
-      _chekedsectorsList.add(sectorName);
+    if (!_chekedsectorsList.contains(sectorName) &&
+        (_sectorsData[sectorName] == true)) _chekedsectorsList.add(sectorName);
     notifyListeners();
   }
 

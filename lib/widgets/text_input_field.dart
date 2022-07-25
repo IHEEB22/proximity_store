@@ -10,12 +10,17 @@ class TextInputField extends StatelessWidget {
   bool? obscureText;
   final TextInputType keyboardType;
   final TextEditingController controller;
-  final AutovalidateMode autovalidateMode;
+  AutovalidateMode? autovalidateMode;
   final String? Function(String?)? validator;
   final void Function(String)? onChanged;
   Widget? suffixIcon;
   Widget? prefixIcon;
   final String hintText;
+  bool? readOnly;
+  int? maxLines;
+  int? minLines;
+  int? maxLength;
+  double? additionalTopPading;
 
   TextInputField({
     Key? key,
@@ -23,11 +28,16 @@ class TextInputField extends StatelessWidget {
     this.obscureText,
     required this.keyboardType,
     required this.controller,
-    required this.autovalidateMode,
+    this.autovalidateMode,
     this.validator,
     this.onChanged,
     this.suffixIcon,
     this.prefixIcon,
+    this.maxLines,
+    this.minLines,
+    this.additionalTopPading,
+    this.maxLength,
+    this.readOnly,
     required this.hintText,
   }) : super(key: key);
 
@@ -55,6 +65,10 @@ class TextInputField extends StatelessWidget {
             ),
           ),
           TextFormField(
+            readOnly: readOnly ?? false,
+            maxLength: maxLength,
+            maxLines: maxLines,
+            minLines: minLines,
             obscureText: obscureText ?? false,
             keyboardType: keyboardType,
             controller: controller,
@@ -74,6 +88,7 @@ class TextInputField extends StatelessWidget {
               ),
             ],
             decoration: InputDecoration(
+              counterText: '',
               suffixIcon: suffixIcon,
               prefix: prefixIcon,
               hintText: hintText,
@@ -92,7 +107,8 @@ class TextInputField extends StatelessWidget {
                 fontWeight: FontWeight.w400,
                 letterSpacing: 0.2,
               ),
-              contentPadding: EdgeInsets.all(13.5.sm),
+              contentPadding: EdgeInsets.only(
+                  left: 0.0395.sw, right: 0.0395.sw, bottom: 0.0166.sh, top: (0.0166.sh + (additionalTopPading ?? 0))),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.all(
                   Radius.circular(8.sm),

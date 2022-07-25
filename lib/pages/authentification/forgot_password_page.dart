@@ -6,7 +6,6 @@ import 'package:proximitystore/config/routes/routes.dart';
 import 'package:proximitystore/widgets/background_image.dart';
 import 'package:proximitystore/widgets/custom_back_button_icon.dart';
 
-import '../../config/images/app_images.dart';
 import '../../providers/authentification_provider.dart';
 import '../../services/validation_items.dart';
 import '../../widgets/custom_blue_button.dart';

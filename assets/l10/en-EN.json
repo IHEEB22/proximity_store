@@ -59,6 +59,7 @@
 
 "myBusiness": "Mon commerce",
 "vacationModeOff": "Mode vacance désactivé",
+"vacationModeOn": "Mode vacance activé",
 "nameOfYourBusiness": "Nom de votre commerce",
 "fillInAName": "Renseignez un nom",
 "sector": "Secteur(s)",
@@ -73,8 +74,25 @@
 "addPhoto": "Ajouter une photo",
 "description": "Description",
 "aboutOptional": "à propos (optionnel)",
-"describeYourStoreHereWhatYouWantYourCustomersToKnow.": "Décrivez ici votre magasin, ce que vous voulez faire savoir à vos clients.",
+"describeYourStoreHereWhatYouWantYourCustomersToKnow": "Décrivez ici votre magasin, ce que vous voulez faire savoir à vos clients.",
 "CharactersLeft": "caractères restants",
-"validate": "valide"
+"validate": "valide",
+"someMandatoryFieldsAreNotFilledIn": "Certains champs obligatoires ne sont pas renseignés",
+"delete": "Effacer",
+
+
+"petShop" : "Animalerie",
+"applications&VideoGames": "Applications & Jeux Vidéos",
+"autoAndMotorcycle": "Auto et Moto",
+"luggageStorage": "Bagagerie",
+"baby&Childcare": "Bébé & Puériculture",
+"diy": "Bricolage",
+"shoes": "Chaussures",
+"telephony":"Téléphonie",
+
+"addThePhotoOfMyBusiness" : "Ajouter la photo de mon commerce",
+"chooseFromGallery":"Choisir dans la galerie",
+"openTheCamera":"Ouvrir l’appareil photo"
+
 
 }

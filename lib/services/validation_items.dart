@@ -30,6 +30,28 @@ class ValidationItem {
       return null;
   }
 
+  String? validateBusinessName() {
+    int len = (val ?? '').length;
+
+    if ((val == null || (val ?? "").isEmpty)) {
+      return 'ce champ est obligatoire !';
+    } else if (len < 3) {
+      return 'Nom de commerce invalide';
+    } else
+      return null;
+  }
+
+  String? validatePhoneNumber() {
+    int len = (val ?? '').length;
+
+    if ((val == null || (val ?? "").isEmpty)) {
+      return 'ce champ est obligatoire !';
+    } else if (len < 8) {
+      return 'Téléphone Invalide';
+    } else
+      return null;
+  }
+
   String? validateTown({required BuildContext context, required String town}) {
     List<Prediction> predictionList = context.read<LocalistaionControllerprovider>().predictionList;
     bool exist = false;

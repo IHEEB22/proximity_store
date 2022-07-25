@@ -51,12 +51,19 @@ class SheetStoreSectors extends StatelessWidget {
                       child: context.watch<BusinessProvider>().deleteEnabled
                           ? TextButton(
                               onPressed: () {
-                                context.read<BusinessProvider>().deletAllsectors();
-                                context.read<BusinessProvider>().setDeletePressed();
+                                context
+                                    .read<BusinessProvider>()
+                                    .deletAllSectors();
+                                context
+                                    .read<BusinessProvider>()
+                                    .setDeletePressed();
                               },
                               child: Text(
                                 'delete'.tr(),
-                                style: Theme.of(context).textTheme.headline2?.copyWith(
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headline2
+                                    ?.copyWith(
                                       fontFamily: 'Montserrat',
                                       fontSize: 16.sp,
                                       fontWeight: FontWeight.w500,
@@ -68,7 +75,10 @@ class SheetStoreSectors extends StatelessWidget {
                               onPressed: null,
                               child: Text(
                                 'delete'.tr(),
-                                style: Theme.of(context).textTheme.headline2?.copyWith(
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headline2
+                                    ?.copyWith(
                                       fontFamily: 'Montserrat',
                                       fontSize: 16.sp,
                                       fontWeight: FontWeight.w500,
@@ -85,26 +95,53 @@ class SheetStoreSectors extends StatelessWidget {
                     padding: EdgeInsets.symmetric(horizontal: 0.025.sw),
                     child: ListView.builder(
                         shrinkWrap: true,
-                        itemCount: context.watch<BusinessProvider>().sectorsData.length,
+                        itemCount: context
+                            .watch<BusinessProvider>()
+                            .sectorsData
+                            .length,
                         itemBuilder: (BuildContext context, int index) {
                           return Card(
                             margin: EdgeInsets.only(bottom: 0.00002.sh),
                             // elevation: 0.005,
                             child: CheckboxListTile(
                               onChanged: (value) {
-                                context.read<BusinessProvider>().setCheckoxValue(
-                                    context.read<BusinessProvider>().sectorsData.keys.toList()[index], value);
-
-                                context.read<BusinessProvider>().isDeleteEnabled();
+                                context
+                                    .read<BusinessProvider>()
+                                    .setCheckoxValue(
+                                        context
+                                            .read<BusinessProvider>()
+                                            .sectorsData
+                                            .keys
+                                            .toList()[index],
+                                        value);
 
                                 context
                                     .read<BusinessProvider>()
-                                    .addChekedSector(context.read<BusinessProvider>().sectorsData.keys.toList()[index]);
+                                    .isDeleteEnabled();
+
+                                context
+                                    .read<BusinessProvider>()
+                                    .addChekedSector(context
+                                        .read<BusinessProvider>()
+                                        .sectorsData
+                                        .keys
+                                        .toList()[index]);
                               },
-                              value: context.read<BusinessProvider>().sectorsData.values.toList()[index],
+                              value: context
+                                  .read<BusinessProvider>()
+                                  .sectorsData
+                                  .values
+                                  .toList()[index],
                               title: Text(
-                                context.watch<BusinessProvider>().sectorsData.keys.toList()[index],
-                                style: Theme.of(context).textTheme.bodyText1?.copyWith(
+                                context
+                                    .watch<BusinessProvider>()
+                                    .sectorsData
+                                    .keys
+                                    .toList()[index],
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyText1
+                                    ?.copyWith(
                                       fontFamily: 'Montserrat',
                                       fontWeight: FontWeight.w500,
                                       fontSize: 16.sp,

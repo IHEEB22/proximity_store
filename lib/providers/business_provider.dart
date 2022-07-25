@@ -76,11 +76,18 @@ class BusinessProvider with ChangeNotifier {
   }
 
   void addChekedSector(String sectorName) {
-    _chekedsectorsList.add(sectorName);
+    if (!_chekedsectorsList.contains(sectorName))
+      _chekedsectorsList.add(sectorName);
     notifyListeners();
   }
 
-  void deletAllsectors() {
+  void removeSector(sectorName) {
+    _chekedsectorsList.remove(sectorName);
+    _sectorsData[sectorName] = false;
+    notifyListeners();
+  }
+
+  void deletAllSectors() {
     for (String key in _sectorsData.keys) {
       sectorsData[key] = false;
       notifyListeners();

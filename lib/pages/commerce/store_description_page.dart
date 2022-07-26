@@ -65,11 +65,10 @@ class _StoreDescriptionPageState extends State<StoreDescriptionPage> {
                         ),
                         child: Text(
                           'myBusiness'.tr(),
-                          style:
-                              Theme.of(context).textTheme.headline2?.copyWith(
-                                    fontWeight: FontWeight.w800,
-                                    fontSize: 25.sp,
-                                  ),
+                          style: Theme.of(context).textTheme.headline2?.copyWith(
+                                fontWeight: FontWeight.w800,
+                                fontSize: 25.sp,
+                              ),
                         ),
                       ),
                       Padding(
@@ -85,22 +84,15 @@ class _StoreDescriptionPageState extends State<StoreDescriptionPage> {
                                 scale: 1,
                                 child: CupertinoSwitch(
                                   activeColor: AppColors.deepBlueColor,
-                                  value: context
-                                      .watch<BusinessProvider>()
-                                      .switchValue,
+                                  value: context.watch<BusinessProvider>().switchValue,
                                   // trackColor: AppColors.blueGreyColor,
-                                  onChanged: (value) => context
-                                      .read<BusinessProvider>()
-                                      .setSwitchValue(),
+                                  onChanged: (value) => context.read<BusinessProvider>().setSwitchValue(),
                                 ),
                               ),
                               0.0426.sw.horizontalSpace,
                               context.watch<BusinessProvider>().switchValue
                                   ? Text("vacationModeOff".tr(),
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodySmall
-                                          ?.copyWith(
+                                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
                                             fontFamily: 'Montserrat',
                                             fontSize: 14.sp,
                                             color: AppColors.deepBlueColor,
@@ -108,10 +100,7 @@ class _StoreDescriptionPageState extends State<StoreDescriptionPage> {
                                           ))
                                   : Text(
                                       "vacationModeOn".tr(),
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodySmall
-                                          ?.copyWith(
+                                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
                                             fontFamily: 'Montserrat',
                                             fontSize: 14.sp,
                                             color: AppColors.deepBlueColor,
@@ -130,14 +119,9 @@ class _StoreDescriptionPageState extends State<StoreDescriptionPage> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             TextInputField(
-                              autovalidateMode:
-                                  AutovalidateMode.onUserInteraction,
-                              validator: (businessName) =>
-                                  ValidationItem(val: businessName)
-                                      .validateBusinessName(),
-                              controller: context
-                                  .watch<BusinessProvider>()
-                                  .businessName,
+                              autovalidateMode: AutovalidateMode.onUserInteraction,
+                              validator: (businessName) => ValidationItem(val: businessName).validateBusinessName(),
+                              controller: context.watch<BusinessProvider>().businessName,
                               hintText: 'fillInAName'.tr(),
                               inputLabel: 'nameOfYourBusiness'.tr(),
                               keyboardType: TextInputType.emailAddress,
@@ -145,22 +129,16 @@ class _StoreDescriptionPageState extends State<StoreDescriptionPage> {
                             0.03.sh.verticalSpace,
                             TextInputField(
                               readOnly: true,
-                              autovalidateMode:
-                                  AutovalidateMode.onUserInteraction,
-                              validator: (sector) => ValidationItem(val: sector)
-                                  .validateBusinessName(),
+                              autovalidateMode: AutovalidateMode.onUserInteraction,
+                              validator: (sector) => ValidationItem(val: sector).validateBusinessName(),
                               suffixIcon: GestureDetector(
                                 child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
+                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Text(
                                       'selectOneOrMoreSectors'.tr(),
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodySmall
-                                          ?.copyWith(
+                                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
                                             fontFamily: 'Montserrat',
                                             fontSize: 16.sp,
                                             height: 1.2,
@@ -173,8 +151,7 @@ class _StoreDescriptionPageState extends State<StoreDescriptionPage> {
                                         width: 0.05.sw,
                                         height: 0.012.sh,
                                         child: Image(
-                                          image: AssetImage(
-                                              'assets/icons/Vector.png'),
+                                          image: AssetImage('assets/icons/Vector.png'),
                                         ),
                                       ),
                                     ),
@@ -193,8 +170,7 @@ class _StoreDescriptionPageState extends State<StoreDescriptionPage> {
                                   );
                                 },
                               ),
-                              controller:
-                                  context.watch<BusinessProvider>().sector,
+                              controller: context.watch<BusinessProvider>().sector,
                               hintText: ''.tr(),
                               inputLabel: 'sector'.tr(),
                               keyboardType: TextInputType.emailAddress,
@@ -202,82 +178,51 @@ class _StoreDescriptionPageState extends State<StoreDescriptionPage> {
                             0.015.sh.verticalSpace,
                             SizedBox(
                               child: Padding(
-                                padding:
-                                    EdgeInsets.symmetric(horizontal: 0.082.sw),
+                                padding: EdgeInsets.symmetric(horizontal: 0.082.sw),
                                 child: Container(
                                   width: double.infinity,
                                   child: Wrap(
                                     direction: Axis.horizontal,
-                                    children: context
-                                        .read<BusinessProvider>()
-                                        .chekedsectorsList
-                                        .map((item) {
+                                    children: context.read<BusinessProvider>().chekedsectorsList.map((item) {
                                       return Row(
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
                                           Padding(
-                                            padding:
-                                                EdgeInsets.only(right: 0.2),
+                                            padding: EdgeInsets.only(right: 0.2),
                                             child: Expanded(
                                               child: Container(
                                                 margin: EdgeInsets.all(3),
                                                 padding: EdgeInsets.all(2),
                                                 decoration: BoxDecoration(
-                                                  border: Border.all(
-                                                      width: 2,
-                                                      color: AppColors
-                                                          .deepBlueColor),
-                                                  borderRadius:
-                                                      BorderRadius.all(
+                                                  border: Border.all(width: 2, color: AppColors.deepBlueColor),
+                                                  borderRadius: BorderRadius.all(
                                                     Radius.circular(6.0),
                                                   ),
                                                 ),
                                                 child: Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceBetween,
-                                                  mainAxisSize:
-                                                      MainAxisSize.min,
+                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                  mainAxisSize: MainAxisSize.min,
                                                   children: [
                                                     Padding(
-                                                      padding: EdgeInsets.only(
-                                                          top: 4,
-                                                          bottom: 4,
-                                                          right: 1.5,
-                                                          left: 2),
+                                                      padding: EdgeInsets.only(top: 4, bottom: 4, right: 1.5, left: 2),
                                                       child: Text(
                                                         item,
-                                                        style: Theme.of(context)
-                                                            .textTheme
-                                                            .bodySmall
-                                                            ?.copyWith(
-                                                                fontFamily:
-                                                                    'Montserrat',
-                                                                fontSize: 12.sp,
-                                                                color: AppColors
-                                                                    .deepBlueColor,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w700),
+                                                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                                                            fontFamily: 'Montserrat',
+                                                            fontSize: 12.sp,
+                                                            color: AppColors.deepBlueColor,
+                                                            fontWeight: FontWeight.w700),
                                                       ),
                                                     ),
                                                     GestureDetector(
                                                       onTap: () {
-                                                        context
-                                                            .read<
-                                                                BusinessProvider>()
-                                                            .removeSector(item);
-                                                        context
-                                                            .read<
-                                                                BusinessProvider>()
-                                                            .isDeleteEnabled();
+                                                        context.read<BusinessProvider>().removeSector(item);
+                                                        context.read<BusinessProvider>().isDeleteEnabled();
                                                       },
                                                       child: Container(
                                                         height: 16,
                                                         width: 16,
-                                                        child: Image(
-                                                            image: AssetImage(
-                                                                'assets/icons/delete_icon.png')),
+                                                        child: Image(image: AssetImage('assets/icons/delete_icon.png')),
                                                       ),
                                                     ),
                                                     0.0025.sw.horizontalSpace,
@@ -295,12 +240,9 @@ class _StoreDescriptionPageState extends State<StoreDescriptionPage> {
                             ),
                             0.03.sh.verticalSpace,
                             TextInputField(
-                              autovalidateMode:
-                                  AutovalidateMode.onUserInteraction,
-                              validator: (adress) => ValidationItem(val: adress)
-                                  .validatePhoneNumber(),
-                              controller:
-                                  context.watch<BusinessProvider>().adress,
+                              autovalidateMode: AutovalidateMode.onUserInteraction,
+                              validator: (adress) => ValidationItem(val: adress).validatePhoneNumber(),
+                              controller: context.watch<BusinessProvider>().adress,
                               hintText: 'enterAnAddress'.tr(),
                               inputLabel: 'address'.tr(),
                               keyboardType: TextInputType.emailAddress,
@@ -308,13 +250,9 @@ class _StoreDescriptionPageState extends State<StoreDescriptionPage> {
                             ),
                             0.03.sh.verticalSpace,
                             TextInputField(
-                              autovalidateMode:
-                                  AutovalidateMode.onUserInteraction,
-                              validator: (phoneNumber) =>
-                                  ValidationItem(val: phoneNumber)
-                                      .validatePhoneNumber(),
-                              controller:
-                                  context.watch<BusinessProvider>().phoneNumber,
+                              autovalidateMode: AutovalidateMode.onUserInteraction,
+                              validator: (phoneNumber) => ValidationItem(val: phoneNumber).validatePhoneNumber(),
+                              controller: context.watch<BusinessProvider>().phoneNumber,
                               hintText: 'fillInAPhoneNumber'.tr(),
                               inputLabel: 'telephone'.tr(),
                               keyboardType: TextInputType.phone,
@@ -324,10 +262,7 @@ class _StoreDescriptionPageState extends State<StoreDescriptionPage> {
                               padding: EdgeInsets.only(left: 0.0426.sw),
                               child: Text(
                                 'openingTime'.tr(),
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyText1
-                                    ?.copyWith(
+                                style: Theme.of(context).textTheme.bodyText1?.copyWith(
                                       color: AppColors.deepBlueColor,
                                       fontWeight: FontWeight.w500,
                                     ),
@@ -340,8 +275,7 @@ class _StoreDescriptionPageState extends State<StoreDescriptionPage> {
                             ),
                             0.0344.sh.verticalSpace,
                             Padding(
-                              padding:
-                                  EdgeInsets.symmetric(horizontal: 0.082.sw),
+                              padding: EdgeInsets.symmetric(horizontal: 0.082.sw),
                               child: SizedBox(
                                 width: double.infinity,
                                 child: CustomWhiteButton(
@@ -358,10 +292,7 @@ class _StoreDescriptionPageState extends State<StoreDescriptionPage> {
                               padding: EdgeInsets.only(left: 0.0426.sw),
                               child: Text(
                                 'photoOfMyBusiness'.tr(),
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyText1
-                                    ?.copyWith(
+                                style: Theme.of(context).textTheme.bodyText1?.copyWith(
                                       fontWeight: FontWeight.w500,
                                       color: AppColors.deepBlueColor,
                                     ),
@@ -369,39 +300,32 @@ class _StoreDescriptionPageState extends State<StoreDescriptionPage> {
                             ),
                             0.0381.sh.verticalSpace,
                             Padding(
-                              padding:
-                                  EdgeInsets.symmetric(horizontal: 0.082.sw),
+                              padding: EdgeInsets.symmetric(horizontal: 0.082.sw),
                               child: SizedBox(
                                 width: double.infinity,
                                 child: Image(
-                                  image: AssetImage(
-                                      'assets/icons/commerce_picture_place_holder.png'),
+                                  image: AssetImage('assets/icons/commerce_picture_place_holder.png'),
                                 ),
                               ),
                             ),
                             0.0296.sh.verticalSpace,
                             Padding(
-                              padding:
-                                  EdgeInsets.symmetric(horizontal: 0.082.sw),
+                              padding: EdgeInsets.symmetric(horizontal: 0.082.sw),
                               child: SizedBox(
                                 width: double.infinity,
                                 child: CustomWhiteButton(
                                   leading: Image(
-                                    image:
-                                        AssetImage('assets/icons/camera.png'),
+                                    image: AssetImage('assets/icons/camera.png'),
                                   ),
                                   textInput: 'changeSchedules'.tr(),
                                   onPressed: () {
                                     showDialog<String>(
                                       context: context,
-                                      builder: (BuildContext context) =>
-                                          AlertDialog(
+                                      builder: (BuildContext context) => AlertDialog(
                                         title: Text(
                                           textAlign: TextAlign.center,
                                           'addThePhotoOfMyBusiness'.tr(),
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .subtitle2,
+                                          style: Theme.of(context).textTheme.subtitle2,
                                         ),
                                         actions: <Widget>[
                                           TextButton(
@@ -418,12 +342,10 @@ class _StoreDescriptionPageState extends State<StoreDescriptionPage> {
                                               openAppSettings();
                                               Navigator.pop(context);
                                             },
-                                            child:
-                                                Text('chooseFromGallery'.tr()),
+                                            child: Text('chooseFromGallery'.tr()),
                                           ),
                                           TextButton(
-                                            onPressed: () =>
-                                                Navigator.pop(context),
+                                            onPressed: () => Navigator.pop(context),
                                             child: Text('cancel'.tr()),
                                           ),
                                         ],
@@ -440,10 +362,7 @@ class _StoreDescriptionPageState extends State<StoreDescriptionPage> {
                               padding: EdgeInsets.only(left: 0.0426.sw),
                               child: Text(
                                 'description'.tr(),
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyText1
-                                    ?.copyWith(
+                                style: Theme.of(context).textTheme.bodyText1?.copyWith(
                                       fontWeight: FontWeight.w500,
                                       color: AppColors.deepBlueColor,
                                     ),
@@ -455,19 +374,12 @@ class _StoreDescriptionPageState extends State<StoreDescriptionPage> {
                                 maxLines: 10,
                                 maxLength: 500,
                                 additionalTopPading: 0.04.sh,
-                                autovalidateMode:
-                                    AutovalidateMode.onUserInteraction,
-                                controller: context
-                                    .watch<BusinessProvider>()
-                                    .description,
-                                hintText:
-                                    'describeYourStoreHereWhatYouWantYourCustomersToKnow'
-                                        .tr(),
+                                autovalidateMode: AutovalidateMode.onUserInteraction,
+                                controller: context.watch<BusinessProvider>().description,
+                                hintText: 'describeYourStoreHereWhatYouWantYourCustomersToKnow'.tr(),
                                 inputLabel: 'aboutOptional'.tr(),
                                 keyboardType: TextInputType.multiline,
-                                onChanged: (val) => context
-                                    .read<BusinessProvider>()
-                                    .setTemperleft()),
+                                onChanged: (val) => context.read<BusinessProvider>().setTemperleft()),
                             0.015.sh.verticalSpace,
                             Consumer<BusinessProvider>(
                               builder: (context, value, child) => Padding(
@@ -477,12 +389,8 @@ class _StoreDescriptionPageState extends State<StoreDescriptionPage> {
                                 child: Align(
                                   alignment: Alignment.topRight,
                                   child: Text(
-                                    '${context.watch<BusinessProvider>().temperLeft} ' +
-                                        'CharactersLeft'.tr(),
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headline3
-                                        ?.copyWith(
+                                    '${context.watch<BusinessProvider>().temperLeft} ' + 'CharactersLeft'.tr(),
+                                    style: Theme.of(context).textTheme.headline3?.copyWith(
                                           fontFamily: 'Montserrat',
                                           fontSize: 12.sp,
                                           fontWeight: FontWeight.w600,
@@ -493,21 +401,15 @@ class _StoreDescriptionPageState extends State<StoreDescriptionPage> {
                             ),
                             0.0615.sh.verticalSpace,
                             Container(
-                              child: ((_formKey.currentState?.validate() ??
-                                          true) &&
-                                      !(context
-                                          .watch<BusinessProvider>()
-                                          .validateButtonPressed))
+                              child: ((_formKey.currentState?.validate() ?? true) &&
+                                      !(context.watch<BusinessProvider>().validateButtonPressed))
                                   ? SizedBox.shrink()
                                   : Consumer<BusinessProvider>(
-                                      builder: (context, value, child) =>
-                                          Padding(
-                                        padding:
-                                            EdgeInsets.only(bottom: 0.02.sh),
+                                      builder: (context, value, child) => Padding(
+                                        padding: EdgeInsets.only(bottom: 0.02.sh),
                                         child: Center(
                                           child: Text(
-                                            'someMandatoryFieldsAreNotFilledIn'
-                                                .tr(),
+                                            'someMandatoryFieldsAreNotFilledIn'.tr(),
                                             style: TextStyle(
                                               color: AppColors.pinkColor,
                                               fontFamily: 'Montserrat',
@@ -530,11 +432,8 @@ class _StoreDescriptionPageState extends State<StoreDescriptionPage> {
                             child: CustomBlueButton(
                                 textInput: 'validate'.tr(),
                                 onPressed: () {
-                                  context
-                                      .read<BusinessProvider>()
-                                      .setValidateButtonPressed();
-                                  if (_formKey.currentState?.validate() ??
-                                      false) {
+                                  context.read<BusinessProvider>().setValidateButtonPressed();
+                                  if (_formKey.currentState?.validate() ?? false) {
                                     print('you can navigate');
                                   }
                                   print('you can not navigate');

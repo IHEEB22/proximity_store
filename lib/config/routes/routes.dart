@@ -16,6 +16,7 @@ class AppRoutes {
   static const String registerPage = '/registerPage';
   static const String emailVerificationPage = '/emailVerificationPage';
   static const String storeDescriptionPage = '/storeDescriptionPage';
+  static const String settingsPage = '/settingsPage';
 
   static Route<dynamic> routeController(RouteSettings settings) {
     switch (settings.name) {
@@ -41,6 +42,8 @@ class AppRoutes {
         return CustomPageRoute(Route: ResetPassword(), settings: settings);
       case storeDescriptionPage:
         return CustomPageRoute(Route: StoreDescriptionPage(), settings: settings);
+      case settingsPage:
+        return CustomPageRoute(Route: SettingsPage(), settings: settings);
 
       default:
         throw ('this route name does not exist');

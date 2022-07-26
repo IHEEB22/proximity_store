@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:image_picker/image_picker.dart';
 
 class BusinessProvider with ChangeNotifier {
   Map<String, bool> _sectorsData = {
@@ -12,10 +13,15 @@ class BusinessProvider with ChangeNotifier {
     'shoes'.tr(): false,
     'telephony'.tr(): false,
   };
-  notifyListeners();
+
+  final picker = ImagePicker();
+  Future<PickedFile?> pickedFile = Future.value(null);
+
   List<String> _chekedsectorsList = [];
+
   bool _switchValue = false;
-  bool _checkoxValue = false;
+  bool _isPickedFileEmpty = true;
+  bool _sectorHintVisible = true;
   bool _deleteEnabled = false;
   bool _deletPressed = false;
   bool _validateButtonPressed = false;
@@ -29,25 +35,47 @@ class BusinessProvider with ChangeNotifier {
   TextEditingController _businessName = TextEditingController();
   TextEditingController _adress = TextEditingController();
   TextEditingController _phoneNumber = TextEditingController();
-  TextEditingController _sector = TextEditingController();
   TextEditingController _description = TextEditingController();
 
   TextEditingController get businessName => _businessName;
   TextEditingController get adress => _adress;
   TextEditingController get phoneNumber => _phoneNumber;
-  TextEditingController get sector => _sector;
   TextEditingController get description => _description;
 
   List<String> get chekedsectorsList => _chekedsectorsList;
+  bool get sectorHintVisible => _sectorHintVisible;
   int get temperLeft => _temperLeft;
-  bool get checkoxValue => _checkoxValue;
   bool get switchValue => _switchValue;
   bool get validateButtonPressed => _validateButtonPressed;
   bool get deleteEnabled => _deleteEnabled;
   bool get deletePressed => _deletPressed;
+  bool get isPickedFileEmpty => _isPickedFileEmpty;
+
+  void setPickedFileFromCamera() {
+    pickedFile = picker.getImage(source: ImageSource.camera).whenComplete(() {
+      _isPickedFileEmpty = false;
+    });
+    notifyListeners();
+  }
+
+  void setPickedFileFromGalery() {
+    pickedFile = picker
+        .getImage(
+      source: ImageSource.gallery,
+    )
+        .whenComplete(() {
+      _isPickedFileEmpty = false;
+    });
+    notifyListeners();
+  }
 
   void setSwitchValue() {
     _switchValue = !_switchValue;
+    notifyListeners();
+  }
+
+  void setSectorHintVisible() {
+    _sectorHintVisible = !_sectorHintVisible;
     notifyListeners();
   }
 
@@ -76,8 +104,9 @@ class BusinessProvider with ChangeNotifier {
   }
 
   void addChekedSector(String sectorName) {
-    if (!_chekedsectorsList.contains(sectorName) &&
-        (_sectorsData[sectorName] == true)) _chekedsectorsList.add(sectorName);
+    if (!_chekedsectorsList.contains(sectorName) && (_sectorsData[sectorName] == true)) {
+      _chekedsectorsList.add(sectorName);
+    }
     notifyListeners();
   }
 
@@ -93,8 +122,6 @@ class BusinessProvider with ChangeNotifier {
       notifyListeners();
     }
 
-    notifyListeners();
-
     _chekedsectorsList.clear();
     notifyListeners();
   }
@@ -103,11 +130,4 @@ class BusinessProvider with ChangeNotifier {
     _deleteEnabled = _sectorsData.values.contains(true);
     notifyListeners();
   }
-
-  // String? validatesectorfield(String? sector) {
-  //   if (_sectorsData.values.contains(true) && (sector ?? '').isNotEmpty)
-  //     return null;
-  //   else
-  //     return 'ce champ est obligatoire';
-  // }
 }

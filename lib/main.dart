@@ -8,6 +8,7 @@ import 'package:proximitystore/config/colors/app_colors.dart';
 import 'package:proximitystore/config/constants/app_dimensions.dart';
 import 'package:proximitystore/config/routes/routes.dart';
 import 'package:proximitystore/pages/commerce/store_description_page.dart';
+import 'package:proximitystore/pages/pages.dart';
 
 import 'package:proximitystore/providers/authentification_provider.dart';
 import 'package:proximitystore/providers/business_provider.dart';
@@ -57,7 +58,7 @@ class App extends StatelessWidget {
       splitScreenMode: true,
       builder: (BuildContext context, child) => MaterialApp(
         onGenerateRoute: AppRoutes.routeController,
-        initialRoute: AppRoutes.storeDescriptionPage,
+        initialRoute: AppRoutes.settingsPage,
         localizationsDelegates: context.localizationDelegates,
         supportedLocales: context.supportedLocales,
         locale: context.locale,
@@ -65,7 +66,7 @@ class App extends StatelessWidget {
         theme: AppThemes.defaultAppTheme,
         darkTheme: AppThemes.defaultAppTheme,
         themeMode: ThemeMode.light,
-        home: StoreDescriptionPage(),
+        home: SettingsPage(),
         builder: (context, widget) {
           return MediaQuery(
             data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),

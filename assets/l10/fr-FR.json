@@ -81,6 +81,7 @@
 "someMandatoryFieldsAreNotFilledIn": "Certains champs obligatoires ne sont pas renseignés",
 "delete": "Effacer",
 
+
 "petShop" : "Animalerie",
 "applications&VideoGames": "Applications & Jeux Vidéos",
 "autoAndMotorcycle": "Auto et Moto",
@@ -91,7 +92,16 @@
 "telephony":"Téléphonie",
 "addThePhotoOfMyBusiness" : "Ajouter la photo de mon commerce",
 "chooseFromGallery":"Choisir dans la galerie",
-"openTheCamera":"Ouvrir l’appareil photo"
+"openTheCamera":"Ouvrir l’appareil photo",
+
+"accountSettings": "Paramètres de compte",
+"newPassword": "Nouveau mot de passe",
+"confirmTheNewPassword": "Confirmez le nouveau mot de passe",
+"consultTheT&Cs": "Consulter les CGU",
+"edit": "Modifier",
+"moreOptions":"plus d’options",
+"signOut":"Déconnexion",
+"deleteAccount":"Supprimer mon compte"
 
 
 

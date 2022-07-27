@@ -76,7 +76,7 @@
 "aboutOptional": "à propos (optionnel)",
 "describeYourStoreHereWhatYouWantYourCustomersToKnow": "Décrivez ici votre magasin, ce que vous voulez faire savoir à vos clients.",
 "CharactersLeft": "caractères restants",
-"validate": "valide",
+"validate": "valider",
 "someMandatoryFieldsAreNotFilledIn": "Certains champs obligatoires ne sont pas renseignés",
 "delete": "Effacer",
 
@@ -89,6 +89,7 @@
 "diy": "Bricolage",
 "shoes": "Chaussures",
 "telephony":"Téléphonie",
+"termsOfService":"Conditions Générales d’Utilisation",
 
 "addThePhotoOfMyBusiness" : "Ajouter la photo de mon commerce",
 "chooseFromGallery":"Choisir dans la galerie",

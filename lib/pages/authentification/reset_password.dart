@@ -112,7 +112,7 @@ class ResetPassword extends StatelessWidget {
                           hintText: 'repeatPassword'.tr(),
                           keyboardType: TextInputType.emailAddress,
                           onChanged: (password) {
-                            context.read<AuthentificationProvider>().setPasswordValide(password);
+                            context.read<AuthentificationProvider>().setRepeatPasswordValide(password);
                             context.read<AuthentificationProvider>().setIsReapetPasswordEqualpassword();
                           },
                           obscureText: !context.watch<AuthentificationProvider>().isRepeatPasswordVisible,
@@ -135,8 +135,7 @@ class ResetPassword extends StatelessWidget {
                           ),
                         ),
                         0.1884.sh.verticalSpace,
-                        context.watch<AuthentificationProvider>().isPasswordValide &&
-                                context.watch<AuthentificationProvider>().isReapetPasswordEqualpassword
+                        context.watch<AuthentificationProvider>().isReapetPasswordEqualpassword
                             ? Column(
                                 children: [
                                   0.032.sh.verticalSpace,

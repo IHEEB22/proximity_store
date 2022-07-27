@@ -65,10 +65,11 @@ class TextInputField extends StatelessWidget {
             ),
           ),
           TextFormField(
+            key: key,
             readOnly: readOnly ?? false,
             maxLength: maxLength ?? null,
             maxLines: maxLines ?? 1,
-            minLines: minLines ?? null,
+            minLines: minLines ?? 1,
             obscureText: obscureText ?? false,
             keyboardType: keyboardType,
             controller: controller,

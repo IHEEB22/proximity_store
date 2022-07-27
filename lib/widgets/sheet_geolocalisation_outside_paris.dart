@@ -42,9 +42,6 @@ class _SheetGeolocalisationOutsideParisState extends State<SheetGeolocalisationO
                 ),
               ),
               0.054.sh.verticalSpace,
-              // Padding(
-              //   padding: EdgeInsets.only(
-
               TextInputField(
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 validator: (email) => ValidationItem(val: email).validateEmail(),
@@ -54,7 +51,6 @@ class _SheetGeolocalisationOutsideParisState extends State<SheetGeolocalisationO
                 keyboardType: TextInputType.emailAddress,
               ),
               0.02.sh.verticalSpace,
-
               Focus(
                 onFocusChange: (hasFocus) => context.read<LocalistaionControllerprovider>().setIsTownHasFocus(hasFocus),
                 child: TextInputField(
@@ -70,7 +66,6 @@ class _SheetGeolocalisationOutsideParisState extends State<SheetGeolocalisationO
                   hintText: 'addTown'.tr(),
                 ),
               ),
-
               Wrap(
                 children: <Widget>[
                   Visibility(

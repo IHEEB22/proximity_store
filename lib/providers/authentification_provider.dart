@@ -91,7 +91,10 @@ class AuthentificationProvider with ChangeNotifier {
   }
 
   void setIsReapetPasswordEqualpassword() {
-    _isReapetPasswordEqualpassword = _repeatPasswordTextEditingController.text == passwordTextEditingController.text;
+    if (_isPasswordValide && _isRepeatPasswordValide)
+      _isReapetPasswordEqualpassword = _repeatPasswordTextEditingController.text == _passwordTextEditingController.text;
+    else
+      _isReapetPasswordEqualpassword = false;
     notifyListeners();
   }
 

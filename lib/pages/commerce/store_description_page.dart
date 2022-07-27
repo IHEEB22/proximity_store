@@ -478,7 +478,7 @@ class _StoreDescriptionPageState extends State<StoreDescriptionPage> {
                                   0.0615.sh.verticalSpace,
                                   Container(
                                     child: ((_formKey.currentState?.validate() ?? true) &&
-                                            !(context.watch<BusinessProvider>().validateButtonPressed))
+                                            (context.watch<BusinessProvider>().validateButtonPressed))
                                         ? SizedBox.shrink()
                                         : Consumer<BusinessProvider>(
                                             builder: (context, value, child) => Padding(

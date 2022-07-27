@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:proximitystore/config/images/app_images.dart';
+import 'package:proximitystore/providers/business_provider.dart';
 
 import '../providers/authentification_provider.dart';
 
@@ -13,6 +14,7 @@ class CustomBackButtonIcon extends StatelessWidget {
     return GestureDetector(
       onTap: (() {
         context.read<AuthentificationProvider>().disposeControllers();
+        context.read<BusinessProvider>().disposeSettingsControllers();
         Navigator.pop(context);
       }),
       child: Padding(

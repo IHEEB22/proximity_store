@@ -67,20 +67,17 @@ class CustomCupertinoDialog extends StatelessWidget {
               ),
             ],
             cancelButton: CupertinoActionSheetAction(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pop(context);
+              },
               isDefaultAction: false,
               child: Padding(
                 padding: EdgeInsets.only(top: 0.0098.sh),
-                child: GestureDetector(
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                  child: Text('cancel'.tr(),
-                      style: TextStyle(
-                        fontWeight: FontWeight.w700,
-                        fontSize: 20.sp,
-                      )),
-                ),
+                child: Text('cancel'.tr(),
+                    style: TextStyle(
+                      fontWeight: FontWeight.w700,
+                      fontSize: 20.sp,
+                    )),
               ),
             ),
           ),

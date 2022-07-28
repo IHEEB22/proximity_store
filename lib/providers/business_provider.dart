@@ -1,6 +1,12 @@
+import 'dart:convert';
+import 'dart:math';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:proximitystore/models/product.dart';
+import 'package:proximitystore/models/productList.dart';
 
 import '../services/validation_items.dart';
 
@@ -15,6 +21,12 @@ class BusinessProvider with ChangeNotifier {
     'shoes'.tr(): false,
     'telephony'.tr(): false,
   };
+
+  Future<List<Map<String, dynamic>>> readJson() async {
+    final String response = await rootBundle.loadString('assets/fake_data/product.json');
+    List<dynamic> data = await json.decode(response);
+    return (data).map((e) => e as Map<String, dynamic>).toList();
+  }
 
   final picker = ImagePicker();
   Future<PickedFile?> pickedFile = Future.value(null);
@@ -51,6 +63,7 @@ class BusinessProvider with ChangeNotifier {
   TextEditingController _adress = TextEditingController();
   TextEditingController _phoneNumber = TextEditingController();
   TextEditingController _description = TextEditingController();
+  TextEditingController _product = TextEditingController();
   bool get isPasswordVisible => _isPasswordVisible;
   bool get isNewPasswordVisible => _isNewPasswordVisible;
   bool get isRepeatNewPasswordVisible => _isRepeatNewPasswordVisible;
@@ -69,6 +82,7 @@ class BusinessProvider with ChangeNotifier {
   TextEditingController get adress => _adress;
   TextEditingController get phoneNumber => _phoneNumber;
   TextEditingController get description => _description;
+  TextEditingController get product => _product;
 
   List<String> get chekedsectorsList => _chekedsectorsList;
   bool get sectorHintVisible => _sectorHintVisible;
@@ -80,6 +94,7 @@ class BusinessProvider with ChangeNotifier {
   bool get isPickedFileEmpty => _isPickedFileEmpty;
   void setValidateButtonPressed() {
     _validateButtonPressed = !_validateButtonPressed;
+    notifyListeners();
   }
 
   void setBusinessName(String? val) {

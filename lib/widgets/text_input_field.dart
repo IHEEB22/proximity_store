@@ -6,7 +6,7 @@ import '../config/colors/app_colors.dart';
 
 // ignore: must_be_immutable
 class TextInputField extends StatelessWidget {
-  final String inputLabel;
+  String? inputLabel;
   bool? obscureText;
   final TextInputType keyboardType;
   final TextEditingController controller;
@@ -15,6 +15,7 @@ class TextInputField extends StatelessWidget {
   final void Function(String)? onChanged;
   Widget? suffixIcon;
   Widget? prefixIcon;
+  bool? prefixDisabled;
   final String hintText;
   bool? readOnly;
   int? maxLines;
@@ -24,7 +25,7 @@ class TextInputField extends StatelessWidget {
 
   TextInputField({
     Key? key,
-    required this.inputLabel,
+    this.inputLabel,
     this.obscureText,
     required this.keyboardType,
     required this.controller,
@@ -38,6 +39,7 @@ class TextInputField extends StatelessWidget {
     this.additionalTopPading,
     this.maxLength,
     this.readOnly,
+    this.prefixDisabled,
     required this.hintText,
   }) : super(key: key);
 
@@ -55,7 +57,7 @@ class TextInputField extends StatelessWidget {
               bottom: 0.0055.sh,
             ),
             child: Text(
-              inputLabel,
+              inputLabel ?? '',
               style: Theme.of(context).textTheme.headline3?.copyWith(
                     fontFamily: 'Montserrat',
                     fontSize: 12.sp,
@@ -92,6 +94,7 @@ class TextInputField extends StatelessWidget {
               counterText: '',
               suffixIcon: suffixIcon,
               prefix: prefixIcon,
+              isDense: prefixDisabled,
               hintText: hintText,
               hintStyle: TextStyle(
                 color: AppColors.blueGreyColor,
@@ -108,8 +111,13 @@ class TextInputField extends StatelessWidget {
                 fontWeight: FontWeight.w400,
                 letterSpacing: 0.2,
               ),
-              contentPadding: EdgeInsets.only(
-                  left: 0.0395.sw, right: 0.0395.sw, bottom: 0.0166.sh, top: (0.0166.sh + (additionalTopPading ?? 0))),
+              contentPadding: prefixDisabled ?? true
+                  ? EdgeInsets.only(
+                      left: 0.0395.sw,
+                      right: 0.0395.sw,
+                      bottom: 0.0166.sh,
+                      top: (0.0166.sh + (additionalTopPading ?? 0)))
+                  : EdgeInsets.only(top: 0, left: 0, right: 0.8.sw, bottom: 0),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.all(
                   Radius.circular(8.sm),

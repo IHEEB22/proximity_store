@@ -102,7 +102,9 @@
 "edit": "Modifier",
 "moreOptions":"plus d’options",
 "signOut":"Déconnexion",
-"deleteAccount":"Supprimer mon compte"
+"deleteAccount":"Supprimer mon compte",
+"myProducts": "Mes produits",
+"searchProduct": "Recherchez un produit"
 
 
 }

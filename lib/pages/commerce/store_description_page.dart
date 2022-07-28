@@ -11,6 +11,7 @@ import 'package:provider/provider.dart';
 import 'package:proximitystore/config/colors/app_colors.dart';
 import 'package:proximitystore/pages/commerce/sheet_store_sectors.dart';
 import 'package:proximitystore/providers/business_provider.dart';
+import 'package:proximitystore/widgets/custom_cupertino_dialog.dart';
 
 import '../../services/validation_items.dart';
 import '../../widgets/widgets.dart';
@@ -372,61 +373,16 @@ class _StoreDescriptionPageState extends State<StoreDescriptionPage> {
                                         onPressed: () {
                                           showCupertinoModalPopup(
                                             context: context,
-                                            builder: (_) => Column(
-                                              mainAxisAlignment: MainAxisAlignment.end,
-                                              children: [
-                                                CupertinoActionSheet(
-                                                  title: Text(
-                                                    'addThePhotoOfMyBusiness'.tr(),
-                                                    style: TextStyle(
-                                                      fontStyle: FontStyle.italic,
-                                                      fontWeight: FontWeight.w700,
-                                                      fontSize: 13.sp,
-                                                    ),
-                                                  ),
-                                                  actions: <Widget>[
-                                                    TextButton(
-                                                      onPressed: () async {
-                                                        context.read<BusinessProvider>().setPickedFileFromGalery();
-                                                      },
-                                                      child: Text(
-                                                        'chooseFromGallery'.tr(),
-                                                        style: TextStyle(
-                                                          fontSize: 20.sp,
-                                                          fontWeight: FontWeight.w400,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    TextButton(
-                                                      onPressed: () {
-                                                        context.read<BusinessProvider>().setPickedFileFromCamera();
-                                                      },
-                                                      child: Text(
-                                                        'openTheCamera'.tr(),
-                                                        style: TextStyle(
-                                                          fontSize: 20.sp,
-                                                          fontWeight: FontWeight.w400,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                  cancelButton: CupertinoActionSheetAction(
-                                                    onPressed: () {},
-                                                    isDefaultAction: false,
-                                                    child: GestureDetector(
-                                                      onTap: () {
-                                                        openAppSettings();
-                                                        Navigator.pop(context);
-                                                      },
-                                                      child: Text('cancel'.tr(),
-                                                          style: TextStyle(
-                                                            fontWeight: FontWeight.w700,
-                                                            fontSize: 20,
-                                                          )),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
+                                            builder: (_) => CustomCupertinoDialog(
+                                              title: 'addThePhotoOfMyBusiness'.tr(),
+                                              firstActionText: 'chooseFromGallery'.tr(),
+                                              secondActionText: 'openTheCamera'.tr(),
+                                              firstOnPresssed: () {
+                                                context.read<BusinessProvider>().setPickedFileFromGalery();
+                                              },
+                                              secondOnPresssed: () {
+                                                context.read<BusinessProvider>().setPickedFileFromCamera();
+                                              },
                                             ),
                                           );
                                         },
@@ -478,7 +434,7 @@ class _StoreDescriptionPageState extends State<StoreDescriptionPage> {
                                   0.0615.sh.verticalSpace,
                                   Container(
                                     child: ((_formKey.currentState?.validate() ?? true) &&
-                                            (context.watch<BusinessProvider>().validateButtonPressed))
+                                            !(context.watch<BusinessProvider>().validateButtonPressed))
                                         ? SizedBox.shrink()
                                         : Consumer<BusinessProvider>(
                                             builder: (context, value, child) => Padding(
@@ -506,10 +462,10 @@ class _StoreDescriptionPageState extends State<StoreDescriptionPage> {
                                           textInput: 'validate'.tr(),
                                           onPressed: () {
                                             context.read<BusinessProvider>().setValidateButtonPressed();
-                                            if (_formKey.currentState?.validate() ?? true) {
+                                            if (_formKey.currentState?.validate() ??
+                                                true && context.read<BusinessProvider>().chekedsectorsList.isNotEmpty) {
                                               print('you can navigate');
-                                            }
-                                            if (_formKey.currentState?.validate() ?? false) {
+                                            } else {
                                               print('you can not navigate');
                                             }
                                           }),

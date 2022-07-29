@@ -104,7 +104,11 @@
 "signOut":"Déconnexion",
 "deleteAccount":"Supprimer mon compte",
 "myProducts": "Mes produits",
-"searchProduct": "Recherchez un produit"
+"searchProduct": "Recherchez un produit",
+"welcomeToTheProximityStoreCommunityItsAGreatPleasuretocountyouamongourcommittedbusinesses": "Bienvenue dans la communauté ProximityStore, c’est une grande joie de vous compter parmi nos commerces engagés !",
+"congratulationMessage": "C’est tout bon ! ",
+"youCanNowAddYourProductCatalog"  : "Vous pouvez désormais ajouter votre catalogue de produits",
+"addMyNewProduct":"ajouterMonPremierProduit"
 
 
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:proximitystore/pages/commerce/search_business_product%20_page.dart';
-import 'package:proximitystore/pages/commerce/store_description_page.dart';
+
 import 'package:proximitystore/pages/commerce/terms_of_service_page.dart';
 
 import 'package:proximitystore/pages/pages.dart';

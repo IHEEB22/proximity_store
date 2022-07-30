@@ -8,7 +8,8 @@ import 'package:proximitystore/providers/localistaion_controller_provider.dart';
 
 class AutoCompleteSuggestions extends StatefulWidget {
   @override
-  State<AutoCompleteSuggestions> createState() => _AutoCompleteSuggestionsState();
+  State<AutoCompleteSuggestions> createState() =>
+      _AutoCompleteSuggestionsState();
 }
 
 class _AutoCompleteSuggestionsState extends State<AutoCompleteSuggestions> {
@@ -16,13 +17,16 @@ class _AutoCompleteSuggestionsState extends State<AutoCompleteSuggestions> {
   Widget build(BuildContext context) {
     return Consumer<LocalistaionControllerprovider>(
       builder: (context, newPattern, child) => FutureBuilder<List<Prediction>?>(
-          future: context
-              .read<LocalistaionControllerprovider>()
-              .searchLocation(text: context.read<LocalistaionControllerprovider>().townTextFormFieldController.text),
+          future: context.read<LocalistaionControllerprovider>().searchLocation(
+              text: context
+                  .read<LocalistaionControllerprovider>()
+                  .townTextFormFieldController
+                  .text),
           builder: (context, AsyncSnapshot<List<Prediction>?> snapshot) {
             if (snapshot.hasData && snapshot.data?.length != 0) {
               return Padding(
-                padding: EdgeInsets.symmetric(horizontal: 0.016.sh, vertical: 0.001.sh),
+                padding: EdgeInsets.symmetric(
+                    horizontal: 0.016.sh, vertical: 0.001.sh),
                 child: SingleChildScrollView(
                   physics: ScrollPhysics(),
                   child: Column(
@@ -35,7 +39,8 @@ class _AutoCompleteSuggestionsState extends State<AutoCompleteSuggestions> {
                           itemBuilder: ((context, index) => GestureDetector(
                                 onTap: () => onItemClick(
                                   context: context,
-                                  selectedCountry: snapshot.data?[index].description ?? '',
+                                  selectedCountry:
+                                      snapshot.data?[index].description ?? '',
                                 ),
                                 child: Card(
                                   elevation: 0.2.sm,
@@ -44,7 +49,8 @@ class _AutoCompleteSuggestionsState extends State<AutoCompleteSuggestions> {
                                     iconColor: AppColors.deepBlueColor,
                                     minVerticalPadding: 0,
                                     contentPadding: EdgeInsets.zero,
-                                    visualDensity: VisualDensity(vertical: -3.2),
+                                    visualDensity:
+                                        VisualDensity(vertical: -3.2),
                                     leading: Padding(
                                       padding: EdgeInsets.only(
                                         left: 16,
@@ -57,7 +63,8 @@ class _AutoCompleteSuggestionsState extends State<AutoCompleteSuggestions> {
                                     title: Text(
                                       snapshot.data?[index].description ?? '',
                                       maxLines: 1,
-                                      style: Theme.of(context).textTheme.bodyText2,
+                                      style:
+                                          Theme.of(context).textTheme.bodyText2,
                                     ),
                                   ),
                                 ),
@@ -89,8 +96,12 @@ class _AutoCompleteSuggestionsState extends State<AutoCompleteSuggestions> {
   }
 }
 
-void onItemClick({required String selectedCountry, required BuildContext context}) {
-  context.read<LocalistaionControllerprovider>().townTextFormFieldController.text = selectedCountry;
+void onItemClick(
+    {required String selectedCountry, required BuildContext context}) {
+  context
+      .read<LocalistaionControllerprovider>()
+      .townTextFormFieldController
+      .text = selectedCountry;
   FocusScope.of(context).unfocus();
   context.read<LocalistaionControllerprovider>().setIsTownHasFocus(false);
 }

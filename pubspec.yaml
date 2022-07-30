@@ -45,6 +45,7 @@ dependencies:
   google_maps_webservice: ^0.0.20-nullsafety.5
   flutter_typeahead: ^4.0.0
   easy_localization: ^3.0.1
+  cached_network_image: ^3.2.1
   # auto_size_text: ^3.0.0
 
 dev_dependencies:

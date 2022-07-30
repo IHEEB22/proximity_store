@@ -4,7 +4,7 @@ class Product {
   final String productName;
   final String productImage;
   final double productPrice;
-  double? storeFarDestination;
+  String? storeFarDestination;
   String? productStatus;
 
   Product(
@@ -18,7 +18,7 @@ class Product {
     final productName = json['product_name'] as String;
     final productImage = json['product_image'] as String;
     final productPrice = json['product_price'] as double;
-    final storeFarDestination = json['store_far_destination'] as double?;
+    final storeFarDestination = json['store_far_destination'] as String?;
     final productStatus = json['product_status'] as String?;
 
     return Product(

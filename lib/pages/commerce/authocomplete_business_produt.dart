@@ -12,6 +12,24 @@ class AuthocompleteBusinessProdut extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 400,
+
+      //  TextInputField(
+      //               prefixDisabled: true,
+      //               keyboardType: TextInputType.emailAddress,
+      //               controller: context.watch<BusinessProvider>().product,
+      //               hintText: 'searchProduct'.tr(),
+      //               prefixIcon: Padding(
+      //                 padding: EdgeInsets.only(
+      //                   right: 0.025.sw,
+      //                 ),
+      //                 child: Image(
+      //                   height: 0.025.sh,
+      //                   width: 0.064.sw,
+      //                   image: AssetImage('assets/icons/search_icon.png'),
+      //                 ),
+      //               )),
+      //           0.04.sh.verticalSpace,
+      //           AuthocompleteBusinessProdut(),
       child: FutureBuilder(
           future: context.watch<BusinessProvider>().readJson(),
           builder: (BuildContext context, AsyncSnapshot<List<Map<String, dynamic>>> snapshot) {

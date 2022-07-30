@@ -12,8 +12,6 @@ class AddProductSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // decoration: BoxDecoration(border: Border,
-
       height: 0.498.sh,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
@@ -46,27 +44,38 @@ class AddProductSheet extends StatelessWidget {
             ],
           ),
           0.0567.sh.verticalSpace,
-          Padding(
-            padding: EdgeInsets.only(left: 0.02.sw),
-            child: Text(
-              'welcomeToTheProximityStoreCommunityItsAGreatPleasuretocountyouamongourcommittedbusinesses'.tr(),
-              style: Theme.of(context).textTheme.headline6?.copyWith(
-                    fontFamily: 'Montserrat',
-                    fontSize: 14.sp,
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.only(left: 0.0695.sw, right: 0.12.sw),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: Text(
+                      'welcomeToTheProximityStoreCommunityItsAGreatPleasuretocountyouamongourcommittedbusinesses'.tr(),
+                      style: Theme.of(context).textTheme.headline6?.copyWith(
+                            fontFamily: 'Montserrat',
+                            fontSize: 16.sp,
+                          ),
+                    ),
                   ),
+                  Expanded(
+                    child: Padding(
+                      padding: EdgeInsets.only(right: 0.12.sw),
+                      child: Text(
+                        'youCanNowAddYourProductCatalog'.tr(),
+                        style: Theme.of(context).textTheme.headline6?.copyWith(
+                              fontFamily: 'Montserrat',
+                              fontSize: 16.sp,
+                            ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
           0.037.sh.verticalSpace,
-          Padding(
-            padding: EdgeInsets.only(left: 0.02.sw),
-            child: Text(
-              'youCanNowAddYourProductCatalog'.tr(),
-              style: Theme.of(context).textTheme.headline6?.copyWith(
-                    fontFamily: 'Montserrat',
-                    fontSize: 14.sp,
-                  ),
-            ),
-          ),
           0.1169.sh.verticalSpace,
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 0.082.sw),

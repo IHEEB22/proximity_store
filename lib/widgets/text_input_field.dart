@@ -94,7 +94,7 @@ class TextInputField extends StatelessWidget {
               counterText: '',
               suffixIcon: suffixIcon,
               prefix: prefixIcon,
-              isDense: prefixDisabled,
+              isDense: prefixDisabled ?? true,
               hintText: hintText,
               hintStyle: TextStyle(
                 color: AppColors.blueGreyColor,

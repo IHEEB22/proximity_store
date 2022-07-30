@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:proximitystore/config/colors/app_colors.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class CustomBlueButton extends StatefulWidget {
   final String textInput;
@@ -23,7 +24,7 @@ class _CustomBlueButtonState extends State<CustomBlueButton> {
       height: 0.06.sh,
       child: OutlinedButton(
         child: Text(
-          widget.textInput,
+          widget.textInput.tr(),
           style: TextStyle(
             color: AppColors.whiteColor,
             fontFamily: 'Poppins',

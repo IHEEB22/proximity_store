@@ -28,6 +28,16 @@ class BusinessProvider with ChangeNotifier {
     return (data).map((e) => e as Map<String, dynamic>).toList();
   }
 
+  Future<List<Product>> getProductSuggestion(String query) async {
+    final String response = await rootBundle.loadString('assets/fake_data/product.json');
+    List data = await json.decode(response);
+    return data.map((json) => Product.fromJson(json)).where((product) {
+      final productNameLower = product.productName.toLowerCase();
+      final queryLower = query.toLowerCase();
+      return productNameLower.contains(queryLower);
+    }).toList();
+  }
+
   final picker = ImagePicker();
   Future<PickedFile?> pickedFile = Future.value(null);
 
@@ -56,6 +66,7 @@ class BusinessProvider with ChangeNotifier {
   Map<String, bool> get sectorsData => _sectorsData;
 
   TextEditingController _emailTextEditingController = TextEditingController();
+  TextEditingController _productTextEditingController = TextEditingController();
   TextEditingController _passwordTextEditingController = TextEditingController();
   TextEditingController _newPasswordTextEditingController = TextEditingController();
   TextEditingController _repeatNewPasswordTextEditingController = TextEditingController();
@@ -77,6 +88,7 @@ class BusinessProvider with ChangeNotifier {
   TextEditingController get repeatNewPasswordTextEditingController => _repeatNewPasswordTextEditingController;
   TextEditingController get passwordTextEditingController => _passwordTextEditingController;
   TextEditingController get newPasswordTextEditingController => _newPasswordTextEditingController;
+  TextEditingController get productTextEditingController => _productTextEditingController;
 
   TextEditingController get businessName => _businessName;
   TextEditingController get adress => _adress;

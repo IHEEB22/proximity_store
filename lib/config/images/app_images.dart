@@ -17,4 +17,5 @@ class AppImages {
   static const String vector = '$iconsFolder/Vector.png';
   static const String backIcon = '$iconsFolder/back_icon.png';
   static const String congratsIcon = '$iconsFolder/party-popper.png';
+  static const String editIcon = '$iconsFolder/edit.png';
 }

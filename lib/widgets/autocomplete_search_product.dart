@@ -22,9 +22,11 @@ class AutocompleteSearchProduct extends StatelessWidget {
         right: 0.025.sw,
       ),
       child: TypeAheadFormField<Product?>(
+        minCharsForSuggestions: 2,
+        suggestionsBoxVerticalOffset: 0.04.sh,
         hideSuggestionsOnKeyboardHide: false,
         suggestionsBoxDecoration: SuggestionsBoxDecoration(
-          constraints: BoxConstraints(maxHeight: 400),
+          constraints: BoxConstraints(minHeight: 400),
           offsetX: 1.02,
           elevation: 4,
         ),
@@ -32,7 +34,6 @@ class AutocompleteSearchProduct extends StatelessWidget {
         onSuggestionSelected: (Product? sugesstion) {},
         itemBuilder: (context, Product? suggestion) {
           final product = suggestion!;
-
           return Card(
             margin: EdgeInsets.fromLTRB(0, 0, 0, 16),
             child: Container(
@@ -50,11 +51,10 @@ class AutocompleteSearchProduct extends StatelessWidget {
                     width: 0.32.sw,
                     height: 0.2.sh,
                     child: CachedNetworkImage(
+                      fit: BoxFit.cover,
                       imageUrl: suggestion.productImage,
-                      placeholder: (context, url) =>
-                          new CircularProgressIndicator(),
-                      errorWidget: (context, url, error) =>
-                          new Icon(Icons.error),
+                      placeholder: (context, url) => new CircularProgressIndicator(),
+                      errorWidget: (context, url, error) => new Icon(Icons.error),
                     ),
                   ),
                   Expanded(
@@ -65,18 +65,14 @@ class AutocompleteSearchProduct extends StatelessWidget {
                         children: [
                           Expanded(
                             child: Padding(
-                              padding: EdgeInsets.only(
-                                  right: 0.0508.sw, top: 0.0246.sh),
+                              padding: EdgeInsets.only(right: 0.0508.sw, top: 0.0246.sh),
                               child: Text(suggestion.productName.toUpperCase(),
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodyText1
-                                      ?.copyWith(
-                                          fontFamily: 'Montserrat',
-                                          fontSize: 14.sp,
-                                          height: 1.4,
-                                          color: AppColors.darkBlueColor,
-                                          letterSpacing: 0.4)),
+                                  style: Theme.of(context).textTheme.bodyText1?.copyWith(
+                                      fontFamily: 'Montserrat',
+                                      fontSize: 14.sp,
+                                      height: 1.4,
+                                      color: AppColors.darkBlueColor,
+                                      letterSpacing: 0.4)),
                             ),
                           ),
                           Row(
@@ -88,15 +84,10 @@ class AutocompleteSearchProduct extends StatelessWidget {
                                   margin: EdgeInsets.only(right: 0.041.sw),
                                   child: Center(
                                     child: Padding(
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal: 0.016.sw,
-                                          vertical: 0.0049.sh),
+                                      padding: EdgeInsets.symmetric(horizontal: 0.016.sw, vertical: 0.0049.sh),
                                       child: Text(
                                         'activé',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .bodyText1
-                                            ?.copyWith(
+                                        style: Theme.of(context).textTheme.bodyText1?.copyWith(
                                               fontFamily: 'Montserrat',
                                               fontSize: 10.sp,
                                               color: AppColors.lightGreenColor,
@@ -113,19 +104,14 @@ class AutocompleteSearchProduct extends StatelessWidget {
                                 Container(
                                   child: Center(
                                     child: Padding(
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal: 0.012.sw,
-                                          vertical: 0.0049.sh),
+                                      padding: EdgeInsets.symmetric(horizontal: 0.012.sw, vertical: 0.0049.sh),
                                       child: Text(
                                         'désactivé',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .bodyText1
-                                            ?.copyWith(
-                                                fontFamily: 'Montserrat',
-                                                fontSize: 10.sp,
-                                                fontWeight: FontWeight.w400,
-                                                color: AppColors.deepBlueColor),
+                                        style: Theme.of(context).textTheme.bodyText1?.copyWith(
+                                            fontFamily: 'Montserrat',
+                                            fontSize: 10.sp,
+                                            fontWeight: FontWeight.w400,
+                                            color: AppColors.deepBlueColor),
                                       ),
                                     ),
                                   ),
@@ -142,15 +128,10 @@ class AutocompleteSearchProduct extends StatelessWidget {
                                   ),
                                   child: Center(
                                     child: Padding(
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal: 0.012.sw,
-                                          vertical: 0.0049.sh),
+                                      padding: EdgeInsets.symmetric(horizontal: 0.012.sw, vertical: 0.0049.sh),
                                       child: Text(
                                         'en attente',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .bodyText1
-                                            ?.copyWith(
+                                        style: Theme.of(context).textTheme.bodyText1?.copyWith(
                                               fontFamily: 'Montserrat',
                                               fontSize: 10.sp,
                                               fontWeight: FontWeight.w400,
@@ -168,10 +149,7 @@ class AutocompleteSearchProduct extends StatelessWidget {
                                 child: Container(
                                   child: Text(
                                     suggestion.productPrice.toString() + ' €',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .bodyText1
-                                        ?.copyWith(
+                                    style: Theme.of(context).textTheme.bodyText1?.copyWith(
                                           fontSize: 18.sp,
                                           fontWeight: FontWeight.w800,
                                           color: AppColors.darkBlueColor,
@@ -192,17 +170,26 @@ class AutocompleteSearchProduct extends StatelessWidget {
           );
         },
         noItemsFoundBuilder: (context) => Container(
-          child: Text('produit n\'existe pas'),
+          child: Container(
+            height: 200,
+            child: Center(
+              child: Text(
+                'Produit n\'éxiste pas',
+                style: Theme.of(context).textTheme.headline3?.copyWith(
+                      fontFamily: 'Montserrat',
+                      fontSize: 18.sp,
+                      color: AppColors.blueGreyColor,
+                    ),
+              ),
+            ),
+          ),
         ),
         suggestionsCallback: (pattern) async {
-          return await context
-              .read<BusinessProvider>()
-              .getProductSuggestion(pattern);
+          return await context.read<BusinessProvider>().getProductSuggestion(pattern);
         },
         textFieldConfiguration: TextFieldConfiguration(
           // scrollPadding: EdgeInsets.only(bottom: 5),
-          controller:
-              context.watch<BusinessProvider>().productTextEditingController,
+          controller: context.watch<BusinessProvider>().productTextEditingController,
           style: Theme.of(context).textTheme.bodyText2?.copyWith(
                 height: 1.2,
                 fontSize: 16.sp,
@@ -212,8 +199,7 @@ class AutocompleteSearchProduct extends StatelessWidget {
 
           decoration: InputDecoration(
             isDense: true,
-            prefixIconConstraints:
-                BoxConstraints(maxHeight: 0.028.sh, maxWidth: 0.1.sw),
+            prefixIconConstraints: BoxConstraints(maxHeight: 0.028.sh, maxWidth: 0.1.sw),
             prefixIcon: Image(
                 height: 0.12.sh,
                 width: 0.2.sw,
@@ -236,8 +222,7 @@ class AutocompleteSearchProduct extends StatelessWidget {
               fontWeight: FontWeight.w400,
               letterSpacing: 0.2,
             ),
-            contentPadding: EdgeInsets.symmetric(
-                horizontal: 0.0426.sw, vertical: 0.0166.sh),
+            contentPadding: EdgeInsets.symmetric(horizontal: 0.0426.sw, vertical: 0.0166.sh),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.all(
                 Radius.circular(8.sm),

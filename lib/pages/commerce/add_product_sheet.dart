@@ -36,6 +36,7 @@ class AddProductSheet extends StatelessWidget {
                       fontFamily: 'Montserrat',
                       fontSize: 24.sp,
                       color: AppColors.darkBlueColor,
+                      height: 1.2,
                     ),
               ),
               Padding(
@@ -44,44 +45,40 @@ class AddProductSheet extends StatelessWidget {
             ],
           ),
           0.0567.sh.verticalSpace,
-          Expanded(
-            child: Padding(
-              padding: EdgeInsets.only(left: 0.0695.sw, right: 0.12.sw),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Expanded(
-                    child: Text(
-                      'welcomeToTheProximityStoreCommunityItsAGreatPleasuretocountyouamongourcommittedbusinesses'.tr(),
-                      style: Theme.of(context).textTheme.headline6?.copyWith(
-                            fontFamily: 'Montserrat',
-                            fontSize: 16.sp,
-                          ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Padding(
-                      padding: EdgeInsets.only(right: 0.12.sw),
-                      child: Text(
-                        'youCanNowAddYourProductCatalog'.tr(),
-                        style: Theme.of(context).textTheme.headline6?.copyWith(
-                              fontFamily: 'Montserrat',
-                              fontSize: 16.sp,
-                            ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 0.052.sw),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text(
+                  'welcomeToTheProximityStoreCommunityItsAGreatPleasuretocountyouamongourcommittedbusinesses'.tr(),
+                  style: Theme.of(context).textTheme.headline6?.copyWith(
+                        fontFamily: 'Montserrat',
+                        fontSize: 16.sp,
                       ),
-                    ),
+                ),
+                0.025.sh.verticalSpace,
+                Padding(
+                  padding: EdgeInsets.only(right: 0.08.sw),
+                  child: Text(
+                    'youCanNowAddYourProductCatalog'.tr(),
+                    style: Theme.of(context).textTheme.headline6?.copyWith(
+                          fontFamily: 'Montserrat',
+                          fontSize: 16.sp,
+                          height: 1.2,
+                        ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
-          0.037.sh.verticalSpace,
           0.1169.sh.verticalSpace,
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 0.082.sw),
             child: SizedBox(
                 width: double.infinity, child: CustomBlueButton(textInput: 'addMyNewProduct'.tr(), onPressed: () {})),
-          )
+          ),
+          0.024.sh.verticalSpace,
         ],
       ),
     );

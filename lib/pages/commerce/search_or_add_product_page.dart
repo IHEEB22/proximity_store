@@ -1,9 +1,14 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
+import 'package:proximitystore/config/routes/routes.dart';
 import 'package:proximitystore/pages/commerce/add_product_sheet.dart';
 
+import '../../providers/business_provider.dart';
 import '../../widgets/autocomplete_search_product.dart';
+import '../../widgets/custom_cupertino_dialog.dart';
 import '../../widgets/widgets.dart';
 
 class SearchOrAddProductPage extends StatefulWidget {
@@ -40,9 +45,11 @@ class _SearchOrAddProductPageState extends State<SearchOrAddProductPage> {
     return Scaffold(
       body: SafeArea(
         child: Stack(
+          clipBehavior: Clip.none,
           children: [
             BackgroundImage(),
             SingleChildScrollView(
+              physics: BouncingScrollPhysics(),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -51,12 +58,15 @@ class _SearchOrAddProductPageState extends State<SearchOrAddProductPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       CustomBackButtonIcon(),
-                      Padding(
-                        padding: EdgeInsets.only(left: 0.82.sw, top: 0.02.sh),
-                        child: Image(
-                          height: 0.0295.sh,
-                          width: 0.064.sw,
-                          image: AssetImage('assets/icons/user.png'),
+                      GestureDetector(
+                        onTap: () => Navigator.pushNamed(context, AppRoutes.settingsPage),
+                        child: Padding(
+                          padding: EdgeInsets.only(left: 0.82.sw, top: 0.02.sh),
+                          child: Image(
+                            height: 0.03.sh,
+                            width: 0.065.sw,
+                            image: AssetImage('assets/icons/user.png'),
+                          ),
                         ),
                       ),
                     ],
@@ -89,10 +99,7 @@ class _SearchOrAddProductPageState extends State<SearchOrAddProductPage> {
                               padding: EdgeInsets.only(left: 0.0853.sw),
                               child: Text(
                                 'itsVeryEmptyHere!'.tr(),
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyText2
-                                    ?.copyWith(
+                                style: Theme.of(context).textTheme.bodyText2?.copyWith(
                                       fontFamily: 'Montserrat',
                                       fontSize: 16.sp,
                                       fontWeight: FontWeight.w400,
@@ -102,14 +109,10 @@ class _SearchOrAddProductPageState extends State<SearchOrAddProductPage> {
                             ),
                             0.0246.sh.verticalSpace,
                             Padding(
-                              padding: EdgeInsets.only(
-                                  left: 0.0853.sw, right: 0.24.sw),
+                              padding: EdgeInsets.only(left: 0.0853.sw, right: 0.24.sw),
                               child: Text(
                                 'thisIsWhereYouWillFindTheProductsYouAdd'.tr(),
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyText2
-                                    ?.copyWith(
+                                style: Theme.of(context).textTheme.bodyText2?.copyWith(
                                       fontFamily: 'Montserrat',
                                       fontSize: 16.sp,
                                       fontWeight: FontWeight.w400,
@@ -122,16 +125,35 @@ class _SearchOrAddProductPageState extends State<SearchOrAddProductPage> {
                       ),
                     ],
                   ),
+                  Padding(
+                    padding: EdgeInsets.only(left: 0.082.sw, right: 0.082.sw, top: 0.42.sh),
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: CustomBlueButton(
+                        textInput: 'addMyNewProduct'.tr(),
+                        onPressed: () {
+                          showCupertinoModalPopup(
+                            context: context,
+                            builder: (_) => CustomCupertinoDialog(
+                              title: 'uploadAProductPhoto'.tr(),
+                              firstActionText: 'chooseFromGallery'.tr(),
+                              secondActionText: 'openTheCamera'.tr(),
+                              firstOnPresssed: () {
+                                context.read<BusinessProvider>().setPickedFileFromGalery();
+                                Navigator.pushNamed(context, AppRoutes.addNewProductPage);
+                              },
+                              secondOnPresssed: () {
+                                context.read<BusinessProvider>().setPickedFileFromCamera();
+                                Navigator.pushNamed(context, AppRoutes.addNewProductPage);
+                              },
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                  ),
+                  0.025.sh.verticalSpace,
                 ],
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(
-                  left: 0.082.sw, right: 0.082.sw, top: 0.85.sh),
-              child: SizedBox(
-                width: double.infinity,
-                child: CustomBlueButton(
-                    textInput: 'addMyNewProduct'.tr(), onPressed: () {}),
               ),
             ),
           ],

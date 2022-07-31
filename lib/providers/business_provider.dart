@@ -22,20 +22,23 @@ class BusinessProvider with ChangeNotifier {
     'telephony'.tr(): false,
   };
 
-  Future<List<Map<String, dynamic>>> readJson() async {
-    final String response = await rootBundle.loadString('assets/fake_data/product.json');
-    List<dynamic> data = await json.decode(response);
-    return (data).map((e) => e as Map<String, dynamic>).toList();
-  }
+  // Future<List<Map<String, dynamic>>> readJson() async {
+  //   final String response = await rootBundle.loadString('assets/fake_data/product.json');
+  //   List<dynamic> data = await json.decode(response);
+  //   return (data).map((e) => e as Map<String, dynamic>).toList();
+  // }
 
   Future<List<Product>> getProductSuggestion(String query) async {
     final String response = await rootBundle.loadString('assets/fake_data/product.json');
     List data = await json.decode(response);
-    return data.map((json) => Product.fromJson(json)).where((product) {
-      final productNameLower = product.productName.toLowerCase();
-      final queryLower = query.toLowerCase();
-      return productNameLower.contains(queryLower);
-    }).toList();
+    if (query != '')
+      return data.map((json) => Product.fromJson(json)).where((product) {
+        final productNameLower = product.productName.toLowerCase();
+        final queryLower = query.toLowerCase();
+        return productNameLower.contains(queryLower);
+      }).toList();
+    else
+      return [];
   }
 
   final picker = ImagePicker();
@@ -59,6 +62,7 @@ class BusinessProvider with ChangeNotifier {
   bool _isNewPasswordVisible = false;
   bool _isRepeatNewPasswordVisible = false;
   int _temperLeft = 500;
+  int _temperLeftProduct = 150;
 
   // List<String> chekedsectorList = _chekedsectorsList;
 
@@ -73,7 +77,8 @@ class BusinessProvider with ChangeNotifier {
   TextEditingController _businessName = TextEditingController();
   TextEditingController _adress = TextEditingController();
   TextEditingController _phoneNumber = TextEditingController();
-  TextEditingController _description = TextEditingController();
+  TextEditingController _storeDescription = TextEditingController();
+  TextEditingController _productDescription = TextEditingController();
   TextEditingController _product = TextEditingController();
   bool get isPasswordVisible => _isPasswordVisible;
   bool get isNewPasswordVisible => _isNewPasswordVisible;
@@ -93,12 +98,14 @@ class BusinessProvider with ChangeNotifier {
   TextEditingController get businessName => _businessName;
   TextEditingController get adress => _adress;
   TextEditingController get phoneNumber => _phoneNumber;
-  TextEditingController get description => _description;
+  TextEditingController get storeDescription => _storeDescription;
+  TextEditingController get productDescription => _productDescription;
   TextEditingController get product => _product;
 
   List<String> get chekedsectorsList => _chekedsectorsList;
   bool get sectorHintVisible => _sectorHintVisible;
   int get temperLeft => _temperLeft;
+  int get temperLeftProduct => _temperLeftProduct;
   bool get switchValue => _switchValue;
   bool get validateButtonPressed => _validateButtonPressed;
   bool get deleteEnabled => _deleteEnabled;
@@ -221,8 +228,14 @@ class BusinessProvider with ChangeNotifier {
   }
 
   void setTemperleft() {
-    int temperWritten = description.text.length;
+    int temperWritten = storeDescription.text.length;
     _temperLeft = 500 - temperWritten;
+    notifyListeners();
+  }
+
+  void setTemperleftProduct() {
+    int temperWritten = productDescription.text.length;
+    _temperLeftProduct = 150 - temperWritten;
     notifyListeners();
   }
 
@@ -261,7 +274,7 @@ class BusinessProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void disposeDescriptionControllers() {
+  void disposestoreDescriptionControllers() {
     _switchValue = false;
     _isPickedFileEmpty = true;
     _sectorHintVisible = true;
@@ -273,7 +286,7 @@ class BusinessProvider with ChangeNotifier {
     _chekedsectorsList.clear();
     _businessName.clear();
     _adress.clear();
-    _description.clear();
+    _storeDescription.clear();
     _phoneNumber.clear();
   }
 
@@ -282,6 +295,7 @@ class BusinessProvider with ChangeNotifier {
     _passwordTextEditingController.clear();
     _newPasswordTextEditingController.clear();
     _repeatNewPasswordTextEditingController.clear();
+    _storeDescription.clear();
     _validateButtonPressed = false;
     _isReapetPasswordEqualpassword = false;
     _isPasswordValide = false;
@@ -292,5 +306,6 @@ class BusinessProvider with ChangeNotifier {
     _isPasswordVisible = false;
     _isNewPasswordVisible = false;
     _isRepeatNewPasswordVisible = false;
+    Future<PickedFile?> pickedFile = Future.value(null);
   }
 }

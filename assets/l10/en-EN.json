@@ -62,7 +62,7 @@
 "vacationModeOn": "Mode vacance activé",
 "nameOfYourBusiness": "Nom de votre commerce",
 "fillInAName": "Renseignez un nom",
-"sector": "Secteur(s)",
+"sectors": "Secteur(s)",
 "selectOneOrMoreSectors": "Séléctionnez un ou plusieurs secteurs",
 "address": "Addresse",
 "enterAnAddress": "Renseignez une adresse",
@@ -105,13 +105,23 @@
 "deleteAccount":"Supprimer mon compte",
 "myProducts": "Mes produits",
 "searchProduct": "Recherchez un produit",
-"welcomeToTheProximityStoreCommunityItsAGreatPleasuretocountyouamongourcommittedbusinesses": "Bienvenue dans la communauté                          ProximityStore, c’est une grande joie de vous compter parmi nos commerces engagés !",
+"welcomeToTheProximityStoreCommunityItsAGreatPleasuretocountyouamongourcommittedbusinesses": "Bienvenue dans la communauté ProximityStore, c’est une grande joie de vous compter parmi nos commerces engagés !",
 "congratulationMessage": "C’est tout bon ! ",
 "youCanNowAddYourProductCatalog"  : "Vous pouvez désormais ajouter votre catalogue de produits",
 "addMyNewProduct": "Ajouter mon premier produit",
 
 "itsVeryEmptyHere!": "C’est bien vide par ici !",
-"thisIsWhereYouWillFindTheProductsYouAdd": "C’est ici que vous retrouverez les produits que vous ajouterez."
+"thisIsWhereYouWillFindTheProductsYouAdd": "C’est ici que vous retrouverez les produits que vous ajouterez.",
 
+"uploadAProductPhoto": "Uploader la photo d’un produit",
+"editPhoto": "Modifier la photo",
+"editProducPhoto":"Modifier la photo de produit",
+
+"productDescription":"Description du produit",
+"price":"Prix",
+"enterPrice": "Renseignez un prix",
+"enterdescription": "Renseignez une description",
+"sector": "Catégorie",
+"addTheProduc": "Ajouter le produit"
 
 }

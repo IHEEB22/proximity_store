@@ -1,13 +1,12 @@
 import 'dart:convert';
-import 'dart:math';
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:proximitystore/models/product.dart';
-import 'package:proximitystore/models/productList.dart';
 
+import '../models/sector.dart';
 import '../services/validation_items.dart';
 
 class BusinessProvider with ChangeNotifier {
@@ -29,7 +28,8 @@ class BusinessProvider with ChangeNotifier {
   // }
 
   Future<List<Product>> getProductSuggestion(String query) async {
-    final String response = await rootBundle.loadString('assets/fake_data/product.json');
+    final String response =
+        await rootBundle.loadString('assets/fake_data/products.json');
     List data = await json.decode(response);
     if (query != '')
       return data.map((json) => Product.fromJson(json)).where((product) {
@@ -40,6 +40,18 @@ class BusinessProvider with ChangeNotifier {
     else
       return [];
   }
+
+  Future<List<Sector>> getSectors() async {
+    final String response =
+        await rootBundle.loadString('assets/fake_data/sectorsList.json');
+    List data = await json.decode(response);
+    return await data.map((json) => Sector.fromJson(json)).toList();
+  }
+
+  // void setSectorCheked(Sector sector) {
+  //   sector.sectorCheked;
+  //   notifyListeners();
+  // }
 
   final picker = ImagePicker();
   Future<PickedFile?> pickedFile = Future.value(null);
@@ -63,6 +75,7 @@ class BusinessProvider with ChangeNotifier {
   bool _isRepeatNewPasswordVisible = false;
   int _temperLeft = 500;
   int _temperLeftProduct = 150;
+  bool _containerAnimated = false;
 
   // List<String> chekedsectorList = _chekedsectorsList;
 
@@ -71,15 +84,19 @@ class BusinessProvider with ChangeNotifier {
 
   TextEditingController _emailTextEditingController = TextEditingController();
   TextEditingController _productTextEditingController = TextEditingController();
-  TextEditingController _passwordTextEditingController = TextEditingController();
-  TextEditingController _newPasswordTextEditingController = TextEditingController();
-  TextEditingController _repeatNewPasswordTextEditingController = TextEditingController();
+  TextEditingController _passwordTextEditingController =
+      TextEditingController();
+  TextEditingController _newPasswordTextEditingController =
+      TextEditingController();
+  TextEditingController _repeatNewPasswordTextEditingController =
+      TextEditingController();
   TextEditingController _businessName = TextEditingController();
   TextEditingController _adress = TextEditingController();
   TextEditingController _phoneNumber = TextEditingController();
   TextEditingController _storeDescription = TextEditingController();
   TextEditingController _productDescription = TextEditingController();
   TextEditingController _product = TextEditingController();
+  TextEditingController _productPrice = TextEditingController();
   bool get isPasswordVisible => _isPasswordVisible;
   bool get isNewPasswordVisible => _isNewPasswordVisible;
   bool get isRepeatNewPasswordVisible => _isRepeatNewPasswordVisible;
@@ -89,11 +106,16 @@ class BusinessProvider with ChangeNotifier {
   bool get isReapetPasswordEqualpassword => _isReapetPasswordEqualpassword;
   bool get isEmailValide => _isEmailValide;
 
-  TextEditingController get emailTextEditingController => _emailTextEditingController;
-  TextEditingController get repeatNewPasswordTextEditingController => _repeatNewPasswordTextEditingController;
-  TextEditingController get passwordTextEditingController => _passwordTextEditingController;
-  TextEditingController get newPasswordTextEditingController => _newPasswordTextEditingController;
-  TextEditingController get productTextEditingController => _productTextEditingController;
+  TextEditingController get emailTextEditingController =>
+      _emailTextEditingController;
+  TextEditingController get repeatNewPasswordTextEditingController =>
+      _repeatNewPasswordTextEditingController;
+  TextEditingController get passwordTextEditingController =>
+      _passwordTextEditingController;
+  TextEditingController get newPasswordTextEditingController =>
+      _newPasswordTextEditingController;
+  TextEditingController get productTextEditingController =>
+      _productTextEditingController;
 
   TextEditingController get businessName => _businessName;
   TextEditingController get adress => _adress;
@@ -101,6 +123,7 @@ class BusinessProvider with ChangeNotifier {
   TextEditingController get storeDescription => _storeDescription;
   TextEditingController get productDescription => _productDescription;
   TextEditingController get product => _product;
+  TextEditingController get productPrice => _productPrice;
 
   List<String> get chekedsectorsList => _chekedsectorsList;
   bool get sectorHintVisible => _sectorHintVisible;
@@ -111,8 +134,15 @@ class BusinessProvider with ChangeNotifier {
   bool get deleteEnabled => _deleteEnabled;
   bool get deletePressed => _deletPressed;
   bool get isPickedFileEmpty => _isPickedFileEmpty;
+  bool get containerAnimated => _containerAnimated;
+
   void setValidateButtonPressed() {
     _validateButtonPressed = !_validateButtonPressed;
+    notifyListeners();
+  }
+
+  void setContainerAnimated() {
+    _containerAnimated = !_containerAnimated;
     notifyListeners();
   }
 
@@ -186,7 +216,8 @@ class BusinessProvider with ChangeNotifier {
   void setIsReapetPasswordEqualNewPassword() {
     if (isNewPasswordValide && isRepeatNewPasswordValide) {
       _isReapetPasswordEqualpassword =
-          _repeatNewPasswordTextEditingController.text == _newPasswordTextEditingController.text;
+          _repeatNewPasswordTextEditingController.text ==
+              _newPasswordTextEditingController.text;
     } else {
       _isReapetPasswordEqualpassword = false;
     }
@@ -247,7 +278,8 @@ class BusinessProvider with ChangeNotifier {
   }
 
   void addChekedSector(String sectorName) {
-    if (!_chekedsectorsList.contains(sectorName) && (_sectorsData[sectorName] == true)) {
+    if (!_chekedsectorsList.contains(sectorName) &&
+        (_sectorsData[sectorName] == true)) {
       _chekedsectorsList.add(sectorName);
     }
     notifyListeners();
@@ -295,7 +327,7 @@ class BusinessProvider with ChangeNotifier {
     _passwordTextEditingController.clear();
     _newPasswordTextEditingController.clear();
     _repeatNewPasswordTextEditingController.clear();
-    _storeDescription.clear();
+
     _validateButtonPressed = false;
     _isReapetPasswordEqualpassword = false;
     _isPasswordValide = false;

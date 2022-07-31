@@ -1,0 +1,35 @@
+[
+    {
+        "sector_name": "Animalerie",
+        "sector_cheked": false   
+    },
+    {
+        "sector_name": "Applications & Jeux Vidéos",
+        "sector_cheked": false   
+    },
+    {
+        "sector_name": "Auto et Moto",
+        "sector_cheked": false   
+    },
+    {
+        "sector_name": "Bagagerie",
+        "sector_cheked": false   
+    },
+    {
+        "sector_name": "Bébé & Puériculture",
+        "sector_cheked": false   
+    },
+    {
+        "sector_name": "Heigh Tech",
+        "sector_cheked": false   
+    },
+    {
+        "sector_name": "Téléphonie",
+        "sector_cheked": false   
+    },
+    {
+        "sector_name": "Animalerie",
+        "sector_cheked": false   
+    }
+
+]

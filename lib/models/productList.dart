@@ -1,9 +1,9 @@
-import 'package:proximitystore/models/product.dart';
+// import 'package:proximitystore/models/product.dart';
 
-class ProductList {
-  final List<Product> productList;
+// class ProductList {
+//   final List<Product> productList;
 
-  ProductList({
-    required this.productList,
-  });
-}
+//   ProductList({
+//     required this.productList,
+//   });
+// }

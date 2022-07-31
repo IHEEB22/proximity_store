@@ -8,8 +8,9 @@ class ValidationItem {
   ValidationItem({this.val});
 
   String? validateEmail() {
-    bool emailValid =
-        RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(val ?? "Not email");
+    bool emailValid = RegExp(
+            r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+        .hasMatch(val ?? "Not email");
 
     if ((val == null || (val ?? "").isEmpty)) {
       return 'ce champ est obligatoire !';
@@ -41,6 +42,17 @@ class ValidationItem {
       return null;
   }
 
+  String? validateProductPrice() {
+    int len = (val ?? '').length;
+
+    if ((val == null || (val ?? "").isEmpty)) {
+      return 'ce champ est obligatoire !';
+    } else if (len < 3) {
+      return 'prix commerce invalide';
+    } else
+      return null;
+  }
+
   String? validatePhoneNumber() {
     int len = (val ?? '').length;
 
@@ -53,7 +65,8 @@ class ValidationItem {
   }
 
   String? validateTown({required BuildContext context, required String town}) {
-    List<Prediction> predictionList = context.read<LocalistaionControllerprovider>().predictionList;
+    List<Prediction> predictionList =
+        context.read<LocalistaionControllerprovider>().predictionList;
     bool exist = false;
     predictionList.forEach((Prediction element) {
       if (element.description == town) exist = true;

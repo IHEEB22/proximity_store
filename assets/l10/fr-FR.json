@@ -78,6 +78,7 @@
     "baby&Childcare": "Bébé & Puériculture",
     "diy": "Bricolage",
     "shoes": "Chaussures",
+    "heighTech":"Heigh Tech", 
     "telephony": "Téléphonie",
     "addThePhotoOfMyBusiness": "Ajouter la photo de mon commerce",
     "chooseFromGallery": "Choisir dans la galerie",
@@ -101,7 +102,6 @@
     "uploadAProductPhoto": "Uploader la photo d’un produit",
     "editPhoto": "Modifier la photo",
     "editProducPhoto":"Modifier la photo de produit",
-
 
    
     "productDescription":"Description du produit",

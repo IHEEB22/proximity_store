@@ -21,7 +21,7 @@ class SearchOrAddProductPage extends StatefulWidget {
 class _SearchOrAddProductPageState extends State<SearchOrAddProductPage> {
   void showCongratsBottomSheet(BuildContext context) {
     showModalBottomSheet<void>(
-      isScrollControlled: true,
+      // isScrollControlled: true,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
           top: Radius.circular(20.r),
@@ -29,12 +29,15 @@ class _SearchOrAddProductPageState extends State<SearchOrAddProductPage> {
       ),
       context: context,
       builder: (BuildContext context) => AddProductSheet(),
-    );
+    ).whenComplete(() {
+      context.read<BusinessProvider>().setisProducFieldInFocus();
+    });
   }
 
   @override
   void initState() {
     super.initState();
+
     WidgetsBinding.instance.addPostFrameCallback((_) {
       showCongratsBottomSheet(context);
     });

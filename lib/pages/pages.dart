@@ -11,5 +11,5 @@ export 'authentification/welcome_page.dart';
 export 'commerce/settings_page.dart';
 export 'commerce/sheet_store_sectors.dart';
 export 'commerce/store_description_page.dart';
-export 'commerce/search_or_add_product_page.dart';
+export 'commerce/search_product_page.dart';
 export 'commerce/add_new_product_page.dart';

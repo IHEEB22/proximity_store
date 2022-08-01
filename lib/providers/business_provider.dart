@@ -28,35 +28,38 @@ class BusinessProvider with ChangeNotifier {
   // }
 
   Future<List<Product>> getProductSuggestion(String query) async {
-    final String response =
-        await rootBundle.loadString('assets/fake_data/products.json');
+    final String response = await rootBundle.loadString('assets/fake_data/products.json');
     List data = await json.decode(response);
-    if (query != '')
-      return data.map((json) => Product.fromJson(json)).where((product) {
-        final productNameLower = product.productName.toLowerCase();
-        final queryLower = query.toLowerCase();
-        return productNameLower.contains(queryLower);
-      }).toList();
-    else
-      return [];
+    return data.map((json) => Product.fromJson(json)).where((product) {
+      final productNameLower = product.productName.toLowerCase();
+      final queryLower = query.toLowerCase();
+      return productNameLower.contains(queryLower);
+    }).toList();
   }
 
   Future<List<Sector>> getSectors() async {
-    final String response =
-        await rootBundle.loadString('assets/fake_data/sectorsList.json');
+    final String response = await rootBundle.loadString('assets/fake_data/sectorsList.json');
     List data = await json.decode(response);
-    return await data.map((json) => Sector.fromJson(json)).toList();
+    return data.map((json) => Sector.fromJson(json)).toList();
   }
 
-  // void setSectorCheked(Sector sector) {
-  //   sector.sectorCheked;
-  //   notifyListeners();
-  // }
+  bool isSectorSelected = false;
+  String? sectorNameSelected = null;
+
+  void setSectorCheked({required String sectorName}) {
+    if ((chekedsectorsList.containsKey(sectorName)) && (sectorName == sectorNameSelected)) {
+      chekedsectorsList[sectorName] = !(chekedsectorsList[sectorName] ?? true);
+      sectorNameSelected = sectorName;
+      isSectorSelected = true;
+
+      notifyListeners();
+    }
+  }
 
   final picker = ImagePicker();
   Future<PickedFile?> pickedFile = Future.value(null);
 
-  List<String> _chekedsectorsList = [];
+  Map<String, bool> _chekedsectorsList = Map();
 
   bool _switchValue = false;
   bool _isPickedFileEmpty = true;
@@ -75,7 +78,8 @@ class BusinessProvider with ChangeNotifier {
   bool _isRepeatNewPasswordVisible = false;
   int _temperLeft = 500;
   int _temperLeftProduct = 150;
-  bool _containerAnimated = false;
+
+  bool _isProducFieldInFocus = false;
 
   // List<String> chekedsectorList = _chekedsectorsList;
 
@@ -84,12 +88,9 @@ class BusinessProvider with ChangeNotifier {
 
   TextEditingController _emailTextEditingController = TextEditingController();
   TextEditingController _productTextEditingController = TextEditingController();
-  TextEditingController _passwordTextEditingController =
-      TextEditingController();
-  TextEditingController _newPasswordTextEditingController =
-      TextEditingController();
-  TextEditingController _repeatNewPasswordTextEditingController =
-      TextEditingController();
+  TextEditingController _passwordTextEditingController = TextEditingController();
+  TextEditingController _newPasswordTextEditingController = TextEditingController();
+  TextEditingController _repeatNewPasswordTextEditingController = TextEditingController();
   TextEditingController _businessName = TextEditingController();
   TextEditingController _adress = TextEditingController();
   TextEditingController _phoneNumber = TextEditingController();
@@ -106,16 +107,11 @@ class BusinessProvider with ChangeNotifier {
   bool get isReapetPasswordEqualpassword => _isReapetPasswordEqualpassword;
   bool get isEmailValide => _isEmailValide;
 
-  TextEditingController get emailTextEditingController =>
-      _emailTextEditingController;
-  TextEditingController get repeatNewPasswordTextEditingController =>
-      _repeatNewPasswordTextEditingController;
-  TextEditingController get passwordTextEditingController =>
-      _passwordTextEditingController;
-  TextEditingController get newPasswordTextEditingController =>
-      _newPasswordTextEditingController;
-  TextEditingController get productTextEditingController =>
-      _productTextEditingController;
+  TextEditingController get emailTextEditingController => _emailTextEditingController;
+  TextEditingController get repeatNewPasswordTextEditingController => _repeatNewPasswordTextEditingController;
+  TextEditingController get passwordTextEditingController => _passwordTextEditingController;
+  TextEditingController get newPasswordTextEditingController => _newPasswordTextEditingController;
+  TextEditingController get productTextEditingController => _productTextEditingController;
 
   TextEditingController get businessName => _businessName;
   TextEditingController get adress => _adress;
@@ -125,7 +121,7 @@ class BusinessProvider with ChangeNotifier {
   TextEditingController get product => _product;
   TextEditingController get productPrice => _productPrice;
 
-  List<String> get chekedsectorsList => _chekedsectorsList;
+  Map<String, bool> get chekedsectorsList => _chekedsectorsList;
   bool get sectorHintVisible => _sectorHintVisible;
   int get temperLeft => _temperLeft;
   int get temperLeftProduct => _temperLeftProduct;
@@ -134,15 +130,16 @@ class BusinessProvider with ChangeNotifier {
   bool get deleteEnabled => _deleteEnabled;
   bool get deletePressed => _deletPressed;
   bool get isPickedFileEmpty => _isPickedFileEmpty;
-  bool get containerAnimated => _containerAnimated;
+
+  bool get isProducFieldInFocus => _isProducFieldInFocus;
 
   void setValidateButtonPressed() {
     _validateButtonPressed = !_validateButtonPressed;
     notifyListeners();
   }
 
-  void setContainerAnimated() {
-    _containerAnimated = !_containerAnimated;
+  void setisProducFieldInFocus() {
+    _isProducFieldInFocus = true;
     notifyListeners();
   }
 
@@ -216,8 +213,7 @@ class BusinessProvider with ChangeNotifier {
   void setIsReapetPasswordEqualNewPassword() {
     if (isNewPasswordValide && isRepeatNewPasswordValide) {
       _isReapetPasswordEqualpassword =
-          _repeatNewPasswordTextEditingController.text ==
-              _newPasswordTextEditingController.text;
+          _repeatNewPasswordTextEditingController.text == _newPasswordTextEditingController.text;
     } else {
       _isReapetPasswordEqualpassword = false;
     }
@@ -227,6 +223,7 @@ class BusinessProvider with ChangeNotifier {
   void setPickedFileFromCamera() {
     pickedFile = picker.getImage(source: ImageSource.camera).whenComplete(() {
       _isPickedFileEmpty = false;
+      notifyListeners();
     });
     notifyListeners();
   }
@@ -238,6 +235,7 @@ class BusinessProvider with ChangeNotifier {
     )
         .whenComplete(() {
       _isPickedFileEmpty = false;
+      notifyListeners();
     });
     notifyListeners();
   }
@@ -278,9 +276,8 @@ class BusinessProvider with ChangeNotifier {
   }
 
   void addChekedSector(String sectorName) {
-    if (!_chekedsectorsList.contains(sectorName) &&
-        (_sectorsData[sectorName] == true)) {
-      _chekedsectorsList.add(sectorName);
+    if (!_chekedsectorsList.keys.contains(sectorName) && (_sectorsData[sectorName] == true)) {
+      _chekedsectorsList.addAll({sectorName: false});
     }
     notifyListeners();
   }
@@ -315,7 +312,6 @@ class BusinessProvider with ChangeNotifier {
 
     _temperLeft = 500;
 
-    _chekedsectorsList.clear();
     _businessName.clear();
     _adress.clear();
     _storeDescription.clear();

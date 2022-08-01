@@ -94,7 +94,6 @@ class TextInputField extends StatelessWidget {
               counterText: '',
               suffixIcon: suffixIcon,
               prefix: prefixIcon,
-              isDense: prefixDisabled ?? true,
               hintText: hintText,
               hintStyle: TextStyle(
                 color: AppColors.blueGreyColor,
@@ -111,13 +110,8 @@ class TextInputField extends StatelessWidget {
                 fontWeight: FontWeight.w400,
                 letterSpacing: 0.2,
               ),
-              contentPadding: prefixDisabled ?? true
-                  ? EdgeInsets.only(
-                      left: 0.0395.sw,
-                      right: 0.0395.sw,
-                      bottom: 0.0166.sh,
-                      top: (0.0166.sh + (additionalTopPading ?? 0)))
-                  : EdgeInsets.only(top: 0, left: 0, right: 0.8.sw, bottom: 0),
+              contentPadding: EdgeInsets.only(
+                  left: 0.0395.sw, right: 0.0395.sw, bottom: 0.0166.sh, top: (0.0166.sh + (additionalTopPading ?? 0))),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.all(
                   Radius.circular(8.sm),

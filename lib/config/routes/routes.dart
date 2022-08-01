@@ -9,7 +9,6 @@ class AppRoutes {
   static const String geoLocationOffPage = '/geoLocationOffPage';
   static const String addLocalisationAddressPage = '/addLocalisationAddressPage';
   static const String geoLocationOutsideParisPage = '/geoLocationOutsideParisPage';
-  static const String searchProductPage = '/searchProductPage';
   static const String loginPage = '/loginPage';
   static const String welcomePage = '/welcomePage';
   static const String forgetPassword = '/forgetPassword';
@@ -19,7 +18,7 @@ class AppRoutes {
   static const String storeDescriptionPage = '/storeDescriptionPage';
   static const String settingsPage = '/settingsPage';
   static const String termOfServicePage = '/termOfServicePage';
-  static const String searchOrAddProductPage = '/searchOrAddProductPage';
+  static const String searchProductPage = '/searchProductPage';
   static const String addNewProductPage = '/addNewProductPage';
 
   static Route<dynamic> routeController(RouteSettings settings) {
@@ -30,8 +29,8 @@ class AppRoutes {
         return CustomPageRoute(Route: AddLocalisationAddressPage(), settings: settings);
       case geoLocationOutsideParisPage:
         return CustomPageRoute(Route: GeolocationOutsideParisPage(), settings: settings);
-      case searchProductPage:
-        return CustomPageRoute(Route: SearchProductPage(), settings: settings);
+      // case searchProductPage:
+      //   return CustomPageRoute(Route: SearchProductPage(), settings: settings);
       case loginPage:
         return CustomPageRoute(Route: LoginPage(), settings: settings);
       case welcomePage:
@@ -51,7 +50,7 @@ class AppRoutes {
       case termOfServicePage:
         return CustomPageRoute(Route: TermsOfServicePage(), settings: settings);
 
-      case searchOrAddProductPage:
+      case searchProductPage:
         return CustomPageRoute(Route: SearchOrAddProductPage(), settings: settings);
       case addNewProductPage:
         return CustomPageRoute(Route: AddNewProductPage(), settings: settings);

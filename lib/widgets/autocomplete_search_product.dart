@@ -26,9 +26,11 @@ class AutocompleteSearchProduct extends StatelessWidget {
         suggestionsBoxVerticalOffset: 0.04.sh,
         hideSuggestionsOnKeyboardHide: false,
         suggestionsBoxDecoration: SuggestionsBoxDecoration(
-          constraints: BoxConstraints(minHeight: 400),
+          constraints: BoxConstraints(
+            minHeight: 600,
+          ),
           offsetX: 1.02,
-          elevation: 4,
+          // elevation: 4,
         ),
         debounceDuration: Duration(microseconds: 500),
         onSuggestionSelected: (Product? sugesstion) {},
@@ -170,25 +172,20 @@ class AutocompleteSearchProduct extends StatelessWidget {
           );
         },
         noItemsFoundBuilder: (context) => Container(
-          child: Container(
-            height: 200,
-            child: Center(
-              child: Text(
-                'Produit n\'éxiste pas',
-                style: Theme.of(context).textTheme.headline3?.copyWith(
-                      fontFamily: 'Montserrat',
-                      fontSize: 18.sp,
-                      color: AppColors.blueGreyColor,
-                    ),
-              ),
+          child: Center(
+            child: Text(
+              'Produit n\'éxiste pas',
+              style: Theme.of(context).textTheme.headline3?.copyWith(
+                    fontFamily: 'Montserrat',
+                    fontSize: 18.sp,
+                    color: AppColors.blueGreyColor,
+                  ),
             ),
           ),
         ),
-        suggestionsCallback: (pattern) async {
-          return await context.read<BusinessProvider>().getProductSuggestion(pattern);
-        },
+        suggestionsCallback: context.read<BusinessProvider>().getProductSuggestion,
         textFieldConfiguration: TextFieldConfiguration(
-          // scrollPadding: EdgeInsets.only(bottom: 5),
+          autofocus: context.watch<BusinessProvider>().isProducFieldInFocus ? true : false,
           controller: context.watch<BusinessProvider>().productTextEditingController,
           style: Theme.of(context).textTheme.bodyText2?.copyWith(
                 height: 1.2,
@@ -196,7 +193,6 @@ class AutocompleteSearchProduct extends StatelessWidget {
                 fontWeight: FontWeight.w500,
                 fontFamily: 'Montserrat',
               ),
-
           decoration: InputDecoration(
             isDense: true,
             prefixIconConstraints: BoxConstraints(maxHeight: 0.028.sh, maxWidth: 0.1.sw),

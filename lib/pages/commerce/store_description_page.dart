@@ -208,7 +208,7 @@ class _StoreDescriptionPageState extends State<StoreDescriptionPage> {
                                         width: double.infinity,
                                         child: Wrap(
                                           direction: Axis.horizontal,
-                                          children: context.read<BusinessProvider>().chekedsectorsList.map((item) {
+                                          children: context.read<BusinessProvider>().chekedsectorsList.keys.map((item) {
                                             return Row(
                                               mainAxisSize: MainAxisSize.min,
                                               children: [
@@ -466,7 +466,7 @@ class _StoreDescriptionPageState extends State<StoreDescriptionPage> {
                                             if (_formKey.currentState?.validate() ??
                                                 true && context.read<BusinessProvider>().chekedsectorsList.isNotEmpty) {
                                               print('you can navigate');
-                                              Navigator.pushNamed(context, AppRoutes.searchOrAddProductPage);
+                                              Navigator.pushNamed(context, AppRoutes.searchProductPage);
                                             } else {
                                               print('you can not navigate');
                                             }

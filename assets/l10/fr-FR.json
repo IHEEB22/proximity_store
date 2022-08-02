@@ -102,13 +102,15 @@
     "uploadAProductPhoto": "Uploader la photo d’un produit",
     "editPhoto": "Modifier la photo",
     "editProducPhoto":"Modifier la photo de produit",
-
+    "adress":"adresse",
    
     "productDescription":"Description du produit",
     "price":"Prix",
     "enterPrice": "Renseignez un prix",
     "enterdescription": "Renseignez une description",
     "sector": "Catégorie",
-    "addTheProduc": "Ajouter le produit"
+    "addTheProduc": "Ajouter le produit",
+    "allowAppToAccessYourCamera":"Autoriser l'application à accéder à l'appereil photo ?"
+
 
 }

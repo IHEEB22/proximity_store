@@ -7,8 +7,8 @@ import 'package:proximitystore/widgets/background_image.dart';
 
 import '../../config/routes/routes.dart';
 
-class SearchProductPage extends StatelessWidget {
-  const SearchProductPage({Key? key}) : super(key: key);
+class GeolocationSearchProductPage extends StatelessWidget {
+  const GeolocationSearchProductPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

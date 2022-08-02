@@ -14,6 +14,7 @@ import 'package:proximitystore/pages/commerce/sheet_store_sectors.dart';
 import 'package:proximitystore/providers/business_provider.dart';
 import 'package:proximitystore/widgets/custom_cupertino_dialog.dart';
 
+import '../../providers/localistaion_controller_provider.dart';
 import '../../services/validation_items.dart';
 import '../../widgets/widgets.dart';
 
@@ -266,16 +267,14 @@ class _StoreDescriptionPageState extends State<StoreDescriptionPage> {
                                     ),
                                   ),
                                   0.03.sh.verticalSpace,
-                                  TextInputField(
-                                    autovalidateMode: AutovalidateMode.onUserInteraction,
-                                    validator: (adress) => ValidationItem(val: adress).validatePhoneNumber(),
-                                    controller: context.watch<BusinessProvider>().adress,
-                                    hintText: 'enterAnAddress'.tr(),
-                                    inputLabel: 'address'.tr(),
-                                    keyboardType: TextInputType.emailAddress,
-                                    // onChanged:()=>,
+                                  Column(
+                                    children: [
+                                      AutocompleteSearchAdresse(),
+                                      (context.watch<LocalistaionControllerprovider>().adress.text.isEmpty)
+                                          ? 0.03.sh.verticalSpace
+                                          : 0.42.sh.verticalSpace,
+                                    ],
                                   ),
-                                  0.03.sh.verticalSpace,
                                   TextInputField(
                                     autovalidateMode: AutovalidateMode.onUserInteraction,
                                     validator: (phoneNumber) => ValidationItem(val: phoneNumber).validatePhoneNumber(),
@@ -340,7 +339,6 @@ class _StoreDescriptionPageState extends State<StoreDescriptionPage> {
                                                       File(snap.data!.path),
                                                       fit: BoxFit.fitWidth,
                                                     ),
-                                                    color: Colors.blue,
                                                   );
                                                 } else if (!snap.hasData) {
                                                   return SizedBox(
@@ -371,21 +369,55 @@ class _StoreDescriptionPageState extends State<StoreDescriptionPage> {
                                           image: AssetImage('assets/icons/camera.png'),
                                         ),
                                         textInput: 'addPhoto'.tr(),
-                                        onPressed: () {
-                                          showCupertinoModalPopup(
-                                            context: context,
-                                            builder: (_) => CustomCupertinoDialog(
-                                              title: 'addThePhotoOfMyBusiness'.tr(),
-                                              firstActionText: 'chooseFromGallery'.tr(),
-                                              secondActionText: 'openTheCamera'.tr(),
-                                              firstOnPresssed: () {
-                                                context.read<BusinessProvider>().setPickedFileFromGalery();
-                                              },
-                                              secondOnPresssed: () {
-                                                context.read<BusinessProvider>().setPickedFileFromCamera();
-                                              },
-                                            ),
-                                          );
+                                        onPressed: () async {
+                                          PermissionStatus locationStatus = await Permission.location.request();
+                                          print(locationStatus);
+
+                                          if (locationStatus.isGranted) {
+                                            showCupertinoModalPopup(
+                                              context: context,
+                                              builder: (_) => CustomCupertinoDialog(
+                                                title: 'addThePhotoOfMyBusiness'.tr(),
+                                                firstActionText: 'chooseFromGallery'.tr(),
+                                                secondActionText: 'openTheCamera'.tr(),
+                                                firstOnPresssed: () {
+                                                  context.read<BusinessProvider>().setPickedFileFromGalery();
+                                                },
+                                                secondOnPresssed: () {
+                                                  context.read<BusinessProvider>().setPickedFileFromCamera();
+                                                },
+                                              ),
+                                            );
+                                          } else if (locationStatus.isDenied) {
+                                            return;
+                                          } else if (locationStatus.isPermanentlyDenied) {
+                                            showDialog<String>(
+                                              context: context,
+                                              builder: (BuildContext context) => AlertDialog(
+                                                title: Text(
+                                                  'allowAppToAccessYourCamera'.tr(),
+                                                  style: Theme.of(context).textTheme.subtitle2,
+                                                ),
+                                                actions: <Widget>[
+                                                  // if user deny again, we do nothing
+                                                  TextButton(
+                                                    onPressed: () => Navigator.pop(context),
+                                                    child: Text('cancel'.tr()),
+                                                  ),
+
+                                                  // if user is agree, you can redirect him to the app parameters :)
+                                                  TextButton(
+                                                    onPressed: () {
+                                                      openAppSettings();
+                                                      Navigator.pop(context);
+                                                    },
+                                                    child: Text('openAppSettings'.tr()),
+                                                  ),
+                                                ],
+                                              ),
+                                            );
+                                            return;
+                                          }
                                         },
                                       ),
                                     ),

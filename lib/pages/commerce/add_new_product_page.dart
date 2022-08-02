@@ -51,7 +51,6 @@ class AddNewProductPage extends StatelessWidget {
                                       File(snap.data!.path),
                                       fit: BoxFit.cover,
                                     ),
-                                    color: Colors.blue,
                                   );
                                 } else if (!snap.hasData) {
                                   return SizedBox(
@@ -125,7 +124,6 @@ class AddNewProductPage extends StatelessWidget {
                         ),
                       ),
                     ),
-
                     0.045.sh.verticalSpace,
                     TextInputField(
                       autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -167,8 +165,7 @@ class AddNewProductPage extends StatelessWidget {
                                   decoration: BoxDecoration(
                                     border: Border.all(
                                       width: 2,
-                                      color: (context.watch<BusinessProvider>().chekedsectorsList[item] ?? false) &&
-                                              (!context.watch<BusinessProvider>().isSectorSelected)
+                                      color: (context.watch<BusinessProvider>().chekedsectorsList[item] ?? false)
                                           ? AppColors.lightGreenColor
                                           : AppColors.deepBlueColor,
                                     ),
@@ -176,7 +173,6 @@ class AddNewProductPage extends StatelessWidget {
                                       Radius.circular(6.0),
                                     ),
                                   ),
-
                                   child: RichText(
                                     text: TextSpan(
                                         style: Theme.of(context).textTheme.bodySmall?.copyWith(
@@ -189,23 +185,16 @@ class AddNewProductPage extends StatelessWidget {
                                               )),
                                           context.watch<BusinessProvider>().chekedsectorsList[item] ?? false
                                               ? TextSpan(
-                                                  text: ' ✓',
+                                                  text: '  ✓',
                                                   style: TextStyle(
                                                     color: AppColors.lightGreenColor,
-                                                    fontSize: 18.sp,
+                                                    fontSize: 16.sp,
+                                                    fontWeight: FontWeight.w400,
                                                   ),
                                                 )
                                               : TextSpan(text: ' '),
                                         ]),
                                   ),
-                                  // Text(
-                                  //   item + '  ✓',
-                                  //   style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                                  //       fontFamily: 'Montserrat',
-                                  //       fontSize: 12.sp,
-                                  //       color: AppColors.deepBlueColor,
-                                  //       fontWeight: FontWeight.w700),
-                                  // ),
                                 ),
                               );
                             }).toList(),
@@ -213,130 +202,7 @@ class AddNewProductPage extends StatelessWidget {
                         ),
                       ),
                     ),
-
-                    // FutureBuilder(
-                    //     future: context.watch<BusinessProvider>().getSectors(),
-                    //     builder: (buildContext, AsyncSnapshot<List<Sector>?> snapshot) {
-                    //       if (snapshot.connectionState == ConnectionState.waiting) {
-                    //         return Container(
-                    //           child: CircularProgressIndicator(),
-                    //         );
-                    //       }
-                    //       if (snapshot.hasData)
-                    //         return SizedBox(
-                    //             child: Padding(
-                    //           padding: EdgeInsets.symmetric(horizontal: 0.082.sw),
-                    //           child: Container(
-                    //             width: double.infinity,
-                    //             child: Wrap(
-                    //               direction: Axis.horizontal,
-                    //               children: snapshot.data!.map((item) {
-                    //                 return Row(
-                    //                   mainAxisSize: MainAxisSize.min,
-                    //                   children: [
-                    //                     Padding(
-                    //                       padding: EdgeInsets.only(right: 0.2),
-                    //                       child: Expanded(
-                    //                         child: Container(
-                    //                           margin: EdgeInsets.all(3),
-                    //                           padding: EdgeInsets.all(2),
-                    //                           decoration: BoxDecoration(
-                    //                             border: Border.all(width: 2, color: AppColors.deepBlueColor),
-                    //                             borderRadius: BorderRadius.all(
-                    //                               Radius.circular(6.0),
-                    //                             ),
-                    //                           ),
-                    //                           child: Padding(
-                    //                             padding: EdgeInsets.only(top: 4, bottom: 4, right: 1.5, left: 2),
-                    //                             child: Text(
-                    //                               item.sectorName,
-                    //                               style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                    //                                   fontFamily: 'Montserrat',
-                    //                                   fontSize: 12.sp,
-                    //                                   color: AppColors.deepBlueColor,
-                    //                                   fontWeight: FontWeight.w700),
-                    //                             ),
-                    //                           ),
-                    //                           // GestureDetector(
-                    //                           //   onTap: () {
-                    //                           //     context
-                    //                           //         .read<
-                    //                           //             BusinessProvider>()
-                    //                           //         .removeSector(
-                    //                           //             item);
-                    //                           //     context
-                    //                           //         .read<
-                    //                           //             BusinessProvider>()
-                    //                           //         .isDeleteEnabled();
-                    //                           //   },
-                    //                           //   child: Container(
-                    //                           //     height: 16,
-                    //                           //     width: 16,
-                    //                           //     child: Image(
-                    //                           //         image: AssetImage(
-                    //                           //             'assets/icons/delete_icon.png')),
-                    //                           //   ),
-                    //                           // ),
-                    //                           // 0.0025.sw.horizontalSpace,
-                    //                         ),
-                    //                       ),
-                    //                     ),
-                    //                   ],
-                    //                 );
-                    //               }).toList(),
-                    //             ),
-                    //           ),
-                    //         ));
-                    //       return SizedBox.shrink();
-                    //     }),
-
-                    //     0.025.sw.horizontalSpace,
-                    //     GestureDetector(
-                    //       onTap: () {
-                    //         context
-                    //             .read<BusinessProvider>()
-                    //             .setContainerAnimated();
-                    //       },
-                    //       child: Container(
-                    //         margin: EdgeInsets.all(3.sm),
-                    //         padding: EdgeInsets.symmetric(
-                    //             horizontal: 8, vertical: 10),
-                    //         decoration: BoxDecoration(
-                    //           border: Border.all(
-                    //             width: 2,
-                    //             color: context
-                    //                     .watch<BusinessProvider>()
-                    //                     .containerAnimated
-                    //                 ? AppColors.deepBlueColor
-                    //                 : AppColors.lightGreenColor,
-                    //           ),
-                    //           borderRadius: BorderRadius.all(
-                    //             Radius.circular(6.0),
-                    //           ),
-                    //         ),
-                    //         child: Text(
-                    //           context
-                    //                   .watch<BusinessProvider>()
-                    //                   .containerAnimated
-                    //               ? 'telephonie'.tr()
-                    //               : 'telephonie'.tr() + '  ✓',
-                    //           style: Theme.of(context)
-                    //               .textTheme
-                    //               .bodySmall
-                    //               ?.copyWith(
-                    //                   fontFamily: 'Montserrat',
-                    //                   fontSize: 12.sp,
-                    //                   color: AppColors.deepBlueColor,
-                    //                   fontWeight: FontWeight.w700),
-                    //         ),
-                    //       ),
-                    //     ),
-                    //   ],
-                    // ),
-
                     0.0763.sh.verticalSpace,
-
-                    // context.watch<AuthentificationProvider>().isButtonDisabled
                     true
                         ? Padding(
                             padding: EdgeInsets.symmetric(horizontal: 0.043.sw),

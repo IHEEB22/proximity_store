@@ -68,10 +68,10 @@ class _SheetGeolocalisationOutsideParisState extends State<SheetGeolocalisationO
               ),
               Wrap(
                 children: <Widget>[
-                  Visibility(
-                    child: AutoCompleteSuggestions(),
-                    visible: context.watch<LocalistaionControllerprovider>().isTownHasFocus,
-                  ),
+                  // Visibility(
+                  //   child: AutoCompleteSuggestions(),
+                  //   visible: context.watch<LocalistaionControllerprovider>().isTownHasFocus,
+                  // ),
                 ],
               ),
               0.04.sh.verticalSpace,

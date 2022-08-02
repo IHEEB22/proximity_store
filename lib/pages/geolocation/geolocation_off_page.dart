@@ -110,10 +110,6 @@ class GeoLocationOffPage extends StatelessWidget {
                                       'allowAppToAccessYourLocation'.tr(),
                                       style: Theme.of(context).textTheme.subtitle2,
                                     ),
-                                    content: Text(
-                                      'youNeedToAllowLocationAccessFromAppSettings'.tr(),
-                                      style: Theme.of(context).textTheme.headline4,
-                                    ),
                                     actions: <Widget>[
                                       // if user deny again, we do nothing
                                       TextButton(

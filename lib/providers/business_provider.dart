@@ -43,17 +43,30 @@ class BusinessProvider with ChangeNotifier {
     return data.map((json) => Sector.fromJson(json)).toList();
   }
 
-  bool isSectorSelected = false;
-  String? sectorNameSelected = null;
-
+  bool sectorNameSelected = false;
+  String lastSectorNameSelected = '';
   void setSectorCheked({required String sectorName}) {
-    if ((chekedsectorsList.containsKey(sectorName)) && (sectorName == sectorNameSelected)) {
+    if (sectorNameSelected == false) {
       chekedsectorsList[sectorName] = !(chekedsectorsList[sectorName] ?? true);
-      sectorNameSelected = sectorName;
-      isSectorSelected = true;
-
+      lastSectorNameSelected = sectorName;
+      sectorNameSelected = true;
       notifyListeners();
+    } else {
+      if (sectorName == sectorNameSelected) {
+        chekedsectorsList[lastSectorNameSelected] = !(chekedsectorsList[sectorName] ?? true);
+
+        sectorNameSelected = false;
+        notifyListeners();
+      } else {
+        chekedsectorsList[lastSectorNameSelected] = false;
+        chekedsectorsList[sectorName] = !(chekedsectorsList[sectorName] ?? true);
+        lastSectorNameSelected = sectorName;
+        sectorNameSelected = true;
+        lastSectorNameSelected = sectorName;
+        notifyListeners();
+      }
     }
+    notifyListeners();
   }
 
   final picker = ImagePicker();
@@ -229,11 +242,7 @@ class BusinessProvider with ChangeNotifier {
   }
 
   void setPickedFileFromGalery() {
-    pickedFile = picker
-        .getImage(
-      source: ImageSource.gallery,
-    )
-        .whenComplete(() {
+    pickedFile = picker.getImage(source: ImageSource.gallery).whenComplete(() {
       _isPickedFileEmpty = false;
       notifyListeners();
     });

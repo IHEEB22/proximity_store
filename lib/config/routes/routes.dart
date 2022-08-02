@@ -9,6 +9,8 @@ class AppRoutes {
   static const String geoLocationOffPage = '/geoLocationOffPage';
   static const String addLocalisationAddressPage = '/addLocalisationAddressPage';
   static const String geoLocationOutsideParisPage = '/geoLocationOutsideParisPage';
+  static const String geolocationSearchProductPage = '/geolocationSearchProductPage';
+
   static const String loginPage = '/loginPage';
   static const String welcomePage = '/welcomePage';
   static const String forgetPassword = '/forgetPassword';
@@ -29,8 +31,8 @@ class AppRoutes {
         return CustomPageRoute(Route: AddLocalisationAddressPage(), settings: settings);
       case geoLocationOutsideParisPage:
         return CustomPageRoute(Route: GeolocationOutsideParisPage(), settings: settings);
-      // case searchProductPage:
-      //   return CustomPageRoute(Route: SearchProductPage(), settings: settings);
+      case geolocationSearchProductPage:
+        return CustomPageRoute(Route: GeolocationSearchProductPage(), settings: settings);
       case loginPage:
         return CustomPageRoute(Route: LoginPage(), settings: settings);
       case welcomePage:

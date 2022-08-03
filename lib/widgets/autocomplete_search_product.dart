@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
@@ -185,6 +186,12 @@ class AutocompleteSearchProduct extends StatelessWidget {
         ),
         suggestionsCallback: context.read<BusinessProvider>().getProductSuggestion,
         textFieldConfiguration: TextFieldConfiguration(
+          inputFormatters: [
+            FilteringTextInputFormatter.deny(
+              RegExp(
+                  '(\u00a9|\u00ae|[\u2000-\u3300]|\ud83c[\ud000-\udfff]|\ud83d[\ud000-\udfff]|\ud83e[\ud000-\udfff])'),
+            ),
+          ],
           autofocus: context.watch<BusinessProvider>().isProducFieldInFocus ? true : false,
           controller: context.watch<BusinessProvider>().productTextEditingController,
           style: Theme.of(context).textTheme.bodyText2?.copyWith(

@@ -13,6 +13,7 @@ import 'package:proximitystore/config/routes/routes.dart';
 import 'package:proximitystore/pages/commerce/sheet_store_sectors.dart';
 import 'package:proximitystore/providers/business_provider.dart';
 import 'package:proximitystore/widgets/custom_cupertino_dialog.dart';
+import 'package:proximitystore/widgets/custom_switch.dart';
 
 import '../../providers/localistaion_controller_provider.dart';
 import '../../services/validation_items.dart';
@@ -93,17 +94,23 @@ class _StoreDescriptionPageState extends State<StoreDescriptionPage> {
                                   children: [
                                     0.07.sw.horizontalSpace,
                                     // to change the type of the switch
-                                    Transform.scale(
-                                      scale: 1,
-                                      child: CupertinoSwitch(
-                                        activeColor: AppColors.deepBlueColor,
-                                        value: context.watch<BusinessProvider>().switchValue,
-                                        // trackColor: AppColors.blueGreyColor,
-                                        onChanged: (value) => context.read<BusinessProvider>().setSwitchValue(),
-                                      ),
+                                    CustomSwitch(
+                                      disableColor: AppColors.GreyColor,
+                                      enableColor: AppColors.deepBlueColor,
+                                      onChanged: (bool value) {
+                                        context.read<BusinessProvider>().setSwitchValue();
+                                      },
+                                      switchHeight: 20,
+                                      switchWidth: 20,
+                                      value: context.watch<BusinessProvider>().switchValue,
                                     ),
+
+                                    // value: context.watch<BusinessProvider>().switchValue,
+                                    // trackColor: AppColors.blueGreyColor,
+                                    // onChanged: (value) => context.read<BusinessProvider>().setSwitchValue(),
+
                                     0.0426.sw.horizontalSpace,
-                                    context.watch<BusinessProvider>().switchValue
+                                    !context.watch<BusinessProvider>().switchValue
                                         ? Text(
                                             "vacationModeOff".tr(),
                                             style: Theme.of(context).textTheme.bodySmall?.copyWith(
@@ -267,13 +274,21 @@ class _StoreDescriptionPageState extends State<StoreDescriptionPage> {
                                     ),
                                   ),
                                   0.03.sh.verticalSpace,
-                                  Column(
-                                    children: [
-                                      AutocompleteSearchAdresse(),
-                                      (context.watch<LocalistaionControllerprovider>().adress.text.isEmpty)
-                                          ? 0.03.sh.verticalSpace
-                                          : 0.42.sh.verticalSpace,
-                                    ],
+                                  Consumer<LocalistaionControllerprovider>(
+                                    builder: (context, value, child) => Column(
+                                      children: [
+                                        AutocompleteSearchAdresse(
+                                          searchPrefix: false,
+                                          labelEnabled: true,
+                                          symetricPadding: 0.082,
+                                          labelText: 'adress'.tr(),
+                                        ),
+                                        (context.watch<LocalistaionControllerprovider>().searchSpace &&
+                                                context.watch<LocalistaionControllerprovider>().isAddressNotSelected)
+                                            ? 0.4.sh.verticalSpace
+                                            : 0.03.sh.verticalSpace
+                                      ],
+                                    ),
                                   ),
                                   TextInputField(
                                     autovalidateMode: AutovalidateMode.onUserInteraction,

@@ -27,47 +27,8 @@ class BusinessProvider with ChangeNotifier {
   //   return (data).map((e) => e as Map<String, dynamic>).toList();
   // }
 
-  Future<List<Product>> getProductSuggestion(String query) async {
-    final String response = await rootBundle.loadString('assets/fake_data/products.json');
-    List data = await json.decode(response);
-    return data.map((json) => Product.fromJson(json)).where((product) {
-      final productNameLower = product.productName.toLowerCase();
-      final queryLower = query.toLowerCase();
-      return productNameLower.contains(queryLower);
-    }).toList();
-  }
-
-  Future<List<Sector>> getSectors() async {
-    final String response = await rootBundle.loadString('assets/fake_data/sectorsList.json');
-    List data = await json.decode(response);
-    return data.map((json) => Sector.fromJson(json)).toList();
-  }
-
   bool sectorNameSelected = false;
   String lastSectorNameSelected = '';
-  void setSectorCheked({required String sectorName}) {
-    if (sectorNameSelected == false) {
-      chekedsectorsList[sectorName] = !(chekedsectorsList[sectorName] ?? true);
-      lastSectorNameSelected = sectorName;
-      sectorNameSelected = true;
-      notifyListeners();
-    } else {
-      if (sectorName == sectorNameSelected) {
-        chekedsectorsList[lastSectorNameSelected] = !(chekedsectorsList[sectorName] ?? true);
-
-        sectorNameSelected = false;
-        notifyListeners();
-      } else {
-        chekedsectorsList[lastSectorNameSelected] = false;
-        chekedsectorsList[sectorName] = !(chekedsectorsList[sectorName] ?? true);
-        lastSectorNameSelected = sectorName;
-        sectorNameSelected = true;
-        lastSectorNameSelected = sectorName;
-        notifyListeners();
-      }
-    }
-    notifyListeners();
-  }
 
   final picker = ImagePicker();
   Future<PickedFile?> pickedFile = Future.value(null);
@@ -145,6 +106,46 @@ class BusinessProvider with ChangeNotifier {
   bool get isPickedFileEmpty => _isPickedFileEmpty;
 
   bool get isProducFieldInFocus => _isProducFieldInFocus;
+
+  Future<List<Product>> getProductSuggestion(String query) async {
+    final String response = await rootBundle.loadString('assets/fake_data/products.json');
+    List data = await json.decode(response);
+    return data.map((json) => Product.fromJson(json)).where((product) {
+      final productNameLower = product.productName.toLowerCase();
+      final queryLower = query.toLowerCase();
+      return productNameLower.contains(queryLower);
+    }).toList();
+  }
+
+  Future<List<Sector>> getSectors() async {
+    final String response = await rootBundle.loadString('assets/fake_data/sectorsList.json');
+    List data = await json.decode(response);
+    return data.map((json) => Sector.fromJson(json)).toList();
+  }
+
+  void setSectorCheked({required String sectorName}) {
+    if (sectorNameSelected == false) {
+      chekedsectorsList[sectorName] = !(chekedsectorsList[sectorName] ?? true);
+      lastSectorNameSelected = sectorName;
+      sectorNameSelected = true;
+      notifyListeners();
+    } else {
+      if (sectorName == sectorNameSelected) {
+        chekedsectorsList[lastSectorNameSelected] = !(chekedsectorsList[sectorName] ?? true);
+
+        sectorNameSelected = false;
+        notifyListeners();
+      } else {
+        chekedsectorsList[lastSectorNameSelected] = false;
+        chekedsectorsList[sectorName] = !(chekedsectorsList[sectorName] ?? true);
+        lastSectorNameSelected = sectorName;
+        sectorNameSelected = true;
+        lastSectorNameSelected = sectorName;
+        notifyListeners();
+      }
+    }
+    notifyListeners();
+  }
 
   void setValidateButtonPressed() {
     _validateButtonPressed = !_validateButtonPressed;

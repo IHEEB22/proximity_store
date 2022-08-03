@@ -9,6 +9,7 @@ import 'package:proximitystore/providers/sheet_provider.dart';
 import 'package:proximitystore/services/validation_items.dart';
 
 import 'package:provider/provider.dart';
+import 'package:proximitystore/widgets/autocomplete_search_adresse.dart';
 import 'package:proximitystore/widgets/autocomplete_suggestions.dart';
 import 'package:proximitystore/widgets/custom_blue_button.dart';
 import 'package:proximitystore/widgets/text_input_field.dart';
@@ -51,28 +52,12 @@ class _SheetGeolocalisationOutsideParisState extends State<SheetGeolocalisationO
                 keyboardType: TextInputType.emailAddress,
               ),
               0.02.sh.verticalSpace,
-              Focus(
-                onFocusChange: (hasFocus) => context.read<LocalistaionControllerprovider>().setIsTownHasFocus(hasFocus),
-                child: TextInputField(
-                  inputLabel: 'addTown'.tr(),
-                  controller: context.watch<LocalistaionControllerprovider>().townTextFormFieldController,
-                  keyboardType: TextInputType.emailAddress,
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  validator: (ville) => ValidationItem(val: ville).validateTown(
-                    context: context,
-                    town: context.read<LocalistaionControllerprovider>().townTextFormFieldController.text,
-                  ),
-                  onChanged: (value) => context.read<LocalistaionControllerprovider>().setIsTownHasFocus(true),
-                  hintText: 'addTown'.tr(),
-                ),
-              ),
-              Wrap(
-                children: <Widget>[
-                  // Visibility(
-                  //   child: AutoCompleteSuggestions(),
-                  //   visible: context.watch<LocalistaionControllerprovider>().isTownHasFocus,
-                  // ),
-                ],
+              AutocompleteSearchAdresse(
+                symetricPadding: 0.0853,
+                searchPrefix: false,
+                labelEnabled: true,
+                hintText: 'town'.tr(),
+                labelText: 'addTown'.tr(),
               ),
               0.04.sh.verticalSpace,
               SizedBox(

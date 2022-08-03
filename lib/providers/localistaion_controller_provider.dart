@@ -8,36 +8,65 @@ import 'package:http/http.dart' as http;
 class LocalistaionControllerprovider with ChangeNotifier {
   final TextEditingController townTextFormFieldController = TextEditingController();
   final TextEditingController emailTextEditingController = TextEditingController();
-  final TextEditingController adress = TextEditingController();
-  void setAdressValue(String val) {
-    adress.text = val;
+  TextEditingController adress = TextEditingController();
+  FocusNode townFocusNode = FocusNode();
+  bool _searchSpace = false;
 
-    if (!_predictionList.contains(Prediction(description: val))) {
-      _predictionList.clear();
-    }
-    notifyListeners();
-  }
-
+  bool isAddressNotSelected = true;
   bool _isTownHasFocus = false;
   bool get isTownHasFocus => _isTownHasFocus;
+  bool get searchSpace => _searchSpace;
+
   Placemark _pickPlaceMark = Placemark();
   Placemark get pickPlaceMark => _pickPlaceMark;
   List<Prediction> _predictionList = [];
   List<Prediction> get predictionList => _predictionList;
 
-  Future<void> searchLocation({required String pattern}) async {
-    if (pattern != '') {
-      http.Response response = await http.get(
-        headers: {"Content-Type": "application/json"},
-        Uri.parse("http://mvs.bslmeiyu.com/api/v1/config/place-api-autocomplete?search_text=${pattern}"),
-      );
-
-      Map<String, dynamic> data = jsonDecode(response.body);
-
-      if (data['status'] == 'OK') {
-        data['predictions'].forEach((prediction) => _predictionList.add(Prediction.fromJson(prediction)));
-      }
+  void setSearchSpace() {
+    if (adress.text.isNotEmpty) {
+      _searchSpace = true;
+    } else {
+      _searchSpace = false;
     }
+    notifyListeners();
+  }
+
+  void setIsAdressSelected() {
+    isAddressNotSelected = false;
+    notifyListeners();
+  }
+
+  void setAdressController({required String val}) {
+    adress.text = val;
+    notifyListeners();
+  }
+
+  void disposeAdressListeners() {
+    isAddressNotSelected = true;
+    _searchSpace = false;
+    notifyListeners();
+  }
+
+  void addressSelected({required Prediction suggestion}) {
+    adress.text = suggestion.description.toString();
+    notifyListeners();
+  }
+
+  Future<List<Prediction>> searchLocation(String pattern) async {
+    _predictionList = [];
+
+    http.Response response = await http.get(
+      headers: {"Content-Type": "application/json"},
+      Uri.parse("http://mvs.bslmeiyu.com/api/v1/config/place-api-autocomplete?search_text=${pattern}"),
+    );
+
+    Map<String, dynamic> data = jsonDecode(response.body);
+
+    if (data['status'] == 'OK') {
+      data['predictions'].forEach((prediction) => _predictionList.add(Prediction.fromJson(prediction)));
+    }
+
+    return _predictionList;
   }
 
   // Future<List<Product>> getProductSuggestion(String query) async {

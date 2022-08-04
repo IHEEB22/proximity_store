@@ -1,3 +1,7 @@
+import 'dart:convert';
+
+import 'package:flutter/services.dart';
+
 class Product {
   final String productName;
   final String productImage;
@@ -27,4 +31,15 @@ class Product {
       storeFarDestination: storeFarDestination,
     );
   }
+  Map<String, dynamic> toJson() => {
+        'product_Name': productName,
+        'product_image': productImage,
+        'product_Price': productPrice,
+        'store_far_destination': storeFarDestination,
+        'product_status': productStatus,
+      };
+
+  // @override
+  // String toString() =>'sdsdsd'
+
 }

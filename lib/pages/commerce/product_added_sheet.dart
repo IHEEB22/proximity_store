@@ -8,9 +8,8 @@ import 'package:proximitystore/widgets/custom_blue_button.dart';
 import '../../config/images/app_images.dart';
 import '../../providers/business_provider.dart';
 
-class AddProductSheet extends StatelessWidget {
-  String? currentRoute;
-  AddProductSheet({
+class ProductAddedSheet extends StatelessWidget {
+  ProductAddedSheet({
     Key? key,
   }) : super(key: key);
 
@@ -50,41 +49,41 @@ class AddProductSheet extends StatelessWidget {
                     child: Image(height: 0.035.sh, width: 0.05.sw, image: AssetImage(AppImages.congratsIcon)))
               ],
             ),
-            0.0567.sh.verticalSpace,
+            0.07.sh.verticalSpace,
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 0.052.sw),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Text(
-                    'welcomeToTheProximityStoreCommunityItsAGreatPleasuretocountyouamongourcommittedbusinesses'.tr(),
-                    style: Theme.of(context).textTheme.headline6?.copyWith(
-                          fontFamily: 'Montserrat',
-                          fontSize: 16.sp,
-                        ),
-                  ),
-                  0.025.sh.verticalSpace,
                   Padding(
-                    padding: EdgeInsets.only(right: 0.08.sw),
+                    padding: EdgeInsets.only(right: 0.032.sw),
                     child: Text(
-                      'youCanNowAddYourProductCatalog'.tr(),
-                      style: Theme.of(context).textTheme.headline6?.copyWith(
+                      // context.read<BusinessProvider>().productDescription.text,
+                      "Chargeur sans Fil 10W Universel Rapide Wireless Charger Pad, Chargeur Induction Compatible iPhone XS/XS Max/XR/X /8/8",
+                      style: Theme.of(context).textTheme.headline2?.copyWith(
+                            fontFamily: 'Montserrat',
+                            fontSize: 15.sp,
+                            letterSpacing: 0.1,
+                            height: 1.5,
+                          ),
+                    ),
+                  ),
+                  0.065.sh.verticalSpace,
+                  Padding(
+                    padding: EdgeInsets.only(right: 0.045.sw),
+                    child: Text(
+                      'isBeingValidatedByOurTeams'.tr(),
+                      style: Theme.of(context).textTheme.headline4?.copyWith(
                             fontFamily: 'Montserrat',
                             fontSize: 16.sp,
-                            height: 1.2,
                           ),
                     ),
                   ),
                 ],
               ),
             ),
-            0.1169.sh.verticalSpace,
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 0.082.sw),
-              child: SizedBox(
-                  width: double.infinity, child: CustomBlueButton(textInput: 'addMyNewProduct'.tr(), onPressed: () {})),
-            ),
-            0.024.sh.verticalSpace,
+            0.123.sh.verticalSpace,
           ],
         ),
       ),

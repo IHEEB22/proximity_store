@@ -57,7 +57,7 @@ class App extends StatelessWidget {
       splitScreenMode: true,
       builder: (BuildContext context, child) => MaterialApp(
         onGenerateRoute: AppRoutes.routeController,
-        initialRoute: AppRoutes.addLocalisationAddressPage,
+        initialRoute: AppRoutes.storeDescriptionPage,
         localizationsDelegates: context.localizationDelegates,
         supportedLocales: context.supportedLocales,
         locale: context.locale,
@@ -65,7 +65,7 @@ class App extends StatelessWidget {
         theme: AppThemes.defaultAppTheme,
         darkTheme: AppThemes.defaultAppTheme,
         themeMode: ThemeMode.light,
-        home: AddLocalisationAddressPage(),
+        home: StoreDescriptionPage(),
         builder: (context, widget) {
           return MediaQuery(
             data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),

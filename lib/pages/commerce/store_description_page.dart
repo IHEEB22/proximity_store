@@ -511,9 +511,14 @@ class _StoreDescriptionPageState extends State<StoreDescriptionPage> {
                                           onPressed: () {
                                             context.read<BusinessProvider>().setValidateButtonPressed();
                                             if (_formKey.currentState?.validate() ??
-                                                true && context.read<BusinessProvider>().chekedsectorsList.isNotEmpty) {
+                                                true &&
+                                                    context.read<BusinessProvider>().chekedsectorsList.isNotEmpty &&
+                                                    !context
+                                                        .read<LocalistaionControllerprovider>()
+                                                        .isAddressNotSelected) {
                                               print('you can navigate');
-                                              Navigator.pushNamed(context, AppRoutes.searchProductPage);
+                                              Navigator.pushNamed(context, AppRoutes.searchProductPage,
+                                                  arguments: {'messageTexxt': 'example', 'desctText': 'example'});
                                             } else {
                                               print('you can not navigate');
                                             }

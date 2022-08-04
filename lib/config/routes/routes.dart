@@ -53,7 +53,7 @@ class AppRoutes {
         return CustomPageRoute(Route: TermsOfServicePage(), settings: settings);
 
       case searchProductPage:
-        return CustomPageRoute(Route: SearchOrAddProductPage(), settings: settings);
+        return CustomPageRoute(Route: SearchProductPage(), settings: settings);
       case addNewProductPage:
         return CustomPageRoute(Route: AddNewProductPage(), settings: settings);
       default:

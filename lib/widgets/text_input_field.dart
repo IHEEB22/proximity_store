@@ -22,6 +22,7 @@ class TextInputField extends StatelessWidget {
   int? minLines;
   int? maxLength;
   double? additionalTopPading;
+  List<TextInputFormatter>? inputFormatters;
 
   TextInputField({
     Key? key,
@@ -40,6 +41,7 @@ class TextInputField extends StatelessWidget {
     this.maxLength,
     this.readOnly,
     this.prefixDisabled,
+    this.inputFormatters,
     required this.hintText,
   }) : super(key: key);
 
@@ -84,12 +86,13 @@ class TextInputField extends StatelessWidget {
                   fontWeight: FontWeight.w500,
                   fontFamily: 'Montserrat',
                 ),
-            inputFormatters: [
-              FilteringTextInputFormatter.deny(
-                RegExp(
-                    '(\u00a9|\u00ae|[\u2000-\u3300]|\ud83c[\ud000-\udfff]|\ud83d[\ud000-\udfff]|\ud83e[\ud000-\udfff])'),
-              ),
-            ],
+            inputFormatters: inputFormatters ??
+                [
+                  FilteringTextInputFormatter.deny(
+                    RegExp(
+                        '(\u00a9|\u00ae|[\u2000-\u3300]|\ud83c[\ud000-\udfff]|\ud83d[\ud000-\udfff]|\ud83e[\ud000-\udfff])'),
+                  ),
+                ],
             decoration: InputDecoration(
               counterText: '',
               suffixIcon: suffixIcon,

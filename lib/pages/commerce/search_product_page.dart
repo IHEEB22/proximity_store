@@ -5,21 +5,25 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:proximitystore/config/routes/routes.dart';
 import 'package:proximitystore/pages/commerce/add_product_sheet.dart';
+import 'package:proximitystore/pages/commerce/product_added_sheet.dart';
 
 import '../../providers/business_provider.dart';
 import '../../widgets/autocomplete_search_product.dart';
 import '../../widgets/custom_cupertino_dialog.dart';
 import '../../widgets/widgets.dart';
 
-class SearchOrAddProductPage extends StatefulWidget {
-  SearchOrAddProductPage({Key? key}) : super(key: key);
+class SearchProductPage extends StatefulWidget {
+  SearchProductPage({
+    Key? key,
+  }) : super(key: key);
 
   @override
-  State<SearchOrAddProductPage> createState() => _SearchOrAddProductPageState();
+  State<SearchProductPage> createState() => _SearchProductPageState();
 }
 
-class _SearchOrAddProductPageState extends State<SearchOrAddProductPage> {
+class _SearchProductPageState extends State<SearchProductPage> {
   void showCongratsBottomSheet(BuildContext context) {
+    final arguments = (ModalRoute.of(context)?.settings.arguments ?? <String, String>{}) as Map;
     showModalBottomSheet<void>(
       // isScrollControlled: true,
       shape: RoundedRectangleBorder(
@@ -28,7 +32,8 @@ class _SearchOrAddProductPageState extends State<SearchOrAddProductPage> {
         ),
       ),
       context: context,
-      builder: (BuildContext context) => AddProductSheet(),
+      builder: (BuildContext context) =>
+          (arguments['currentRoute'] == 'addNewProductpage') ? ProductAddedSheet() : AddProductSheet(),
     ).whenComplete(() {
       context.read<BusinessProvider>().setisProducFieldInFocus();
     });

@@ -22,8 +22,8 @@ class LocalistaionControllerprovider with ChangeNotifier {
   List<Prediction> _predictionList = [];
   List<Prediction> get predictionList => _predictionList;
 
-  void setSearchSpace() {
-    if (adress.text.isNotEmpty) {
+  void setSearchSpace({required String val}) {
+    if (val.isNotEmpty) {
       _searchSpace = true;
     } else {
       _searchSpace = false;
@@ -54,7 +54,6 @@ class LocalistaionControllerprovider with ChangeNotifier {
 
   Future<List<Prediction>> searchLocation(String pattern) async {
     _predictionList = [];
-
     http.Response response = await http.get(
       headers: {"Content-Type": "application/json"},
       Uri.parse("http://mvs.bslmeiyu.com/api/v1/config/place-api-autocomplete?search_text=${pattern}"),
@@ -66,6 +65,7 @@ class LocalistaionControllerprovider with ChangeNotifier {
       data['predictions'].forEach((prediction) => _predictionList.add(Prediction.fromJson(prediction)));
     }
 
+    notifyListeners();
     return _predictionList;
   }
 

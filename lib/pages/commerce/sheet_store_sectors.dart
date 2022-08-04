@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:provider/provider.dart';
 import 'package:proximitystore/providers/business_provider.dart';
+import 'package:proximitystore/widgets/custom_blue_button.dart';
 
 import '../../config/colors/app_colors.dart';
 import '../../config/images/app_images.dart';
@@ -51,19 +52,12 @@ class SheetStoreSectors extends StatelessWidget {
                       child: context.watch<BusinessProvider>().deleteEnabled
                           ? TextButton(
                               onPressed: () {
-                                context
-                                    .read<BusinessProvider>()
-                                    .deletAllSectors();
-                                context
-                                    .read<BusinessProvider>()
-                                    .setDeletePressed();
+                                context.read<BusinessProvider>().deletAllSectors();
+                                context.read<BusinessProvider>().setDeletePressed();
                               },
                               child: Text(
                                 'delete'.tr(),
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .headline2
-                                    ?.copyWith(
+                                style: Theme.of(context).textTheme.headline2?.copyWith(
                                       fontFamily: 'Montserrat',
                                       fontSize: 16.sp,
                                       fontWeight: FontWeight.w500,
@@ -75,10 +69,7 @@ class SheetStoreSectors extends StatelessWidget {
                               onPressed: null,
                               child: Text(
                                 'delete'.tr(),
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .headline2
-                                    ?.copyWith(
+                                style: Theme.of(context).textTheme.headline2?.copyWith(
                                       fontFamily: 'Montserrat',
                                       fontSize: 16.sp,
                                       fontWeight: FontWeight.w500,
@@ -91,57 +82,31 @@ class SheetStoreSectors extends StatelessWidget {
                 ),
                 0.065.sh.verticalSpace,
                 Expanded(
+                  flex: 6,
                   child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 0.025.sw),
                     child: ListView.builder(
                         shrinkWrap: true,
-                        itemCount: context
-                            .watch<BusinessProvider>()
-                            .sectorsData
-                            .length,
+                        itemCount: context.watch<BusinessProvider>().sectorsData.length,
                         itemBuilder: (BuildContext context, int index) {
                           return Card(
                             margin: EdgeInsets.only(bottom: 0.00002.sh),
                             // elevation: 0.005,
                             child: CheckboxListTile(
                               onChanged: (value) {
-                                context
-                                    .read<BusinessProvider>()
-                                    .setCheckoxValue(
-                                        context
-                                            .read<BusinessProvider>()
-                                            .sectorsData
-                                            .keys
-                                            .toList()[index],
-                                        value);
+                                context.read<BusinessProvider>().setCheckoxValue(
+                                    context.read<BusinessProvider>().sectorsData.keys.toList()[index], value);
+
+                                context.read<BusinessProvider>().isDeleteEnabled();
 
                                 context
                                     .read<BusinessProvider>()
-                                    .isDeleteEnabled();
-
-                                context
-                                    .read<BusinessProvider>()
-                                    .addChekedSector(context
-                                        .read<BusinessProvider>()
-                                        .sectorsData
-                                        .keys
-                                        .toList()[index]);
+                                    .addChekedSector(context.read<BusinessProvider>().sectorsData.keys.toList()[index]);
                               },
-                              value: context
-                                  .read<BusinessProvider>()
-                                  .sectorsData
-                                  .values
-                                  .toList()[index],
+                              value: context.read<BusinessProvider>().sectorsData.values.toList()[index],
                               title: Text(
-                                context
-                                    .watch<BusinessProvider>()
-                                    .sectorsData
-                                    .keys
-                                    .toList()[index],
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyText1
-                                    ?.copyWith(
+                                context.watch<BusinessProvider>().sectorsData.keys.toList()[index],
+                                style: Theme.of(context).textTheme.bodyText1?.copyWith(
                                       fontFamily: 'Montserrat',
                                       fontWeight: FontWeight.w500,
                                       fontSize: 16.sp,
@@ -165,6 +130,21 @@ class SheetStoreSectors extends StatelessWidget {
                         }),
                   ),
                 ),
+                Expanded(
+                  flex: 1,
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 0.043.sw),
+                    child: SizedBox(
+                        width: double.infinity,
+                        child: CustomBlueButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          textInput: 'validteSector'.tr(),
+                        )),
+                  ),
+                ),
+                0.025.sh.verticalSpace,
               ],
             ),
           ),

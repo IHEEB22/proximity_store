@@ -20,14 +20,16 @@ class AutocompleteSearchAdresse extends StatelessWidget {
   final String labelText;
 
   final bool labelEnabled;
-  AutocompleteSearchAdresse({
-    Key? key,
-    this.hintText,
-    required this.labelText,
-    required this.symetricPadding,
-    required this.searchPrefix,
-    required this.labelEnabled,
-  }) : super(key: key);
+  bool? hideKeyboard;
+  AutocompleteSearchAdresse(
+      {Key? key,
+      this.hintText,
+      required this.labelText,
+      required this.symetricPadding,
+      required this.searchPrefix,
+      required this.labelEnabled,
+      this.hideKeyboard})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -57,16 +59,15 @@ class AutocompleteSearchAdresse extends StatelessWidget {
               child: TypeAheadFormField<Prediction?>(
                 autovalidateMode: AutovalidateMode.onUserInteraction,
 
-                errorBuilder: (context, error) => SizedBox.shrink(),
+                // errorBuilder: (context, error) => SizedBox.shrink(),
                 // onSaved: (adress) =>
                 // context.read<LocalistaionControllerprovider>().setAdressController(val: adress ?? ''),
                 validator: (addres) => ValidationItem(val: addres)
-                    .validateTown(context: context, town: context.watch<LocalistaionControllerprovider>().adress.text),
+                    .validateTown(town: context.read<LocalistaionControllerprovider>().adress.text, context: context),
 
-                hideOnError: true,
                 hideOnEmpty: true,
                 // keepSuggestionsOnLoading: false,
-
+                // keepSuggestionsOnSuggestionSelected: true,
                 // hideOnLoading: true,
 
                 onSuggestionSelected: (suggestion) {
@@ -82,10 +83,10 @@ class AutocompleteSearchAdresse extends StatelessWidget {
                 hideSuggestionsOnKeyboardHide: false,
                 suggestionsBoxDecoration: SuggestionsBoxDecoration(
                   constraints: BoxConstraints(
-                    minHeight: 150,
+                    // minHeight: 300,
                     maxHeight: 200,
                   ),
-                  offsetX: 1.02,
+                  offsetX: 1.05,
                   elevation: 2,
                 ),
                 debounceDuration: Duration(microseconds: 1200),
@@ -137,8 +138,8 @@ class AutocompleteSearchAdresse extends StatelessWidget {
                     ),
                   ],
                   // focusNode: context.watch<LocalistaionControllerprovider>().townFocusNode,
-                  onChanged: (val) {
-                    context.read<LocalistaionControllerprovider>().setSearchSpace();
+                  onChanged: (adress) {
+                    context.read<LocalistaionControllerprovider>().setSearchSpace(val: adress);
                   },
 
                   controller: context.read<LocalistaionControllerprovider>().adress,

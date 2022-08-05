@@ -59,8 +59,7 @@ class ProductAddedSheet extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.only(right: 0.032.sw),
                     child: Text(
-                      // context.read<BusinessProvider>().productDescription.text,
-                      "Chargeur sans Fil 10W Universel Rapide Wireless Charger Pad, Chargeur Induction Compatible iPhone XS/XS Max/XR/X /8/8",
+                      context.read<BusinessProvider>().productDescription.text,
                       style: Theme.of(context).textTheme.headline2?.copyWith(
                             fontFamily: 'Montserrat',
                             fontSize: 15.sp,

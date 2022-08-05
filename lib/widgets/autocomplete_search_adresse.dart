@@ -59,12 +59,11 @@ class AutocompleteSearchAdresse extends StatelessWidget {
               child: TypeAheadFormField<Prediction?>(
                 autovalidateMode: AutovalidateMode.onUserInteraction,
 
-                // errorBuilder: (context, error) => SizedBox.shrink(),
+                errorBuilder: (context, error) => SizedBox.shrink(),
                 // onSaved: (adress) =>
                 // context.read<LocalistaionControllerprovider>().setAdressController(val: adress ?? ''),
                 validator: (addres) => ValidationItem(val: addres)
                     .validateTown(town: context.read<LocalistaionControllerprovider>().adress.text, context: context),
-
                 hideOnEmpty: true,
                 // keepSuggestionsOnLoading: false,
                 // keepSuggestionsOnSuggestionSelected: true,

@@ -513,7 +513,7 @@ class _StoreDescriptionPageState extends State<StoreDescriptionPage> {
                                             if (_formKey.currentState?.validate() ??
                                                 true &&
                                                     context.read<BusinessProvider>().chekedsectorsList.isNotEmpty &&
-                                                    !context
+                                                    context
                                                         .read<LocalistaionControllerprovider>()
                                                         .isAddressNotSelected) {
                                               print('you can navigate');

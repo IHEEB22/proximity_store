@@ -107,14 +107,33 @@ class BusinessProvider with ChangeNotifier {
 
   bool get isProducFieldInFocus => _isProducFieldInFocus;
 
+  Product? newProduct;
+
+  void setNewProduct({required Product product}) {
+    newProduct = product;
+    notifyListeners();
+  }
+
   Future<List<Product>> getProductSuggestion(String query) async {
     final String response = await rootBundle.loadString('assets/fake_data/products.json');
+
     List data = await json.decode(response);
-    return data.map((json) => Product.fromJson(json)).where((product) {
+
+    List<Product> productList = data.map((json) => Product.fromJson(json)).toList();
+    if (newProduct != null) productList.add(newProduct!);
+
+    return productList.where((product) {
       final productNameLower = product.productName.toLowerCase();
       final queryLower = query.toLowerCase();
       return productNameLower.contains(queryLower);
     }).toList();
+  }
+
+  Future<List<Product>> getAllProduct() async {
+    final String response = await rootBundle.loadString('assets/fake_data/products.json');
+    List data = await json.decode(response);
+
+    return data.map((json) => Product.fromJson(json)).toList();
   }
 
   Future<List<Sector>> getSectors() async {

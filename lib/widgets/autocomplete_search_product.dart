@@ -12,8 +12,21 @@ import '../config/images/app_images.dart';
 import '../models/product.dart';
 import '../providers/business_provider.dart';
 
-class AutocompleteSearchProduct extends StatelessWidget {
+class AutocompleteSearchProduct extends StatefulWidget {
   const AutocompleteSearchProduct({Key? key}) : super(key: key);
+
+  @override
+  State<AutocompleteSearchProduct> createState() => _AutocompleteSearchProductState();
+}
+
+List<Product> productList = [];
+
+class _AutocompleteSearchProductState extends State<AutocompleteSearchProduct> {
+  @override
+  void initState() {
+    context.read<BusinessProvider>().getAllProduct().then((value) => productList = value);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +36,6 @@ class AutocompleteSearchProduct extends StatelessWidget {
         right: 0.025.sw,
       ),
       child: TypeAheadFormField<Product?>(
-        minCharsForSuggestions: 2,
         suggestionsBoxVerticalOffset: 0.04.sh,
         hideSuggestionsOnKeyboardHide: false,
         suggestionsBoxDecoration: SuggestionsBoxDecoration(
@@ -64,6 +76,7 @@ class AutocompleteSearchProduct extends StatelessWidget {
                     child: Padding(
                       padding: EdgeInsets.only(left: 0.0321.sw),
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Expanded(

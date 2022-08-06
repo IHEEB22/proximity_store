@@ -72,6 +72,7 @@ class BusinessProvider with ChangeNotifier {
   TextEditingController _productDescription = TextEditingController();
   TextEditingController _product = TextEditingController();
   TextEditingController _productPrice = TextEditingController();
+  FocusNode serachProductFocusNode = FocusNode();
   bool get isPasswordVisible => _isPasswordVisible;
   bool get isNewPasswordVisible => _isNewPasswordVisible;
   bool get isRepeatNewPasswordVisible => _isRepeatNewPasswordVisible;
@@ -129,13 +130,6 @@ class BusinessProvider with ChangeNotifier {
     }).toList();
   }
 
-  Future<List<Product>> getAllProduct() async {
-    final String response = await rootBundle.loadString('assets/fake_data/products.json');
-    List data = await json.decode(response);
-
-    return data.map((json) => Product.fromJson(json)).toList();
-  }
-
   Future<List<Sector>> getSectors() async {
     final String response = await rootBundle.loadString('assets/fake_data/sectorsList.json');
     List data = await json.decode(response);
@@ -171,8 +165,10 @@ class BusinessProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void setisProducFieldInFocus() {
-    _isProducFieldInFocus = true;
+  void setisProducFieldInFocus(context) {
+    FocusScope.of(context).requestFocus(serachProductFocusNode);
+    notifyListeners();
+
     notifyListeners();
   }
 

@@ -1,0 +1,66 @@
+[
+    {
+        "product_name": "Duracell, Chargeur de piles AA/AAA, 4 piles rechargeables AA et AAA, 45 mins",
+        "product_label": "chargeur",
+        "product_sector": "Heigh Tech",
+        "product_image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSk74zWgx4lRXIYDINsLViwbDgWAOn-iHChoYCBD0YhezqrpMj1rf24cE3XKyCt9tOk76w&usqp=CAU",
+        "product_price": 28.90 ,
+        "in_stock": 10 ,
+        "store_far_destination": "220 Kilometeres",
+        "product_status": "activé"
+    },
+    {
+        "product_name": "Duracell, Chargeur de piles AA/AAA, 4 piles rechargeables AA et AAA, 45 mins",
+        "product_label": "chargeur",
+        "product_sector": "Téléphonie",
+        "product_image": "https://s3-alpha-sig.figma.com/img/c13b/964f/6f86b440c9e16b24fc61c51efd573da6?Expires=1659916800&Signature=V-Mw7hXoXwd8GkwVP0S8iKdiBZqaYMPvWdhJ7S9zlcvDUuEOqf4MG00-PUYDy488fKOTloqG3W3Q4RKcq~H-PBrMnMWR8b-8r8x0lV8WiLjvzbO79YGQTgIrqpPeKq5tgPohS7MWaSqmWEofSisS1SCUNZQUnlYP9A5sVZ~F92PHPjDjxc5Qs286kURJHN5EDEU8wgNTcGLNaZLiBoNKJHmPuIYrEkIYti16c2g5Nq2VcE6vhQfnuiUy6nPOIFB7~6pqikZAHxwYdpLANYHnJDHVBF338kIPHlW4friK4tsK~49N92Pro5SE9PVRcrnau3s5ZTRg4zFYj5FLb3KvXA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+        "product_price": 28.90,
+        "in_stock": 15 ,
+        "store_far_destination": "220 Kilometeres",
+        "product_status": "activé"
+    },
+    {
+        "product_name": "Duracell, Chargeur de piles AA/AAA, 4 piles rechargeables AA et AAA, 45 mins",
+        "product_label": "pc",
+        "product_sector": "Applications & Jeux Vidéos",
+        "product_image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmlT5QfrfqptZozl2oG4Q9dYNIJ8MWgrnTjw&usqp=CAU",
+        "product_price": 28.90,
+        "in_stock": 18 ,
+        "store_far_destination": "220 Kilometeres",
+        "product_status": "désactivé"
+    },
+    {
+        "product_name": "Duracell, Chargeur de piles AA/AAA, 4 piles rechargeables AA et AAA, 45 mins",
+        "product_label": "pc",
+        "product_sector": "Applications & Jeux Vidéos",
+        "product_image": "https://s3-alpha-sig.figma.com/img/2670/0bb5/c105a15157b5aafffc7cfed4df1a10b2?Expires=1659916800&Signature=cbN4Tlny2WtBAnIln6aDmhmL2qnUk~H~alDFwdqkJrhdr1iZnLQQaCSEnk2jJbnBR-p8VQn-QoR31hGvvO6a9PBgZTlqLFL55W9mRSpqHcc4UA6Pe94cmtdl9wRV83bEenh04IqgESDYQAZ-VlS94XQtAHmGBZIJjTYBAdRzZfsc4wDknQAAUJm~8H2uMN5GH1tmNyA~PN~QcvLlGJkZN5EHCWAxUZD2Myz~OVOdUJrzBc8d2BXxaCQZ6J1cREcDhJxZiQL8jNUx5HMJw8D3uxVSqctsVrF-gL-4uI7F9IoxvMnsBnJfBYZjuYFLZLXMk~i~Xh4uI4bpqbbuN0Iyaw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+        "product_price": 50.0,
+        "in_stock": 20 ,
+        "store_far_destination": "220 Kilometeres",
+        "product_status": "en attente"
+    },
+    {
+        "product_name": "Duracell, Chargeur de piles AA/AAA, 4 piles rechargeables AA et AAA, 45 mins",
+        "product_label": "téléphone",
+        "product_sector": "Applications & Jeux Vidéos",
+        "product_image": "https://www.google.com/imgres?imgurl=https%3A%2F%2Fd1fmx1rbmqrxrr.cloudfront.net%2Fcnet%2Fi%2Fedit%2F2021%2F03%2Foneplus-9-pro-vs-iphone-12-magsafe-une-1200.jpg&imgrefurl=https%3A%2F%2Fwww.cnetfrance.fr%2Fnews%2Fl-iphone-13-doit-absolument-reprendre-cette-fonctionnalite-du-oneplus-9-pro-39920067.htm&tbnid=73xw-SXVN3CMIM&vet=10CGQQMyiSAWoXChMImIf2hrSb-QIVAAAAAB0AAAAAEAI..i&docid=8Rtm5eq8R7I78M&w=1200&h=900&q=chargeur%20ios&ved=0CGQQMyiSAWoXChMImIf2hrSb-QIVAAAAAB0AAAAAEAI",
+        "product_price": 50.0,
+        "in_stock": 8 ,
+        "store_far_destination": "220 Kilometeres",
+        "product_status": "en attente"
+        
+        
+        
+    },
+    {
+        "product_name": "testtextahead",
+        "product_label": "climatiseur",
+        "product_sector": "Applications & Jeux Vidéos",
+        "product_image": "https://www.google.com/imgres?imgurl=https%3A%2F%2Fd1fmx1rbmqrxrr.cloudfront.net%2Fcnet%2Fi%2Fedit%2F2021%2F03%2Foneplus-9-pro-vs-iphone-12-magsafe-une-1200.jpg&imgrefurl=https%3A%2F%2Fwww.cnetfrance.fr%2Fnews%2Fl-iphone-13-doit-absolument-reprendre-cette-fonctionnalite-du-oneplus-9-pro-39920067.htm&tbnid=73xw-SXVN3CMIM&vet=10CGQQMyiSAWoXChMImIf2hrSb-QIVAAAAAB0AAAAAEAI..i&docid=8Rtm5eq8R7I78M&w=1200&h=900&q=chargeur%20ios&ved=0CGQQMyiSAWoXChMImIf2hrSb-QIVAAAAAB0AAAAAEAI",
+        "product_price": 50.0,
+        "in_stock": 2 ,
+        "store_far_destination": "220 Kilometeres",
+        "product_status": "en attente"
+        
+    }
+]

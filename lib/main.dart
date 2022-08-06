@@ -11,6 +11,7 @@ import 'package:proximitystore/pages/pages.dart';
 
 import 'package:proximitystore/providers/authentification_provider.dart';
 import 'package:proximitystore/providers/business_provider.dart';
+import 'package:proximitystore/providers/client_provider.dart';
 import 'package:proximitystore/providers/localistaion_controller_provider.dart';
 import 'package:proximitystore/providers/sheet_provider.dart';
 import 'package:proximitystore/themes/app_themes.dart';
@@ -40,6 +41,9 @@ void main() async {
           ChangeNotifierProvider(
             create: (_) => BusinessProvider(),
           ),
+          ChangeNotifierProvider(
+            create: (_) => ClientProvider(),
+          ),
         ],
         child: App(),
       ),
@@ -57,7 +61,7 @@ class App extends StatelessWidget {
       splitScreenMode: true,
       builder: (BuildContext context, child) => MaterialApp(
         onGenerateRoute: AppRoutes.routeController,
-        initialRoute: AppRoutes.storeDescriptionPage,
+        initialRoute: AppRoutes.geolocationSearchProductPage,
         localizationsDelegates: context.localizationDelegates,
         supportedLocales: context.supportedLocales,
         locale: context.locale,
@@ -65,7 +69,7 @@ class App extends StatelessWidget {
         theme: AppThemes.defaultAppTheme,
         darkTheme: AppThemes.defaultAppTheme,
         themeMode: ThemeMode.light,
-        home: StoreDescriptionPage(),
+        home: GeolocationSearchProductPage(),
         builder: (context, widget) {
           return MediaQuery(
             data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),

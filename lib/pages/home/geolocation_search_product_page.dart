@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:proximitystore/config/colors/app_colors.dart';
 import 'package:proximitystore/config/images/app_images.dart';
+import 'package:proximitystore/widgets/autocomplete_search_label.dart';
 import 'package:proximitystore/widgets/background_image.dart';
 
 import '../../config/routes/routes.dart';
@@ -73,34 +74,7 @@ class GeolocationSearchProductPage extends StatelessWidget {
                   0.065.sh.verticalSpace,
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 0.085.sw),
-                    // child: Focus(
-                    //   onFocusChange: (hasFocus) =>
-                    //       context.read<LocalistaionControllerprovider>().setIsTownHasFocus(hasFocus),
-                    //   child: TextField(
-                    //     style: Theme.of(context).textTheme.bodyText2?.copyWith(
-                    //           height: 1.2,
-                    //           fontSize: 16.sp,
-                    //           fontWeight: FontWeight.w500,
-                    //           fontFamily: 'Montserrat',
-                    //         ),
-                    //     keyboardType: TextInputType.emailAddress,
-                    //     controller: context.read<LocalistaionControllerprovider>().townTextFormFieldController,
-                    //     decoration: textInputDecoration.copyWith(
-                    //       contentPadding: EdgeInsets.zero,
-                    //       prefixIconConstraints: BoxConstraints(
-                    //         maxWidth: 0.12.sw,
-                    //       ),
-                    //       prefixIcon: Padding(
-                    //         padding: EdgeInsets.only(left: 0.025.sw, right: 0.02.sh),
-                    //         child: Image.asset(
-                    //           AppImages.searchIcon,
-                    //         ),
-                    //       ),
-                    //       hintText: 'findProduct'.tr(),
-                    //     ),
-                    //   ),
-
-                    // ),
+                    child: AutocompleteSearchLabel(),
                   ),
                   0.496.sh.verticalSpace,
                   Row(

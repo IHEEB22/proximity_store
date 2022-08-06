@@ -82,7 +82,6 @@ class AutocompleteSearchAdresse extends StatelessWidget {
                 hideSuggestionsOnKeyboardHide: false,
                 suggestionsBoxDecoration: SuggestionsBoxDecoration(
                   constraints: BoxConstraints(
-                    // minHeight: 300,
                     maxHeight: 200,
                   ),
                   offsetX: 1.05,

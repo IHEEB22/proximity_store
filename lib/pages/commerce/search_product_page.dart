@@ -24,8 +24,8 @@ class SearchProductPage extends StatefulWidget {
 class _SearchProductPageState extends State<SearchProductPage> {
   void showCongratsBottomSheet(BuildContext context) {
     final arguments = (ModalRoute.of(context)?.settings.arguments ?? <String, String>{}) as Map;
-    showModalBottomSheet<void>(
-      // isScrollControlled: true,
+    showModalBottomSheet<Future<void>?>(
+      isScrollControlled: true,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
           top: Radius.circular(20.r),
@@ -34,8 +34,8 @@ class _SearchProductPageState extends State<SearchProductPage> {
       context: context,
       builder: (BuildContext context) =>
           (arguments['currentRoute'] == 'addNewProductpage') ? ProductAddedSheet() : AddProductSheet(),
-    ).whenComplete(() {
-      context.read<BusinessProvider>().setisProducFieldInFocus();
+    ).then((value) {
+      FocusScope.of(context).requestFocus(context.read<BusinessProvider>().serachProductFocusNode);
     });
   }
 
@@ -133,12 +133,13 @@ class _SearchProductPageState extends State<SearchProductPage> {
                       ),
                     ],
                   ),
+                  0.06.sh.verticalSpace,
                   Padding(
                     padding: EdgeInsets.only(left: 0.082.sw, right: 0.082.sw, top: 0.42.sh),
                     child: SizedBox(
                       width: double.infinity,
                       child: CustomBlueButton(
-                        textInput: 'addMyNewProduct'.tr(),
+                        textInput: 'Ajouter un produit'.tr(),
                         onPressed: () {
                           showCupertinoModalPopup(
                             context: context,

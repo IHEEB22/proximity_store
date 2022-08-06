@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:proximitystore/config/colors/app_colors.dart';
+import 'package:proximitystore/config/routes/routes.dart';
 import 'package:proximitystore/widgets/custom_blue_button.dart';
 
 import '../../config/images/app_images.dart';
@@ -82,7 +83,13 @@ class AddProductSheet extends StatelessWidget {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 0.082.sw),
               child: SizedBox(
-                  width: double.infinity, child: CustomBlueButton(textInput: 'addMyNewProduct'.tr(), onPressed: () {})),
+                  width: double.infinity,
+                  child: CustomBlueButton(
+                    textInput: 'addMyNewProduct'.tr(),
+                    onPressed: () {
+                      Navigator.pushNamed(context, AppRoutes.addNewProductPage);
+                    },
+                  )),
             ),
             0.024.sh.verticalSpace,
           ],

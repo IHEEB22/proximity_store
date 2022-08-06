@@ -10,7 +10,6 @@ import 'package:proximitystore/services/validation_items.dart';
 
 import 'package:provider/provider.dart';
 import 'package:proximitystore/widgets/autocomplete_search_adresse.dart';
-import 'package:proximitystore/widgets/autocomplete_suggestions.dart';
 import 'package:proximitystore/widgets/custom_blue_button.dart';
 import 'package:proximitystore/widgets/text_input_field.dart';
 

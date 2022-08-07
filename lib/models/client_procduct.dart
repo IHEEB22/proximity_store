@@ -12,7 +12,7 @@ class ClientProduct {
   final String productImage;
   final double productPrice;
   final int inStock;
-  String? storeFarDestination;
+  final String storeFarDestination;
   String? productStatus;
 
   ClientProduct({
@@ -23,7 +23,7 @@ class ClientProduct {
     required this.productPrice,
     required this.inStock,
     this.productStatus,
-    this.storeFarDestination,
+    required this.storeFarDestination,
   });
 
   factory ClientProduct.fromJson(Map<String, dynamic> json) {
@@ -33,7 +33,7 @@ class ClientProduct {
     final productImage = json['product_image'] as String;
     final productPrice = json['product_price'] as double;
     final inStock = json['in_stock'] as int;
-    final storeFarDestination = json['store_far_destination'] as String?;
+    final storeFarDestination = json['store_far_destination'] as String;
     final productStatus = json['product_status'] as String?;
 
     return ClientProduct(

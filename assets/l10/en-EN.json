@@ -127,6 +127,12 @@
 "allowAppToAccessYourCamera":"Autoriser l'application à accéder à l'appereil photo ?",
 "isBeingValidatedByOurTeams":"est en cours de validation par nos équipes.",
 "validteSector": "Valider la séléction",
-"addProduct": "Ajouter un produit"
+"addProduct": "Ajouter un produit",
+"noResult": "Aucun résultat",
+"thisProductIsRareAroundHere": "Ce produit se fait rare par ici !",
 
+
+"thereAreNoProductsMatching": "Il n’y a pas de produit correspondant à",
+"InTheStoresAroundYouCurrently": "dans les magasins autour de vous actuellement.",
+"filtres": "FILTRES"
 }

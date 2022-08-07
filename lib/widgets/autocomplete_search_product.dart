@@ -12,15 +12,9 @@ import '../config/images/app_images.dart';
 import '../models/product.dart';
 import '../providers/business_provider.dart';
 
-class AutocompleteSearchProduct extends StatefulWidget {
+class AutocompleteSearchProduct extends StatelessWidget {
   const AutocompleteSearchProduct({Key? key}) : super(key: key);
 
-  @override
-  State<AutocompleteSearchProduct> createState() => _AutocompleteSearchProductState();
-}
-
-class _AutocompleteSearchProductState extends State<AutocompleteSearchProduct> {
-  @override
   Widget build(BuildContext context) {
     return Consumer<BusinessProvider>(
       builder: (context, value, child) => Container(
@@ -32,9 +26,10 @@ class _AutocompleteSearchProductState extends State<AutocompleteSearchProduct> {
           suggestionsBoxVerticalOffset: 0.04.sh,
           hideSuggestionsOnKeyboardHide: false,
           suggestionsBoxDecoration: SuggestionsBoxDecoration(
+            color: AppColors.invisibleColor,
             constraints: BoxConstraints(maxHeight: 400),
             offsetX: 1.02,
-            // elevation: 4,
+            elevation: 0,
           ),
           debounceDuration: Duration(microseconds: 500),
           onSuggestionSelected: (Product? sugesstion) {},

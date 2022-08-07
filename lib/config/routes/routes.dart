@@ -10,6 +10,7 @@ class AppRoutes {
   static const String addLocalisationAddressPage = '/addLocalisationAddressPage';
   static const String geoLocationOutsideParisPage = '/geoLocationOutsideParisPage';
   static const String geolocationSearchProductPage = '/geolocationSearchProductPage';
+  static const String searchFiltredProductPage = '/searchFiltredProductPage';
 
   static const String loginPage = '/loginPage';
   static const String welcomePage = '/welcomePage';
@@ -56,6 +57,8 @@ class AppRoutes {
         return CustomPageRoute(Route: SearchProductPage(), settings: settings);
       case addNewProductPage:
         return CustomPageRoute(Route: AddNewProductPage(), settings: settings);
+      case searchFiltredProductPage:
+        return CustomPageRoute(Route: SearchFiltredProductPage(), settings: settings);
       default:
         throw ('this route name does not exist');
     }

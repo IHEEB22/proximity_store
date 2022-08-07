@@ -12,6 +12,7 @@ import 'package:proximitystore/config/colors/app_colors.dart';
 import 'package:proximitystore/config/routes/routes.dart';
 import 'package:proximitystore/pages/commerce/sheet_store_sectors.dart';
 import 'package:proximitystore/providers/business_provider.dart';
+import 'package:proximitystore/providers/client_provider.dart';
 import 'package:proximitystore/widgets/custom_cupertino_dialog.dart';
 import 'package:proximitystore/widgets/custom_switch.dart';
 
@@ -61,7 +62,7 @@ class _StoreDescriptionPageState extends State<StoreDescriptionPage> {
                   ),
                 ),
                 Expanded(
-                  flex: 15,
+                  flex: 10,
                   child: SingleChildScrollView(
                     physics: BouncingScrollPhysics(),
                     child: Wrap(
@@ -161,6 +162,7 @@ class _StoreDescriptionPageState extends State<StoreDescriptionPage> {
                                       visible: context.watch<BusinessProvider>().sectorHintVisible,
                                       child: GestureDetector(
                                         onTap: () {
+                                          context.read<ClientProvider>().setHideSuggestion();
                                           context.read<BusinessProvider>().setSectorHintVisible();
                                           showModalBottomSheet<void>(
                                             isScrollControlled: true,
@@ -170,10 +172,13 @@ class _StoreDescriptionPageState extends State<StoreDescriptionPage> {
                                                 top: Radius.circular(20.r),
                                               ),
                                             ),
-                                            builder: ((context) => SheetStoreSectors()),
+                                            builder: ((context) => SheetStoreSectors(
+                                                  title: 'sectors'.tr(),
+                                                )),
                                           ).whenComplete(
                                             () {
                                               context.read<BusinessProvider>().setSectorHintVisible();
+                                              // context.read<ClientProvider>().setHideSuggestion();
                                             },
                                           );
                                         },
@@ -283,8 +288,7 @@ class _StoreDescriptionPageState extends State<StoreDescriptionPage> {
                                           symetricPadding: 0.082,
                                           labelText: 'adress'.tr(),
                                         ),
-                                        (context.watch<LocalistaionControllerprovider>().searchSpace &&
-                                                context.watch<LocalistaionControllerprovider>().isAddressNotSelected)
+                                        context.watch<LocalistaionControllerprovider>().space()
                                             ? 0.4.sh.verticalSpace
                                             : 0.03.sh.verticalSpace
                                       ],

@@ -53,9 +53,7 @@ class AutocompleteSearchAdresse extends StatelessWidget {
           builder: (context, value, child) => Container(
             padding: EdgeInsets.symmetric(horizontal: symetricPadding.sw),
             child: Focus(
-              onFocusChange: (val) {
-                context.read<LocalistaionControllerprovider>().disposeAdressListeners();
-              },
+              onFocusChange: (hasFocus) {},
               child: TypeAheadFormField<Prediction?>(
                 autovalidateMode: AutovalidateMode.onUserInteraction,
 
@@ -64,7 +62,7 @@ class AutocompleteSearchAdresse extends StatelessWidget {
                 // context.read<LocalistaionControllerprovider>().setAdressController(val: adress ?? ''),
                 validator: (addres) => ValidationItem(val: addres)
                     .validateTown(town: context.read<LocalistaionControllerprovider>().adress.text, context: context),
-                hideOnEmpty: true,
+
                 // keepSuggestionsOnLoading: false,
                 // keepSuggestionsOnSuggestionSelected: true,
                 // hideOnLoading: true,
@@ -78,14 +76,16 @@ class AutocompleteSearchAdresse extends StatelessWidget {
 
                 loadingBuilder: (context) => Center(child: CircularProgressIndicator()),
 
-                suggestionsBoxVerticalOffset: 0.02.sh,
+                suggestionsBoxVerticalOffset: 0.022.sh,
                 hideSuggestionsOnKeyboardHide: false,
+
                 suggestionsBoxDecoration: SuggestionsBoxDecoration(
+                  color: AppColors.invisibleColor,
                   constraints: BoxConstraints(
                     maxHeight: 200,
                   ),
                   offsetX: 1.05,
-                  elevation: 2,
+                  elevation: 0,
                 ),
                 debounceDuration: Duration(microseconds: 1200),
                 itemBuilder: (context, Prediction? suggestion) {
@@ -135,12 +135,10 @@ class AutocompleteSearchAdresse extends StatelessWidget {
                           '(\u00a9|\u00ae|[\u2000-\u3300]|\ud83c[\ud000-\udfff]|\ud83d[\ud000-\udfff]|\ud83e[\ud000-\udfff])'),
                     ),
                   ],
-                  // focusNode: context.watch<LocalistaionControllerprovider>().townFocusNode,
-                  onChanged: (adress) {
-                    context.read<LocalistaionControllerprovider>().setSearchSpace(val: adress);
+                  controller: context.watch<LocalistaionControllerprovider>().adress,
+                  onTap: () {
+                    context.read<LocalistaionControllerprovider>().disposeAdressListeners();
                   },
-
-                  controller: context.read<LocalistaionControllerprovider>().adress,
                   style: Theme.of(context).textTheme.bodyText2?.copyWith(
                         height: 1.2,
                         fontSize: 16.sp,

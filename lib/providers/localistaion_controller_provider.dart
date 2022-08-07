@@ -11,7 +11,7 @@ class LocalistaionControllerprovider with ChangeNotifier {
   TextEditingController adress = TextEditingController();
   FocusNode townFocusNode = FocusNode();
   bool _searchSpace = false;
-
+  bool townOnFocus = false;
   bool isAddressNotSelected = true;
   bool _isTownHasFocus = false;
   bool get isTownHasFocus => _isTownHasFocus;
@@ -33,6 +33,12 @@ class LocalistaionControllerprovider with ChangeNotifier {
 
   void setIsAdressSelected() {
     isAddressNotSelected = false;
+
+    notifyListeners();
+  }
+
+  void setTownOnFocus(bool hasFocus) {
+    townOnFocus = hasFocus;
     notifyListeners();
   }
 
@@ -41,9 +47,13 @@ class LocalistaionControllerprovider with ChangeNotifier {
     notifyListeners();
   }
 
+  bool space() {
+    return (adress.text.isNotEmpty && isAddressNotSelected);
+  }
+
   void disposeAdressListeners() {
     isAddressNotSelected = true;
-    _searchSpace = false;
+
     notifyListeners();
   }
 

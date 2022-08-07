@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:provider/provider.dart';
+import 'package:proximitystore/config/routes/routes.dart';
 import 'package:proximitystore/providers/client_provider.dart';
 
 import '../config/colors/app_colors.dart';
@@ -23,60 +24,50 @@ class AutocompleteSearchLabel extends StatelessWidget {
           suggestionsBoxVerticalOffset: 0.04.sh,
           hideSuggestionsOnKeyboardHide: false,
           suggestionsBoxDecoration: SuggestionsBoxDecoration(
-            constraints: BoxConstraints(maxHeight: 400),
+            constraints: BoxConstraints(maxHeight: 160),
             offsetX: 1.02,
-            // elevation: 4,
+            elevation: 1.5,
           ),
           debounceDuration: Duration(microseconds: 500),
-          onSuggestionSelected: (ClientProduct sugesstion) {},
+          onSuggestionSelected: (ClientProduct sugesstion) {
+            context.read<ClientProvider>().setLabelValue(sugesstion.productLabel);
+            Navigator.pushNamed(context, AppRoutes.searchFiltredProductPage);
+          },
           itemBuilder: (context, ClientProduct suggestion) {
             final product = suggestion;
-            var textPading = product.productLabel.length / 100;
-            return Card(
-              elevation: 0,
-              child: Container(
-                padding: EdgeInsets.fromLTRB(6, 16, 0, 12),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(
-                  Radius.circular(8.r),
-                )),
-                height: 40,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Text(
-                      product.productLabel,
-                      style: Theme.of(context).textTheme.bodyText1?.copyWith(
-                            fontFamily: "Montserrat",
-                            fontSize: 18.sp,
-                            letterSpacing: 0.02,
-                          ),
+            return ListTile(
+              contentPadding: EdgeInsets.only(left: 12, bottom: 0, right: 6),
+              leading: Text(
+                product.productLabel,
+                style: Theme.of(context).textTheme.bodyText1?.copyWith(
+                      fontFamily: "Montserrat",
+                      fontSize: 18.sp,
+                      letterSpacing: 0.02,
                     ),
-                    0.22.sw.horizontalSpace,
-                    Expanded(
-                      child: Text(
-                        overflow: TextOverflow.ellipsis,
-                        product.productsector,
-                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                              fontFamily: "Montserrat",
-                              fontSize: 12.sp,
-                              color: AppColors.blueGreyColor,
-                              fontWeight: FontWeight.w300,
-                            ),
-                      ),
-                    ),
-                    0.087.sw.horizontalSpace,
-                    Text(
-                      '(' + '${product.inStock.toString()}' + '\+' ')',
-                      style: Theme.of(context).textTheme.headline2?.copyWith(
-                            fontFamily: "Montserrat",
-                            fontSize: 12.sp,
-                            letterSpacing: 0.02,
-                            // fontWeight: FontWeight.w300,
-                          ),
-                    ),
-                  ],
+              ),
+              title: Align(
+                alignment: Alignment.topRight,
+                child: Expanded(
+                  child: Text(
+                    overflow: TextOverflow.ellipsis,
+                    product.productsector,
+                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                          fontFamily: "Montserrat",
+                          fontSize: 12.sp,
+                          color: AppColors.blueGreyColor,
+                          fontWeight: FontWeight.w300,
+                        ),
+                  ),
                 ),
+              ),
+              trailing: Text(
+                '(' + '${product.inStock.toString()}' + '\+' ')',
+                style: Theme.of(context).textTheme.headline2?.copyWith(
+                      fontFamily: "Montserrat",
+                      fontSize: 12.sp,
+                      letterSpacing: 0.02,
+                      // fontWeight: FontWeight.w300,
+                    ),
               ),
             );
           },

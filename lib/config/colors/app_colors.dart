@@ -7,6 +7,7 @@ class AppColors {
   static const Color transparentpinkColor = Color.fromARGB(106, 255, 0, 119);
   static const Color transparentGreenColor = Color.fromRGBO(76, 217, 100, 0.1);
   static const Color blackColor = Color(0x0F1643);
+  static const Color invisibleColor = Color.fromRGBO(0, 0, 0, 0);
   static const Color darkBlueColor = Color(0xFF0f1643);
   static const Color greyColor = Color(0xFF000f16);
   static const Color whiteColor = Color(0xFFFFFFFF);

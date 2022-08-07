@@ -10,7 +10,11 @@ import '../../config/colors/app_colors.dart';
 import '../../config/images/app_images.dart';
 
 class SheetStoreSectors extends StatelessWidget {
-  const SheetStoreSectors({Key? key}) : super(key: key);
+  final String title;
+  SheetStoreSectors({
+    Key? key,
+    required this.title,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +43,7 @@ class SheetStoreSectors extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.only(left: 0.045.sw),
                       child: Text(
-                        'sector'.tr(),
+                        title,
                         style: Theme.of(context).textTheme.headline2?.copyWith(
                               fontFamily: 'Montserrat',
                               fontSize: 16.sp,

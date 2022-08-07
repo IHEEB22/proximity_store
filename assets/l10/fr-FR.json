@@ -55,6 +55,7 @@
     "nameOfYourBusiness": "Nom de votre commerce",
     "fillInAName": "Renseignez un nom",
     "sectors": "Secteur(s)",
+    "filtres": "FILTRES",
     "selectOneOrMoreSectors": "Séléctionnez un ou plusieurs secteurs",
     "address": "Addresse",
     "enterAnAddress": "Renseignez une adresse",
@@ -115,7 +116,11 @@
 
     
 "isBeingValidatedByOurTeams":"est en cours de validation par nos équipes.",
-"validteSector": "Valider la séléction"
+"validteSector": "Valider la séléction",
+"noResult": "Aucun résultat",
+"thisProductIsRareAroundHere": "Ce produit se fait rare par ici !",
 
+"thereAreNoProductsMatching": "Il n’y a pas de produit correspondant à",
+"InTheStoresAroundYouCurrently": "dans les magasins autour de vous actuellement."
 
 }

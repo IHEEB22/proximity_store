@@ -18,4 +18,7 @@ class AppImages {
   static const String backIcon = '$iconsFolder/back_icon.png';
   static const String congratsIcon = '$iconsFolder/party-popper.png';
   static const String editIcon = '$iconsFolder/edit.png';
+  static const String user = '$iconsFolder/user.png';
+  static const String filterIcon = '$iconsFolder/filter.png';
+  static const String xIcon = '$iconsFolder/x.png';
 }

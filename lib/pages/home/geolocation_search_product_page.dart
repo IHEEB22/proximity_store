@@ -76,7 +76,7 @@ class GeolocationSearchProductPage extends StatelessWidget {
                     padding: EdgeInsets.symmetric(horizontal: 0.085.sw),
                     child: AutocompleteSearchLabel(),
                   ),
-                  0.496.sh.verticalSpace,
+                  0.6.sh.verticalSpace,
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[

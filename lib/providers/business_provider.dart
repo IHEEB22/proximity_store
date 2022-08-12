@@ -19,6 +19,8 @@ class BusinessProvider with ChangeNotifier {
     'diy'.tr(): false,
     'shoes'.tr(): false,
     'telephony'.tr(): false,
+    'shoesAndBags'.tr(): false,
+    'computing'.tr(): false,
   };
 
   // Future<List<Map<String, dynamic>>> readJson() async {
@@ -275,12 +277,6 @@ class BusinessProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void setDeletePressed() {
-    _deletPressed = !_deletPressed;
-    _deleteEnabled = !_deleteEnabled;
-    notifyListeners();
-  }
-
   void setTemperleft() {
     int temperWritten = storeDescription.text.length;
     _temperLeft = 500 - temperWritten;
@@ -293,10 +289,15 @@ class BusinessProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void setCheckoxValue(String sactorName, value) {
+  void setCheckBoxValue(String sactorName, bool? value) {
     if (_sectorsData.containsKey(sactorName)) {
-      _sectorsData[sactorName] = value;
+      _sectorsData[sactorName] = value ?? false;
+      if (value == false) {
+        removeSector(sactorName);
+      } else
+        addChekedSector(sactorName);
     }
+
     notifyListeners();
   }
 
@@ -323,9 +324,8 @@ class BusinessProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void isDeleteEnabled() {
-    _deleteEnabled = _sectorsData.values.contains(true);
-    notifyListeners();
+  bool isDeleteEnabled() {
+    return _sectorsData.values.contains(true);
   }
 
   void disposestoreDescriptionControllers() {
@@ -360,5 +360,9 @@ class BusinessProvider with ChangeNotifier {
     _isNewPasswordVisible = false;
     _isRepeatNewPasswordVisible = false;
     Future<PickedFile?> pickedFile = Future.value(null);
+  }
+
+  void disposeSectors() {
+    chekedsectorsList.clear();
   }
 }

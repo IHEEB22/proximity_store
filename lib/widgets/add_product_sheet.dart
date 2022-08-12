@@ -6,8 +6,8 @@ import 'package:proximitystore/config/colors/app_colors.dart';
 import 'package:proximitystore/config/routes/routes.dart';
 import 'package:proximitystore/widgets/custom_blue_button.dart';
 
-import '../../config/images/app_images.dart';
-import '../../providers/business_provider.dart';
+import '../config/images/app_images.dart';
+import '../providers/business_provider.dart';
 
 class AddProductSheet extends StatelessWidget {
   String? currentRoute;

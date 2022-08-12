@@ -5,13 +5,10 @@ import 'package:provider/provider.dart';
 import 'package:proximitystore/config/images/app_images.dart';
 
 import '../../config/colors/app_colors.dart';
-import '../../config/routes/routes.dart';
+
 import '../../providers/business_provider.dart';
 import '../../providers/client_provider.dart';
-import '../../widgets/autocomplete_search_product.dart';
-import '../../widgets/background_image.dart';
-import '../../widgets/custom_back_button_icon.dart';
-import '../../widgets/custom_blue_button.dart';
+
 import '../../widgets/widgets.dart';
 import '../pages.dart';
 
@@ -20,6 +17,7 @@ class SearchFiltredProductPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    context.read<BusinessProvider>().disposeSectors();
     return Scaffold(
       body: SafeArea(
         child: Stack(
@@ -48,10 +46,9 @@ class SearchFiltredProductPage extends StatelessWidget {
                         ),
                       ),
                       0.024.sw.horizontalSpace,
-                      Consumer<ClientProvider>(
+                      Consumer<BusinessProvider>(
                         builder: (context, value, child) => GestureDetector(
                           onTap: () {
-                            context.read<BusinessProvider>().setSectorHintVisible();
                             showModalBottomSheet<void>(
                               isScrollControlled: true,
                               context: context,
@@ -69,14 +66,17 @@ class SearchFiltredProductPage extends StatelessWidget {
                               },
                             );
                           },
-                          child: Padding(
-                            padding: EdgeInsets.only(top: 0.026.sh),
-                            child: Image(
-                              height: 0.03.sh,
-                              width: 0.065.sw,
-                              image: AssetImage(AppImages.filterIcon),
-                            ),
-                          ),
+                          child: !context.read<BusinessProvider>().isDeleteEnabled()
+                              ? Padding(
+                                  padding: EdgeInsets.only(top: 0.026.sh),
+                                  child:
+                                      Image(height: 0.03.sh, width: 0.065.sw, image: AssetImage(AppImages.filterIcon)),
+                                )
+                              : Padding(
+                                  padding: EdgeInsets.only(top: 0.01.sh),
+                                  child: Image(
+                                      height: 0.06.sh, width: 0.072.sw, image: AssetImage(AppImages.filterSelected)),
+                                ),
                         ),
                       ),
                     ],
@@ -125,6 +125,9 @@ class SearchFiltredProductPage extends StatelessWidget {
                                               onTap: () {
                                                 context.read<BusinessProvider>().removeSector(item);
                                                 context.read<BusinessProvider>().isDeleteEnabled();
+                                                context
+                                                    .read<ClientProvider>()
+                                                    .getProductSuggestion(query: 'd', context: context);
                                               },
                                               child: Container(
                                                 height: 16,

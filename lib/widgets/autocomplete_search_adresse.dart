@@ -7,6 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:google_maps_webservice/places.dart';
 import 'package:provider/provider.dart';
+import 'package:proximitystore/config/routes/routes.dart';
 import 'package:proximitystore/services/validation_items.dart';
 
 import '../config/colors/app_colors.dart';
@@ -17,6 +18,8 @@ class AutocompleteSearchAdresse extends StatelessWidget {
   final double symetricPadding;
   final bool searchPrefix;
   String? hintText;
+  void Function(String)? onChanged;
+  void Function(Prediction?) onSuggestionSelected;
   final String labelText;
 
   final bool labelEnabled;
@@ -28,6 +31,8 @@ class AutocompleteSearchAdresse extends StatelessWidget {
       required this.symetricPadding,
       required this.searchPrefix,
       required this.labelEnabled,
+      this.onChanged,
+      required this.onSuggestionSelected,
       this.hideKeyboard})
       : super(key: key);
 
@@ -56,29 +61,25 @@ class AutocompleteSearchAdresse extends StatelessWidget {
               onFocusChange: (hasFocus) {},
               child: TypeAheadFormField<Prediction?>(
                 autovalidateMode: AutovalidateMode.onUserInteraction,
-
-                errorBuilder: (context, error) => SizedBox.shrink(),
-                // onSaved: (adress) =>
-                // context.read<LocalistaionControllerprovider>().setAdressController(val: adress ?? ''),
+                errorBuilder: (context, error) => SizedBox.shrink(
+                  child: Text('erreur'),
+                ),
                 validator: (addres) => ValidationItem(val: addres)
                     .validateTown(town: context.read<LocalistaionControllerprovider>().adress.text, context: context),
+                onSuggestionSelected: onSuggestionSelected,
 
-                // keepSuggestionsOnLoading: false,
-                // keepSuggestionsOnSuggestionSelected: true,
-                // hideOnLoading: true,
-
-                onSuggestionSelected: (suggestion) {
-                  context.read<LocalistaionControllerprovider>().addressSelected(
-                        suggestion: suggestion ?? Prediction(description: 'adress n\'éxiste pas'),
-                      );
-                  context.read<LocalistaionControllerprovider>().setIsAdressSelected();
-                },
-
+                //  (suggestion) {
+                //   context.read<LocalistaionControllerprovider>().addressSelected(
+                //         suggestion: suggestion ?? Prediction(description: 'adress n\'éxiste pas'),
+                //       );
+                //   context.read<LocalistaionControllerprovider>().setIsAdressSelected();
+                //   if (labelEnabled == false) {
+                //     Navigator.pushNamed(context, AppRoutes.geolocationEditAdressePage);
+                //   }
+                // },
                 loadingBuilder: (context) => Center(child: CircularProgressIndicator()),
-
                 suggestionsBoxVerticalOffset: 0.022.sh,
                 hideSuggestionsOnKeyboardHide: false,
-
                 suggestionsBoxDecoration: SuggestionsBoxDecoration(
                   color: AppColors.invisibleColor,
                   constraints: BoxConstraints(
@@ -129,6 +130,8 @@ class AutocompleteSearchAdresse extends StatelessWidget {
                 ),
                 suggestionsCallback: context.read<LocalistaionControllerprovider>().searchLocation,
                 textFieldConfiguration: TextFieldConfiguration(
+                  autofocus: true,
+                  onChanged: onChanged,
                   inputFormatters: [
                     FilteringTextInputFormatter.deny(
                       RegExp(

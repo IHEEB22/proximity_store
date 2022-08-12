@@ -4,41 +4,25 @@ import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:google_maps_webservice/places.dart';
 import 'package:http/http.dart' as http;
+import 'package:proximitystore/config/routes/routes.dart';
+import 'package:proximitystore/services/validation_items.dart';
 
 class LocalistaionControllerprovider with ChangeNotifier {
   final TextEditingController townTextFormFieldController = TextEditingController();
   final TextEditingController emailTextEditingController = TextEditingController();
   TextEditingController adress = TextEditingController();
   FocusNode townFocusNode = FocusNode();
-  bool _searchSpace = false;
   bool townOnFocus = false;
   bool isAddressNotSelected = true;
-  bool _isTownHasFocus = false;
-  bool get isTownHasFocus => _isTownHasFocus;
-  bool get searchSpace => _searchSpace;
+  bool adressSelectedInParis = false;
 
   Placemark _pickPlaceMark = Placemark();
   Placemark get pickPlaceMark => _pickPlaceMark;
   List<Prediction> _predictionList = [];
   List<Prediction> get predictionList => _predictionList;
 
-  void setSearchSpace({required String val}) {
-    if (val.isNotEmpty) {
-      _searchSpace = true;
-    } else {
-      _searchSpace = false;
-    }
-    notifyListeners();
-  }
-
   void setIsAdressSelected() {
     isAddressNotSelected = false;
-
-    notifyListeners();
-  }
-
-  void setTownOnFocus(bool hasFocus) {
-    townOnFocus = hasFocus;
     notifyListeners();
   }
 
@@ -47,14 +31,19 @@ class LocalistaionControllerprovider with ChangeNotifier {
     notifyListeners();
   }
 
+  void disposeAdressValue() {
+    adress.clear();
+    isAddressNotSelected = !isAddressNotSelected;
+    notifyListeners();
+  }
+
   bool space() {
+    notifyListeners();
     return (adress.text.isNotEmpty && isAddressNotSelected);
   }
 
   void disposeAdressListeners() {
     isAddressNotSelected = true;
-
-    notifyListeners();
   }
 
   void addressSelected({required Prediction suggestion}) {
@@ -79,6 +68,17 @@ class LocalistaionControllerprovider with ChangeNotifier {
     return _predictionList;
   }
 
+  bool isAdressSelectedInParis(BuildContext context, String suggestion) {
+    if ((ValidationItem(val: '').validateTown(context: context, town: suggestion) == null) &&
+        (suggestion.toLowerCase().contains('paris'.toLowerCase()))) {
+      adressSelectedInParis = true;
+    } else
+      adressSelectedInParis = false;
+
+    return adressSelectedInParis;
+  }
+}
+
   // Future<List<Product>> getProductSuggestion(String query) async {
   //   final String response = await rootBundle.loadString('assets/fake_data/products.json');
   //   List data = await json.decode(response);
@@ -89,8 +89,5 @@ class LocalistaionControllerprovider with ChangeNotifier {
   //   }).toList();
   // }
 
-  void setIsTownHasFocus(bool hasFocus) {
-    _isTownHasFocus = hasFocus;
-    notifyListeners();
-  }
-}
+  
+

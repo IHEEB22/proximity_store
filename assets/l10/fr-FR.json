@@ -121,6 +121,15 @@
 "thisProductIsRareAroundHere": "Ce produit se fait rare par ici !",
 
 "thereAreNoProductsMatching": "Il n’y a pas de produit correspondant à",
-"InTheStoresAroundYouCurrently": "dans les magasins autour de vous actuellement."
-
+"InTheStoresAroundYouCurrently": "dans les magasins autour de vous actuellement.",
+"shoesAndBags": "Chaussures et Sacs",
+"computing": "Informatique",
+"reportProduct": "Signaler le produit",
+"toBeFoundAt": "À retrouver chez",
+"seeTimeTables": "voir les horaires",
+"callTheMerchant": "Appeler le commerçant",  
+"gettingThere": "S’y rendre",
+"showRoute": "Afficher l’itinéraire",
+"open": "Ouvert",
+"close": "Fermé"
 }

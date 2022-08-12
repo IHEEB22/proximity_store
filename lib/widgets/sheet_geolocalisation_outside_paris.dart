@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_maps_webservice/places.dart';
 import 'package:proximitystore/config/images/app_images.dart';
 
 import 'package:proximitystore/providers/localistaion_controller_provider.dart';
@@ -62,6 +63,12 @@ class _SheetGeolocalisationOutsideParisState extends State<SheetGeolocalisationO
                           height: 150,
                           child: Expanded(
                             child: AutocompleteSearchAdresse(
+                              onSuggestionSelected: (suggestion) {
+                                context.read<LocalistaionControllerprovider>().addressSelected(
+                                      suggestion: suggestion ?? Prediction(description: 'adress n\'éxiste pas'),
+                                    );
+                                context.read<LocalistaionControllerprovider>().setIsAdressSelected();
+                              },
                               symetricPadding: 0.0853,
                               searchPrefix: false,
                               labelEnabled: true,
@@ -70,8 +77,7 @@ class _SheetGeolocalisationOutsideParisState extends State<SheetGeolocalisationO
                             ),
                           ),
                         ),
-                        (context.watch<LocalistaionControllerprovider>().searchSpace &&
-                                context.watch<LocalistaionControllerprovider>().isAddressNotSelected)
+                        context.read<LocalistaionControllerprovider>().space()
                             ? 0.34.sh.verticalSpace
                             : 0.000000000002.sh.verticalSpace
                       ],

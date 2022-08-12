@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
 import 'package:proximitystore/pages/commerce/terms_of_service_page.dart';
-
 import 'package:proximitystore/pages/pages.dart';
 import 'package:proximitystore/widgets/custom_page_route.dart';
 
@@ -11,6 +9,7 @@ class AppRoutes {
   static const String geoLocationOutsideParisPage = '/geoLocationOutsideParisPage';
   static const String geolocationSearchProductPage = '/geolocationSearchProductPage';
   static const String searchFiltredProductPage = '/searchFiltredProductPage';
+  static const String geolocationEditAdressePage = '/geolocationEditAdressePage';
 
   static const String loginPage = '/loginPage';
   static const String welcomePage = '/welcomePage';
@@ -23,6 +22,7 @@ class AppRoutes {
   static const String termOfServicePage = '/termOfServicePage';
   static const String searchProductPage = '/searchProductPage';
   static const String addNewProductPage = '/addNewProductPage';
+  static const String productDescriptionPage = '/productDescriptionPage';
 
   static Route<dynamic> routeController(RouteSettings settings) {
     switch (settings.name) {
@@ -59,6 +59,10 @@ class AppRoutes {
         return CustomPageRoute(Route: AddNewProductPage(), settings: settings);
       case searchFiltredProductPage:
         return CustomPageRoute(Route: SearchFiltredProductPage(), settings: settings);
+      case productDescriptionPage:
+        return CustomPageRoute(Route: ProductDescriptionPage(), settings: settings);
+      case geolocationEditAdressePage:
+        return CustomPageRoute(Route: GeolocationEditAdressePage(), settings: settings);
       default:
         throw ('this route name does not exist');
     }

@@ -86,7 +86,7 @@ class AutocompleteSearchLabel extends StatelessWidget {
               ),
             ),
           ),
-          suggestionsCallback: context.read<ClientProvider>().getAllClientProduct,
+          suggestionsCallback: context.read<ClientProvider>().getLabelList,
           textFieldConfiguration: TextFieldConfiguration(
             inputFormatters: [
               FilteringTextInputFormatter.deny(

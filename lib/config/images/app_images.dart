@@ -20,5 +20,9 @@ class AppImages {
   static const String editIcon = '$iconsFolder/edit.png';
   static const String user = '$iconsFolder/user.png';
   static const String filterIcon = '$iconsFolder/filter.png';
+  static const String filterSelected = '$iconsFolder/filter_selected.png';
   static const String xIcon = '$iconsFolder/x.png';
+  static const String productImageHolder = '$iconsFolder/procuct_image_holder.png';
+  static const String moreIcon = '$iconsFolder/more.png';
+  static const String phoneIcon = '$iconsFolder/phone.png';
 }

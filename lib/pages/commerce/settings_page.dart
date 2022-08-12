@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+import 'package:proximitystore/config/images/app_images.dart';
 import 'package:proximitystore/config/routes/routes.dart';
 import 'package:proximitystore/providers/business_provider.dart';
 import 'package:proximitystore/widgets/widgets.dart';
@@ -56,7 +57,7 @@ class SettingsPage extends StatelessWidget {
                           child: Image(
                             height: 0.0295.sh,
                             width: 0.064.sw,
-                            image: AssetImage('assets/icons/more.png'),
+                            image: AssetImage(AppImages.moreIcon),
                           ),
                         ),
                       ),

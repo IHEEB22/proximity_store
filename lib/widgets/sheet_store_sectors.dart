@@ -6,8 +6,8 @@ import 'package:provider/provider.dart';
 import 'package:proximitystore/providers/business_provider.dart';
 import 'package:proximitystore/widgets/custom_blue_button.dart';
 
-import '../../config/colors/app_colors.dart';
-import '../../config/images/app_images.dart';
+import '../config/colors/app_colors.dart';
+import '../config/images/app_images.dart';
 
 class SheetStoreSectors extends StatelessWidget {
   final String title;
@@ -53,11 +53,10 @@ class SheetStoreSectors extends StatelessWidget {
                     ),
                     Padding(
                       padding: EdgeInsets.only(right: 0.056.sw),
-                      child: context.watch<BusinessProvider>().deleteEnabled
+                      child: context.watch<BusinessProvider>().isDeleteEnabled()
                           ? TextButton(
                               onPressed: () {
                                 context.read<BusinessProvider>().deletAllSectors();
-                                context.read<BusinessProvider>().setDeletePressed();
                               },
                               child: Text(
                                 'delete'.tr(),
@@ -77,7 +76,7 @@ class SheetStoreSectors extends StatelessWidget {
                                       fontFamily: 'Montserrat',
                                       fontSize: 16.sp,
                                       fontWeight: FontWeight.w500,
-                                      color: AppColors.transparentpinkColor,
+                                      color: AppColors.transparentPinkColor,
                                     ),
                               ),
                             ),
@@ -98,16 +97,10 @@ class SheetStoreSectors extends StatelessWidget {
                             // elevation: 0.005,
                             child: CheckboxListTile(
                               onChanged: (value) {
-                                context.read<BusinessProvider>().setCheckoxValue(
+                                context.read<BusinessProvider>().setCheckBoxValue(
                                     context.read<BusinessProvider>().sectorsData.keys.toList()[index], value);
-
-                                context.read<BusinessProvider>().isDeleteEnabled();
-
-                                context
-                                    .read<BusinessProvider>()
-                                    .addChekedSector(context.read<BusinessProvider>().sectorsData.keys.toList()[index]);
                               },
-                              value: context.read<BusinessProvider>().sectorsData.values.toList()[index],
+                              value: context.watch<BusinessProvider>().sectorsData.values.toList()[index],
                               title: Text(
                                 context.watch<BusinessProvider>().sectorsData.keys.toList()[index],
                                 style: Theme.of(context).textTheme.bodyText1?.copyWith(

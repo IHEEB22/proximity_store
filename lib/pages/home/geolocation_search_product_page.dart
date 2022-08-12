@@ -1,8 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 import 'package:proximitystore/config/colors/app_colors.dart';
 import 'package:proximitystore/config/images/app_images.dart';
+import 'package:proximitystore/providers/localistaion_controller_provider.dart';
 import 'package:proximitystore/widgets/autocomplete_search_label.dart';
 import 'package:proximitystore/widgets/background_image.dart';
 
@@ -24,27 +26,33 @@ class GeolocationSearchProductPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   0.03.sh.verticalSpace,
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 0.258.sw),
-                    child: Row(
-                      children: <Widget>[
-                        Image(
-                          width: 0.064.sw,
-                          height: 0.032.sh,
-                          image: AssetImage(
-                            AppImages.pinIcon,
-                          ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      Image(
+                        width: 0.064.sw,
+                        height: 0.032.sh,
+                        image: AssetImage(
+                          AppImages.pinIcon,
                         ),
-                        0.02.sw.horizontalSpace,
-                        Text(
-                          "Location holder",
+                      ),
+                      0.02.sw.horizontalSpace,
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(context, AppRoutes.geolocationEditAdressePage);
+                          context.read<LocalistaionControllerprovider>().disposeAdressValue();
+                        },
+                        child: Text(
+                          textAlign: TextAlign.center,
+                          context.read<LocalistaionControllerprovider>().adress.text,
                           style: Theme.of(context).textTheme.bodyText1?.copyWith(
                                 decoration: TextDecoration.underline,
                                 fontSize: 14.sp,
                               ),
-                        )
-                      ],
-                    ),
+                        ),
+                      ),
+                    ],
                   ),
                   0.14.sh.verticalSpace,
                   Center(

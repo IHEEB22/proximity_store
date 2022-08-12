@@ -5,12 +5,13 @@ import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_maps_webservice/places.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 import 'package:proximitystore/config/colors/app_colors.dart';
 import 'package:proximitystore/config/routes/routes.dart';
-import 'package:proximitystore/pages/commerce/sheet_store_sectors.dart';
+import 'package:proximitystore/widgets/sheet_store_sectors.dart';
 import 'package:proximitystore/providers/business_provider.dart';
 import 'package:proximitystore/providers/client_provider.dart';
 import 'package:proximitystore/widgets/custom_cupertino_dialog.dart';
@@ -105,10 +106,6 @@ class _StoreDescriptionPageState extends State<StoreDescriptionPage> {
                                       switchWidth: 20,
                                       value: context.watch<BusinessProvider>().switchValue,
                                     ),
-
-                                    // value: context.watch<BusinessProvider>().switchValue,
-                                    // trackColor: AppColors.blueGreyColor,
-                                    // onChanged: (value) => context.read<BusinessProvider>().setSwitchValue(),
 
                                     0.0426.sw.horizontalSpace,
                                     !context.watch<BusinessProvider>().switchValue
@@ -214,66 +211,68 @@ class _StoreDescriptionPageState extends State<StoreDescriptionPage> {
                                     keyboardType: TextInputType.emailAddress,
                                   ),
                                   0.015.sh.verticalSpace,
-                                  SizedBox(
-                                    child: Padding(
-                                      padding: EdgeInsets.symmetric(horizontal: 0.082.sw),
-                                      child: Container(
-                                        width: double.infinity,
-                                        child: Wrap(
-                                          direction: Axis.horizontal,
-                                          children: context.read<BusinessProvider>().chekedsectorsList.keys.map((item) {
-                                            return Row(
-                                              mainAxisSize: MainAxisSize.min,
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsets.only(right: 0.2),
-                                                  child: Expanded(
-                                                    child: Container(
-                                                      margin: EdgeInsets.all(3),
-                                                      padding: EdgeInsets.all(2),
-                                                      decoration: BoxDecoration(
-                                                        border: Border.all(width: 2, color: AppColors.deepBlueColor),
-                                                        borderRadius: BorderRadius.all(
-                                                          Radius.circular(6.0),
+                                  Consumer<BusinessProvider>(
+                                    builder: (context, value, child) => SizedBox(
+                                      child: Padding(
+                                        padding: EdgeInsets.symmetric(horizontal: 0.082.sw),
+                                        child: Container(
+                                          width: double.infinity,
+                                          child: Wrap(
+                                            direction: Axis.horizontal,
+                                            children:
+                                                context.read<BusinessProvider>().chekedsectorsList.keys.map((item) {
+                                              return Row(
+                                                mainAxisSize: MainAxisSize.min,
+                                                children: [
+                                                  Padding(
+                                                    padding: EdgeInsets.only(right: 0.2),
+                                                    child: Expanded(
+                                                      child: Container(
+                                                        margin: EdgeInsets.all(3),
+                                                        padding: EdgeInsets.all(2),
+                                                        decoration: BoxDecoration(
+                                                          border: Border.all(width: 2, color: AppColors.deepBlueColor),
+                                                          borderRadius: BorderRadius.all(
+                                                            Radius.circular(6.0),
+                                                          ),
                                                         ),
-                                                      ),
-                                                      child: Row(
-                                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                        mainAxisSize: MainAxisSize.min,
-                                                        children: [
-                                                          Padding(
-                                                            padding:
-                                                                EdgeInsets.only(top: 4, bottom: 4, right: 1.5, left: 2),
-                                                            child: Text(
-                                                              item,
-                                                              style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                                                                  fontFamily: 'Montserrat',
-                                                                  fontSize: 12.sp,
-                                                                  color: AppColors.deepBlueColor,
-                                                                  fontWeight: FontWeight.w700),
+                                                        child: Row(
+                                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                          mainAxisSize: MainAxisSize.min,
+                                                          children: [
+                                                            Padding(
+                                                              padding: EdgeInsets.only(
+                                                                  top: 4, bottom: 4, right: 1.5, left: 2),
+                                                              child: Text(
+                                                                item,
+                                                                style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                                                                    fontFamily: 'Montserrat',
+                                                                    fontSize: 12.sp,
+                                                                    color: AppColors.deepBlueColor,
+                                                                    fontWeight: FontWeight.w700),
+                                                              ),
                                                             ),
-                                                          ),
-                                                          GestureDetector(
-                                                            onTap: () {
-                                                              context.read<BusinessProvider>().removeSector(item);
-                                                              context.read<BusinessProvider>().isDeleteEnabled();
-                                                            },
-                                                            child: Container(
-                                                              height: 16,
-                                                              width: 16,
-                                                              child: Image(
-                                                                  image: AssetImage('assets/icons/delete_icon.png')),
+                                                            GestureDetector(
+                                                              onTap: () {
+                                                                context.read<BusinessProvider>().removeSector(item);
+                                                              },
+                                                              child: Container(
+                                                                height: 16,
+                                                                width: 16,
+                                                                child: Image(
+                                                                    image: AssetImage('assets/icons/delete_icon.png')),
+                                                              ),
                                                             ),
-                                                          ),
-                                                          0.0025.sw.horizontalSpace,
-                                                        ],
+                                                            0.0025.sw.horizontalSpace,
+                                                          ],
+                                                        ),
                                                       ),
                                                     ),
                                                   ),
-                                                ),
-                                              ],
-                                            );
-                                          }).toList(),
+                                                ],
+                                              );
+                                            }).toList(),
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -286,6 +285,7 @@ class _StoreDescriptionPageState extends State<StoreDescriptionPage> {
                                           searchPrefix: false,
                                           labelEnabled: true,
                                           symetricPadding: 0.082,
+                                          onSuggestionSelected: (prediction) {},
                                           labelText: 'adress'.tr(),
                                         ),
                                         context.watch<LocalistaionControllerprovider>().space()

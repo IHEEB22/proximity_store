@@ -1,6 +1,4 @@
 import 'dart:convert';
-import 'dart:ffi';
-import 'dart:io';
 
 import 'package:flutter/services.dart';
 
@@ -13,7 +11,9 @@ class ClientProduct {
   final double productPrice;
   final int inStock;
   final String storeFarDestination;
-  String? productStatus;
+  final String? storeName;
+  bool? storeStatus;
+  String? storeLocation;
 
   ClientProduct({
     required this.productName,
@@ -22,8 +22,10 @@ class ClientProduct {
     required this.productImage,
     required this.productPrice,
     required this.inStock,
-    this.productStatus,
+    this.storeStatus,
+    this.storeName,
     required this.storeFarDestination,
+    required this.storeLocation,
   });
 
   factory ClientProduct.fromJson(Map<String, dynamic> json) {
@@ -34,7 +36,9 @@ class ClientProduct {
     final productPrice = json['product_price'] as double;
     final inStock = json['in_stock'] as int;
     final storeFarDestination = json['store_far_destination'] as String;
-    final productStatus = json['product_status'] as String?;
+    final storeStatus = json['store_status'] as bool?;
+    final storeName = json['store_name'] as String?;
+    final storeLocation = json['store_Location'] as String?;
 
     return ClientProduct(
       productName: productName,
@@ -43,8 +47,10 @@ class ClientProduct {
       productImage: productImage,
       productPrice: productPrice,
       inStock: inStock,
-      productStatus: productStatus,
+      storeStatus: storeStatus,
       storeFarDestination: storeFarDestination,
+      storeName: storeName,
+      storeLocation: storeLocation,
     );
   }
   // Map<String, dynamic> toJson() => {

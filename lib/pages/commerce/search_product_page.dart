@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:proximitystore/config/routes/routes.dart';
-import 'package:proximitystore/pages/commerce/add_product_sheet.dart';
-import 'package:proximitystore/pages/commerce/product_added_sheet.dart';
+import 'package:proximitystore/widgets/add_product_sheet.dart';
+import 'package:proximitystore/widgets/product_added_sheet.dart';
 
 import '../../providers/business_provider.dart';
 import '../../widgets/autocomplete_search_product.dart';

@@ -6,9 +6,8 @@ import 'package:geocoding/geocoding.dart';
 
 // or whatever name you want
 import 'package:geolocator/geolocator.dart' as geo;
-import 'package:location/location.dart';
+import 'package:geolocator/geolocator.dart';
 
-import 'package:location_platform_interface/location_platform_interface.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:proximitystore/config/colors/app_colors.dart';
 import 'package:proximitystore/config/routes/routes.dart';
@@ -25,35 +24,35 @@ class GeoLocationOffPage extends StatefulWidget {
 }
 
 class _GeoLocationOffPageState extends State<GeoLocationOffPage> {
-  final geolocator = geo.Geolocator.getCurrentPosition(forceAndroidLocationManager: true);
-  geo.Position? _currentPosition;
-  String currentAddress = "";
+  // final geolocator = geo.Geolocator.getCurrentPosition(forceAndroidLocationManager: true);
+  // geo.Position? _currentPosition;
+  // String currentAddress = "";
 
-  void getCurrentLocation() {
-    geo.Geolocator.getCurrentPosition(desiredAccuracy: geo.LocationAccuracy.high).then((geo.Position position) {
-      setState(() {
-        _currentPosition = position;
-      });
+  // void getCurrentLocation() {
+  //   geo.Geolocator.getCurrentPosition(desiredAccuracy: geo.LocationAccuracy.high).then((geo.Position position) {
+  //     setState(() {
+  //       _currentPosition = position;
+  //     });
 
-      getAddressFromLatLng();
-    }).catchError((e) {
-      print(e);
-    });
-  }
+  //     getAddressFromLatLng();
+  //   }).catchError((e) {
+  //     print(e);
+  //   });
+  // }
 
-  void getAddressFromLatLng() async {
-    try {
-      List<Placemark> p = await placemarkFromCoordinates(_currentPosition!.latitude, _currentPosition!.longitude);
+  // void getAddressFromLatLng() async {
+  //   try {
+  //     List<Placemark> p = await placemarkFromCoordinates(_currentPosition!.latitude, _currentPosition!.longitude);
 
-      Placemark place = p[0];
+  //     Placemark place = p[0];
 
-      setState(() {
-        currentAddress = "${place.thoroughfare},${place.subThoroughfare},${place.name}, ${place.subLocality}";
-      });
-    } catch (e) {
-      print(e);
-    }
-  }
+  //     setState(() {
+  //       currentAddress = "${place.thoroughfare},${place.subThoroughfare},${place.name}, ${place.subLocality}";
+  //     });
+  //   } catch (e) {
+  //     print(e);
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -138,15 +137,19 @@ class _GeoLocationOffPageState extends State<GeoLocationOffPage> {
                           child: CustomBlueButton(
                             onPressed: () async {
                               var locationStatus = await Permission.location.request();
-                              getCurrentLocation();
+                              // getCurrentLocation();
 
-                              if (locationStatus.isGranted) {
-                                if (_currentPosition != null &&
-                                    currentAddress.toLowerCase().contains('paris'.toLowerCase())) {
-                                  Navigator.pushNamed(context, AppRoutes.geolocationSearchProductPage);
-                                } else {
-                                  Navigator.pushNamed(context, AppRoutes.geoLocationOutsideParisPage);
-                                }
+                              Position position =
+                                  await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+
+                              if (locationStatus.isGranted)
+                              // if (_currentPosition != null &&
+                              //     currentAddress.toLowerCase().contains('paris'.toLowerCase()))
+                              {
+                                //   Navigator.pushNamed(context, AppRoutes.geolocationSearchProductPage);
+                                // } else {
+                                //   Navigator.pushNamed(context, AppRoutes.geoLocationOutsideParisPage);
+                                // }
                               } else if (locationStatus.isDenied) {
                                 return;
                               } else if (locationStatus.isPermanentlyDenied) {
@@ -177,6 +180,13 @@ class _GeoLocationOffPageState extends State<GeoLocationOffPage> {
                                 );
                                 return;
                               }
+
+                              if ((locationStatus.isGranted) &&
+                                  (position.altitude == 48.856614) &&
+                                  (position.longitude == 2.3522219)) {
+                                Navigator.pushNamed(context, AppRoutes.geolocationSearchProductPage);
+                              } else
+                                (Navigator.pushNamed(context, AppRoutes.geoLocationOutsideParisPage));
                             },
                             textInput: 'allowAccessToMyPosition'.tr(),
                           ),

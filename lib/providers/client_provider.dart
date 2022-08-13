@@ -3,14 +3,14 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+// import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:proximitystore/models/client_procduct.dart';
 import 'package:proximitystore/models/product.dart';
 import 'package:proximitystore/providers/business_provider.dart';
 
 class ClientProvider with ChangeNotifier {
-  Completer<GoogleMapController> mapController = Completer();
+  // Completer<GoogleMapController> mapController = Completer();
 
   TextEditingController _labelTextController = TextEditingController();
   // List<ClientProduct> productList = [];

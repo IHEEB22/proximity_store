@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:proximitystore/providers/client_provider.dart';
+import 'package:proximitystore/widgets/store_description_sheet.dart';
 
 import '../../config/colors/app_colors.dart';
 import '../../config/images/app_images.dart';
@@ -137,19 +138,33 @@ class ProductDescriptionPage extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
-                                    context.read<ClientProvider>().productSelected!.storeName!,
+                                    context.read<ClientProvider>().productSelected!.storeName,
                                     style: Theme.of(context).textTheme.headline2?.copyWith(
                                           fontFamily: 'Montserrat',
                                           fontSize: 24.sp,
                                           fontWeight: FontWeight.w700,
                                         ),
                                   ),
-                                  Padding(
-                                    padding: EdgeInsets.only(right: 0.0453.sw),
-                                    child: Image(
-                                      height: 0.0295.sh,
-                                      width: 0.064.sw,
-                                      image: AssetImage(AppImages.moreIcon),
+                                  GestureDetector(
+                                    onTap: () {
+                                      showModalBottomSheet<void>(
+                                        isScrollControlled: true,
+                                        context: context,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.vertical(
+                                            top: Radius.circular(20.r),
+                                          ),
+                                        ),
+                                        builder: ((context) => StoreDescriptionSheet()),
+                                      );
+                                    },
+                                    child: Padding(
+                                      padding: EdgeInsets.only(right: 0.0453.sw),
+                                      child: Image(
+                                        height: 0.0295.sh,
+                                        width: 0.064.sw,
+                                        image: AssetImage(AppImages.moreIcon),
+                                      ),
                                     ),
                                   ),
                                 ],

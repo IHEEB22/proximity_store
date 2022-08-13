@@ -70,7 +70,8 @@ class LocalistaionControllerprovider with ChangeNotifier {
 
   bool isAdressSelectedInParis(BuildContext context, String suggestion) {
     if ((ValidationItem(val: '').validateTown(context: context, town: suggestion) == null) &&
-        (suggestion.toLowerCase().contains('paris'.toLowerCase()))) {
+        (suggestion.toLowerCase().contains('paris'.toLowerCase())) &&
+        (suggestion.toLowerCase().contains('france'.toLowerCase()))) {
       adressSelectedInParis = true;
     } else
       adressSelectedInParis = false;

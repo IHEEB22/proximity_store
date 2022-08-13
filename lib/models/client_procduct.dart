@@ -11,9 +11,11 @@ class ClientProduct {
   final double productPrice;
   final int inStock;
   final String storeFarDestination;
-  final String? storeName;
+  final String storeName;
   bool? storeStatus;
   String? storeLocation;
+  String? storeImage;
+  String? storeDescription;
 
   ClientProduct({
     required this.productName,
@@ -23,9 +25,11 @@ class ClientProduct {
     required this.productPrice,
     required this.inStock,
     this.storeStatus,
-    this.storeName,
     required this.storeFarDestination,
+    required this.storeName,
     required this.storeLocation,
+    this.storeImage,
+    this.storeDescription,
   });
 
   factory ClientProduct.fromJson(Map<String, dynamic> json) {
@@ -37,8 +41,10 @@ class ClientProduct {
     final inStock = json['in_stock'] as int;
     final storeFarDestination = json['store_far_destination'] as String;
     final storeStatus = json['store_status'] as bool?;
-    final storeName = json['store_name'] as String?;
+    final storeName = json['store_name'] as String;
     final storeLocation = json['store_Location'] as String?;
+    final storeImage = json['store_image'] as String?;
+    final storeDescription = json['store_description'] as String?;
 
     return ClientProduct(
       productName: productName,
@@ -51,6 +57,8 @@ class ClientProduct {
       storeFarDestination: storeFarDestination,
       storeName: storeName,
       storeLocation: storeLocation,
+      storeImage: storeImage,
+      storeDescription: storeDescription,
     );
   }
   // Map<String, dynamic> toJson() => {

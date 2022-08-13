@@ -30,7 +30,7 @@ dependencies:
   flutter:
     sdk: flutter
   provider: ^6.0.3
-  google_maps_flutter: ^2.0.4
+
   permission_handler: ^10.0.0
   flutter_native_splash: ^2.2.4
   image_picker: ^0.8.5+3
@@ -47,10 +47,6 @@ dependencies:
   cached_network_image: ^3.2.1
   path_provider: ^2.0.11
   autocomplete_textfield: ^2.0.1
-  devicelocale: ^0.5.4
-  country_codes: ^2.2.0
-  location: ^4.4.0
-  geolocation: ^1.1.2
   # auto_size_text: ^3.0.0
 
 dev_dependencies:

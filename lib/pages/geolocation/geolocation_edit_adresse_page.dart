@@ -70,8 +70,13 @@ class GeolocationEditAdressePage extends StatelessWidget {
                             context.read<LocalistaionControllerprovider>().addressSelected(
                                   suggestion: suggestion ?? Prediction(description: 'adress n\'éxiste pas'),
                                 );
-
-                            context.read<LocalistaionControllerprovider>().setIsAdressSelected();
+                            if (context
+                                .read<LocalistaionControllerprovider>()
+                                .isAdressSelectedInParis(context, suggestion!.description ?? 'adress n\'éxiste pas')) {
+                              Navigator.pushNamed(context, AppRoutes.geolocationSearchProductPage);
+                            } else {
+                              Navigator.pushNamed(context, AppRoutes.geoLocationOutsideParisPage);
+                            }
                             context.read<LocalistaionControllerprovider>().setIsAdressSelected();
                           },
                           hintText: 'town'.tr(),

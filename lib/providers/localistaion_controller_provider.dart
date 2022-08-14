@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:google_maps_webservice/places.dart';
 import 'package:http/http.dart' as http;
-import 'package:proximitystore/config/routes/routes.dart';
 import 'package:proximitystore/services/validation_items.dart';
 
 class LocalistaionControllerprovider with ChangeNotifier {
@@ -69,14 +68,11 @@ class LocalistaionControllerprovider with ChangeNotifier {
   }
 
   bool isAdressSelectedInParis(BuildContext context, String suggestion) {
-    if ((ValidationItem(val: '').validateTown(context: context, town: suggestion) == null) &&
-        (suggestion.toLowerCase().contains('paris'.toLowerCase())) &&
+    if ((suggestion.toLowerCase().contains('paris'.toLowerCase())) &&
         (suggestion.toLowerCase().contains('france'.toLowerCase()))) {
-      adressSelectedInParis = true;
+      return true;
     } else
-      adressSelectedInParis = false;
-
-    return adressSelectedInParis;
+      return false;
   }
 }
 

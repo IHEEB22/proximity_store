@@ -49,6 +49,8 @@ class SearchFiltredProductPage extends StatelessWidget {
                       Consumer<BusinessProvider>(
                         builder: (context, value, child) => GestureDetector(
                           onTap: () {
+                            context.read<ClientProvider>().setHideSuggestion();
+
                             showModalBottomSheet<void>(
                               isScrollControlled: true,
                               context: context,
@@ -60,9 +62,9 @@ class SearchFiltredProductPage extends StatelessWidget {
                               builder: ((context) => SheetStoreSectors(
                                     title: 'filtres'.tr(),
                                   )),
-                            ).whenComplete(
-                              () {
-                                // context.read<BusinessProvider>().setSectorHintVisible();
+                            ).then(
+                              (value) {
+                                context.read<ClientProvider>().setHideSuggestion();
                               },
                             );
                           },

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_maps_webservice/places.dart';
 import 'package:provider/provider.dart';
-import 'package:proximitystore/services/validation_items.dart';
 import 'package:proximitystore/widgets/background_image.dart';
 import 'package:proximitystore/widgets/custom_blue_button.dart';
 
@@ -11,7 +10,6 @@ import '../../config/routes/routes.dart';
 import '../../providers/localistaion_controller_provider.dart';
 import '../../widgets/autocomplete_search_adresse.dart';
 import '../../widgets/custom_back_button_icon.dart';
-import '../../widgets/custom_white_button.dart';
 
 class GeolocationEditAdressePage extends StatelessWidget {
   const GeolocationEditAdressePage({Key? key}) : super(key: key);
@@ -103,7 +101,10 @@ class GeolocationEditAdressePage extends StatelessWidget {
                         horizontal: 0.066.sw,
                       ),
                       child: CustomBlueButton(
-                        onPressed: () => Navigator.pushNamed(context, AppRoutes.geoLocationOutsideParisPage),
+                        onPressed: () {
+                          Navigator.pushNamed(context, AppRoutes.geoLocationOutsideParisPage);
+                          context.read<LocalistaionControllerprovider>().disposeAdressValue();
+                        },
                         textInput: 'allowAccessToMyPosition'.tr(),
                       ),
                     ),

@@ -87,28 +87,29 @@ class _LoginPageState extends State<LoginPage> {
                             hintText: 'password'.tr(),
                           ),
                           Padding(
-                            padding: EdgeInsets.only(right: 0.065.sw, left: 0.665.sw),
-                            child: TextButton(
-                              onPressed: () {
-                                Navigator.pushNamed(
-                                  context,
-                                  AppRoutes.forgetPassword,
-                                );
-                                context.read<AuthentificationProvider>().disposeControllers();
-                              },
-                              style: TextButton.styleFrom(
-                                tapTargetSize: MaterialTapTargetSize.padded,
-                              ),
-                              child: Align(
-                                alignment: Alignment.topRight,
-                                child: Text(
-                                  'forgotYourPassword?'.tr(),
-                                  style: Theme.of(context).textTheme.bodyText1?.copyWith(
-                                        fontSize: 10.sp,
-                                        fontFamily: 'Montserrat',
-                                        decoration: TextDecoration.underline,
-                                        color: AppColors.deepBlueColor,
-                                      ),
+                            padding: EdgeInsets.only(right: 0.052.sw, top: 0.012.sh),
+                            child: Align(
+                              alignment: Alignment.topRight,
+                              child: Container(
+                                width: 0.32.sw,
+                                height: 0.04.sh,
+                                child: TextButton(
+                                  onPressed: () {
+                                    Navigator.pushNamed(
+                                      context,
+                                      AppRoutes.forgetPassword,
+                                    );
+                                    context.read<AuthentificationProvider>().disposeControllers();
+                                  },
+                                  child: Text(
+                                    'forgotYourPassword?'.tr(),
+                                    style: Theme.of(context).textTheme.bodyText1?.copyWith(
+                                          fontSize: 10.sp,
+                                          fontFamily: 'Montserrat',
+                                          decoration: TextDecoration.underline,
+                                          color: AppColors.deepBlueColor,
+                                        ),
+                                  ),
                                 ),
                               ),
                             ),
@@ -129,7 +130,9 @@ class _LoginPageState extends State<LoginPage> {
                                   child: SizedBox(
                                       width: double.infinity,
                                       child: CustomBlueButton(
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          Navigator.pushNamed(context, AppRoutes.searchProductPage);
+                                        },
                                         textInput: 'continue'.tr(),
                                       )),
                                 ),

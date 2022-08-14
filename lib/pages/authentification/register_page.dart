@@ -64,7 +64,7 @@ class RegisterPage extends StatelessWidget {
                             validator: (email) => ValidationItem(val: email).validatePassword(),
                             onChanged: (password) {
                               context.read<AuthentificationProvider>().setPasswordValide(password);
-                              context.read<AuthentificationProvider>().setIsButtonDisabled();
+                              context.read<AuthentificationProvider>().setIsReapetPasswordEqualpassword();
                             },
                             suffixIcon: GestureDetector(
                               onTap: () => context.read<AuthentificationProvider>().setIsPasswordVisible(),
@@ -105,7 +105,7 @@ class RegisterPage extends StatelessWidget {
                             hintText: 'repeatPassword'.tr(),
                             keyboardType: TextInputType.emailAddress,
                             onChanged: (password) {
-                              context.read<AuthentificationProvider>().setPasswordValide(password);
+                              context.read<AuthentificationProvider>().setRepeatPasswordValide(password);
                               context.read<AuthentificationProvider>().setIsReapetPasswordEqualpassword();
                             },
                             obscureText: !context.watch<AuthentificationProvider>().isRepeatPasswordVisible,
@@ -159,14 +159,14 @@ class RegisterPage extends StatelessWidget {
                             ),
                           ),
                           0.122.sh.verticalSpace,
-                          !(context.watch<AuthentificationProvider>().isEmailValide &&
-                                  context.watch<AuthentificationProvider>().isReapetPasswordEqualpassword)
+                          context.watch<AuthentificationProvider>().isReapetPasswordEqualpassword &&
+                                  context.watch<AuthentificationProvider>().isEmailValide
                               ? Padding(
                                   padding: EdgeInsets.symmetric(horizontal: 0.043.sw),
                                   child: SizedBox(
                                       width: double.infinity,
-                                      child: CustomGreyButton(
-                                        onPressed: null,
+                                      child: CustomBlueButton(
+                                        onPressed: () {},
                                         textInput: 'continue'.tr(),
                                       )),
                                 )
@@ -174,8 +174,8 @@ class RegisterPage extends StatelessWidget {
                                   padding: EdgeInsets.symmetric(horizontal: 0.043.sw),
                                   child: SizedBox(
                                       width: double.infinity,
-                                      child: CustomBlueButton(
-                                        onPressed: () {},
+                                      child: CustomGreyButton(
+                                        onPressed: null,
                                         textInput: 'continue'.tr(),
                                       )),
                                 ),

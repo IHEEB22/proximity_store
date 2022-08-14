@@ -94,6 +94,7 @@ class _SheetGeolocalisationOutsideParisState extends State<SheetGeolocalisationO
                           onPressed: () {
                             if (_formKey.currentState?.validate() ?? false) {
                               Navigator.pop(context);
+                              context.read<LocalistaionControllerprovider>().disposeAdressValue();
                             } else {
                               context.read<SheetProvider>().addsheetInputs(
                                     email:
@@ -101,6 +102,7 @@ class _SheetGeolocalisationOutsideParisState extends State<SheetGeolocalisationO
                                     town:
                                         context.read<LocalistaionControllerprovider>().townTextFormFieldController.text,
                                   );
+                              context.read<LocalistaionControllerprovider>().disposeAdressValue();
                             }
                           },
                         ),

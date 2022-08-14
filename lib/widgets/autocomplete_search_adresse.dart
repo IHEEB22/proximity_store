@@ -60,6 +60,7 @@ class AutocompleteSearchAdresse extends StatelessWidget {
             child: Focus(
               onFocusChange: (hasFocus) {},
               child: TypeAheadFormField<Prediction?>(
+                minCharsForSuggestions: 1,
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 errorBuilder: (context, error) => SizedBox.shrink(
                   child: Text('erreur'),

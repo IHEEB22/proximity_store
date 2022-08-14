@@ -2,7 +2,9 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 import 'package:proximitystore/config/routes/routes.dart';
+import 'package:proximitystore/providers/authentification_provider.dart';
 import 'package:proximitystore/widgets/background_image.dart';
 import 'package:proximitystore/widgets/custom_blue_button.dart';
 
@@ -34,6 +36,7 @@ class WelcomePage extends StatelessWidget {
                           textInput: 'registerWithEmail'.tr(),
                           onPressed: () {
                             Navigator.pushNamed(context, AppRoutes.registerPage);
+                            context.read<AuthentificationProvider>().disposeControllers();
                           },
                         ),
                       ),
@@ -56,7 +59,10 @@ class WelcomePage extends StatelessWidget {
                         width: double.infinity,
                         child: CustomBlueButton(
                             textInput: 'toLogIn'.tr(),
-                            onPressed: () => Navigator.pushNamed(context, AppRoutes.loginPage)),
+                            onPressed: () {
+                              Navigator.pushNamed(context, AppRoutes.loginPage);
+                              context.read<AuthentificationProvider>().disposeControllers();
+                            }),
                       ),
                     ),
                     0.116.sh.verticalSpace,

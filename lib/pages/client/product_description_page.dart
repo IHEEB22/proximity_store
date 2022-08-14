@@ -114,7 +114,7 @@ class ProductDescriptionPage extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      height: 0.29.sh,
+                      height: 0.3.sh,
                       width: double.infinity,
                       child: Container(
                         color: AppColors.lightWhiteColor,

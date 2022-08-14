@@ -17,7 +17,7 @@ class ClientProvider with ChangeNotifier {
   TextEditingController get labelTextController => _labelTextController;
   bool hideSuggestion = false;
   ClientProduct? productSelected;
-  bool hideKeyBord = true;
+  bool hideKeyBord = false;
 
   setLabelValue(String productLabel) {
     _labelTextController.text = productLabel;
@@ -30,7 +30,7 @@ class ClientProvider with ChangeNotifier {
   }
 
   setHideSuggestion() {
-    hideSuggestion = false;
+    hideSuggestion = !hideSuggestion;
     notifyListeners();
   }
 

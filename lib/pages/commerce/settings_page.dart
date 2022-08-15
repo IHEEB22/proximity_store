@@ -30,11 +30,13 @@ class SettingsPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       CustomBackButtonIcon(),
-                      Padding(
-                        padding: EdgeInsets.only(left: 0.74.sw, top: 0.004.sh),
+                      Container(
+                        width: 0.14.sw,
+                        padding: EdgeInsets.only(right: 0.024.sw, top: 0.018.sh),
                         child: TextButton(
                           onPressed: () {
                             showCupertinoModalPopup(

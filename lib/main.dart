@@ -52,17 +52,10 @@ Future<void> main() async {
   );
 }
 
-Future initialization(BuildContext? context) async {
-  await Future.any([
-    Future.delayed(
-      Duration(seconds: 3),
-      //  () {
-      //   return CircularProgressIndicator(
-      //     color: Colors.black,
-      //   );
-      // }
-    ),
-  ]);
+Future<void> initialization(BuildContext context) async {
+  await Future.delayed(
+    Duration(seconds: 2),
+  );
 }
 
 class App extends StatelessWidget {

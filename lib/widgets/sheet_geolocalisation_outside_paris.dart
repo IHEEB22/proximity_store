@@ -50,7 +50,7 @@ class _SheetGeolocalisationOutsideParisState extends State<SheetGeolocalisationO
                     TextInputField(
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                       validator: (email) => ValidationItem(val: email).validateEmail(),
-                      controller: context.watch<LocalistaionControllerprovider>().emailTextEditingController,
+                      controller: context.read<LocalistaionControllerprovider>().emailTextEditingController,
                       hintText: 'e-mail'.tr(),
                       inputLabel: 'e-mail'.tr(),
                       keyboardType: TextInputType.emailAddress,
@@ -60,26 +60,24 @@ class _SheetGeolocalisationOutsideParisState extends State<SheetGeolocalisationO
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         SizedBox(
-                          height: 150,
-                          child: Expanded(
-                            child: AutocompleteSearchAdresse(
-                              onSuggestionSelected: (suggestion) {
-                                context.read<LocalistaionControllerprovider>().addressSelected(
-                                      suggestion: suggestion ?? Prediction(description: 'adress n\'éxiste pas'),
-                                    );
-                                context.read<LocalistaionControllerprovider>().setIsAdressSelected();
-                              },
-                              symetricPadding: 0.0853,
-                              searchPrefix: false,
-                              labelEnabled: true,
-                              hintText: 'town'.tr(),
-                              labelText: 'addTown'.tr(),
-                            ),
+                          height: 100,
+                          child: AutocompleteSearchAdresse(
+                            onSuggestionSelected: (suggestion) {
+                              context.read<LocalistaionControllerprovider>().addressSelected(
+                                    suggestion: suggestion ?? Prediction(description: 'adress n\'éxiste pas'),
+                                  );
+                              context.read<LocalistaionControllerprovider>().setIsAdressSelected();
+                            },
+                            symetricPadding: 0.0853,
+                            searchPrefix: false,
+                            labelEnabled: true,
+                            hintText: 'town'.tr(),
+                            labelText: 'addTown'.tr(),
                           ),
                         ),
                         context.read<LocalistaionControllerprovider>().space()
-                            ? 0.34.sh.verticalSpace
-                            : 0.000000000002.sh.verticalSpace
+                            ? 0.38.sh.verticalSpace
+                            : 0.sh.verticalSpace
                       ],
                     ),
                     // 0.04.sh.verticalSpace,
@@ -95,12 +93,12 @@ class _SheetGeolocalisationOutsideParisState extends State<SheetGeolocalisationO
                             if (_formKey.currentState?.validate() ?? false) {
                               Navigator.pop(context);
                               context.read<LocalistaionControllerprovider>().disposeAdressValue();
+                              context.read<LocalistaionControllerprovider>().disposeEmailValue();
                             } else {
                               context.read<SheetProvider>().addsheetInputs(
                                     email:
                                         context.read<LocalistaionControllerprovider>().emailTextEditingController.text,
-                                    town:
-                                        context.read<LocalistaionControllerprovider>().townTextFormFieldController.text,
+                                    town: context.read<LocalistaionControllerprovider>().adress.text,
                                   );
                               context.read<LocalistaionControllerprovider>().disposeAdressValue();
                             }

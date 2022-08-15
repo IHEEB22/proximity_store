@@ -33,7 +33,7 @@ class _SearchProductPageState extends State<SearchProductPage> {
       ),
       context: context,
       builder: (BuildContext context) =>
-          (arguments['currentRoute'] == 'addNewProductpage') ? ProductAddedSheet() : AddProductSheet(),
+          (arguments['currentRoute'] == 'addNewProductpage') ? AddProductSheet() : ProductAddedSheet(),
     ).then((value) {
       FocusScope.of(context).requestFocus(context.read<BusinessProvider>().serachProductFocusNode);
     });

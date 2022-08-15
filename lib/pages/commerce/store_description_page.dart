@@ -47,8 +47,8 @@ class _StoreDescriptionPageState extends State<StoreDescriptionPage> {
                       CustomBackButtonIcon(),
                       GestureDetector(
                         onTap: () {
-                          // Navigator.pushNamed(context, appSetting);
-                          // dispoee buisnessprovider
+                          Navigator.pushNamed(context, AppRoutes.settingsPage);
+                          context.read<BusinessProvider>().disposeSettingsControllers();
                         },
                         child: Padding(
                           padding: EdgeInsets.only(top: 0.028.sh, left: 0.8.sw),
@@ -226,46 +226,44 @@ class _StoreDescriptionPageState extends State<StoreDescriptionPage> {
                                                 children: [
                                                   Padding(
                                                     padding: EdgeInsets.only(right: 0.2),
-                                                    child: Expanded(
-                                                      child: Container(
-                                                        margin: EdgeInsets.all(3),
-                                                        padding: EdgeInsets.all(2),
-                                                        decoration: BoxDecoration(
-                                                          border: Border.all(width: 2, color: AppColors.deepBlueColor),
-                                                          borderRadius: BorderRadius.all(
-                                                            Radius.circular(6.0),
+                                                    child: Container(
+                                                      margin: EdgeInsets.all(3),
+                                                      padding: EdgeInsets.all(2),
+                                                      decoration: BoxDecoration(
+                                                        border: Border.all(width: 2, color: AppColors.deepBlueColor),
+                                                        borderRadius: BorderRadius.all(
+                                                          Radius.circular(6.0),
+                                                        ),
+                                                      ),
+                                                      child: Row(
+                                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                        mainAxisSize: MainAxisSize.min,
+                                                        children: [
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsets.only(top: 4, bottom: 4, right: 1.5, left: 2),
+                                                            child: Text(
+                                                              item,
+                                                              style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                                                                  fontFamily: 'Montserrat',
+                                                                  fontSize: 12.sp,
+                                                                  color: AppColors.deepBlueColor,
+                                                                  fontWeight: FontWeight.w700),
+                                                            ),
                                                           ),
-                                                        ),
-                                                        child: Row(
-                                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                          mainAxisSize: MainAxisSize.min,
-                                                          children: [
-                                                            Padding(
-                                                              padding: EdgeInsets.only(
-                                                                  top: 4, bottom: 4, right: 1.5, left: 2),
-                                                              child: Text(
-                                                                item,
-                                                                style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                                                                    fontFamily: 'Montserrat',
-                                                                    fontSize: 12.sp,
-                                                                    color: AppColors.deepBlueColor,
-                                                                    fontWeight: FontWeight.w700),
-                                                              ),
+                                                          GestureDetector(
+                                                            onTap: () {
+                                                              context.read<BusinessProvider>().removeSector(item);
+                                                            },
+                                                            child: Container(
+                                                              height: 16,
+                                                              width: 16,
+                                                              child: Image(
+                                                                  image: AssetImage('assets/icons/delete_icon.png')),
                                                             ),
-                                                            GestureDetector(
-                                                              onTap: () {
-                                                                context.read<BusinessProvider>().removeSector(item);
-                                                              },
-                                                              child: Container(
-                                                                height: 16,
-                                                                width: 16,
-                                                                child: Image(
-                                                                    image: AssetImage('assets/icons/delete_icon.png')),
-                                                              ),
-                                                            ),
-                                                            0.0025.sw.horizontalSpace,
-                                                          ],
-                                                        ),
+                                                          ),
+                                                          0.0025.sw.horizontalSpace,
+                                                        ],
                                                       ),
                                                     ),
                                                   ),
@@ -285,10 +283,16 @@ class _StoreDescriptionPageState extends State<StoreDescriptionPage> {
                                           searchPrefix: false,
                                           labelEnabled: true,
                                           symetricPadding: 0.082,
-                                          onSuggestionSelected: (prediction) {},
+                                          onSuggestionSelected: (suggestion) {
+                                            context.read<LocalistaionControllerprovider>().addressSelected(
+                                                  suggestion:
+                                                      suggestion ?? Prediction(description: 'adress n\'éxiste pas'),
+                                                );
+                                            context.read<LocalistaionControllerprovider>().setIsAdressSelected();
+                                          },
                                           labelText: 'adress'.tr(),
                                         ),
-                                        context.watch<LocalistaionControllerprovider>().space()
+                                        context.read<LocalistaionControllerprovider>().space()
                                             ? 0.4.sh.verticalSpace
                                             : 0.03.sh.verticalSpace
                                       ],
@@ -300,7 +304,7 @@ class _StoreDescriptionPageState extends State<StoreDescriptionPage> {
                                     controller: context.watch<BusinessProvider>().phoneNumber,
                                     hintText: 'fillInAPhoneNumber'.tr(),
                                     inputLabel: 'telephone'.tr(),
-                                    keyboardType: TextInputType.phone,
+                                    keyboardType: TextInputType.number,
                                   ),
                                   0.0788.sh.verticalSpace,
                                   Padding(
@@ -515,14 +519,13 @@ class _StoreDescriptionPageState extends State<StoreDescriptionPage> {
                                           onPressed: () {
                                             context.read<BusinessProvider>().setValidateButtonPressed();
                                             if (_formKey.currentState?.validate() ??
-                                                true &&
-                                                    context.read<BusinessProvider>().chekedsectorsList.isNotEmpty &&
-                                                    context
-                                                        .read<LocalistaionControllerprovider>()
-                                                        .isAddressNotSelected) {
+                                                true && context.read<BusinessProvider>().chekedsectorsList.isNotEmpty) {
                                               print('you can navigate');
                                               Navigator.pushNamed(context, AppRoutes.searchProductPage,
-                                                  arguments: {'messageTexxt': 'example', 'desctText': 'example'});
+                                                  arguments: {'currentRoute': 'addNewProductpage'});
+
+                                              context.read<LocalistaionControllerprovider>().disposeAdressValue();
+                                              context.read<BusinessProvider>().disposeSettingsControllers();
                                             } else {
                                               print('you can not navigate');
                                             }

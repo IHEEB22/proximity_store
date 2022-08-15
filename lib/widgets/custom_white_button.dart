@@ -3,9 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:proximitystore/config/colors/app_colors.dart';
 
 // ignore: must_be_immutable
-class CustomWhiteButton extends StatefulWidget {
+class CustomWhiteButton extends StatelessWidget {
   final String textInput;
-  final Function() onPressed;
+  final void Function()? onPressed;
   Widget? leading;
 
   CustomWhiteButton({
@@ -15,11 +15,6 @@ class CustomWhiteButton extends StatefulWidget {
     required this.onPressed,
   }) : super(key: key);
 
-  @override
-  State<CustomWhiteButton> createState() => _CustomButtonState();
-}
-
-class _CustomButtonState extends State<CustomWhiteButton> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -35,12 +30,12 @@ class _CustomButtonState extends State<CustomWhiteButton> {
               child: SizedBox(
                 height: 0.0295.sh,
                 width: 0.064.sw,
-                child: widget.leading ?? SizedBox.shrink(),
+                child: leading ?? SizedBox.shrink(),
               ),
             ),
             0.143.sw.horizontalSpace,
             Text(
-              widget.textInput,
+              textInput,
               style: TextStyle(
                 color: AppColors.deepBlueColor,
                 fontFamily: 'Poppins',
@@ -62,7 +57,7 @@ class _CustomButtonState extends State<CustomWhiteButton> {
             ),
           ),
         ),
-        onPressed: widget.onPressed,
+        onPressed: onPressed,
       ),
     );
   }

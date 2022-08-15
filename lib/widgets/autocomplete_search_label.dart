@@ -35,19 +35,19 @@ class AutocompleteSearchLabel extends StatelessWidget {
           },
           itemBuilder: (context, ClientProduct suggestion) {
             final product = suggestion;
-            return ListTile(
-              contentPadding: EdgeInsets.only(left: 12, bottom: 0, right: 6),
-              leading: Text(
-                product.productLabel,
-                style: Theme.of(context).textTheme.bodyText1?.copyWith(
-                      fontFamily: "Montserrat",
-                      fontSize: 18.sp,
-                      letterSpacing: 0.02,
-                    ),
-              ),
-              title: Align(
-                alignment: Alignment.topRight,
-                child: Expanded(
+            return Container(
+              child: ListTile(
+                contentPadding: EdgeInsets.only(left: 12, bottom: 0, right: 6),
+                leading: Text(
+                  product.productLabel,
+                  style: Theme.of(context).textTheme.bodyText1?.copyWith(
+                        fontFamily: "Montserrat",
+                        fontSize: 18.sp,
+                        letterSpacing: 0.02,
+                      ),
+                ),
+                title: Align(
+                  alignment: Alignment.topRight,
                   child: Text(
                     overflow: TextOverflow.ellipsis,
                     product.productsector,
@@ -59,15 +59,15 @@ class AutocompleteSearchLabel extends StatelessWidget {
                         ),
                   ),
                 ),
-              ),
-              trailing: Text(
-                '(' + '${product.inStock.toString()}' + '\+' ')',
-                style: Theme.of(context).textTheme.headline2?.copyWith(
-                      fontFamily: "Montserrat",
-                      fontSize: 12.sp,
-                      letterSpacing: 0.02,
-                      // fontWeight: FontWeight.w300,
-                    ),
+                trailing: Text(
+                  '(' + '${product.inStock.toString()}' + '\+' ')',
+                  style: Theme.of(context).textTheme.headline2?.copyWith(
+                        fontFamily: "Montserrat",
+                        fontSize: 12.sp,
+                        letterSpacing: 0.02,
+                        // fontWeight: FontWeight.w300,
+                      ),
+                ),
               ),
             );
           },

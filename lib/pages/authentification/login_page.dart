@@ -131,7 +131,7 @@ class _LoginPageState extends State<LoginPage> {
                                       width: double.infinity,
                                       child: CustomBlueButton(
                                         onPressed: () {
-                                          Navigator.pushNamed(context, AppRoutes.searchProductPage);
+                                          Navigator.pushNamed(context, AppRoutes.storeDescriptionPage);
                                         },
                                         textInput: 'continue'.tr(),
                                       )),

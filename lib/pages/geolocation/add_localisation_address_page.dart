@@ -8,7 +8,6 @@ import 'package:proximitystore/widgets/background_image.dart';
 
 import '../../config/routes/routes.dart';
 import '../../providers/localistaion_controller_provider.dart';
-import '../../services/validation_items.dart';
 import '../../widgets/autocomplete_search_adresse.dart';
 import '../../widgets/custom_back_button_icon.dart';
 
@@ -61,37 +60,35 @@ class AddLocalisationAddressPage extends StatelessWidget {
                   0.10.sh.verticalSpace,
                   SizedBox(
                     height: 400,
-                    child: Expanded(
-                      child: Consumer<LocalistaionControllerprovider>(
-                        builder: (context, value, child) => Column(
-                          children: [
-                            AutocompleteSearchAdresse(
-                              // minhei: 250,
-                              symetricPadding: 0.0853,
-                              searchPrefix: true,
-                              labelEnabled: false,
-                              onSuggestionSelected: (suggestion) {
-                                context.read<LocalistaionControllerprovider>().addressSelected(
-                                      suggestion: suggestion ?? Prediction(description: 'adress n\'éxiste pas'),
-                                    );
+                    child: Column(
+                      children: [
+                        Consumer<LocalistaionControllerprovider>(
+                          builder: (context, value, child) => AutocompleteSearchAdresse(
+                            // minhei: 250,
+                            symetricPadding: 0.0853,
+                            searchPrefix: true,
+                            labelEnabled: false,
+                            onSuggestionSelected: (suggestion) {
+                              context.read<LocalistaionControllerprovider>().addressSelected(
+                                    suggestion: suggestion ?? Prediction(description: 'adress n\'éxiste pas'),
+                                  );
 
-                                context.read<LocalistaionControllerprovider>().setIsAdressSelected();
-                                if (context.read<LocalistaionControllerprovider>().isAdressSelectedInParis(
-                                    context, suggestion!.description ?? 'adress n\'éxiste pas')) {
-                                  Navigator.pushNamed(context, AppRoutes.geolocationSearchProductPage);
-                                } else {
-                                  Navigator.pushNamed(context, AppRoutes.geoLocationOutsideParisPage);
-                                }
-                              },
-                              hintText: 'town'.tr(),
-                              labelText: 'addAdress'.tr(),
-                            ),
-                            context.watch<LocalistaionControllerprovider>().space()
-                                ? 0.4.sh.verticalSpace
-                                : 0.03.sh.verticalSpace
-                          ],
+                              context.read<LocalistaionControllerprovider>().setIsAdressSelected();
+                              if (context.read<LocalistaionControllerprovider>().isAdressSelectedInParis(
+                                  context, suggestion!.description ?? 'adress n\'éxiste pas')) {
+                                Navigator.pushNamed(context, AppRoutes.geolocationSearchProductPage);
+                              } else {
+                                Navigator.pushNamed(context, AppRoutes.geoLocationOutsideParisPage);
+                              }
+                            },
+                            hintText: 'town'.tr(),
+                            labelText: 'addAdress'.tr(),
+                          ),
                         ),
-                      ),
+                        context.watch<LocalistaionControllerprovider>().space()
+                            ? 0.4.sh.verticalSpace
+                            : 0.03.sh.verticalSpace
+                      ],
                     ),
                   ),
                   0.54.verticalSpace,

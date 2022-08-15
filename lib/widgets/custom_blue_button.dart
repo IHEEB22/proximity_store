@@ -3,9 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:proximitystore/config/colors/app_colors.dart';
 import 'package:easy_localization/easy_localization.dart';
 
-class CustomBlueButton extends StatefulWidget {
+class CustomBlueButton extends StatelessWidget {
   final String textInput;
-  final Function() onPressed;
+  final void Function()? onPressed;
 
   const CustomBlueButton({
     Key? key,
@@ -14,17 +14,12 @@ class CustomBlueButton extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<CustomBlueButton> createState() => _CustomBlueButtonState();
-}
-
-class _CustomBlueButtonState extends State<CustomBlueButton> {
-  @override
   Widget build(BuildContext context) {
     return Container(
       height: 0.06.sh,
       child: OutlinedButton(
         child: Text(
-          widget.textInput.tr(),
+          textInput.tr(),
           style: TextStyle(
             color: AppColors.whiteColor,
             fontFamily: 'Poppins',
@@ -44,7 +39,7 @@ class _CustomBlueButtonState extends State<CustomBlueButton> {
             ),
           ),
         ),
-        onPressed: widget.onPressed,
+        onPressed: onPressed,
       ),
     );
   }

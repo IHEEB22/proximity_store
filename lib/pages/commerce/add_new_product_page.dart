@@ -131,7 +131,7 @@ class AddNewProductPage extends StatelessWidget {
                     0.045.sh.verticalSpace,
                     TextInputField(
                       autovalidateMode: AutovalidateMode.onUserInteraction,
-                      validator: (phoneNumber) => ValidationItem(val: phoneNumber).validateProductPrice(),
+                      validator: (price) => ValidationItem(val: price).validateProductPrice(),
                       controller: context.watch<BusinessProvider>().productPrice,
                       hintText: 'enterPrice'.tr(),
                       inputLabel: 'price'.tr(),
@@ -236,6 +236,7 @@ class AddNewProductPage extends StatelessWidget {
                                               storeFarDestination: "250 km"));
                                       Navigator.pushNamed(context, AppRoutes.searchProductPage,
                                           arguments: {'currentRoute': 'addNewProductpage'});
+                                      context.read<BusinessProvider>().disposePickedFile();
                                     },
                                     textInput: 'addTheProduc'.tr(),
                                   )),

@@ -56,26 +56,24 @@ class StoreDescriptionSheet extends StatelessWidget {
                             children: [
                               Padding(
                                 padding: EdgeInsets.only(right: 0.025.sw),
-                                child: Expanded(
-                                  child: Container(
-                                    margin: EdgeInsets.all(3),
-                                    padding: EdgeInsets.all(2),
-                                    decoration: BoxDecoration(
-                                      border: Border.all(width: 2, color: AppColors.lightPurpleColor),
-                                      borderRadius: BorderRadius.all(
-                                        Radius.circular(6.0),
-                                      ),
+                                child: Container(
+                                  margin: EdgeInsets.all(3),
+                                  padding: EdgeInsets.all(2),
+                                  decoration: BoxDecoration(
+                                    border: Border.all(width: 2, color: AppColors.lightPurpleColor),
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(6.0),
                                     ),
-                                    child: Padding(
-                                      padding: EdgeInsets.only(top: 4, bottom: 4, right: 1.5, left: 2),
-                                      child: Text(
-                                        item,
-                                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                                            fontFamily: 'Montserrat',
-                                            fontSize: 12.sp,
-                                            color: AppColors.lightPurpleColor,
-                                            fontWeight: FontWeight.w700),
-                                      ),
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsets.only(top: 4, bottom: 4, right: 1.5, left: 2),
+                                    child: Text(
+                                      item,
+                                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                                          fontFamily: 'Montserrat',
+                                          fontSize: 12.sp,
+                                          color: AppColors.lightPurpleColor,
+                                          fontWeight: FontWeight.w700),
                                     ),
                                   ),
                                 ),

@@ -11,6 +11,7 @@
     "addAddress": "Renseigner une adresse",
     "weWillDisplayTheNearsetProductsForYou": "Nous afficherons les produits des commerçants à proximité",
     "storeSpace": "ESPACE COMMERÇANT",
+    "termsOfService":"Conditions Générales d’Utilisation",
     
     "allowAccessToMyPosition": "Autoriser l’accès à ma position",
     "somethingWentWrong": "Quelque chose s'est mal passé",
@@ -132,5 +133,6 @@
 "gettingThere": "S’y rendre",
 "showRoute": "Afficher l’itinéraire",
 "open": "Ouvert",
-"close": "Fermé"
+"close": "Fermé",
+"lorenText":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ultrices, ipsum id iaculis efficitur, enim erat vulputate neque, cursus egestas risus ex a felis. Praesent mattis ligula metus, sit amet mattis metus tempor vitae. Morbi lobortis ante vitae arcu sagittis, eget lobortis tortor finibus. Ut auctor blandit ante nec sodales. Nam tempus risus at elit vulputate viverra. Mauris porta elit sed pulvinar ullamcorper. Aenean faucibus efficitur augue, eget euismod est vehicula ac. Nulla non tellus dolor. Pellentesque nisl felis, suscipit sit amet risus interdum, fringilla cursus nulla. Nulla facilisi. Pellentesque at dapibus mauris. Etiam mollis elit in risus suscipit sodales. Nulla nec congue orci, non vehicula ex. Nulla a tincidunt orci. Etiam feugiat purus est.Donec scelerisque, magna vel egestas consectetur, diam elit facilisis enim, id ullamcorper orci nisl lobortis neque. Quisque arcu neque, feugiat et odio ut, malesuada feugiat diam. Proin id tempor sapien. Nunc vehicula at lorem a tincidunt. Suspendisse sollicitudin metus metus, quis gravida est ornare et. Mauris id maximus lacus, quis efficitur ligula. Curabitur eget tellus lorem. Cras tempus tellus congue, facilisis leo et, maximus turpis.Ut lacinia ut ex a semper. Cras porttitor quis nunc vitae mollis. Cras ultricies sit amet risus a bibendum. Nunc in vehicula neque. Pellentesque non massa faucibus, lobortis purus at, fringilla elit. Maecenas consequat rhoncus sem ut tincidunt. Pellentesque dui odio, accumsan a tincidunt vel, faucibus a libero. Morbi a ultricies felis, at blandit lorem. Suspendisse aliquet iaculis lectus sed porttitor. Nunc luctus metus purus, eget finibus ante dictum et. Integer lacus metus, dapibus iaculis dolor ac, aliquam pellentesque nisl. Donec sodales tortor nec ligula ultricies, nec consequat massa scelerisque. Etiam vitae mattis lorem."
 }

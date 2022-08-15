@@ -139,17 +139,7 @@ class _GeoLocationOffPageState extends State<GeoLocationOffPage> {
                               var locationStatus = await Permission.location.request();
                               // getCurrentLocation();
 
-                              Position position =
-                                  await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
-
-                              if (locationStatus.isGranted)
-                              // if (_currentPosition != null &&
-                              //     currentAddress.toLowerCase().contains('paris'.toLowerCase()))
-                              {
-                                //   Navigator.pushNamed(context, AppRoutes.geolocationSearchProductPage);
-                                // } else {
-                                //   Navigator.pushNamed(context, AppRoutes.geoLocationOutsideParisPage);
-                                // }
+                              if (locationStatus.isGranted) {
                               } else if (locationStatus.isDenied) {
                                 return;
                               } else if (locationStatus.isPermanentlyDenied) {
@@ -161,13 +151,10 @@ class _GeoLocationOffPageState extends State<GeoLocationOffPage> {
                                       style: Theme.of(context).textTheme.subtitle2,
                                     ),
                                     actions: <Widget>[
-                                      // if user deny again, we do nothing
                                       TextButton(
                                         onPressed: () => Navigator.pop(context),
                                         child: Text('cancel'.tr()),
                                       ),
-
-                                      // if user is agree, you can redirect him to the app parameters :)
                                       TextButton(
                                         onPressed: () {
                                           openAppSettings();
@@ -181,12 +168,15 @@ class _GeoLocationOffPageState extends State<GeoLocationOffPage> {
                                 return;
                               }
 
-                              if ((locationStatus.isGranted) &&
-                                  (position.altitude == 48.856614) &&
-                                  (position.longitude == 2.3522219)) {
-                                Navigator.pushNamed(context, AppRoutes.geolocationSearchProductPage);
-                              } else
-                                (Navigator.pushNamed(context, AppRoutes.geoLocationOutsideParisPage));
+                              if (locationStatus.isGranted) {
+                                Position position =
+                                    await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+
+                                if ((position.altitude == 48.856614) && (position.longitude == 2.3522219)) {
+                                  Navigator.pushNamed(context, AppRoutes.geolocationSearchProductPage);
+                                } else
+                                  (Navigator.pushNamed(context, AppRoutes.geoLocationOutsideParisPage));
+                              }
                             },
                             textInput: 'allowAccessToMyPosition'.tr(),
                           ),

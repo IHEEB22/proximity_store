@@ -17,13 +17,14 @@ class TermsOfServicePage extends StatelessWidget {
           children: [
             BackgroundImage(),
             Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Expanded(
                   flex: 1,
                   child: CustomBackButtonIcon(),
                 ),
                 Expanded(
-                  flex: 8,
+                  flex: 18,
                   child: SingleChildScrollView(
                     physics: BouncingScrollPhysics(),
                     child: Wrap(
@@ -47,15 +48,17 @@ class TermsOfServicePage extends StatelessWidget {
                                     ),
                               ),
                             ),
+                            0.1.sh.verticalSpace,
                             Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 0.082.sw),
+                                padding: EdgeInsets.only(left: 0.082.sw, right: 0.04.sw),
                                 child: Text(
-                                  'loren........................',
+                                  'lorenText'.tr(),
                                   style: Theme.of(context).textTheme.headline2?.copyWith(
                                         fontFamily: 'Montserrat',
-                                        fontSize: 12.sp,
+                                        fontSize: 15.sp,
+                                        height: 1.5,
                                         fontWeight: FontWeight.w300,
-                                        color: AppColors.blackColor,
+                                        color: AppColors.deepBlueColor,
                                       ),
                                 )),
                           ],

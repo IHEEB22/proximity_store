@@ -4,11 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:google_maps_webservice/places.dart';
 import 'package:http/http.dart' as http;
-import 'package:proximitystore/services/validation_items.dart';
 
 class LocalistaionControllerprovider with ChangeNotifier {
-  final TextEditingController townTextFormFieldController = TextEditingController();
-  final TextEditingController emailTextEditingController = TextEditingController();
+  TextEditingController emailTextEditingController = TextEditingController();
   TextEditingController adress = TextEditingController();
   FocusNode townFocusNode = FocusNode();
   bool townOnFocus = false;
@@ -36,13 +34,18 @@ class LocalistaionControllerprovider with ChangeNotifier {
     notifyListeners();
   }
 
-  bool space() {
+  void disposeEmailValue() {
+    emailTextEditingController.clear();
     notifyListeners();
+  }
+
+  bool space() {
     return (adress.text.isNotEmpty && isAddressNotSelected);
   }
 
   void disposeAdressListeners() {
     isAddressNotSelected = true;
+    notifyListeners();
   }
 
   void addressSelected({required Prediction suggestion}) {

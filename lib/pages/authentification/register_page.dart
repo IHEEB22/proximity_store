@@ -166,7 +166,10 @@ class RegisterPage extends StatelessWidget {
                                   child: SizedBox(
                                       width: double.infinity,
                                       child: CustomBlueButton(
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          Navigator.pushNamed(context, AppRoutes.loginPage);
+                                          context.read<AuthentificationProvider>().disposeControllers();
+                                        },
                                         textInput: 'continue'.tr(),
                                       )),
                                 )

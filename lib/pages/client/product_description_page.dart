@@ -240,7 +240,7 @@ class ProductDescriptionPage extends StatelessWidget {
                           ),
                           0.0246.sh.verticalSpace,
                           Container(
-                            color: AppColors.lightGreenColor,
+                            color: AppColors.lightWhiteColor,
                             height: 0.27.sh,
                             width: 0.9146.sw,
                             // child:

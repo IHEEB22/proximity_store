@@ -343,6 +343,10 @@ class BusinessProvider with ChangeNotifier {
     _phoneNumber.clear();
   }
 
+  void disposePickedFile() {
+    Future<PickedFile?> pickedFile = Future.value(null);
+  }
+
   void disposeSettingsControllers() {
     _emailTextEditingController.clear();
     _passwordTextEditingController.clear();

@@ -23,11 +23,13 @@ class AutocompleteSearchProduct extends StatelessWidget {
           right: 0.025.sw,
         ),
         child: TypeAheadFormField<Product?>(
-          suggestionsBoxVerticalOffset: 0.04.sh,
-          hideSuggestionsOnKeyboardHide: false,
+          suggestionsBoxVerticalOffset: 0.038.sh,
+
+          // change it dynamicly
+          hideSuggestionsOnKeyboardHide: context.watch<BusinessProvider>().hideSuggestionList,
           suggestionsBoxDecoration: SuggestionsBoxDecoration(
             color: AppColors.invisibleColor,
-            constraints: BoxConstraints(maxHeight: 400),
+            constraints: BoxConstraints(maxHeight: 0.548.sh, minHeight: 0.548.sh),
             offsetX: 1.02,
             elevation: 0,
           ),
@@ -37,7 +39,8 @@ class AutocompleteSearchProduct extends StatelessWidget {
             final product = suggestion!;
 
             return Card(
-              margin: EdgeInsets.fromLTRB(0, 0, 0, 16),
+              margin: EdgeInsets.fromLTRB(0, 0, 0, 12.h),
+              elevation: 0.5,
               child: Container(
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(
@@ -68,23 +71,23 @@ class AutocompleteSearchProduct extends StatelessWidget {
                           children: [
                             Expanded(
                               child: Padding(
-                                padding: EdgeInsets.only(right: 0.0508.sw, top: 0.0246.sh),
+                                padding: EdgeInsets.only(right: 0.01.sw, top: 0.0246.sh),
                                 child: Text(suggestion.productName.toUpperCase(),
                                     style: Theme.of(context).textTheme.bodyText1?.copyWith(
                                         fontFamily: 'Montserrat',
-                                        fontSize: 14.sp,
+                                        fontSize: 12.sp,
                                         height: 1.4,
                                         color: AppColors.darkBlueColor,
                                         letterSpacing: 0.4)),
                               ),
                             ),
                             Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 if (suggestion.productStatus == 'activé')
                                   Container(
-                                    margin: EdgeInsets.only(right: 0.041.sw),
+                                    // margin: EdgeInsets.only(right: 0.041.sw),
                                     child: Center(
                                       child: Padding(
                                         padding: EdgeInsets.symmetric(horizontal: 0.016.sw, vertical: 0.0049.sh),
@@ -147,7 +150,7 @@ class AutocompleteSearchProduct extends StatelessWidget {
                                   ),
                                 Padding(
                                   padding: EdgeInsets.only(
-                                    left: 0.252.sw,
+                                    right: 0.03.sw,
                                   ),
                                   child: Container(
                                     child: Text(

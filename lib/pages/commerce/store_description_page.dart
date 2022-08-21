@@ -148,67 +148,69 @@ class _StoreDescriptionPageState extends State<StoreDescriptionPage> {
                                     keyboardType: TextInputType.emailAddress,
                                   ),
                                   0.03.sh.verticalSpace,
-                                  TextInputField(
-                                    readOnly: true,
-                                    validator: (_) => context.watch<BusinessProvider>().chekedsectorsList.isNotEmpty
-                                        ? null
-                                        : 'ce champ est obligatoire !',
-                                    autovalidateMode: AutovalidateMode.onUserInteraction,
-                                    controller: TextEditingController(text: ''),
-                                    suffixIcon: Visibility(
-                                      visible: context.watch<BusinessProvider>().sectorHintVisible,
-                                      child: GestureDetector(
-                                        onTap: () {
-                                          context.read<ClientProvider>().setHideSuggestion();
-                                          context.read<BusinessProvider>().setSectorHintVisible();
-                                          showModalBottomSheet<void>(
-                                            isScrollControlled: true,
-                                            context: context,
-                                            shape: RoundedRectangleBorder(
-                                              borderRadius: BorderRadius.vertical(
-                                                top: Radius.circular(20.r),
-                                              ),
-                                            ),
-                                            builder: ((context) => SheetStoreSectors(
-                                                  title: 'sectors'.tr(),
-                                                )),
-                                          ).whenComplete(
-                                            () {
-                                              context.read<BusinessProvider>().setSectorHintVisible();
-                                              // context.read<ClientProvider>().setHideSuggestion();
-                                            },
-                                          );
-                                        },
-                                        child: Row(
-                                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                          crossAxisAlignment: CrossAxisAlignment.center,
-                                          children: [
-                                            Text(
-                                              'selectOneOrMoreSectors'.tr(),
-                                              style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                                                    fontFamily: 'Montserrat',
-                                                    fontSize: 14.sp,
-                                                    height: 1.2,
-                                                    color: AppColors.deepBlueColor,
-                                                  ),
-                                            ),
-                                            Align(
-                                              alignment: Alignment.topLeft,
-                                              child: SizedBox(
-                                                width: 0.05.sw,
-                                                height: 0.012.sh,
-                                                child: Image(
-                                                  image: AssetImage('assets/icons/Vector.png'),
+                                  Consumer<BusinessProvider>(
+                                    builder: (context, value, child) => TextInputField(
+                                      readOnly: false,
+                                      validator: (_) => context.read<BusinessProvider>().isDeleteEnabled()
+                                          ? null
+                                          : 'ce champ est obligatoire !',
+                                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                                      controller: TextEditingController(text: ''),
+                                      suffixIcon: Visibility(
+                                        visible: context.watch<BusinessProvider>().sectorHintVisible,
+                                        child: GestureDetector(
+                                          onTap: () {
+                                            context.read<ClientProvider>().setHideSuggestion();
+                                            context.read<BusinessProvider>().setSectorHintVisible();
+                                            showModalBottomSheet<void>(
+                                              isScrollControlled: true,
+                                              context: context,
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius: BorderRadius.vertical(
+                                                  top: Radius.circular(20.r),
                                                 ),
                                               ),
-                                            ),
-                                          ],
+                                              builder: ((context) => SheetStoreSectors(
+                                                    title: 'sectors'.tr(),
+                                                  )),
+                                            ).whenComplete(
+                                              () {
+                                                context.read<BusinessProvider>().setSectorHintVisible();
+                                                // context.read<ClientProvider>().setHideSuggestion();
+                                              },
+                                            );
+                                          },
+                                          child: Row(
+                                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                            crossAxisAlignment: CrossAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                'selectOneOrMoreSectors'.tr(),
+                                                style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                                                      fontFamily: 'Montserrat',
+                                                      fontSize: 14.sp,
+                                                      height: 1.2,
+                                                      color: AppColors.deepBlueColor,
+                                                    ),
+                                              ),
+                                              Align(
+                                                alignment: Alignment.topLeft,
+                                                child: SizedBox(
+                                                  width: 0.05.sw,
+                                                  height: 0.012.sh,
+                                                  child: Image(
+                                                    image: AssetImage('assets/icons/Vector.png'),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ),
+                                      hintText: ''.tr(),
+                                      inputLabel: 'sector'.tr(),
+                                      keyboardType: TextInputType.emailAddress,
                                     ),
-                                    hintText: ''.tr(),
-                                    inputLabel: 'sector'.tr(),
-                                    keyboardType: TextInputType.emailAddress,
                                   ),
                                   0.015.sh.verticalSpace,
                                   Consumer<BusinessProvider>(
@@ -521,11 +523,14 @@ class _StoreDescriptionPageState extends State<StoreDescriptionPage> {
                                             if (_formKey.currentState?.validate() ??
                                                 true && context.read<BusinessProvider>().chekedsectorsList.isNotEmpty) {
                                               print('you can navigate');
-                                              Navigator.pushNamed(context, AppRoutes.searchProductPage,
-                                                  arguments: {'currentRoute': 'addNewProductpage'});
 
                                               context.read<LocalistaionControllerprovider>().disposeAdressValue();
                                               context.read<BusinessProvider>().disposeSettingsControllers();
+                                              context.read<BusinessProvider>().disposePickedFile();
+                                              Navigator.pushNamed(
+                                                context,
+                                                AppRoutes.searchProductPage,
+                                              );
                                             } else {
                                               print('you can not navigate');
                                             }

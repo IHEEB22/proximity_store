@@ -49,10 +49,10 @@ class SettingsPage extends StatelessWidget {
                                       firstActionText: 'signOut'.tr(),
                                       secondActionText: 'deleteAccount'.tr(),
                                       firstOnPresssed: () {
-                                        context.read<BusinessProvider>().setPickedFileFromGalery();
+                                        Navigator.pushNamed(context, AppRoutes.loginPage);
                                       },
                                       secondOnPresssed: () {
-                                        context.read<BusinessProvider>().setPickedFileFromCamera();
+                                        Navigator.pushNamed(context, AppRoutes.welcomePage);
                                       },
                                     ));
                           },
@@ -186,21 +186,21 @@ class SettingsPage extends StatelessWidget {
                             ),
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsets.only(right: 0.065.sw, left: 0.665.sw),
-                    child: TextButton(
-                      onPressed: () {
-                        Navigator.pushNamed(
-                          context,
-                          AppRoutes.termOfServicePage,
-                        );
-                        context.read<BusinessProvider>().disposeSettingsControllers();
-                      },
-                      style: TextButton.styleFrom(
-                        tapTargetSize: MaterialTapTargetSize.padded,
-                      ),
-                      child: Align(
-                        alignment: Alignment.topRight,
+                  Align(
+                    alignment: Alignment.topRight,
+                    child: Container(
+                      margin: EdgeInsets.only(right: 0.06.sw),
+                      width: 0.28.sw,
+                      height: 0.04.sh,
+                      child: TextButton(
+                        onPressed: () {
+                          Navigator.pushNamed(
+                            context,
+                            AppRoutes.termOfServicePage,
+                          );
+                          context.read<BusinessProvider>().disposeSettingsControllers();
+                        },
+                        style: TextButton.styleFrom(),
                         child: Text(
                           'consultTheT&Cs'.tr(),
                           style: Theme.of(context).textTheme.bodyText1?.copyWith(

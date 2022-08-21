@@ -28,11 +28,11 @@ class BusinessProvider with ChangeNotifier {
   //   List<dynamic> data = await json.decode(response);
   //   return (data).map((e) => e as Map<String, dynamic>).toList();
   // }
-
+  bool hideSuggestionList = false;
   bool sectorNameSelected = false;
   String lastSectorNameSelected = '';
 
-  final picker = ImagePicker();
+  ImagePicker picker = ImagePicker();
   Future<PickedFile?> pickedFile = Future.value(null);
 
   Map<String, bool> _chekedsectorsList = Map();
@@ -132,6 +132,11 @@ class BusinessProvider with ChangeNotifier {
     }).toList();
   }
 
+  void disposeDescription() {
+    _storeDescription.clear();
+    notifyListeners();
+  }
+
   Future<List<Sector>> getSectors() async {
     final String response = await rootBundle.loadString('assets/fake_data/sectorsList.json');
     List data = await json.decode(response);
@@ -159,6 +164,13 @@ class BusinessProvider with ChangeNotifier {
         notifyListeners();
       }
     }
+    notifyListeners();
+  }
+
+  void disposeChekedSector() {
+    _chekedsectorsList.values.forEach((element) {
+      element = false;
+    });
     notifyListeners();
   }
 
@@ -328,6 +340,11 @@ class BusinessProvider with ChangeNotifier {
     return _sectorsData.values.contains(true);
   }
 
+  void setHideSuggestionList() {
+    hideSuggestionList = !hideSuggestionList;
+    notifyListeners();
+  }
+
   void disposestoreDescriptionControllers() {
     _switchValue = false;
     _isPickedFileEmpty = true;
@@ -345,14 +362,22 @@ class BusinessProvider with ChangeNotifier {
 
   void disposePickedFile() {
     Future<PickedFile?> pickedFile = Future.value(null);
+    notifyListeners();
   }
 
   void disposeSettingsControllers() {
+    _productPrice.clear();
+    chekedsectorsList.forEach((key, value) {
+      value = false;
+    });
+
     _emailTextEditingController.clear();
     _passwordTextEditingController.clear();
     _newPasswordTextEditingController.clear();
     _repeatNewPasswordTextEditingController.clear();
-
+    _businessName.clear();
+    _phoneNumber.clear();
+    _storeDescription.clear();
     _validateButtonPressed = false;
     _isReapetPasswordEqualpassword = false;
     _isPasswordValide = false;
@@ -363,7 +388,7 @@ class BusinessProvider with ChangeNotifier {
     _isPasswordVisible = false;
     _isNewPasswordVisible = false;
     _isRepeatNewPasswordVisible = false;
-    Future<PickedFile?> pickedFile = Future.value(null);
+    disposePickedFile();
   }
 
   void disposeSectors() {

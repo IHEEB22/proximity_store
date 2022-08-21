@@ -18,7 +18,7 @@
     {
         "product_name": "PC Gamer Club Signature G-MOTIONS APEX - Ryzen 7 5800X – RTX 3070 – 32 GO RAM RGB 3200 MHz",
         "product_label": "pc gamer",
-        "product_sector": "computing",
+        "product_sector": "Informatique",
         "product_image": "https://m.media-amazon.com/images/I/71uJsKQfQuL._AC_UY327_FMwebp_QL65_.jpg",
         "product_price": 5499.00,
         "in_stock": 1 ,
@@ -33,7 +33,7 @@
     {
         "product_name": "Apple MacBook Air avec Puce M2 : écran Liquid Retina de 13,6 Pouces, 8GB de RAM, 512 Go de Stockage SSD ; Lumière stellaire",
         "product_label": "MacBook",
-        "product_sector": "computing",
+        "product_sector": "Informatique",
         "product_image": "https://m.media-amazon.com/images/I/71uJwr1IrZL._AC_SX522_.jpg",
         "product_price": 1900.0,
         "in_stock": 20 ,
@@ -49,7 +49,7 @@
     {
         "product_name": "2ASUS ExpertBook P1 P1511CEA-BQ753R Intel Core i3-1115G4 Ordinateur Portable 39,6cm (15,6\") 8Go / GB RAM, 256GB SSD, Win 10 Pro",
         "product_label": "pc portable",
-        "product_sector": "computing",
+        "product_sector": "Informatique",
         "product_image": "https://images-eu.ssl-images-amazon.com/images/I/61SseT2XIjL.__AC_SY300_SX300_QL70_ML2_.jpg",
         "product_price": 545.06,
         "in_stock": 17 ,
@@ -82,7 +82,7 @@
     {
         "product_name": "HP OfficeJet Pro 8012e Imprimante tout en un - JetCanon Imprimante PIXMA MG2555S, Noir",
         "product_label": "imprimante",
-        "product_sector": "Heigh Tech",
+        "product_sector": "Informatique",
         "product_image": "https://mk-media.mytek.tn/media/catalog/product/cache/0dd0561c7b0cf141e19b8655ffdc7055/t/r/tr-4640w-00.jpg",
         "product_price": 120.0,
         "in_stock": 10 ,
@@ -118,7 +118,7 @@
     },
     {
         "product_name": "Xbox Series S",
-        "product_label": "console",
+        "product_label": "Xbox",
         "product_sector": "Applications & Jeux Vidéos",
         "product_image": "https://m.media-amazon.com/images/I/61-x29sqlpS._AC_SL1500_.jpg",
         "product_price": 50.0,

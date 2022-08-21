@@ -8,7 +8,6 @@ import 'package:proximitystore/widgets/add_product_sheet.dart';
 import 'package:proximitystore/widgets/product_added_sheet.dart';
 
 import '../../providers/business_provider.dart';
-import '../../widgets/autocomplete_search_product.dart';
 import '../../widgets/custom_cupertino_dialog.dart';
 import '../../widgets/widgets.dart';
 
@@ -33,9 +32,10 @@ class _SearchProductPageState extends State<SearchProductPage> {
       ),
       context: context,
       builder: (BuildContext context) =>
-          (arguments['currentRoute'] == 'addNewProductpage') ? AddProductSheet() : ProductAddedSheet(),
+          (arguments['currentRoute'] == 'addNewProductpage') ? ProductAddedSheet() : AddProductSheet(),
     ).then((value) {
       FocusScope.of(context).requestFocus(context.read<BusinessProvider>().serachProductFocusNode);
+      context.read<BusinessProvider>().disposeDescription();
     });
   }
 
@@ -133,31 +133,42 @@ class _SearchProductPageState extends State<SearchProductPage> {
                       ),
                     ],
                   ),
-                  0.06.sh.verticalSpace,
+                  0.016.sh.verticalSpace,
                   Padding(
                     padding: EdgeInsets.only(left: 0.082.sw, right: 0.082.sw, top: 0.42.sh),
                     child: SizedBox(
                       width: double.infinity,
-                      child: CustomBlueButton(
-                        textInput: 'Ajouter un produit'.tr(),
-                        onPressed: () {
-                          showCupertinoModalPopup(
-                            context: context,
-                            builder: (_) => CustomCupertinoDialog(
-                              title: 'uploadAProductPhoto'.tr(),
-                              firstActionText: 'chooseFromGallery'.tr(),
-                              secondActionText: 'openTheCamera'.tr(),
-                              firstOnPresssed: () {
-                                context.read<BusinessProvider>().setPickedFileFromGalery();
-                                Navigator.pushNamed(context, AppRoutes.addNewProductPage);
-                              },
-                              secondOnPresssed: () {
-                                context.read<BusinessProvider>().setPickedFileFromCamera();
-                                Navigator.pushNamed(context, AppRoutes.addNewProductPage);
-                              },
-                            ),
-                          );
-                        },
+                      child: Consumer<BusinessProvider>(
+                        builder: (context, value, child) => CustomBlueButton(
+                          textInput: 'Ajouter un produit'.tr(),
+                          onPressed: () {
+                            context.read<BusinessProvider>().disposeDescription();
+
+                            context.read<BusinessProvider>().setHideSuggestionList();
+                            showCupertinoModalPopup(
+                              context: context,
+                              builder: (_) => CustomCupertinoDialog(
+                                title: 'uploadAProductPhoto'.tr(),
+                                firstActionText: 'chooseFromGallery'.tr(),
+                                secondActionText: 'openTheCamera'.tr(),
+                                firstOnPresssed: () {
+                                  context.read<BusinessProvider>().setPickedFileFromGalery();
+                                  context.read<BusinessProvider>().disposeChekedSector();
+                                  context.read<BusinessProvider>().disposeDescription();
+                                  context.read<BusinessProvider>().sectorNameSelected = false;
+                                  Navigator.pushNamed(context, AppRoutes.addNewProductPage);
+                                },
+                                secondOnPresssed: () {
+                                  context.read<BusinessProvider>().setPickedFileFromCamera();
+                                  Navigator.pushNamed(context, AppRoutes.addNewProductPage);
+                                },
+                              ),
+                            ).then((value) {
+                              context.read<BusinessProvider>().setHideSuggestionList();
+                              context.read<BusinessProvider>().disposePickedFile();
+                            });
+                          },
+                        ),
                       ),
                     ),
                   ),
